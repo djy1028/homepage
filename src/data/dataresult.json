@@ -1,0 +1,263 @@
+{
+    "pro_data":{
+        "name": "项目数据",
+        "bar_one":{
+            "option":{
+                "tooltip": {
+                    "trigger": "axis",
+                    "axisPointer": {
+                        "type": "shadow"
+                    } 
+                },
+                "xAxis": {
+                    "type": "category",
+                    "data": ["提交数", "上线数", "被申请数", "中选数", "中期结项数", "结项数"],
+                    "axisLabel": {
+                        "show": true,
+                        "textStyle": {
+                            "show":true,
+                            "width": 51,
+                            "lineHeight": 15,
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": 16,
+                            "fontWeight": "normal",
+                            "fontStretch": "normal",
+                            "letterSpacing": 1,
+                            "color": "#333333",
+                            "padding": 8
+                        }
+                    }
+                },
+                "yAxis": [
+                    {
+                        "type": "value",
+                        "name": "",
+                        "position": "left",
+                        "axisLabel": {
+                            "show": true,
+                            "textStyle": {
+                                "show":true,
+                                "width": 28,
+                                "height": 12,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 8
+                            }
+                        },
+                        "axisLine":{
+                            "show":true
+                        }
+                    },
+                    {
+                        "type":"value",
+                        "name":"",
+                        "position":"right",
+                        "splitNumber":2,
+                        "axisLabel": {
+                            "show": true,
+                            "textStyle": {
+                                "show":true,
+                                "width": 28,
+                                "height": 12,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 5
+                            },
+                            "formatter": "{value} %"
+                        },
+                        "axisLine":{
+                            "show":true
+                        },
+                        "splitLine":{
+                            "show":false
+                        }
+                    }
+                ],
+                "series": [
+                    {
+                        "data": [
+                            {
+                                "value":120,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            }, 
+                            {
+                                "value": 200,
+                                "itemStyle": {
+                                    "color": "#006cc5"
+                                }
+                            }, 
+                            {
+                                "value":150,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            },  
+                            {
+                                "value":80,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            }, 
+                            {
+                                "value":70,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            },  
+                            {
+                                "value":70,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            }],
+                        "type": "bar",
+                        "barWidth": "35%"
+                    },
+                    {
+                        "data":[60,100,75,40,35,35],
+                        "yAxisIndex":1,
+                        "type":"bar"
+                        
+                    }
+            ]
+            }
+        },
+        "bar_two":{
+            "title":"申请人数最多的10个技术标签",
+            "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow"
+                        }
+                    },
+                   
+                    "grid": {
+                        "left": "3%",
+                        "right": "4%",
+                        "bottom": "3%",
+                        "containLabel": true
+                    },
+                    "xAxis": {
+                        "type": "value",
+                        "boundaryGap": [0, 0.01],
+                        "show":false
+                    },
+                    "yAxis": {
+                        "type": "category",
+                        "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                        "axisLabel":{
+                            "show":true,
+                            "textStyle":{
+                                "show":true,
+                                "width": 28,
+                                "height": 20,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#666",
+                                "padding": 10
+                            }
+                        }
+                    },
+                    "series": [
+                        {
+                            "name": "",
+                            "type": "bar",
+                            "label":{
+                                "show":true,
+                                "position":"right",
+                                "width": 20,
+                                "height": 14,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff",
+                                "padding":10
+                            },
+                            "data": [
+                                {
+                                    "value":8000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":12000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":14629,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":17654,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":19325,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":23438,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+
+                                {
+                                    "value":31000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":32594,
+                                    "itemStyle":{
+                                        "color":"#9cd9ff"
+                                    }
+                                },
+                                {
+                                    "value":34141,
+                                    "itemStyle":{
+                                        "color":"#ffe400"
+                                    }
+                                },
+                                {
+                                    "value":81807,
+                                    "itemStyle":{
+                                        "color":"#ffcfd5"
+                                    }
+                                }]
+                        }
+                    ]
+            }
+        }
+    },
+    "stu_data":{
+        "name":"学生数据",
+        "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}]
+    }
+}

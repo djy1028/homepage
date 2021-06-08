@@ -34,12 +34,10 @@ class Wrapper extends React.Component{
             method:'GET'
         }).then(res=>res.json()).then(rsp1=>{
             let pro_result = rsp1 ? rsp1.data.result : []
-            let stunum = {},total = 0
+            let stunum = {}
             pro_result.forEach(ele => {
-                total = total + ele.applyStudentList.length;
                 stunum[ele.orgProgramId] = ele.applyStudentList.length
             });
-            console.log(total)
             this.props.setStuData(stunum)
         })
         .catch(err => console.log(err))

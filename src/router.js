@@ -17,6 +17,7 @@
  import HomePage from './pages/homepage/index.js';
  import Help from './pages/help/index.js';
  import Howitworks from './pages/howitworks/index.js';
+ import Data from './pages/data/index.js'
  import Apply from './pages/apply/index.js';
  import Org from './pages/org/index.js';
  import OrgDetail from './components/orgdetail/index.js';
@@ -68,6 +69,7 @@ const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js
                                      </Org>
                                  </Route>
                                  <Route path="/howitworks"component={Howitworks} ></Route> 
+                                 <Route path="/data"component={Data} ></Route> 
                                  <Route path="/apply"component={Apply} ></Route>
                                  <Route path="/liveshow"component={Liveshow} ></Route>                                                                                                                      
                                  <Route path="/" component={HomePage} /> 
