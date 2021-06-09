@@ -95,11 +95,14 @@ function Data(){
                         option.stu_data && option.stu_data.stu_data_des.map((ele,index) => {
                             return (
                                 <div key={index} className = "stu_data_desItem">
-                                    <div className = 'stu_data_desItem_key'>
-                                        {Reflect.ownKeys(ele)[0]}
-                                    </div>
-                                    <div className = 'stu_data_desItem_val'>
-                                        {ele[Reflect.ownKeys(ele)[0]]}
+                                    <div className = "stu_data_desInfo">
+                                        <div className = 'stu_data_desItem_key'>
+                                            {Reflect.ownKeys(ele)[0]}
+                                        </div>
+                                        <div className = 'stu_data_desItem_val'>
+                                            {ele[Reflect.ownKeys(ele)[0]]}
+                                            <span className = "stu_data_unit">{index == 1? '次':'数'}</span> 
+                                        </div>
                                     </div>
                                 </div>
                             )
