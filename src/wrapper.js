@@ -22,12 +22,12 @@ class Wrapper extends React.Component{
        
      }
     
-    componentDidMount(){
-        !this.timer && this.getStunum()
-        this.timer = setInterval(()=>{
-            this.getStunum()
-        },1000*60*60*6)
-    }
+    // componentDidMount(){
+    //     !this.timer && this.getStunum()
+    //     this.timer = setInterval(()=>{
+    //         this.getStunum()
+    //     },1000*60*60*6)
+    // }
 
     getStunum(){
         fetch('https://portal.summer-ospp.ac.cn/summer/rest2/applyforproject?activityId=1&pageSize=1000',{
