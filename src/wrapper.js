@@ -45,9 +45,9 @@ class Wrapper extends React.Component{
         .catch(err => console.log(err))
     }
 
-    componentWillUnmount(){
-        clearInterval(this.timer)
-    }
+    // componentWillUnmount(){
+    //     clearInterval(this.timer)
+    // }
     
     render(){
         return (
