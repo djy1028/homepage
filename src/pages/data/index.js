@@ -24,28 +24,18 @@
     BarChart,
     // PieChart
   } from 'echarts/charts';
-
   import {
-    // GridSimpleComponent,
     GridComponent,
-    // PolarComponent,
-    // RadarComponent,
-    // GeoComponent,
-    // SingleAxisComponent,
-    // ParallelComponent,
-    // CalendarComponent,
-    // GraphicComponent,
-    // ToolboxComponent,
+    DataZoomInsideComponent,
+    ToolboxComponent,
     TooltipComponent,
-    // AxisPointerComponent,
-    // BrushComponent,
+    DataZoomSliderComponent,
     TitleComponent,
-    // TimelineComponent
   } from 'echarts/components';
 import option from '../../data/dataresult.json'
 
 echarts.use(
-    [TooltipComponent,GridComponent,BarChart, CanvasRenderer]
+    [TitleComponent,DataZoomInsideComponent,DataZoomSliderComponent,ToolboxComponent,TooltipComponent,GridComponent,BarChart, CanvasRenderer]
 );
 
 function Data(){
@@ -102,6 +92,41 @@ function Data(){
                                         <div className = 'stu_data_desItem_val'>
                                             {ele[Reflect.ownKeys(ele)[0]]}
                                             <span className = "stu_data_unit">{index == 1? '次':'数'}</span> 
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }                
+                </div>
+                <div className = "stu_data_bar2_title">
+                    {option.stu_data.bar_two.title}
+                </div>
+                <div className = "stu_data_bar2">
+                    <ReactEChartsCore
+                        echarts={echarts}
+                        option={options.stu_data.bar_two.option}
+                    />
+                </div>
+             </div>
+
+             {/* 组织数据 */}
+             <div className = "org_data">
+                <div className = "org_data_title">
+                    {option.org_data.name}
+                </div>
+                <div className = "org_data_des">
+                    {
+                        option.org_data && option.org_data.org_data_des.map((ele,index) => {
+                            return (
+                                <div key={index} className = "org_data_desItem">
+                                    <div className = "org_data_desInfo">
+                                        <div className = 'org_data_desItem_key'>
+                                            {Reflect.ownKeys(ele)[0]}
+                                        </div>
+                                        <div className = 'org_data_desItem_val'>
+                                            {ele[Reflect.ownKeys(ele)[0]] + '个'}
+                                            {/* <span className = "org_data_unit">{'个'}</span>  */}
                                         </div>
                                     </div>
                                 </div>

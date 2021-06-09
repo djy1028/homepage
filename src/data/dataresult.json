@@ -258,6 +258,312 @@
     },
     "stu_data":{
         "name":"学生数据",
-        "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}]
+        "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
+        "bar_two":{
+            "title":"申请人次高校分布",
+            "option":{
+                "tooltip": {
+                    "trigger": "axis",
+                    "axisPointer": {
+                        "type": "shadow",
+                        "label": {
+                            "show": true
+                        }
+                    }
+                },
+                
+                "calculable": true,
+                "title": {
+                    "text": "",
+                    "subtext": "*申请人数相同的学校排名不分先后",
+                    "left": "80%",
+                    "textAlign": "center"
+                },
+                "grid": {
+                    "top": "12%",
+                    "left": "1%",
+                    "right": "10%",
+                    "containLabel": true
+                },
+                "xAxis": [
+                    {
+                        "type": "category",
+                        "axisLabel": {
+                            "show": true,
+                            "interval": 0,
+                            "rotate": 55,
+                            "textStyle": {
+                                "show":true,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 8
+                            }
+                        },
+                        "data": ["清华大学","北京交通大学","北京航空航天大学","北京理工大学","北京邮电大学","南开大学","北京科技大学","大连理工大学","哈尔滨工业大学",
+                            "复旦大学","同济大学","上海交通大学","南京大学","东南大学","南京航空航天大学","南京理工大学","南京邮电大学","浙江大学","杭州电子科技大学","中国科学技术大学",
+                            "厦门大学","山东大学","武汉大学","华中科技大学","湘潭大学","中南大学","中山大学","华南理工大学","电子科技大学","西安电子科技大学"]
+                    }
+                ],
+                "yAxis": [
+                    {
+                        "type": "value",
+                        "name": "",
+                        "show":false
+                    }
+                ],
+                "dataZoom": [
+                    {
+                        "show": true,
+                        "start": 0,
+                        "end": 10000,
+                        "bottom": 5,
+                        "borderColor": "transparent",
+                        "backgroundColor": "#fff",
+                         
+                        "handleIcon": "M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
+                        "handleColor": "#aab6c6",
+                        "handleSize": 18,
+                        "handleStyle": {
+                            "borderColor": "#aab6c6",
+                            "shadowBlur": 4,
+                            "shadowOffsetX": 1,
+                            "shadowOffsetY": 1,
+                            "shadowColor": "#e5e5e5",
+                            "borderCap":"round"
+                        },
+                        "selectedDataBackground":{
+                            "color": {
+                                "type": "radial",
+                                "x": 0.5,
+                                "y": 0.5,
+                                "r": 0.5,
+                                "colorStops": [{
+                                    "offset": 0, "color": "red" 
+                                }, {
+                                    "offset": 1, "color": "blue" 
+                                }],
+                                "global": false 
+                            }
+                        }
+
+                    },
+                    {
+                        "show":false,
+                        "type": "inside",
+                        "start": 0,
+                        "end": 10000
+                    }
+                ],
+                "series": [
+                    {
+                        "data": [
+                            {
+                                "value":20,
+                                "itemStyle":{
+                                    "color":"#ffcfd5"
+                                }
+                            }, 
+                            {
+                                "value": 20,
+                                "itemStyle": {
+                                    "color": "#ffe400"
+                                }
+                            }, 
+                            {
+                                "value":18,
+                                "itemStyle":{
+                                    "color":"#9cd9ff"
+                                }
+                            },  
+                            {
+                                "value":18,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":17,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":17,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },
+                            {
+                                "value":15,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value": 15,
+                                "itemStyle": {
+                                    "color": "#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":14,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":14,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":12,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":11,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },
+                            {
+                                "value":10,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value": 10,
+                                "itemStyle": {
+                                    "color": "#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":8,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":8,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":7,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":7,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },
+                            {
+                                "value":6,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value": 6,
+                                "itemStyle": {
+                                    "color": "#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":6,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":6,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":5,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":4,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },
+                            {
+                                "value":4,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value": 3,
+                                "itemStyle": {
+                                    "color": "#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":3,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":2,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }, 
+                            {
+                                "value":2,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            },  
+                            {
+                                "value":1,
+                                "itemStyle":{
+                                    "color":"#55a5ff"
+                                }
+                            }
+                        ],
+                        "type": "bar",
+                        "barWidth": "60%",
+                        "label":{
+                            "show":true,
+                            "position":"top",
+                            "width": 20,
+                            "height": 14,
+                            "fontFamily": "AdobeHeitiStd-Regular",
+                            "fontSize": 18,
+                            "fontWeight":"normal",
+                            "fontStretch": "normal",
+                            "letterSpacing": 1,
+                            "color" : "#55a5ff",
+                            "padding":8
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "org_data":{
+        "name":"组织数据",
+        "org_data_des":[{"参与社区数":1000},{"参与高校数":1200}]
     }
 }
