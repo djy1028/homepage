@@ -153,7 +153,130 @@
             }
         },
         "bar_two":{
-            "title":"申请人数最多的10个技术标签",
+            "title":"申请人数最多的10种编程语言",
+            "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow"
+                        }
+                    },
+                   
+                    "grid": {
+                        "left": "3%",
+                        "right": "4%",
+                        "bottom": "3%",
+                        "containLabel": true
+                    },
+                    "xAxis": {
+                        "type": "value",
+                        "boundaryGap": [0, 0.01],
+                        "show":false
+                    },
+                    "yAxis": {
+                        "type": "category",
+                        "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                        "axisLabel":{
+                            "show":true,
+                            "textStyle":{
+                                "show":true,
+                                "width": 28,
+                                "height": 20,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#666",
+                                "padding": 10
+                            }
+                        }
+                    },
+                    "series": [
+                        {
+                            "name": "",
+                            "type": "bar",
+                            "label":{
+                                "show":true,
+                                "position":"right",
+                                "width": 20,
+                                "height": 14,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff",
+                                "padding":10
+                            },
+                            "data": [
+                                {
+                                    "value":8000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":12000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":14629,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":17654,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":19325,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":23438,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+
+                                {
+                                    "value":31000,
+                                    "itemStyle":{
+                                        "color":"#55a5ff"
+                                    }
+                                },
+                                {
+                                    "value":32594,
+                                    "itemStyle":{
+                                        "color":"#9cd9ff"
+                                    }
+                                },
+                                {
+                                    "value":34141,
+                                    "itemStyle":{
+                                        "color":"#ffe400"
+                                    }
+                                },
+                                {
+                                    "value":81807,
+                                    "itemStyle":{
+                                        "color":"#ffcfd5"
+                                    }
+                                }]
+                        }
+                    ]
+            }
+        },
+        "bar_three":{
+            "title":"申请人数最多的10个技术领域",
             "option":{
                     "tooltip": {
                         "trigger": "axis",
@@ -280,7 +403,7 @@
         "name":"学生数据",
         "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
         "bar_two":{
-            "title":"申请人次高校分布",
+            "title":"申请及中选人数高校分布",
             "option":{
                 "tooltip": {
                     "trigger": "axis",
@@ -291,13 +414,25 @@
                         }
                     }
                 },
-                
-                "calculable": true,
+                "legend": {
+                    "data": ["申请人数", "中选人数"],
+                    "right":70,
+                    "top":0,
+                    "itemWidth":14,
+                    "itemHeight":14,
+                    "textStyle":{
+                        "fontFamily": "MicrosoftYaHei",
+                        "fontSize": 14,
+                        "letterSpacing": 1,
+                        "color": "#333"
+                    }
+                   
+                },
                 "title": {
                     "text": "",
                     "subtext": "*申请人数相同的学校排名不分先后",
-                    "left": "80%",
-                    "textAlign": "center"
+                    "right":70,
+                    "top":20
                 },
                 "grid": {
                     "top": "12%",
@@ -320,7 +455,7 @@
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
                                 "color": "#333333",
-                                "padding": 8
+                                "padding": 5
                             }
                         },
                         "data": ["清华大学","北京交通大学","北京航空航天大学","北京理工大学","北京邮电大学","南开大学","北京科技大学","大连理工大学","哈尔滨工业大学",
@@ -380,202 +515,43 @@
                 ],
                 "series": [
                     {
-                        "data": [
-                            {
-                                "value":20,
-                                "itemStyle":{
-                                    "color":"#ffcfd5"
-                                }
-                            }, 
-                            {
-                                "value": 20,
-                                "itemStyle": {
-                                    "color": "#ffe400"
-                                }
-                            }, 
-                            {
-                                "value":18,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            },  
-                            {
-                                "value":18,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":17,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":17,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },
-                            {
-                                "value":15,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value": 15,
-                                "itemStyle": {
-                                    "color": "#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":14,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":14,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":12,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":11,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },
-                            {
-                                "value":10,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value": 10,
-                                "itemStyle": {
-                                    "color": "#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":8,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":8,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":7,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":7,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },
-                            {
-                                "value":6,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value": 6,
-                                "itemStyle": {
-                                    "color": "#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":6,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":6,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":5,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":4,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },
-                            {
-                                "value":4,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value": 3,
-                                "itemStyle": {
-                                    "color": "#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":3,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":2,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }, 
-                            {
-                                "value":2,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            },  
-                            {
-                                "value":1,
-                                "itemStyle":{
-                                    "color":"#55a5ff"
-                                }
-                            }
-                        ],
+                        "name":"申请人数",
+                        "data": [20,20,18,18,17,17,15,15,14,14,12,11,10,10,8,8,7,7,6,6,6,6,5,4,4,3,3,2,2,1],
+                        "itemStyle":{
+                            "color":"#55a5ff"
+                        },
                         "type": "bar",
-                        "barWidth": "60%",
+                        "barWidth": "40%",
                         "label":{
                             "show":true,
                             "position":"top",
-                            "width": 20,
-                            "height": 14,
                             "fontFamily": "AdobeHeitiStd-Regular",
-                            "fontSize": 18,
+                            "fontSize": 14,
                             "fontWeight":"normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
-                            "color" : "#55a5ff",
-                            "padding":8
+                            "color" : "#55a5ff"
+                        },
+                        "barGap":0
+                    },
+                    {
+                        "name":"中选人数",
+                        "type":"bar",
+                        "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
+                        "barWidth": "40%",
+                        "label":{
+                            "show":true,
+                            "position":"top",
+                            "fontFamily": "AdobeHeitiStd-Regular",
+                            "fontSize": 14,
+                            "fontWeight":"normal",
+                            "fontStretch": "normal",
+                            "letterSpacing": 1,
+                            "color" : "#55a5ff"
+                           
+                        },
+                        "itemStyle":{
+                            "color":"#006cc5"
                         }
                     }
                 ]
@@ -584,6 +560,9 @@
     },
     "org_data":{
         "name":"社区及高校数据",
-        "org_data_des":[{"参与社区数":1000},{"涉及高校数":1200}]
+        "org_data_des":[{"参与社区数":1000},{"涉及高校数":1200}],
+        "bar_one":{
+            "title":"高校区域分布"
+        }
     }
 }

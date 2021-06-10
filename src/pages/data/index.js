@@ -74,6 +74,16 @@ function Data(){
                         option={options.pro_data.bar_two.option}
                         />
                 </div>
+                <div className="pro_data_divide"></div>
+                <div className = "pro_data_bar3title">
+                    {option.pro_data.bar_three.title}
+                </div>
+                <div className = "pro_data_bar3">
+                    <ReactEChartsCore
+                        echarts={echarts}
+                        option={options.pro_data.bar_three.option}
+                        />
+                </div>
             </div>
 
              {/* 学生数据 */}
@@ -133,6 +143,9 @@ function Data(){
                             )
                         })
                     }                
+                </div>
+                <div className = "org_data_bar1_title">
+                    {option.org_data.bar_one.title}
                 </div>
              </div>
             
