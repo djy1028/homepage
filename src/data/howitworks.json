@@ -56,20 +56,32 @@
                 "time":"05 月 24 日 - 06 月 13 日"
             },
             {
+                "title":"导师审核学生申请材料阶段",
+                "time": "06 月 14 日 - 06 月 21 日" 
+            },
+            {
                 "title":"项目申请审核结果公示",
                 "time":"06 月 30 日"
             },
             {
-                "title":"项目研发第一阶段",
+                "title":"项目研发第一阶段（08月15日24点为中期研发成果提交截止日期）",
                 "time":"07 月 01 日 - 08 月 15 日"
+            },
+            {
+                "title":"导师中期审核阶段",
+                "time":"08 月 16 日 - 08 月 22 日"
             },
             {
                 "title":"项目中期考核结果公示",
                 "time":"08 月 30 日"
             },
             {
-                "title":"项目研发第二阶段",
+                "title":"项目研发第二阶段（09月30日24点为结项研发成果提交截止日期）",
                 "time":"08 月 16 日 - 09 月 30 日"
+            },
+            {
+                "title":"导师结项审核阶段",
+                "time":"10 月 01 日 - 10 月 14 日"
             },
             {
                 "title":"项目结项考核结果公示",
@@ -134,27 +146,39 @@
                 "time":"May 21th"
             },
             {
-                "title":"Student application period",
+                "title":"Students submit application",
                 "time":"May 24th - Jun 13th"
             },
             {
-                "title":"Announcement of accepted student application",
+                "title":"Mentors review the applications",
+                "time":"Jun 14th - Jun 21th"
+            },
+            {
+                "title":"Accepted student projects announced",
                 "time":"Jun 30th"
             },
             {
-                "title":"The first phase of developing project",
+                "title":"The 1st phase of developing project",
                 "time":"Jul 1st - Aug 15th"
             },
             {
-                "title":"Announcement of the students who pass mid-term assessment",
+                "title":"Mentors review mid-term report",
+                "time":"Aug 16th - Aug 22th"
+            },
+            {
+                "title":"Announcement of the mid-term results",
                 "time":"Aug 30th"
             },
             {
-                "title":"The second phase of developing project",
+                "title":"The 2nd phase of developing project",
                 "time":"Aug 16th - Sep 30th"
             },
             {
-                "title":"Announcement of the students who pass final assessment",
+                "title":"Mentors review final-term report",
+                "time":"Oct 1st - Oct 14th"
+            },
+            {
+                "title":"Announcement of the final results ",
                 "time":"Oct 22th"
             },
             {
