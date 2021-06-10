@@ -22,32 +22,25 @@ class Wrapper extends React.Component{
        
      }
     
-    // componentDidMount(){
-    //     !this.timer && this.getStunum()
-    //     this.timer = setInterval(()=>{
-    //         this.getStunum()
-    //     },1000*60*60*6)
-    // }
+    componentDidMount(){
+        !this.timer && this.getStunum()
+        this.timer = setInterval(()=>{
+            this.getStunum()
+        },1000*60*60*6)
+    }
 
     getStunum(){
-        fetch('https://portal.summer-ospp.ac.cn/summer/rest2/applyforproject?activityId=1&pageSize=1000',{
+        fetch('https://portal.summer-ospp.ac.cn/programAndStudentNum?activityId=1&pageSize=1000',{
             method:'GET'
-        }).then(res=>res.json()).then(rsp1=>{
-            let pro_result = rsp1 ? rsp1.data.result : []
-            let stunum = {},total = 0
-            pro_result.forEach(ele => {
-                total = total + ele.applyStudentList.length;
-                stunum[ele.orgProgramId] = ele.applyStudentList.length
-            });
-            console.log(total)
-            this.props.setStuData(stunum)
+        }).then(res=>res.json()).then(rsp=>{
+            rsp.status == 0 && this.props.setStuData(rsp.data)
         })
         .catch(err => console.log(err))
     }
 
-    // componentWillUnmount(){
-    //     clearInterval(this.timer)
-    // }
+    componentWillUnmount(){
+        clearInterval(this.timer)
+    }
     
     render(){
         return (
