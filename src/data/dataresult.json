@@ -9,6 +9,18 @@
                         "type": "shadow"
                     } 
                 },
+                "legend": {
+                    "data": ["高难度", "中难度", "低难度"],
+                    "right":60,
+                    "itemWidth":14,
+                    "itemHeight":14,
+                    "textStyle":{
+                        "fontFamily": "MicrosoftYaHei",
+                        "fontSize": 14,
+                        "letterSpacing": 1,
+                        "color": "#333"
+                    }
+                },
                 "xAxis": {
                     "type": "category",
                     "data": ["提交数", "上线数", "被申请数", "中选数", "中期结项数", "结项数"],
@@ -32,6 +44,7 @@
                     {
                         "type": "value",
                         "name": "",
+                        "splitNumber":2,
                         "position": "left",
                         "axisLabel": {
                             "show": true,
@@ -50,7 +63,8 @@
                         },
                         "axisLine":{
                             "show":true
-                        }
+                        },
+                        "max":877
                     },
                     {
                         "type":"value",
@@ -83,54 +97,56 @@
                 ],
                 "series": [
                     {
-                        "name":"困难",
-                        "data": [
-                            {
-                                "value":120,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            }, 
-                            {
-                                "value": 200,
-                                "itemStyle": {
-                                    "color": "#006cc5"
-                                }
-                            }, 
-                            {
-                                "value":150,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            },  
-                            {
-                                "value":80,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            }, 
-                            {
-                                "value":70,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            },  
-                            {
-                                "value":70,
-                                "itemStyle":{
-                                    "color":"#9cd9ff"
-                                }
-                            }],
+                        "name":"高难度",
+                        "stack":"total",
+                        "emphasis": {
+                            "focus": "series"
+                        },
+                        "data": [320, 302, 301, 334, 390, 330, 320],
                         "type": "bar",
-                        "barWidth": "35%"
+                        "itemStyle":{
+                            "color":"#006cc5"
+                        },
+                        "barWidth":35
                     },
                     {
-                        "data":[60,100,75,40,35,35],
-                        "yAxisIndex":1,
-                        "type":"bar"
+                        "name":"中难度",
+                        "stack":"total",
+                        "emphasis": {
+                            "focus": "series"
+                        },
+                        "data":[310,100,75,40,35,35],
+                        "type":"bar",
+                        "itemStyle":{
+                            "color":"#55a5ff"
+                        }
+                    },
+                    {
+                        "name":"低难度",
+                        "stack":"total",
+                        "emphasis": {
+                            "focus": "series"
+                        },
+                        "data":[247,100,75,40,35,35],
+                        "type":"bar",
+                        "itemStyle":{
+                            "color":"#9cd9ff"
+                        }
                         
+                    },
+                    {
+                        "name":"百分比",
+                        "yAxisIndex":1,
+                        "data":[100,60,55,53,55,53],
+                        "type":"bar",
+                        "barGap":"-100%",
+                        "itemStyle":{
+                            "color":"transparent"
+                        },
+                        "barWidth":35
                     }
-            ]
+
+                ]
             }
         },
         "bar_two":{

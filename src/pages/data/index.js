@@ -25,6 +25,7 @@
     // PieChart
   } from 'echarts/charts';
   import {
+    LegendPlainComponent,
     GridComponent,
     DataZoomInsideComponent,
     ToolboxComponent,
@@ -35,7 +36,7 @@
 import option from '../../data/dataresult.json'
 
 echarts.use(
-    [TitleComponent,DataZoomInsideComponent,DataZoomSliderComponent,ToolboxComponent,TooltipComponent,GridComponent,BarChart, CanvasRenderer]
+    [LegendPlainComponent,TitleComponent,DataZoomInsideComponent,DataZoomSliderComponent,ToolboxComponent,TooltipComponent,GridComponent,BarChart, CanvasRenderer]
 );
 
 function Data(){
