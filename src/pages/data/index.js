@@ -127,7 +127,6 @@ function Data(){
                                         </div>
                                         <div className = 'org_data_desItem_val'>
                                             {ele[Reflect.ownKeys(ele)[0]] + '个'}
-                                            {/* <span className = "org_data_unit">{'个'}</span>  */}
                                         </div>
                                     </div>
                                 </div>

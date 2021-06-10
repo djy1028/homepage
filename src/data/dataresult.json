@@ -7,7 +7,7 @@
                     "trigger": "axis",
                     "axisPointer": {
                         "type": "shadow"
-                    } 
+                    }
                 },
                 "legend": {
                     "data": ["高难度", "中难度", "低难度"],
@@ -107,7 +107,8 @@
                         "itemStyle":{
                             "color":"#006cc5"
                         },
-                        "barWidth":35
+                        "barWidth":35,
+                        "zlevel":10
                     },
                     {
                         "name":"中难度",
@@ -119,7 +120,8 @@
                         "type":"bar",
                         "itemStyle":{
                             "color":"#55a5ff"
-                        }
+                        },
+                        "zlevel":10
                     },
                     {
                         "name":"低难度",
@@ -131,11 +133,12 @@
                         "type":"bar",
                         "itemStyle":{
                             "color":"#9cd9ff"
-                        }
+                        },
+                        "zlevel":10
                         
                     },
                     {
-                        "name":"百分比",
+                        "name":"总占比",
                         "yAxisIndex":1,
                         "data":[100,60,55,53,55,53],
                         "type":"bar",
