@@ -9,7 +9,6 @@
  * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  * See the Mulan PSL v2 for more details.
  */
-
  import React,{useState,useEffect} from 'react'
  import './index.less';
  import { connect } from 'react-redux';
@@ -19,11 +18,7 @@
     CanvasRenderer,
     // SVGRenderer,
   } from 'echarts/renderers';
-  import {
-    // LineChart,
-    BarChart,
-    // PieChart
-  } from 'echarts/charts';
+  import { BarChart} from 'echarts/charts';
   import {
     LegendPlainComponent,
     GridComponent,
@@ -31,17 +26,31 @@
     ToolboxComponent,
     TooltipComponent,
     DataZoomSliderComponent,
+    VisualMapComponent,
     TitleComponent,
+    GeoComponent
   } from 'echarts/components';
 import option from '../../data/dataresult.json'
-
+import {MapOption} from '../../components/mapdata/index'
 echarts.use(
-    [LegendPlainComponent,TitleComponent,DataZoomInsideComponent,DataZoomSliderComponent,ToolboxComponent,TooltipComponent,GridComponent,BarChart, CanvasRenderer]
+    [
+        LegendPlainComponent,
+        TitleComponent,
+        DataZoomInsideComponent,
+        DataZoomSliderComponent,
+        ToolboxComponent,
+        TooltipComponent,
+        GridComponent,
+        VisualMapComponent,
+        GeoComponent,
+        BarChart,
+        CanvasRenderer
+    ]
 );
 
+console.log(MapOption)
 function Data(){
     const [options,setOptions] = useState(option)
-    console.log(options.pro_data.bar_one.option)
     return(         
         <div className="datas">
             <picture className="datas_header">  
@@ -147,6 +156,12 @@ function Data(){
                 <div className = "org_data_bar1_title">
                     {option.org_data.bar_one.title}
                 </div>
+                <div className = "org_data_bar1">
+                    {/* <ReactEChartsCore
+                        echarts={echarts}
+                        option={MapOption}
+                    /> */}
+                </div>  
              </div>
             
 
