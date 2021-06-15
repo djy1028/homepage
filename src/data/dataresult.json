@@ -1,55 +1,51 @@
 {
-    "pro_data":{
-        "name": "项目数据",
-        "bar_one":{
-            "option":{
-                "tooltip": {
-                    "trigger": "axis",
-                    "axisPointer": {
-                        "type": "shadow"
-                    }
-                },
-                "legend": {
-                    "data": ["高难度", "中难度", "低难度"],
-                    "right":60,
-                    "itemWidth":14,
-                    "itemHeight":14,
-                    "textStyle":{
-                        "fontFamily": "MicrosoftYaHei",
-                        "fontSize": 14,
-                        "letterSpacing": 1,
-                        "color": "#333"
-                    }
-                },
-                "xAxis": {
-                    "type": "category",
-                    "data": ["提交数", "上线数", "被申请数", "中选数", "中期结项数", "结项数"],
-                    "axisLabel": {
-                        "show": true,
-                        "textStyle": {
-                            "show":true,
+    "chi":{
+        "pro_data":{
+            "name": "项目数据",
+            "bar_one":{
+                "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow"
+                        }
+                    },
+                    "legend": {
+                        "data": ["高难度", "中难度", "低难度"],
+                        "right":60,
+                        "itemWidth":14,
+                        "itemHeight":14,
+                        "textStyle":{
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": 14,
+                            "letterSpacing": 1,
+                            "color": "#333"
+                        }
+                    },
+                    "xAxis": {
+                        "type": "category",
+                        "data": ["提交数", "上线数", "被申请数", "中选数", "中期结项数", "结项数"],
+                        "axisLabel": {
+                            "show": true,
                             "width": 51,
                             "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": 16,
+                            "fontSize": "1.2rem",
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
                             "color": "#333333",
                             "padding": 8
                         }
-                    }
-                },
-                "yAxis": [
-                    {
-                        "type": "value",
-                        "name": "",
-                        "splitNumber":2,
-                        "position": "left",
-                        "axisLabel": {
-                            "show": true,
-                            "textStyle": {
-                                "show":true,
+                    },
+                    "yAxis": [
+                        {
+                            "type": "value",
+                            "name": "",
+                            "splitNumber":2,
+                            "position": "left",
+                            "axisLabel": {
+                                "show": true,
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
@@ -59,22 +55,19 @@
                                 "letterSpacing": 1,
                                 "color": "#333333",
                                 "padding": 8
-                            }
+                            },
+                            "axisLine":{
+                                "show":true
+                            },
+                            "max":877
                         },
-                        "axisLine":{
-                            "show":true
-                        },
-                        "max":877
-                    },
-                    {
-                        "type":"value",
-                        "name":"",
-                        "position":"right",
-                        "splitNumber":2,
-                        "axisLabel": {
-                            "show": true,
-                            "textStyle": {
-                                "show":true,
+                        {
+                            "type":"value",
+                            "name":"",
+                            "position":"right",
+                            "splitNumber":2,
+                            "axisLabel": {
+                                "show": true,
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
@@ -83,102 +76,99 @@
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
                                 "color": "#333333",
-                                "padding": 5
+                                "padding": 5,
+                                "formatter": "{value} %"
                             },
-                            "formatter": "{value} %"
+                            "axisLine":{
+                                "show":true
+                            },
+                            "splitLine":{
+                                "show":false
+                            }
+                        }
+                    ],
+                    "series": [
+                        {
+                            "name":"高难度",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data": [320, 302, 301, 334, 390, 330, 320],
+                            "type": "bar",
+                            "itemStyle":{
+                                "color":"#006cc5"
+                            },
+                            "barWidth":35,
+                            "zlevel":10
                         },
-                        "axisLine":{
-                            "show":true
+                        {
+                            "name":"中难度",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data":[310,100,75,40,35,35],
+                            "type":"bar",
+                            "itemStyle":{
+                                "color":"#55a5ff"
+                            },
+                            "zlevel":10
                         },
-                        "splitLine":{
+                        {
+                            "name":"低难度",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data":[247,100,75,40,35,35],
+                            "type":"bar",
+                            "itemStyle":{
+                                "color":"#9cd9ff"
+                            },
+                            "zlevel":10
+                            
+                        },
+                        {
+                            "name":"总占比",
+                            "yAxisIndex":1,
+                            "data":[100,60,55,53,55,53],
+                            "type":"bar",
+                            "barGap":"-100%",
+                            "itemStyle":{
+                                "color":"transparent"
+                            },
+                            "barWidth":35
+                        }
+    
+                    ]
+                }
+            },
+            "bar_two":{
+                "title":"申请人数最多的10种编程语言",
+                "option":{
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow"
+                            }
+                        },
+                       
+                        "grid": {
+                            "left": "3%",
+                            "right": "4%",
+                            "bottom": "3%",
+                            "containLabel": true
+                        },
+                        "xAxis": {
+                            "type": "value",
+                            "boundaryGap": [0, 0.01],
                             "show":false
-                        }
-                    }
-                ],
-                "series": [
-                    {
-                        "name":"高难度",
-                        "stack":"total",
-                        "emphasis": {
-                            "focus": "series"
                         },
-                        "data": [320, 302, 301, 334, 390, 330, 320],
-                        "type": "bar",
-                        "itemStyle":{
-                            "color":"#006cc5"
-                        },
-                        "barWidth":35,
-                        "zlevel":10
-                    },
-                    {
-                        "name":"中难度",
-                        "stack":"total",
-                        "emphasis": {
-                            "focus": "series"
-                        },
-                        "data":[310,100,75,40,35,35],
-                        "type":"bar",
-                        "itemStyle":{
-                            "color":"#55a5ff"
-                        },
-                        "zlevel":10
-                    },
-                    {
-                        "name":"低难度",
-                        "stack":"total",
-                        "emphasis": {
-                            "focus": "series"
-                        },
-                        "data":[247,100,75,40,35,35],
-                        "type":"bar",
-                        "itemStyle":{
-                            "color":"#9cd9ff"
-                        },
-                        "zlevel":10
-                        
-                    },
-                    {
-                        "name":"总占比",
-                        "yAxisIndex":1,
-                        "data":[100,60,55,53,55,53],
-                        "type":"bar",
-                        "barGap":"-100%",
-                        "itemStyle":{
-                            "color":"transparent"
-                        },
-                        "barWidth":35
-                    }
-
-                ]
-            }
-        },
-        "bar_two":{
-            "title":"申请人数最多的10种编程语言",
-            "option":{
-                    "tooltip": {
-                        "trigger": "axis",
-                        "axisPointer": {
-                            "type": "shadow"
-                        }
-                    },
-                   
-                    "grid": {
-                        "left": "3%",
-                        "right": "4%",
-                        "bottom": "3%",
-                        "containLabel": true
-                    },
-                    "xAxis": {
-                        "type": "value",
-                        "boundaryGap": [0, 0.01],
-                        "show":false
-                    },
-                    "yAxis": {
-                        "type": "category",
-                        "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
-                        "axisLabel":{
-                            "show":true,
-                            "textStyle":{
+                        "yAxis": {
+                            "type": "category",
+                            "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                            "axisLabel":{
                                 "show":true,
                                 "width": 28,
                                 "height": 20,
@@ -190,118 +180,115 @@
                                 "color": "#666",
                                 "padding": 10
                             }
-                        }
-                    },
-                    "series": [
-                        {
-                            "name": "",
-                            "type": "bar",
-                            "label":{
-                                "show":true,
-                                "position":"right",
-                                "width": 20,
-                                "height": 14,
-                                "fontFamily": "AdobeHeitiStd-Regular",
-                                "fontSize": 18,
-                                "fontWeight":"normal",
-                                "fontStretch": "normal",
-                                "letterSpacing": 1,
-                                "color" : "#55a5ff",
-                                "padding":10
-                            },
-                            "data": [
-                                {
-                                    "value":8000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
+                        },
+                        "series": [
+                            {
+                                "name": "",
+                                "type": "bar",
+                                "label":{
+                                    "show":true,
+                                    "position":"right",
+                                    "width": 20,
+                                    "height": 14,
+                                    "fontFamily": "AdobeHeitiStd-Regular",
+                                    "fontSize": 18,
+                                    "fontWeight":"normal",
+                                    "fontStretch": "normal",
+                                    "letterSpacing": 1,
+                                    "color" : "#55a5ff",
+                                    "padding":10
                                 },
-                                {
-                                    "value":12000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":14629,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":17654,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":19325,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":23438,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-
-                                {
-                                    "value":31000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":32594,
-                                    "itemStyle":{
-                                        "color":"#9cd9ff"
-                                    }
-                                },
-                                {
-                                    "value":34141,
-                                    "itemStyle":{
-                                        "color":"#ffe400"
-                                    }
-                                },
-                                {
-                                    "value":81807,
-                                    "itemStyle":{
-                                        "color":"#ffcfd5"
-                                    }
-                                }]
-                        }
-                    ]
-            }
-        },
-        "bar_three":{
-            "title":"申请人数最多的10个技术领域",
-            "option":{
-                    "tooltip": {
-                        "trigger": "axis",
-                        "axisPointer": {
-                            "type": "shadow"
-                        }
-                    },
-                   
-                    "grid": {
-                        "left": "3%",
-                        "right": "4%",
-                        "bottom": "3%",
-                        "containLabel": true
-                    },
-                    "xAxis": {
-                        "type": "value",
-                        "boundaryGap": [0, 0.01],
-                        "show":false
-                    },
-                    "yAxis": {
-                        "type": "category",
-                        "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
-                        "axisLabel":{
-                            "show":true,
-                            "textStyle":{
+                                "data": [
+                                    {
+                                        "value":8000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":12000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":14629,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":17654,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":19325,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":23438,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+    
+                                    {
+                                        "value":31000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":32594,
+                                        "itemStyle":{
+                                            "color":"#9cd9ff"
+                                        }
+                                    },
+                                    {
+                                        "value":34141,
+                                        "itemStyle":{
+                                            "color":"#ffe400"
+                                        }
+                                    },
+                                    {
+                                        "value":81807,
+                                        "itemStyle":{
+                                            "color":"#ffcfd5"
+                                        }
+                                    }]
+                            }
+                        ]
+                }
+            },
+            "bar_three":{
+                "title":"申请人数最多的10个技术领域",
+                "option":{
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow"
+                            }
+                        },
+                       
+                        "grid": {
+                            "left": "3%",
+                            "right": "4%",
+                            "bottom": "3%",
+                            "containLabel": true
+                        },
+                        "xAxis": {
+                            "type": "value",
+                            "boundaryGap": [0, 0.01],
+                            "show":false
+                        },
+                        "yAxis": {
+                            "type": "category",
+                            "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                            "axisLabel":{
                                 "show":true,
                                 "width": 28,
                                 "height": 20,
@@ -313,142 +300,139 @@
                                 "color": "#666",
                                 "padding": 10
                             }
+                        },
+                        "series": [
+                            {
+                                "name": "",
+                                "type": "bar",
+                                "label":{
+                                    "show":true,
+                                    "position":"right",
+                                    "width": 20,
+                                    "height": 14,
+                                    "fontFamily": "AdobeHeitiStd-Regular",
+                                    "fontSize": 18,
+                                    "fontWeight":"normal",
+                                    "fontStretch": "normal",
+                                    "letterSpacing": 1,
+                                    "color" : "#55a5ff",
+                                    "padding":10
+                                },
+                                "data": [
+                                    {
+                                        "value":8000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":12000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":14629,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":17654,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":19325,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":23438,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+    
+                                    {
+                                        "value":31000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":32594,
+                                        "itemStyle":{
+                                            "color":"#9cd9ff"
+                                        }
+                                    },
+                                    {
+                                        "value":34141,
+                                        "itemStyle":{
+                                            "color":"#ffe400"
+                                        }
+                                    },
+                                    {
+                                        "value":81807,
+                                        "itemStyle":{
+                                            "color":"#ffcfd5"
+                                        }
+                                    }]
+                            }
+                        ]
+                }
+            }
+        },
+        "stu_data":{
+            "name":"学生数据",
+            "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
+            "bar_two":{
+                "title":"申请及中选人数高校分布",
+                "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow",
+                            "label": {
+                                "show": true
+                            }
                         }
                     },
-                    "series": [
+                    "legend": {
+                        "data": ["申请人数", "中选人数"],
+                        "right":70,
+                        "top":0,
+                        "itemWidth":14,
+                        "itemHeight":14,
+                        "textStyle":{
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": 14,
+                            "letterSpacing": 1,
+                            "color": "#333"
+                        }
+                       
+                    },
+                    "title": {
+                        "text": "",
+                        "subtext": "*申请人数相同的学校排名不分先后",
+                        "right":70,
+                        "top":20
+                    },
+                    "grid": {
+                        "top": "12%",
+                        "left": "1%",
+                        "right": "10%",
+                        "containLabel": true
+                    },
+                    "xAxis": [
                         {
-                            "name": "",
-                            "type": "bar",
-                            "label":{
-                                "show":true,
-                                "position":"right",
-                                "width": 20,
-                                "height": 14,
-                                "fontFamily": "AdobeHeitiStd-Regular",
-                                "fontSize": 18,
-                                "fontWeight":"normal",
-                                "fontStretch": "normal",
-                                "letterSpacing": 1,
-                                "color" : "#55a5ff",
-                                "padding":10
-                            },
-                            "data": [
-                                {
-                                    "value":8000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":12000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":14629,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":17654,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":19325,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":23438,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-
-                                {
-                                    "value":31000,
-                                    "itemStyle":{
-                                        "color":"#55a5ff"
-                                    }
-                                },
-                                {
-                                    "value":32594,
-                                    "itemStyle":{
-                                        "color":"#9cd9ff"
-                                    }
-                                },
-                                {
-                                    "value":34141,
-                                    "itemStyle":{
-                                        "color":"#ffe400"
-                                    }
-                                },
-                                {
-                                    "value":81807,
-                                    "itemStyle":{
-                                        "color":"#ffcfd5"
-                                    }
-                                }]
-                        }
-                    ]
-            }
-        }
-    },
-    "stu_data":{
-        "name":"学生数据",
-        "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
-        "bar_two":{
-            "title":"申请及中选人数高校分布",
-            "option":{
-                "tooltip": {
-                    "trigger": "axis",
-                    "axisPointer": {
-                        "type": "shadow",
-                        "label": {
-                            "show": true
-                        }
-                    }
-                },
-                "legend": {
-                    "data": ["申请人数", "中选人数"],
-                    "right":70,
-                    "top":0,
-                    "itemWidth":14,
-                    "itemHeight":14,
-                    "textStyle":{
-                        "fontFamily": "MicrosoftYaHei",
-                        "fontSize": 14,
-                        "letterSpacing": 1,
-                        "color": "#333"
-                    }
-                   
-                },
-                "title": {
-                    "text": "",
-                    "subtext": "*申请人数相同的学校排名不分先后",
-                    "right":70,
-                    "top":20
-                },
-                "grid": {
-                    "top": "12%",
-                    "left": "1%",
-                    "right": "10%",
-                    "containLabel": true
-                },
-                "xAxis": [
-                    {
-                        "type": "category",
-                        "axisLabel": {
-                            "show": true,
-                            "interval": 0,
-                            "rotate": 55,
-                            "textStyle": {
-                                "show":true,
+                            "type": "category",
+                            "axisLabel": {
+                                "show": true,
+                                "interval": 0,
+                                "rotate": 55,
                                 "fontFamily": "MicrosoftYaHei",
                                 "fontSize": 16,
                                 "fontWeight": "normal",
@@ -456,113 +440,665 @@
                                 "letterSpacing": 1,
                                 "color": "#333333",
                                 "padding": 5
+                            },
+                            "data": ["清华大学","北京交通大学","北京航空航天大学","北京理工大学","北京邮电大学","南开大学","北京科技大学","大连理工大学","哈尔滨工业大学",
+                                "复旦大学","同济大学","上海交通大学","南京大学","东南大学","南京航空航天大学","南京理工大学","南京邮电大学","浙江大学","杭州电子科技大学","中国科学技术大学",
+                                "厦门大学","山东大学","武汉大学","华中科技大学","湘潭大学","中南大学","中山大学","华南理工大学","电子科技大学","西安电子科技大学"]
+                        }
+                    ],
+                    "yAxis": [
+                        {
+                            "type": "value",
+                            "name": "",
+                            "show":false
+                        }
+                    ],
+                    "dataZoom": [
+                        {
+                            "show": true,
+                            "start": 0,
+                            "end": 10000,
+                            "bottom": 5,
+                            "borderColor": "transparent",
+                            "backgroundColor": "#fff",
+                             
+                            "handleIcon": "path://M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
+                            "handleColor": "#aab6c6",
+                            "handleSize": 18,
+                            "handleStyle": {
+                                "borderColor": "#aab6c6",
+                                "shadowBlur": 4,
+                                "shadowOffsetX": 1,
+                                "shadowOffsetY": 1,
+                                "shadowColor": "#e5e5e5",
+                                "borderCap":"round"
+                            },
+                            "selectedDataBackground":{
+                                "color": {
+                                    "type": "radial",
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "r": 0.5,
+                                    "colorStops": [{
+                                        "offset": 0, "color": "red" 
+                                    }, {
+                                        "offset": 1, "color": "blue" 
+                                    }],
+                                    "global": false 
+                                }
                             }
+    
                         },
-                        "data": ["清华大学","北京交通大学","北京航空航天大学","北京理工大学","北京邮电大学","南开大学","北京科技大学","大连理工大学","哈尔滨工业大学",
-                            "复旦大学","同济大学","上海交通大学","南京大学","东南大学","南京航空航天大学","南京理工大学","南京邮电大学","浙江大学","杭州电子科技大学","中国科学技术大学",
-                            "厦门大学","山东大学","武汉大学","华中科技大学","湘潭大学","中南大学","中山大学","华南理工大学","电子科技大学","西安电子科技大学"]
-                    }
-                ],
-                "yAxis": [
-                    {
-                        "type": "value",
-                        "name": "",
-                        "show":false
-                    }
-                ],
-                "dataZoom": [
-                    {
-                        "show": true,
-                        "start": 0,
-                        "end": 10000,
-                        "bottom": 5,
-                        "borderColor": "transparent",
-                        "backgroundColor": "#fff",
-                         
-                        "handleIcon": "M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
-                        "handleColor": "#aab6c6",
-                        "handleSize": 18,
-                        "handleStyle": {
-                            "borderColor": "#aab6c6",
-                            "shadowBlur": 4,
-                            "shadowOffsetX": 1,
-                            "shadowOffsetY": 1,
-                            "shadowColor": "#e5e5e5",
-                            "borderCap":"round"
+                        {
+                            "show":false,
+                            "type": "inside",
+                            "start": 0,
+                            "end": 10000
+                        }
+                    ],
+                    "series": [
+                        {
+                            "name":"申请人数",
+                            "data": [20,20,18,18,17,17,15,15,14,14,12,11,10,10,8,8,7,7,6,6,6,6,5,4,4,3,3,2,2,1],
+                            "itemStyle":{
+                                "color":"#55a5ff"
+                            },
+                            "type": "bar",
+                            "barWidth": "40%",
+                            "label":{
+                                "show":true,
+                                "position":"top",
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 14,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff"
+                            },
+                            "barGap":0
                         },
-                        "selectedDataBackground":{
-                            "color": {
-                                "type": "radial",
-                                "x": 0.5,
-                                "y": 0.5,
-                                "r": 0.5,
-                                "colorStops": [{
-                                    "offset": 0, "color": "red" 
-                                }, {
-                                    "offset": 1, "color": "blue" 
-                                }],
-                                "global": false 
+                        {
+                            "name":"中选人数",
+                            "type":"bar",
+                            "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
+                            "barWidth": "40%",
+                            "label":{
+                                "show":true,
+                                "position":"top",
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 14,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff"
+                               
+                            },
+                            "itemStyle":{
+                                "color":"#006cc5"
                             }
                         }
-
-                    },
-                    {
-                        "show":false,
-                        "type": "inside",
-                        "start": 0,
-                        "end": 10000
-                    }
-                ],
-                "series": [
-                    {
-                        "name":"申请人数",
-                        "data": [20,20,18,18,17,17,15,15,14,14,12,11,10,10,8,8,7,7,6,6,6,6,5,4,4,3,3,2,2,1],
-                        "itemStyle":{
-                            "color":"#55a5ff"
-                        },
-                        "type": "bar",
-                        "barWidth": "40%",
-                        "label":{
-                            "show":true,
-                            "position":"top",
-                            "fontFamily": "AdobeHeitiStd-Regular",
-                            "fontSize": 14,
-                            "fontWeight":"normal",
-                            "fontStretch": "normal",
-                            "letterSpacing": 1,
-                            "color" : "#55a5ff"
-                        },
-                        "barGap":0
-                    },
-                    {
-                        "name":"中选人数",
-                        "type":"bar",
-                        "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
-                        "barWidth": "40%",
-                        "label":{
-                            "show":true,
-                            "position":"top",
-                            "fontFamily": "AdobeHeitiStd-Regular",
-                            "fontSize": 14,
-                            "fontWeight":"normal",
-                            "fontStretch": "normal",
-                            "letterSpacing": 1,
-                            "color" : "#55a5ff"
-                           
-                        },
-                        "itemStyle":{
-                            "color":"#006cc5"
-                        }
-                    }
-                ]
+                    ]
+                }
+            }
+        },
+        "org_data":{
+            "name":"社区及高校数据",
+            "org_data_des":[{"参与社区数":1000},{"涉及高校数":1200}],
+            "bar_one":{
+                "title":"高校区域分布",
+                "bar_des":[{"中国":100},{"美国":70},{"英国":60},{"西班牙":34},{"日本":10},{"马来西亚":5},{"新加坡":3}]
             }
         }
     },
-    "org_data":{
-        "name":"社区及高校数据",
-        "org_data_des":[{"参与社区数":1000},{"涉及高校数":1200}],
-        "bar_one":{
-            "title":"高校区域分布"
+    "en":{
+        "pro_data":{
+            "name": "Project data",
+            "bar_one":{
+                "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow"
+                        }
+                    },
+                    "legend": {
+                        "data": ["High difficulty", "Medium difficulty", "Low difficulty"],
+                        "right":60,
+                        "itemWidth":14,
+                        "itemHeight":14,
+                        "textStyle":{
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": 14,
+                            "letterSpacing": 1,
+                            "color": "#333"
+                        }
+                    },
+                    "xAxis": {
+                        "type": "category",
+                        "data": ["Submissions ", "Online"," Applications ", "Elections ","Interim Closed", "Final Closed"],
+                        "axisLabel": {
+                            "show": true,
+                            "width": 51,
+                            "lineHeight": 15,
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": "1.2rem",
+                            "fontWeight": "normal",
+                            "fontStretch": "normal",
+                            "letterSpacing": 1,
+                            "color": "#333333",
+                            "padding": 8
+                        }
+                    },
+                    "yAxis": [
+                        {
+                            "type": "value",
+                            "name": "",
+                            "splitNumber":2,
+                            "position": "left",
+                            "axisLabel": {
+                                "show": true,
+                                "width": 28,
+                                "height": 12,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 8
+                            },
+                            "axisLine":{
+                                "show":true
+                            },
+                            "max":877
+                        },
+                        {
+                            "type":"value",
+                            "name":"",
+                            "position":"right",
+                            "splitNumber":2,
+                            "axisLabel": {
+                                "show": true,
+                                "width": 28,
+                                "height": 12,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 5,
+                                "formatter": "{value} %"
+                            },
+                            "axisLine":{
+                                "show":true
+                            },
+                            "splitLine":{
+                                "show":false
+                            }
+                        }
+                    ],
+                    "series": [
+                        {
+                            "name":"High difficulty",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data": [320, 302, 301, 334, 390, 330, 320],
+                            "type": "bar",
+                            "itemStyle":{
+                                "color":"#006cc5"
+                            },
+                            "barWidth":35,
+                            "zlevel":10
+                        },
+                        {
+                            "name":"Medium difficulty",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data":[310,100,75,40,35,35],
+                            "type":"bar",
+                            "itemStyle":{
+                                "color":"#55a5ff"
+                            },
+                            "zlevel":10
+                        },
+                        {
+                            "name":"Low difficulty",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "data":[247,100,75,40,35,35],
+                            "type":"bar",
+                            "itemStyle":{
+                                "color":"#9cd9ff"
+                            },
+                            "zlevel":10
+                            
+                        },
+                        {
+                            "name":"The total percentage",
+                            "yAxisIndex":1,
+                            "data":[100,60,55,53,55,53],
+                            "type":"bar",
+                            "barGap":"-100%",
+                            "itemStyle":{
+                                "color":"transparent"
+                            },
+                            "barWidth":35
+                        }
+    
+                    ]
+                }
+            },
+            "bar_two":{
+                "title":"Top 10 programming languages with the most applications",
+                "option":{
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow"
+                            }
+                        },
+                       
+                        "grid": {
+                            "left": "3%",
+                            "right": "4%",
+                            "bottom": "3%",
+                            "containLabel": true
+                        },
+                        "xAxis": {
+                            "type": "value",
+                            "boundaryGap": [0, 0.01],
+                            "show":false
+                        },
+                        "yAxis": {
+                            "type": "category",
+                            "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                            "axisLabel":{
+                                "show":true,
+                                "width": 28,
+                                "height": 20,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#666",
+                                "padding": 10
+                            }
+                        },
+                        "series": [
+                            {
+                                "name": "",
+                                "type": "bar",
+                                "label":{
+                                    "show":true,
+                                    "position":"right",
+                                    "width": 20,
+                                    "height": 14,
+                                    "fontFamily": "AdobeHeitiStd-Regular",
+                                    "fontSize": 18,
+                                    "fontWeight":"normal",
+                                    "fontStretch": "normal",
+                                    "letterSpacing": 1,
+                                    "color" : "#55a5ff",
+                                    "padding":10
+                                },
+                                "data": [
+                                    {
+                                        "value":8000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":12000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":14629,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":17654,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":19325,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":23438,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+    
+                                    {
+                                        "value":31000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":32594,
+                                        "itemStyle":{
+                                            "color":"#9cd9ff"
+                                        }
+                                    },
+                                    {
+                                        "value":34141,
+                                        "itemStyle":{
+                                            "color":"#ffe400"
+                                        }
+                                    },
+                                    {
+                                        "value":81807,
+                                        "itemStyle":{
+                                            "color":"#ffcfd5"
+                                        }
+                                    }]
+                            }
+                        ]
+                }
+            },
+            "bar_three":{
+                "title":"Top 10 technology fields with the most applications",
+                "option":{
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow"
+                            }
+                        },
+                       
+                        "grid": {
+                            "left": "3%",
+                            "right": "4%",
+                            "bottom": "3%",
+                            "containLabel": true
+                        },
+                        "xAxis": {
+                            "type": "value",
+                            "boundaryGap": [0, 0.01],
+                            "show":false
+                        },
+                        "yAxis": {
+                            "type": "category",
+                            "data": ["AI" ,"PHP" ,"Contanier", "Javascript" ,"Cloud Native", "C", "Java", "Python", "Linux", "Go"],
+                            "axisLabel":{
+                                "show":true,
+                                "width": 28,
+                                "height": 20,
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 18,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#666",
+                                "padding": 10
+                            }
+                        },
+                        "series": [
+                            {
+                                "name": "",
+                                "type": "bar",
+                                "label":{
+                                    "show":true,
+                                    "position":"right",
+                                    "width": 20,
+                                    "height": 14,
+                                    "fontFamily": "AdobeHeitiStd-Regular",
+                                    "fontSize": 18,
+                                    "fontWeight":"normal",
+                                    "fontStretch": "normal",
+                                    "letterSpacing": 1,
+                                    "color" : "#55a5ff",
+                                    "padding":10
+                                },
+                                "data": [
+                                    {
+                                        "value":8000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":12000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":14629,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":17654,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":19325,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":23438,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+    
+                                    {
+                                        "value":31000,
+                                        "itemStyle":{
+                                            "color":"#55a5ff"
+                                        }
+                                    },
+                                    {
+                                        "value":32594,
+                                        "itemStyle":{
+                                            "color":"#9cd9ff"
+                                        }
+                                    },
+                                    {
+                                        "value":34141,
+                                        "itemStyle":{
+                                            "color":"#ffe400"
+                                        }
+                                    },
+                                    {
+                                        "value":81807,
+                                        "itemStyle":{
+                                            "color":"#ffcfd5"
+                                        }
+                                    }]
+                            }
+                        ]
+                }
+            }
+        },
+        "stu_data":{
+            "name":"Student data",
+            "stu_data_des":[{"Students applying":1000},{"Applicant times":1200},{"Selected students":269},{"Foreign students enrolled":815},{"Students who passed the mid-term assessment":1200},{"Students who closed the project":269}],
+            "bar_two":{
+                "title":"Distribution of the number of applicants and selected universities",
+                "option":{
+                    "tooltip": {
+                        "trigger": "axis",
+                        "axisPointer": {
+                            "type": "shadow",
+                            "label": {
+                                "show": true
+                            }
+                        }
+                    },
+                    "legend": {
+                        "data": ["Number of applicants", "Number of successful candidates"],
+                        "right":70,
+                        "top":0,
+                        "itemWidth":14,
+                        "itemHeight":14,
+                        "textStyle":{
+                            "fontFamily": "MicrosoftYaHei",
+                            "fontSize": 14,
+                            "letterSpacing": 1,
+                            "color": "#333"
+                        }
+                       
+                    },
+                    "title": {
+                        "text": "",
+                        "subtext": "*Schools with the same number of applicants are ranked in no particular order",
+                        "right":70,
+                        "top":20
+                    },
+                    "grid": {
+                        "top": "12%",
+                        "left": "1%",
+                        "right": "10%",
+                        "containLabel": true
+                    },
+                    "xAxis": [
+                        {
+                            "type": "category",
+                            "axisLabel": {
+                                "show": true,
+                                "interval": 0,
+                                "rotate": 55,
+                                "fontFamily": "MicrosoftYaHei",
+                                "fontSize": 16,
+                                "fontWeight": "normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color": "#333333",
+                                "padding": 5
+                            },
+                            "data": ["清华大学","北京交通大学","北京航空航天大学","北京理工大学","北京邮电大学","南开大学","北京科技大学","大连理工大学","哈尔滨工业大学",
+                                "复旦大学","同济大学","上海交通大学","南京大学","东南大学","南京航空航天大学","南京理工大学","南京邮电大学","浙江大学","杭州电子科技大学","中国科学技术大学",
+                                "厦门大学","山东大学","武汉大学","华中科技大学","湘潭大学","中南大学","中山大学","华南理工大学","电子科技大学","西安电子科技大学"]
+                        }
+                    ],
+                    "yAxis": [
+                        {
+                            "type": "value",
+                            "name": "",
+                            "show":false
+                        }
+                    ],
+                    "dataZoom": [
+                        {
+                            "show": true,
+                            "start": 0,
+                            "end": 10000,
+                            "bottom": 5,
+                            "borderColor": "transparent",
+                            "backgroundColor": "#fff",
+                             
+                            "handleIcon": "path://M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
+                            "handleColor": "#aab6c6",
+                            "handleSize": 18,
+                            "handleStyle": {
+                                "borderColor": "#aab6c6",
+                                "shadowBlur": 4,
+                                "shadowOffsetX": 1,
+                                "shadowOffsetY": 1,
+                                "shadowColor": "#e5e5e5",
+                                "borderCap":"round"
+                            },
+                            "selectedDataBackground":{
+                                "color": {
+                                    "type": "radial",
+                                    "x": 0.5,
+                                    "y": 0.5,
+                                    "r": 0.5,
+                                    "colorStops": [{
+                                        "offset": 0, "color": "red" 
+                                    }, {
+                                        "offset": 1, "color": "blue" 
+                                    }],
+                                    "global": false 
+                                }
+                            }
+    
+                        },
+                        {
+                            "show":false,
+                            "type": "inside",
+                            "start": 0,
+                            "end": 10000
+                        }
+                    ],
+                    "series": [
+                        {
+                            "name":"Number of applicants",
+                            "data": [20,20,18,18,17,17,15,15,14,14,12,11,10,10,8,8,7,7,6,6,6,6,5,4,4,3,3,2,2,1],
+                            "itemStyle":{
+                                "color":"#55a5ff"
+                            },
+                            "type": "bar",
+                            "barWidth": "40%",
+                            "label":{
+                                "show":true,
+                                "position":"top",
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 14,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff"
+                            },
+                            "barGap":0
+                        },
+                        {
+                            "name":"Number of successful candidates",
+                            "type":"bar",
+                            "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
+                            "barWidth": "40%",
+                            "label":{
+                                "show":true,
+                                "position":"top",
+                                "fontFamily": "AdobeHeitiStd-Regular",
+                                "fontSize": 14,
+                                "fontWeight":"normal",
+                                "fontStretch": "normal",
+                                "letterSpacing": 1,
+                                "color" : "#55a5ff"
+                               
+                            },
+                            "itemStyle":{
+                                "color":"#006cc5"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "org_data":{
+            "name":"Community and college data",
+            "org_data_des":[{"Number of participating communitie":1000},{"Number of Colleges Involved":1200}],
+            "bar_one":{
+                "title":"Regional distribution of universities",
+                "bar_des":[{" Chinese ": 100}, {" American" : 70}, {" British ": 60}, {" Spanish" : 34}, {"Japan" :10}, {" Malaysia ": 5}, {" Singapore ":3}]
+            }
         }
     }
 }

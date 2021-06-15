@@ -13,7 +13,7 @@
         margin-bottom: 40px;
     }
     .datas_content_show{
-        width: 1200px;
+        // width: 1200px;
         position: relative;
         margin: 0 auto;
         .pro_data,.stu_data,.org_data{
@@ -31,7 +31,7 @@
                 letter-spacing: 2px;
                 color: #333333;
             }
-            .pro_data_bar1,.pro_data_bar2,.pro_data_bar3,.stu_data_bar2,.org_data_bar1{
+            .pro_data_bar1,.pro_data_bar2,.pro_data_bar3,.stu_data_bar2{
                 height:530px;
                 width:100%;
                 position: relative;
@@ -68,7 +68,7 @@
             }
             .stu_data_des,.org_data_des{
                 width: 100%;
-                height: 300px;
+                height: 350px;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -85,20 +85,17 @@
                         transform: translate(0,-50%);
                         padding-left: 10%;
                         .stu_data_desItem_key,.org_data_desItem_key{
-                            height: 18px;
                             font-family: MicrosoftYaHei;
                             font-size: 18px;
-                            line-height: 18px;
                             font-weight: normal;
                             font-stretch: normal;
                             letter-spacing: 1px;
                             color: #666666;
-                            margin-bottom:15px;
                         }
                         .stu_data_desItem_val,.org_data_desItem_val{
-                            height: 40px;
+                            // height: 40px;
                             font-family: MicrosoftYaHei;
-                            line-height: 40px;
+                            // line-height: 40px;
                             font-size: 36px;
                             font-weight: normal;
                             font-stretch: normal;
@@ -121,12 +118,148 @@
                 height:150px;
             }
             .stu_data_bar2_title,.org_data_bar1_title{
-                height: 25px;
+                // height: 25px;
                 font-family: AdobeHeitiStd-Regular;
                 font-size: 18px;
                 letter-spacing: 1px;
                 color: #666666;
             }
+            .org_data_bar1{
+                height:530px;
+                width:100%;
+                position: relative;
+                padding-top:30px;
+                .org_map{
+                    display: inline-block;
+                    width:65%;
+                    height:100%;
+                    position:relative;
+                    .echarts-for-react {
+                        width:100%;
+                        height:400px !important;
+                        position: absolute;
+                        left: 50%;
+                        top: 40%;
+                        transform: translate(-50%,-50%);
+                    }
+                    
+                }
+                .org_map_des{
+                    float: right;
+                    width: 30%;
+                    height: 100%;
+                    .org_map_desItem{
+                        margin-bottom:15px;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 750px) {
+    .datas {
+        .datas_content_show{
+          .pro_data,.stu_data,.org_data{
+            .pro_data_title,.stu_data_title,.org_data_title{
+                font-size: 20px;
+            }
+            .stu_data_bar2_title{
+                margin-bottom: 20px;
+            }
+            .stu_data_des,.org_data_des{
+                .stu_data_desItem,.org_data_desItem{
+                  width: 190px ;
+                  height: 90px ;
+                  .stu_data_desItem_key,.org_data_desItem_key{
+                    font-size: 16px !important;
+                  }
+                  .stu_data_desItem_val,.org_data_desItem_val{
+                    font-size: 20px !important;
+                    .stu_data_unit{
+                        line-height: 40px;
+                        height: 40px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                    }
+                }
+              }
+            }
+            .org_data_des{
+                height:120px;
+            }
+            .org_data_bar1{
+                height:500px;
+                width:100%;
+                position: relative;
+                padding-top:15px;
+                .org_map{
+                    width:100%;
+                    height:100%;
+                    position:relative;
+                    .echarts-for-react {
+                        width:100%;
+                        height:300px !important;
+                        position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        transform: translate(-50%,-50%);
+                    }
+                    
+                }
+                .org_map_des{
+                    position: absolute;
+                    top: 350px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    height: 0;
+                    .org_map_desItem{
+                        margin-bottom:15px;
+                        font-size: 16px !important;
+                        width: 150px;
+                    }
+                }
+            }
+          }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 750px) and (max-width: 1200px) {
+    .datas {
+        .datas_content_show{
+          .pro_data,.stu_data,.org_data{
+            .stu_data_des,.org_data_des{
+                .stu_data_desItem,.org_data_desItem{
+                  width: 250px ;
+                  height: 105px ;
+                  .stu_data_desItem_key,.org_data_desItem_key{
+                    font-size: 16px !important;
+                  }
+                  .stu_data_desItem_val,.org_data_desItem_val{
+                    font-size: 20px !important;
+                    .stu_data_unit{
+                        line-height: 40px;
+                        height: 40px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                    }
+                }
+              }
+            }
+            .org_data_des{
+                height:120px;
+            }
+            .org_data_bar1{
+                height:500px;
+                width:100%;
+                position: relative;
+                padding-top:15px;
+            }
+          }
         }
     }
 }
