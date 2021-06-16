@@ -27,10 +27,10 @@
                         "data": ["提交数", "上线数", "被申请数", "中选数", "中期结项数", "结项数"],
                         "axisLabel": {
                             "show": true,
-                            "width": 51,
+                            "width": "2rem",
                             "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": "1.2rem",
+                            "fontSize": "1.3rem",
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
@@ -49,7 +49,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -71,7 +71,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -434,7 +434,7 @@
                                 "interval": 0,
                                 "rotate": 55,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -457,7 +457,7 @@
                         {
                             "show": true,
                             "start": 0,
-                            "end": 10000,
+                            "end": 30,
                             "bottom": 5,
                             "borderColor": "transparent",
                             "backgroundColor": "#fff",
@@ -578,10 +578,10 @@
                         "data": ["Submissions ", "Online"," Applications ", "Elections ","Interim Closed", "Final Closed"],
                         "axisLabel": {
                             "show": true,
-                            "width": 51,
+                            "width": "2rem",
                             "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": "1.2rem",
+                            "fontSize": "1.3rem",
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
@@ -600,7 +600,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -622,7 +622,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -952,7 +952,7 @@
                         }
                     },
                     "legend": {
-                        "data": ["Number of applicants", "Number of successful candidates"],
+                        "data": ["Applicants", "Successful candidates"],
                         "right":70,
                         "top":0,
                         "itemWidth":14,
@@ -985,7 +985,7 @@
                                 "interval": 0,
                                 "rotate": 55,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": 16,
+                                "fontSize": "1.3rem",
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -1008,7 +1008,7 @@
                         {
                             "show": true,
                             "start": 0,
-                            "end": 10000,
+                            "end": 30,
                             "bottom": 5,
                             "borderColor": "transparent",
                             "backgroundColor": "#fff",
@@ -1049,7 +1049,7 @@
                     ],
                     "series": [
                         {
-                            "name":"Number of applicants",
+                            "name":"Applicants",
                             "data": [20,20,18,18,17,17,15,15,14,14,12,11,10,10,8,8,7,7,6,6,6,6,5,4,4,3,3,2,2,1],
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -1069,7 +1069,7 @@
                             "barGap":0
                         },
                         {
-                            "name":"Number of successful candidates",
+                            "name":"Successful candidates",
                             "type":"bar",
                             "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
                             "barWidth": "40%",

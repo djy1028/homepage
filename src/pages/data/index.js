@@ -48,6 +48,20 @@ echarts.use(
     ]
 );
 
+//设置项目数据tooltip百分比的格式
+option.chi.pro_data.bar_one.option.tooltip.formatter = function (params) {
+    let html=params[0].name+"<br>";
+    for(let i=0;i<params.length;i++){
+      html+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:'+params[i].color+';"></span>'
+      if(params[i].seriesName=="总占比"){
+        html+=params[i].seriesName+":"+params[i].value+"%<br>";
+      }else{
+        html+=params[i].seriesName+":"+params[i].value+"<br>";
+      }
+    }
+    return html;
+}
+
 function Data(props){
     let showdata = option[props.chiFlag]
     const instance0 = useRef(null);
@@ -77,7 +91,6 @@ function Data(props){
                 <img srcSet="small.jpg" />  
             </picture> 
             <div className = "datas_content_show content1200">
-
                 {/* 项目数据 */}
                 <div className = "pro_data">
                     <div className = "pro_data_title">
@@ -130,7 +143,6 @@ function Data(props){
                                             <div className = 'stu_data_desItem_key'>
                                                 {Reflect.ownKeys(ele)[0]}
                                             </div>
-
                                             {
                                                 <div className = 'stu_data_desItem_val'>
                                                     {ele[Reflect.ownKeys(ele)[0]]}
@@ -166,10 +178,10 @@ function Data(props){
                                 return (
                                     <div key={index} className = "org_data_desItem">
                                         <div className = "org_data_desInfo">
-                                            <div className = 'org_data_desItem_key'>
+                                            <div className = "org_data_desItem_key">
                                                 {Reflect.ownKeys(ele)[0]}
                                             </div>
-                                            <div className = 'org_data_desItem_val'>
+                                            <div className = "org_data_desItem_val">
                                                 {ele[Reflect.ownKeys(ele)[0]]}{props.chiFlag == 'chi'?'个':''}
                                             </div>
                                         </div>
@@ -192,7 +204,7 @@ function Data(props){
                         <div className = "org_map_des">
                             {
                                 showdata.org_data.bar_one.bar_des.map((item,index)=>{
-                                    return <div className = "org_map_desItem" key={index}>{Reflect.ownKeys(item)[0]+item[Reflect.ownKeys(item)[0]]} {props.chiFlag=='chi'?'所':''}</div>
+                                    return <div className = "org_map_desItem" key={index}>{Reflect.ownKeys(item)[0]+item[Reflect.ownKeys(item)[0]]} {props.chiFlag=="chi"?"所":""}</div>
                                 })
                             }
                         </div>
@@ -208,5 +220,4 @@ function Data(props){
          chiFlag:state.chiFlag
      }
   }
- 
  export default connect(mapStateToProps)(Data)
