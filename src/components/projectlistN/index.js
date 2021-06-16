@@ -69,7 +69,7 @@ class ProjectlistN extends React.Component{
         if(value){
             var showdataTemp = []
             const valuel = value.toLowerCase()
-            this.state.datall.map((item)=>{           
+            this.state.datastock.map((item)=>{           
                 if(item.name.toLowerCase().includes(valuel)||
                 item.tech_tag.toLowerCase().includes(valuel)||
                 item.domain_tag.toLowerCase().includes(valuel)||
