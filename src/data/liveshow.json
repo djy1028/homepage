@@ -158,7 +158,7 @@
 				],  
 				"speechcontent":"大家对于Apache软件基金会（ASF）的项目并不陌生，但是大家很少有机会能和项目核心开发面对面的交流。 随着越来越多的源自中国的Apache项目出现，我们有很更多能够这些Apache项目接触的机会。创立于 2020年的ALCBeijing就是这样一个家门口的Apache社区，在这里你不但可以接触到最新的ASF动态，了解项目的最新进展，以及Apache的开源治理之道，而且可以与众多源于中国的Apache项目进行近距离接触，深度体验开源的独特魅力，结交志同道合的小伙伴。",
 				"ppt":"",
-				"url":""
+				"url":"https://www.bilibili.com/video/BV1TQ4y197UT/"
 			},
 			{         
 				"title":"开源是 IT 圈“打工人”新的突围方向",
@@ -172,10 +172,10 @@
 				],  
 				"speechcontent":"焦虑、迷茫始终围绕着 IT 圈的“打工人”，开源是一剂有效消除焦虑、迷茫的良药。通过开源可以开阔自己的眼界，拓展自己的朋友圈，与无形中发现新的机遇，焕发工作第二春。",
 				"ppt":"",
-				"url":""
+				"url":"https://www.bilibili.com/video/BV1f64y1X7Hf"
 			},  
 			{         
-				"title":"衔接世界的开源",
+				"title":"我的开源之旅",
 				"time":"2021.06.13",         
 				"profilelist":[
 					{
@@ -186,7 +186,7 @@
 				],  
 				"speechcontent":"开源是一个开放性的舞台，ASF很多知名的项目都来自于高校，参与开源、贡献开源已经是当代学生必不可少的一个课题。本次分享，将为大家讲解，如何透过开源，来成就更好的自己。",
 				"ppt":"",
-				"url":""
+				"url":"https://www.bilibili.com/video/BV1qh411a7js"
 			}, 
 			{         
 				"title":"《Rust 与 开源》",
