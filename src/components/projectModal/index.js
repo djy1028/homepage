@@ -51,11 +51,6 @@ class ProjectModal extends React.Component{
         gourl("/#/org/prodetail/"+this.props.item.label)
     }
 
-  
-
- 
-
-
     render(){
         // let showdata = this.props.showdata
         // let item = this.props.item
@@ -78,6 +73,7 @@ class ProjectModal extends React.Component{
                         </div>
                                                 
                         <div className="orgProjectBottomLeft">
+                            <div>{showdata.proStudents}{"王*云"}</div>
                             <div>{showdata.proDi}{this.getDegreeBy(item.difficulty)}</div>
                             <div>{showdata.lang}{getSupportLanguage(item.spl)}</div>
                             <div>{showdata.orgstunum}{studata[item.proid.toString()]||0}</div>
