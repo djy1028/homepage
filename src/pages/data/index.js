@@ -31,7 +31,7 @@
   } from 'echarts/components';
 import option from '../../data/dataresult.json'  //活动数据页面配置集合
 import {MapOption} from '../../components/mapdata/index' //地图配置
-
+    
 echarts.use(
     [
         LegendPlainComponent,
