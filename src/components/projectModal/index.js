@@ -63,7 +63,7 @@ class ProjectModal extends React.Component{
                             {getSplit(item.name,this.props.chiFlag)}                      
                         </div>
                         <div className="orgProjectLine">
-                            <div className={this.getDegreeBy(item.difficulty)=="High"?"orgProjectIdHigh":"orgProjectId"}>{showdata.projectID} {item.label}</div>
+                            <div className="orgProjectId">{showdata.projectID} {item.label}</div>
                             {
                                 item.wiki?
                                 <div className="orgProjectWiki">
