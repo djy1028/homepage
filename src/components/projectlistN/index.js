@@ -371,12 +371,12 @@ class ProjectlistN extends React.Component{
                             <span className="ProjectListLCNumber">{showdata.prostunum}</span>
                             <span className="ProjectListLCStudent">{showdata.selectedStudent}</span>
                             <span className="ProjectListLCOperation">
-                                <div className={["ProjectTip",this.state.tipflag && projectlistdata.length > 0?"":"displaynone"].join(" ")}>
+                                {/* <div className={["ProjectTip",this.state.tipflag && projectlistdata.length > 0?"":"displaynone"].join(" ")}>
                                     <div className="ProjectTipWeb" onClick={()=>this.goApply()}></div>
                                     <div className="ProjectTipWebClose" onClick={()=>{
                                         this.setTipNone()
                                     }}></div>
-                                </div>
+                                </div> */}
                                 <span>{showdata.operation}</span>
                             </span>
                         </div>
@@ -401,20 +401,20 @@ class ProjectlistN extends React.Component{
                                             <span className="ProjectListLCStudent">{"王*云"}</span>
                                             <span className="ProjectListLCOperation Item">
                                                 <span className="PLOperationButton prodetail" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>{showdata.operationbutton[0]}</span>                                           
-                                                <span 
+                                                {/* <span 
                                                 onClick={()=>{this.setIndexPopOver(index)}}
                                                 className={["PLOperationButton","proapply",this.state.indexname === index?"show":""].join(" ")}>
                                                     
                                                     <span onClick={()=>{goenroll(item.proid,this.props.chiFlag)}}>{showdata.operationbutton[1]}</span>
-                                                    {/* <span className="PLPopOver">
+                                                    <span className="PLPopOver">
                                                         {showdata.popover[0]}<br/> 
                                                         {showdata.popover[1]}
                                                         <a href="https://portal.summer-ospp.ac.cn/summer/" target="_blank">
                                                            {showdata.popover[2]}
                                                         </a>
-                                                    </span> */}
+                                                    </span>
                                                 
-                                                </span>
+                                                </span> */}
                                             </span>
                                         </div>
                                     )
