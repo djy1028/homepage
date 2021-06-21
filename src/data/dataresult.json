@@ -1,5 +1,7 @@
 {
     "chi":{
+        "banner_title":"开源软件供应链点亮计划-暑期2021",
+        "banner_text":"活动数据",
         "pro_data":{
             "name": "项目数据",
             "bar_one":{
@@ -387,7 +389,7 @@
         },
         "stu_data":{
             "name":"学生数据",
-            "stu_data_des":[{"申请学生数":1000},{"申请人次":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
+            "stu_data_des":[{"申请学生数":1000},{"提交申请数":1200},{"中选学生数":269},{"外籍学生报名人数":815},{"中期考核通过学生数":1200},{"结项学生数":269}],
             "bar_two":{
                 "title":"申请及中选人数高校分布",
                 "option":{
@@ -551,6 +553,8 @@
         }
     },
     "en":{
+        "banner_title":"Summer 2021 of Open Source Promotion Plan",
+        "banner_text":"Program Statics",
         "pro_data":{
             "name": "Project data",
             "bar_one":{
@@ -938,7 +942,7 @@
         },
         "stu_data":{
             "name":"Student data",
-            "stu_data_des":[{"Students applying":1000},{"Applicant times":1200},{"Selected students":269},{"Foreign students enrolled":815},{"Students who passed the mid-term assessment":1200},{"Students who closed the project":269}],
+            "stu_data_des":[{"Students applying":1000},{"Applications submitted":1200},{"Selected students":269},{"Foreign students enrolled":815},{"Students who passed the mid-term assessment":1200},{"Students who closed the project":269}],
             "bar_two":{
                 "title":"Distribution of the number of applicants and selected universities",
                 "option":{

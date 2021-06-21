@@ -85,11 +85,16 @@ function Data(props){
     },[])
     return(         
         <div className="datas">
-            <picture className="datas_header">  
-                <source srcSet="../../img/index/banner3.png" media="(min-width: 800px)" />  
-                <source srcSet="medium.jpg" media="(min-width: 600px)" />  
-                <img srcSet="small.jpg" />  
-            </picture> 
+            <div className="datas_header"> 
+                <div className ="datas_header_des"> 
+                    <div className = "datas_title">
+                        {showdata.banner_title}
+                    </div>
+                    <div className = "datas_text">
+                        {showdata.banner_text}
+                    </div>
+                </div>
+            </div> 
             <div className = "datas_content_show content1200">
                 {/* 项目数据 */}
                 <div className = "pro_data">

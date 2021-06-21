@@ -122,7 +122,6 @@ class Projectlist extends React.Component{
 
     render(){
         let showdata = projectlist[this.props.chiFlag]
-        
         return(         
             <div className="Projectlist">
                <div className="ProjectListBanner">
