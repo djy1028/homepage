@@ -151,7 +151,7 @@ function Data(props){
                                             {
                                                 <div className = 'stu_data_desItem_val'>
                                                     {ele[Reflect.ownKeys(ele)[0]]}
-                                                    {props.chiFlag == 'chi'?<span className = "stu_data_unit">{index == 1? '次':'名'}</span>:''} 
+                                                    {props.chiFlag == 'chi' && ele[Reflect.ownKeys(ele)[0]]?<span className = "stu_data_unit">{index == 1? '次':'名'}</span>:''} 
                                                 </div>
                                             }
                                         </div>
