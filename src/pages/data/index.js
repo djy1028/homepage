@@ -48,12 +48,11 @@ echarts.use(
     ]
 );
 
-//设置项目数据tooltip百分比的格式
-option.chi.pro_data.bar_one.option.tooltip.formatter = function (params) {
+const setPercentage = function (params) {
     let html=params[0].name+"<br>";
     for(let i=0;i<params.length;i++){
       html+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:'+params[i].color+';"></span>'
-      if(params[i].seriesName=="总占比"){
+      if(params[i].seriesName=="总占比"||params[i].seriesName=="The total percentage"){
         html+=params[i].seriesName+":"+params[i].value+"%<br>";
       }else{
         html+=params[i].seriesName+":"+params[i].value+"<br>";
@@ -61,6 +60,10 @@ option.chi.pro_data.bar_one.option.tooltip.formatter = function (params) {
     }
     return html;
 }
+//设置项目数据tooltip百分比的格式
+option.en.pro_data.bar_one.option.tooltip.formatter = setPercentage
+option.chi.pro_data.bar_one.option.tooltip.formatter = setPercentage
+
 
 function Data(props){
     let showdata = option[props.chiFlag]
@@ -83,6 +86,8 @@ function Data(props){
             myChart4 && myChart4.resize();
         }
     },[])
+
+    useEffect(()=>{},[])
     return(         
         <div className="datas">
             <div className="datas_header"> 
@@ -209,7 +214,7 @@ function Data(props){
                         <div className = "org_map_des">
                             {
                                 showdata.org_data.bar_one.bar_des.map((item,index)=>{
-                                    return <div className = "org_map_desItem" key={index}>{Reflect.ownKeys(item)[0]+item[Reflect.ownKeys(item)[0]]} {props.chiFlag=="chi"?"所":""}</div>
+                                    return <div className = "org_map_desItem" key={index}>{Reflect.ownKeys(item)[0]+ " "+ item[Reflect.ownKeys(item)[0]]} {props.chiFlag=="chi"?"所":""}</div>
                                 })
                             }
                         </div>
