@@ -96,7 +96,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [317, 301, 334, 390, 330, 320],
+                            "data": [317, 278, 390, 330, 320],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -110,7 +110,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[435,75,40,35,35],
+                            "data":[435,395,40,35,35],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -123,7 +123,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[125,75,40,35,35],
+                            "data":[125,125,40,35,35],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -134,7 +134,7 @@
                         {
                             "name":"总占比",
                             "yAxisIndex":1,
-                            "data":[100,60,55,53,55,53],
+                            "data":[100,91,55,53,55,53],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{
@@ -1515,7 +1515,7 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": ["Submissions ", "Online"," Applications ", "Elections ","Interim Closed", "Final Closed"],
+                        "data": [ "Online"," Applications ", "Elections ","Interim Closed", "Final Closed"],
                         "axisLabel": {
                             "show": true,
                             "width": "2rem",
@@ -1585,7 +1585,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [320, 302, 301, 334, 390, 330, 320],
+                            "data": [317, 278, 301, 334, 390],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -1599,7 +1599,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[310,100,75,40,35,35],
+                            "data":[435,395,75,40,35],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -1612,7 +1612,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[247,100,75,40,35,35],
+                            "data":[125,125,75,40,35],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -1623,7 +1623,7 @@
                         {
                             "name":"The total percentage",
                             "yAxisIndex":1,
-                            "data":[100,60,55,53,55,53],
+                            "data":[100,91,55,53,55,53],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{
