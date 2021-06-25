@@ -26,13 +26,13 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": ["上线数", "被申请数", "中选数", "中期通过数", "结项数"],
+                        "data": ["上线数", "被申请数", "中选数", "中期通过数（敬请期待）", "结项数（敬请期待）"],
                         "axisLabel": {
                             "show": true,
                             "width": "2rem",
                             "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": "1.3rem",
+                            "fontSize": "1.2rem",
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
@@ -96,7 +96,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [317, 278, 390, 330, 320],
+                            "data": [317, 278, 390, 0, 0],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -110,7 +110,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[435,395,40,35,35],
+                            "data":[435,395,40,0,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -123,7 +123,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[125,125,40,35,35],
+                            "data":[125,125,40,0,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -134,13 +134,28 @@
                         {
                             "name":"总占比",
                             "yAxisIndex":1,
-                            "data":[100,91,55,53,55,53],
+                            "data":[100,91,55,55,55],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{
                                 "color":"transparent"
                             },
                             "barWidth":35
+                        },
+                        {
+                            "name":"",
+                            "data":[0,0,0,470,470],
+                            "type":"bar",
+                            "stack":"total",
+                            "emphasis": {
+                                "focus": "series"
+                            },
+                            "zlevel":10,
+                            "itemStyle":{
+                                "color":"#fff",
+                                "borderColor":"#9cd9ff",
+                                "borderType":"dashed" 
+                            }
                         }
     
                     ]
@@ -389,7 +404,7 @@
         },
         "stu_data":{
             "name":"学生数据",
-            "stu_data_des":[{"申请学生数":1130},{"提交申请数":1818},{"中选学生数":697},{"中期考核通过学生数":1200},{"结项学生数":269},{"":""}],
+            "stu_data_des":[{"申请学生数":1130},{"提交申请数":1818},{"中选学生数":697}],
             "bar_two":{
                 "title":"申请及中选人数高校分布",
                 "option":{
@@ -1873,7 +1888,7 @@
         },
         "stu_data":{
             "name":"Student Statics",
-            "stu_data_des":[{"Applicants":1130},{"Total Applications":1818},{"Selected Applicants":697},{"Pass Mid-term Evaluation":1200},{"Pass Final-term Evaluation":269},{"":""}],
+            "stu_data_des":[{"Applicants":1130},{"Total Applications":1818},{"Selected Applicants":697}],
             "bar_two":{
                 "title":"Distribution of Universities from Applicants and Selected Students",
                 "option":{
