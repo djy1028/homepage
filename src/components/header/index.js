@@ -137,7 +137,7 @@ class Header extends React.Component{
                                     <div key={index} className={[pageflagredux ===linkurl?"active":"" ,"headerWrapItem", linkurl].join(" ")}>
                                     <div 
                                         onClick={()=>{this.goPage(linkurl)}}
-                                        className={["headerTabItem","headerNav"].join(" ")}>
+                                        className={[ this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")}>
                                         <span>{ele.name}</span>
                                     </div>                                
                                     </div>
@@ -147,7 +147,7 @@ class Header extends React.Component{
                                 )
                             })
                         }
-                        <div onClick={()=>{this.gosummer2020()}}className={["headerTabItem","headerNav"].join(" ")} key="summer2020">
+                        <div onClick={()=>{this.gosummer2020()}}className={[this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")} key="summer2020">
                                         <span>{showdata.summer2020}</span>
                         </div> 
                         
