@@ -30,7 +30,9 @@
     GeoComponent
   } from 'echarts/components';
 import option from '../../data/dataresult.json'  //活动数据页面配置集合
-import {MapOption} from '../../components/mapdata/index' //地图配置
+import MapOption from '../../components/mapdata/index' //地图配置
+
+console.log(MapOption)
     
 echarts.use(
     [
@@ -207,7 +209,7 @@ function Data(props){
                         <div className = "org_map">
                             <ReactEChartsCore
                                 echarts={echarts}
-                                option={MapOption}
+                                option={MapOption(props.chiFlag)}
                                 ref={instance4}
                             />
                         </div>
