@@ -27,17 +27,19 @@
                     "xAxis": {
                         "type": "category",
                         "data": ["上线数", "被申请数", "中选数", "中期通过数（敬请期待）", "结项数（敬请期待）"],
+                        "interval" : 0,
                         "axisLabel": {
                             "show": true,
-                            "width": "2rem",
+                            "width": 200,
                             "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": "1.2rem",
+                            "fontSize": 16,
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
                             "color": "#333333",
-                            "padding": 8
+                            "padding": 3,
+                            "overflow":"breakAll"
                         }
                     },
                     "yAxis": [
@@ -51,7 +53,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": "1.3rem",
+                                "fontSize": 16,
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -73,7 +75,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": "1.3rem",
+                                "fontSize": 16,
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -102,7 +104,8 @@
                                 "color":"#006cc5"
                             },
                             "barWidth":35,
-                            "zlevel":10
+                            "zlevel":10,
+                            "z":10
                         },
                         {
                             "name":"中难度",
@@ -115,6 +118,7 @@
                             "itemStyle":{
                                 "color":"#55a5ff"
                             },
+                            "z":10,
                             "zlevel":10
                         },
                         {
@@ -128,13 +132,14 @@
                             "itemStyle":{
                                 "color":"#9cd9ff"
                             },
-                            "zlevel":10
+                            "zlevel":10,
+                            "z":10
                             
                         },
                         {
                             "name":"总占比",
                             "yAxisIndex":1,
-                            "data":[100,91,55,55,55],
+                            "data":[100,91,55,0,0],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{
@@ -146,18 +151,15 @@
                             "name":"",
                             "data":[0,0,0,470,470],
                             "type":"bar",
-                            "stack":"total",
-                            "emphasis": {
-                                "focus": "series"
-                            },
-                            "zlevel":10,
+                            "barWidth":35,
                             "itemStyle":{
-                                "color":"#fff",
+                                "color":"transparent",
                                 "borderColor":"#9cd9ff",
-                                "borderType":"dashed" 
-                            }
+                                "borderType":"dashed"
+                            },
+                            "z":1,
+                            "zlevel":1
                         }
-    
                     ]
                 }
             },
@@ -409,7 +411,6 @@
                 "title":"申请及中选人数高校分布",
                 "option":{
                     "tooltip": {
-                        "trigger": "axis",
                         "axisPointer": {
                             "type": "shadow",
                             "label": {
@@ -431,24 +432,52 @@
                         }
                        
                     },
+                    "dataZoom": [
+                        {
+                            "show": true,
+                            "height":16,
+                            "start": 0,
+                            "end": 3,
+                            "filterMode":"none",
+                            "brushSelect":false,
+                            "zoomLock":true,
+                            "bottom": 7,
+                            "borderColor": "transparent",
+                            "backgroundColor": "#e4e6f1",
+                            "handleIcon":"path://none",
+                            "dataBackground":{
+                                "lineStyle":{
+                                    "opacity":0
+
+                                },
+                                "areaStyle":{
+                                    "opacity":0
+                                }
+                            },
+                            "selectedDataBackground":{
+                                "lineStyle":{
+                                    "opacity":0
+
+                                },
+                                "areaStyle":{
+                                    "opacity":0
+                                }
+                            },
+                            "fillerColor":"#cfd3e8",
+                            "showDetail":false
+                        }
+                    ],
                     "title": {
                         "text": "",
                         "subtext": "*申请人数相同的学校排名不分先后",
                         "right":70,
                         "top":20
                     },
-                    "grid": {
-                        "top": "12%",
-                        "left": "1%",
-                        "right": "10%",
-                        "containLabel": true
-                    },
                     "xAxis": [
                         {
                             "type": "category",
                             "axisLabel": {
                                 "show": true,
-                                "interval": 0,
                                 "rotate": 55,
                                 "fontFamily": "MicrosoftYaHei",
                                 "fontSize": "1rem",
@@ -456,7 +485,7 @@
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
                                 "color": "#333333",
-                                "padding": 5
+                                "padding": 3
                             },
                             "data":[
                                 "电子科技大学",
@@ -919,48 +948,7 @@
                             "show":false
                         }
                     ],
-                    "dataZoom": [
-                        {
-                            "show": true,
-                            "start": 0,
-                            "end": 2,
-                            "borderColor": "transparent",
-                            "backgroundColor": "#fff",
-                             
-                            "handleIcon": "path://M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
-                            "handleColor": "#aab6c6",
-                            "handleSize": 18,
-                            "handleStyle": {
-                                "borderColor": "#aab6c6",
-                                "shadowBlur": 4,
-                                "shadowOffsetX": 1,
-                                "shadowOffsetY": 1,
-                                "shadowColor": "#e5e5e5",
-                                "borderCap":"round"
-                            },
-                            "selectedDataBackground":{
-                                "color": {
-                                    "type": "radial",
-                                    "x": 0.5,
-                                    "y": 0.5,
-                                    "r": 0.5,
-                                    "colorStops": [{
-                                        "offset": 0, "color": "red" 
-                                    }, {
-                                        "offset": 1, "color": "blue" 
-                                    }],
-                                    "global": false 
-                                }
-                            }
-    
-                        },
-                        {
-                            "show":false,
-                            "type": "inside",
-                            "start": 0,
-                            "end": 10000
-                        }
-                    ],
+                  
                     "series": [
                         {
                             "name":"申请人数",
@@ -1447,7 +1435,8 @@
                                 "color":"#55a5ff"
                             },
                             "type": "bar",
-                            "barWidth": "40%",
+                            "barWidth": "fontSize(0.2)",
+                            "barMaxWidth":20,
                             "label":{
                                 "show":true,
                                 "position":"top",
@@ -1457,14 +1446,14 @@
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
                                 "color" : "#55a5ff"
-                            },
-                            "barGap":0
+                            }
                         },
                         {
                             "name":"中选人数",
                             "type":"bar",
                             "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
-                            "barWidth": "40%",
+                            "barWidth": "fontSize(0.2)",
+                            "barMaxWidth":20,
                             "label":{
                                 "show":true,
                                 "position":"top",
@@ -1474,7 +1463,6 @@
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
                                 "color" : "#55a5ff"
-                               
                             },
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -1523,20 +1511,20 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": [ "Total Projects"," Applied Projects", "Selected Projects ","Pass Mid-term Evaluation", "Pass Final-term Evaluation"],
+                        "data": [ "Total Projects"," Applied Projects", "Selected Projects ","Pass Mid-term Evaluation(Stay Tuned)", "Pass Final-term Evaluation(Stay Tuned)"],
                         "axisLabel": {
                             "show": true,
                             "interval" : 0,
-                            "width":150,
-                            "lineHeight": 25,
+                            "width":200,
+                            "lineHeight": 15,
                             "fontFamily": "MicrosoftYaHei",
-                            "fontSize": "1.3rem",
+                            "fontSize": 14,
                             "fontWeight": "normal",
                             "fontStretch": "normal",
                             "letterSpacing": 1,
                             "color": "#333333",
                             "overflow":"break",
-                            "padding": 3
+                            "padding": 1
                         }
                     },
                     "yAxis": [
@@ -1550,7 +1538,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": "1.3rem",
+                                "fontSize": 16,
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -1572,7 +1560,7 @@
                                 "width": 28,
                                 "height": 12,
                                 "fontFamily": "MicrosoftYaHei",
-                                "fontSize": "1.3rem",
+                                "fontSize": 16,
                                 "fontWeight": "normal",
                                 "fontStretch": "normal",
                                 "letterSpacing": 1,
@@ -1595,7 +1583,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [317, 278, 301, 334, 390],
+                            "data": [317, 278, 390, 0, 0],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -1609,7 +1597,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[435,395,75,40,35],
+                            "data":[435,395,40,0,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -1622,7 +1610,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[125,125,75,40,35],
+                            "data":[125,125,40,0,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -1633,13 +1621,27 @@
                         {
                             "name":"The total percentage",
                             "yAxisIndex":1,
-                            "data":[100,91,55,53,55,53],
+                            "data":[100,91,55,0,0],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{
                                 "color":"transparent"
                             },
                             "barWidth":35
+                        },
+                        {
+                            "name":"",
+                            "data":[0,0,0,470,470],
+                            "type":"bar",
+                            "barWidth":35,
+                            "itemStyle":{
+                                "color":"transparent",
+                                "borderColor":"#9cd9ff",
+                                "borderType":"dashed",
+                                "opacity":0.6
+                            },
+                            "z":1,
+                            "zlevel":1
                         }
     
                     ]
@@ -2403,49 +2405,7 @@
                             "show":false
                         }
                     ],
-                    "dataZoom": [
-                        {
-                            "show": true,
-                            "start": 0,
-                            "end": 2,
-                            "bottom": 5,
-                            "borderColor": "transparent",
-                            "backgroundColor": "#fff",
-                             
-                            "handleIcon": "path://M512 512m-208 0a6.5 6.5 0 1 0 416 0 6.5 6.5 0 1 0-416 0Z M512 192C335.264 192 192 335.264 192 512c0 176.736 143.264 320 320 320s320-143.264 320-320C832 335.264 688.736 192 512 192zM512 800c-159.072 0-288-128.928-288-288 0-159.072 128.928-288 288-288s288 128.928 288 288C800 671.072 671.072 800 512 800z",
-                            "handleColor": "#aab6c6",
-                            "handleSize": 18,
-                            "handleStyle": {
-                                "borderColor": "#aab6c6",
-                                "shadowBlur": 4,
-                                "shadowOffsetX": 1,
-                                "shadowOffsetY": 1,
-                                "shadowColor": "#e5e5e5",
-                                "borderCap":"round"
-                            },
-                            "selectedDataBackground":{
-                                "color": {
-                                    "type": "radial",
-                                    "x": 0.5,
-                                    "y": 0.5,
-                                    "r": 0.5,
-                                    "colorStops": [{
-                                        "offset": 0, "color": "red" 
-                                    }, {
-                                        "offset": 1, "color": "blue" 
-                                    }],
-                                    "global": false 
-                                }
-                            }
-    
-                        },
-                        {
-                            "show":false,
-                            "type": "inside",
-                            "start": 0,
-                            "end": 10000
-                        }
-                    ],
+                 
                     "series": [
                         {
                             "name":"Applicants",
@@ -2932,7 +2892,8 @@
                                 "color":"#55a5ff"
                             },
                             "type": "bar",
-                            "barWidth": "40%",
+                            "barWidth": "fontSize(0.2)",
+                            "barMaxWidth":20,
                             "label":{
                                 "show":true,
                                 "position":"top",
@@ -2949,7 +2910,8 @@
                             "name":"Selected Students",
                             "type":"bar",
                             "data":[18,18,16,16,16,16,13,13,13,13,12,11,9,9,7,7,6,6,5,5,5,5,5,3,3,3,3,1,1,1],
-                            "barWidth": "40%",
+                            "barWidth": "fontSize(0.2)",
+                            "barMaxWidth":20,
                             "label":{
                                 "show":true,
                                 "position":"top",

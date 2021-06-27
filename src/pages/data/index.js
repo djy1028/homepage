@@ -16,7 +16,7 @@
  import { connect } from 'react-redux';
  import ReactEChartsCore from 'echarts-for-react/lib/core';
  import * as echarts from 'echarts/core';
- import {CanvasRenderer} from 'echarts/renderers';
+ import {CanvasRenderer,SVGRenderer} from 'echarts/renderers';
  import {BarChart} from 'echarts/charts';
  import {
     LegendPlainComponent,
@@ -31,9 +31,37 @@
   } from 'echarts/components';
 import option from '../../data/dataresult.json'  //活动数据页面配置集合
 import MapOption from '../../components/mapdata/index' //地图配置
+  
 
-console.log(MapOption)
-    
+//自适应字体
+function fontSize(res){
+    let docEl = document.documentElement,
+        clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+    if (!clientWidth) return;
+    let fontSize = 100 * (clientWidth / 1920);
+    let result = 16;
+    if(res * fontSize>=16){
+        result = 16
+    }
+    else if(res * fontSize <= 12){
+        result = 12
+    }
+
+    else {
+        result = res * fontSize
+    }
+
+    return result;
+}
+//自适应宽度
+function calculateWidth(wid){
+    let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+    if (!clientWidth) return;
+    let result = clientWidth * (wid / 1920);
+    return result
+}
+
+
 echarts.use(
     [
         LegendPlainComponent,
@@ -46,17 +74,17 @@ echarts.use(
         VisualMapComponent,
         GeoComponent,
         BarChart,
-        CanvasRenderer
+        SVGRenderer
     ]
 );
 
 const setPercentage = function (params) {
     let html=params[0].name+"<br>";
-    for(let i=0;i<params.length;i++){
+    for(let i=0;i<params.length-1;i++){
       html+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:'+params[i].color+';"></span>'
       if(params[i].seriesName=="总占比"||params[i].seriesName=="The total percentage"){
         html+=params[i].seriesName+":"+params[i].value+"%<br>";
-      }else{
+      }else if(params[i].seriesName.length !=0){
         html+=params[i].seriesName+":"+params[i].value+"<br>";
       }
     }
@@ -81,6 +109,50 @@ function Data(props){
         const myChart3 = instance3 && instance3.current.getEchartsInstance();
         const myChart4 = instance4 && instance3.current.getEchartsInstance();
         window.onresize = function(){
+            myChart0 && myChart0.setOption({
+                "xAxis": {
+                    "type": "category",
+                    "axisLabel": {
+                        "width":calculateWidth(230),
+                        "fontSize": fontSize(.16)
+                    }
+                },
+                "yAxis": [
+                    {
+                        "position": "left",
+                        "axisLabel": {
+                            "fontSize": fontSize(.16),
+                        }
+                    },
+                    {
+                        "position":"right",
+                        "axisLabel": {
+                            "fontSize": fontSize(.16),
+                        },
+                    }
+                ],
+            })
+
+            myChart3 && myChart3.setOption({
+            "series": [
+                {
+                    "type":"bar",
+                    "barWidth": fontSize(0.2),
+                },
+                {
+                    "type":"bar",
+                    "barWidth": fontSize(0.2),
+                }
+            ],
+            "xAxis": [
+                {
+                    "type": "category",
+                    "axisLabel": {
+                        "fontSize": fontSize(.25)
+                    }
+                }
+            ],
+            })
             myChart0 && myChart0.resize();
             myChart1 && myChart1.resize();
             myChart2 && myChart2.resize();
@@ -89,7 +161,8 @@ function Data(props){
         }
     },[])
 
-    useEffect(()=>{},[])
+    
+
     return(         
         <div className="datas">
             <div className="datas_header"> 
@@ -175,6 +248,7 @@ function Data(props){
                             echarts={echarts}
                             option={showdata.stu_data.bar_two.option}
                             ref={instance3}
+                            opts={{renderer: 'svg'}}
                         />
                     </div>
                 </div>
