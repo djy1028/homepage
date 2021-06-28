@@ -29,6 +29,7 @@
                         "data": ["上线数", "被申请数", "中选数", "中期通过数（敬请期待）", "结项数（敬请期待）"],
                         "interval" : 0,
                         "axisLabel": {
+                            "interval":0,
                             "show": true,
                             "width": 200,
                             "lineHeight": 15,
