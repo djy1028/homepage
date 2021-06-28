@@ -16,7 +16,7 @@
  import { connect } from 'react-redux';
  import ReactEChartsCore from 'echarts-for-react/lib/core';
  import * as echarts from 'echarts/core';
- import {CanvasRenderer,SVGRenderer} from 'echarts/renderers';
+ import {SVGRenderer} from 'echarts/renderers';
  import {BarChart} from 'echarts/charts';
  import {
     LegendPlainComponent,
@@ -31,36 +31,7 @@
   } from 'echarts/components';
 import option from '../../data/dataresult.json'  //活动数据页面配置集合
 import MapOption from '../../components/mapdata/index' //地图配置
-  
-
-//自适应字体
-function fontSize(res){
-    let docEl = document.documentElement,
-        clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
-    if (!clientWidth) return;
-    let fontSize = 100 * (clientWidth / 1920);
-    let result = 16;
-    if(res * fontSize>=16){
-        result = 16
-    }
-    else if(res * fontSize <= 12){
-        result = 12
-    }
-
-    else {
-        result = res * fontSize
-    }
-
-    return result;
-}
-//自适应宽度
-function calculateWidth(wid){
-    let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
-    if (!clientWidth) return;
-    let result = clientWidth * (wid / 1920);
-    return result
-}
-
+import {fontSize,calculateWidth,setPercentage} from './utils.js'
 
 echarts.use(
     [
@@ -77,60 +48,6 @@ echarts.use(
         SVGRenderer
     ]
 );
-
-const setPercentage = function (params) {
-    let html;
-    if(params[0].name == "上线数" ||params[0].name == "Total Projects"){
-        let content =  params[0].name == "上线数"?"  总占比":" Total Percentage"
-        html= params[0].name+":"+877+ content +":100%"+"<br>";
-    }
-    else if(params[0].name == "被申请数" ||params[0].name == "Applied Projects"){
-        let content =  params[0].name == "被申请数"?"  总占比":" Total Percentage"
-        html=params[0].name+":"+798+ content +":91%"+"<br>";
-    }
-    else if(params[0].name == "中选数" ||params[0].name == "Selected Projects"){
-        console.log(params[0].name)
-        let content =  params[0].name == "中选数"?"  总占比":" Total Percentage"
-        html=params[0].name+":"+470+content +":55%"+"<br>";
-    }
-    else if(params[0].name == "中期通过数（敬请期待）" ||params[0].name == "Pass Mid-term Evaluation(Stay Tuned)"){
-        let content =  params[0].name == "中期通过数（敬请期待）"?"  总占比":" Total Percentage"
-        let name = params[0].name == "中期通过数（敬请期待）"?"  中期通过数":" Pass Mid-term Evaluation"
-        html=name +":"+ 0 + content + ":0%"+"<br>";
-    }
-    else if(params[0].name == "结项数（敬请期待）" ||params[0].name == "Pass Final-term Evaluation(Stay Tuned)"){
-        let content =  params[0].name == "结项数（敬请期待）"?"  总占比":" Total Percentage"
-        let name =  params[0].name == "结项数（敬请期待）"?"  结项数":" Pass Final-term Evaluation"
-        html= name +":"+ 0 + content +":0%"+"<br>";
-    }
-
-    for(let i=0;i<params.length-3;i++){
-      html+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;font-size:13px;background-color:'+params[i].color+';"></span>'
-      if(params[i].seriesName.length !=0){
-        if(params[0].name == "上线数" ||params[0].name == "Total Projects"){
-            let content =  params[0].name == "上线数"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content + (params[i].value/877*100).toFixed(2)+ "%" + "<br>";
-        }
-        else if(params[0].name == "被申请数" ||params[0].name == "Applied Projects"){
-            let content =  params[0].name == "被申请数"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content+ (params[i].value/798*100).toFixed(2)+ "%"+ "<br>";
-        }
-        else if(params[0].name == "中选数" ||params[0].name == "Selected Projects"){
-            let content =  params[0].name == "中选数"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content + (params[i].value/470*100).toFixed(2)+ "%" + "<br>";
-        }
-        else if(params[0].name == "中期通过数（敬请期待）" ||params[0].name == "Pass Mid-term Evaluation(Stay Tuned)"){
-            let content =  params[0].name == "中期通过数（敬请期待）"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content+ 0+ "%" + "<br>";
-        }
-        else if(params[0].name == "结项数（敬请期待）" ||params[0].name == "Pass Final-term Evaluation(Stay Tuned)"){
-            let content =  params[0].name == "结项数（敬请期待）"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content+ 0+ "%" + "<br>";
-        }
-      }
-    }
-    return html;
-}
 //设置项目数据tooltip百分比的格式
 option.en.pro_data.bar_one.option.tooltip.formatter = setPercentage
 option.chi.pro_data.bar_one.option.tooltip.formatter = setPercentage
@@ -149,6 +66,7 @@ function Data(props){
         const myChart2 = instance2 && instance2.current.getEchartsInstance();
         const myChart3 = instance3 && instance3.current.getEchartsInstance();
         const myChart4 = instance4 && instance3.current.getEchartsInstance();
+        //字体、宽度随屏幕大小自适应
         window.onresize = function(){
             myChart0 && myChart0.setOption({
                 "xAxis": {
@@ -173,23 +91,22 @@ function Data(props){
                     }
                 ],
             })
-
             myChart3 && myChart3.setOption({
-            "series": [
+            series: [
                 {
-                    "type":"bar",
-                    "barWidth": fontSize(0.2),
+                    type:"bar",
+                    barWidth: fontSize(0.2),
                 },
                 {
-                    "type":"bar",
-                    "barWidth": fontSize(0.2),
+                    type:"bar",
+                    barWidth: fontSize(0.2),
                 }
             ],
-            "xAxis": [
+            xAxis: [
                 {
-                    "type": "category",
-                    "axisLabel": {
-                        "fontSize": fontSize(.25)
+                    type: "category",
+                    axisLabel: {
+                        fontSize: fontSize(.25)
                     }
                 }
             ],
@@ -343,9 +260,9 @@ function Data(props){
     )
  }
  
- const mapStateToProps = (state)=>{
-     return {
-         chiFlag:state.chiFlag
-     }
-  }
- export default connect(mapStateToProps)(Data)
+const mapStateToProps = (state)=>{
+    return {
+        chiFlag:state.chiFlag
+    }
+}
+export default connect(mapStateToProps)(Data)

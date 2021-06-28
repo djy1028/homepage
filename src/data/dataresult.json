@@ -73,7 +73,7 @@
                             "type":"value",
                             "name":"",
                             "position":"right",
-                            "splitNumber":2,
+                            "splitNumber":5,
                             "axisLabel": {
                                 "show": true,
                                 "width": 28,
@@ -1598,7 +1598,7 @@
                             "type":"value",
                             "name":"",
                             "position":"right",
-                            "splitNumber":2,
+                            "splitNumber":5,
                             "axisLabel": {
                                 "show": true,
                                 "width": 28,
