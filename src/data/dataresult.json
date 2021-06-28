@@ -10,6 +10,9 @@
                         "trigger": "axis",
                         "axisPointer": {
                             "type": "shadow"
+                        },
+                        "textStyle":{
+                            "fontSize":12
                         }
                     },
                     "legend": {
@@ -1533,6 +1536,9 @@
                         "trigger": "axis",
                         "axisPointer": {
                             "type": "shadow"
+                        },
+                        "textStyle":{
+                            "fontSize":12
                         }
                     },
                     "legend": {
@@ -1549,7 +1555,7 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": [ "Total Projects"," Applied Projects", "Selected Projects ","Pass Mid-term Evaluation(Stay Tuned)", "Pass Final-term Evaluation(Stay Tuned)"],
+                        "data": [ "Total Projects","Applied Projects", "Selected Projects","Pass Mid-term Evaluation(Stay Tuned)", "Pass Final-term Evaluation(Stay Tuned)"],
                         "axisLabel": {
                             "show": true,
                             "interval" : 0,
