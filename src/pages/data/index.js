@@ -60,13 +60,14 @@ function Data(props){
     const instance2 = useRef(null);
     const instance3 = useRef(null);
     const instance4 = useRef(null);
+
     useEffect(()=>{
         const myChart0 = instance0 && instance0.current.getEchartsInstance();
         const myChart1 = instance1 && instance1.current.getEchartsInstance();
         const myChart2 = instance2 && instance2.current.getEchartsInstance();
         const myChart3 = instance3 && instance3.current.getEchartsInstance();
         const myChart4 = instance4 && instance3.current.getEchartsInstance();
-        //字体、宽度随屏幕大小自适应
+        //监听resize事件，字体、宽度随屏幕大小自适应
         window.onresize = function(){
             myChart0 && myChart0.setOption({
                 "xAxis": {
@@ -117,7 +118,22 @@ function Data(props){
             myChart3 && myChart3.resize();
             myChart4 && myChart4.resize();
         }
+
+
+
     },[])
+
+
+    useEffect(()=>{
+        let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth
+        if(clientWidth>=100 && clientWidth<= 750){
+            showdata.pro_data.bar_one.option.xAxis.axisLabel = {
+                "width": calculateWidth(220),
+                "fontSize": 10,
+                "overflow":"breakAll"
+            }
+        }
+    },[props.chiFlag])
 
     
 
