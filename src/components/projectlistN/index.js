@@ -11,6 +11,8 @@
  */
 
 import React from 'react'
+import pinyin from 'pinyin';
+import _ from 'lodash'
 import './index.less';
 import { connect } from 'react-redux';
 import { Input } from 'antd';
@@ -102,11 +104,28 @@ class ProjectlistN extends React.Component{
 
     getData(){
         //处理中选项目按学生姓名排序
-        
-        
-        this.setState({
-            projectlistdata:this.state.datall.slice(0,this.state.pagesize),
+        let oriPro = this.state.datall
+        oriPro.forEach((item)=>{
+            if(item.selectedStudentList){
+                item["FL"] = item.selectedStudentList.map((itemPY)=>{
+                    return pinyin(itemPY.substr(0,1), {style: pinyin.STYLE_FIRST_LETTER}).flat()[0]
+                }).sort()[0]
+
+                item.selectedStudentList = item.selectedStudentList.sort(
+                   (param1, param2)=> param1.localeCompare(param2,"zh")
+                )
+            }
         })
+      
+        let sortDatall = _.orderBy(oriPro,["FL"],["asc"])
+        this.setState({
+            projectlist:sortDatall,
+            projectlistdata:sortDatall.slice(0,this.state.pagesize)
+        })
+
+        // this.setState({
+        //     projectlistdata:this.state.datall.slice(0,this.state.pagesize),
+        // })
         
     }
 
