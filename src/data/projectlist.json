@@ -41,7 +41,8 @@
         "taglist":["全部","Go","Linux","Python","Java","C","Cloud Native","JavaScript","Container","PHP","AI","Big Data","OS","Dev Tools","Virtualization","Distributed System","Docker","NLP","Database","Rust","IOT"],
         "popover":["5月24日至6月13日开放申请，","此前可","注册账号"],
         "tag":"标签：",
-        "orgstunum":"当前申请人数："
+        "orgstunum":"当前申请人数：",
+        "downloadTitle":"开源软件供应链点亮计划-暑期2021 中选名单.pdf"
 
     },
     "en":{
@@ -85,7 +86,8 @@
         "taglist":["All","Go","Linux","Python","Java","C","Cloud Native","JavaScript","Container","PHP","AI","Big Data","OS","Dev Tools","Virtualization","Distributed System","Docker","NLP","Database","Rust","IOT"],
         "popover":["Project application will open from May 24 to June 13.","","You can sign up now. "],
         "tag":"Tag: ",
-        "orgstunum":"Numbers of Applicants："
+        "orgstunum":"Numbers of Applicants：",
+        "downloadTitle":"List of the Selected Student.pdf"
         
     }
 }

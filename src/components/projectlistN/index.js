@@ -20,7 +20,8 @@ import {  Pagination } from 'antd';
 import { getSelectM,getSelectLang,getSelectDToChi,getLangDToChi,getTagSelect} from './util.js'
 import {getSplit,gohash,getSupportLanguage,gourl,goenroll} from "../../util/url.js";
 // import studata from '../../data/stunum.json'
-
+import download from "../../img/download.png";
+import pdf from './list.pdf'
 
 const { Search } = Input;
 
@@ -30,7 +31,7 @@ class ProjectlistN extends React.Component{
        super(props)
        this.state ={   
            page:1,
-           pagesize:40,
+           pagesize:100,
            datall: proData,        // 显示的project所有数据
            searchdatastock:[],      
            datastock:proData,      // project 所有数据
@@ -44,10 +45,6 @@ class ProjectlistN extends React.Component{
        }
        this.itemRender = this.itemRender.bind(this)
     }
-
-   
-
-
 
     componentDidMount(){         
         this.getData()   
@@ -73,7 +70,7 @@ class ProjectlistN extends React.Component{
                 if(item.name.toLowerCase().includes(valuel)||
                 item.tech_tag.toLowerCase().includes(valuel)||
                 item.domain_tag.toLowerCase().includes(valuel)||
-                item.orgname.toLowerCase().includes(valuel)||
+                item.orgname.toLowerCase().includes(valuel)||(item.selectedStudentList&&item.selectedStudentList.join(" ").includes(valuel))||
                 item.label.includes(valuel)){
                     showdataTemp.push(item)
                 }
@@ -104,6 +101,9 @@ class ProjectlistN extends React.Component{
 
 
     getData(){
+        //处理中选项目按学生姓名排序
+        
+        
         this.setState({
             projectlistdata:this.state.datall.slice(0,this.state.pagesize),
         })
@@ -265,11 +265,6 @@ class ProjectlistN extends React.Component{
         }
     }
 
-
-
-    
-
-
     render(){
         let showdata = projectlist[this.props.chiFlag]
         let {projectlistdata,degreeselect,langSelect,datall,tagSelect} = this.state
@@ -307,6 +302,10 @@ class ProjectlistN extends React.Component{
                                     <span className="ProjectListPageItemSum">{showdata.pagesum[0]} {Math.ceil(datalllength/this.state.pagesize)} {showdata.pagesum[1]}</span>
                                 </span>
                             </div>
+                            <a className="ProjectListDownload" href={pdf} download="list.pdf">
+                               {showdata.downloadTitle}
+                                <img src={download} />
+                            </a>
                         </div>
                         {/* <div className="ProjectListApplyState">{showdata.applyState[2]}</div> */}
                         <div className="ProjectListSelect">
@@ -396,7 +395,7 @@ class ProjectlistN extends React.Component{
                                         <span className="ProjectListLCLang">{getSupportLanguage(item.spl)}</span>
                                         <span className="ProjectListLCDegree">{this.getDegreeBy(item.difficulty)}</span>
                                         <span className="ProjectListLCNumber">{studata[item.proid]||0}</span>
-                                        <span className="ProjectListLCStudent">{"王*云"}</span>
+                                        <span className="ProjectListLCStudent">{item.selectedStudentList && item.selectedStudentList.join(" ")}</span>
                                         <span className="ProjectListLCOperation Item">
                                             <span className="PLOperationButton prodetail" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>{showdata.operationbutton[0]}</span>                                           
                                             {/* <span 

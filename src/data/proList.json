@@ -8,7 +8,8 @@
         "proid": 672,
         "spl": 0,
         "tech_tag": "Linux C++ Database Storage",
-        "domain_tag": "Big Data"
+        "domain_tag": "Big Data",
+        "selectedStudentList":["王一云","王二云"]
     },
     {
         "anchor": "openct",
@@ -19,7 +20,8 @@
         "proid": 860,
         "spl": 1,
         "tech_tag": "Go JavaScript React",
-        "domain_tag": "Web"
+        "domain_tag": "Web",
+        "selectedStudentList":["丁一云","丁二云"]
     },
     {
         "anchor": "bjlkjxgs",
@@ -30,7 +32,8 @@
         "proid": 533,
         "spl": 1,
         "tech_tag": "Python",
-        "domain_tag": "AI"
+        "domain_tag": "AI",
+        "selectedStudentList":["何一云","何二云"]
     },
     {
         "anchor": "apacheapisix",
