@@ -31,7 +31,7 @@
   } from 'echarts/components';
 import option from '../../data/dataresult.json'  //活动数据页面配置集合
 import MapOption from '../../components/mapdata/index' //地图配置
-import {fontSize,calculateWidth,setPercentage} from './utils.js'
+import {fontSize,calculateWidth,setPercentage,adaptive} from './utils.js'
 
 echarts.use(
     [
@@ -61,78 +61,15 @@ function Data(props){
     const instance3 = useRef(null);
     const instance4 = useRef(null);
 
-    useEffect(()=>{
-        const myChart0 = instance0 && instance0.current.getEchartsInstance();
-        const myChart1 = instance1 && instance1.current.getEchartsInstance();
-        const myChart2 = instance2 && instance2.current.getEchartsInstance();
-        const myChart3 = instance3 && instance3.current.getEchartsInstance();
-        const myChart4 = instance4 && instance3.current.getEchartsInstance();
+    useEffect(()=>{      
         //监听resize事件，字体、宽度随屏幕大小自适应
         window.onresize = function(){
-            myChart0 && myChart0.setOption({
-                "xAxis": {
-                    "type": "category",
-                    "axisLabel": {
-                        "width":calculateWidth(230),
-                        "fontSize": fontSize(.16)
-                    }
-                },
-                "yAxis": [
-                    {
-                        "position": "left",
-                        "axisLabel": {
-                            "fontSize": fontSize(.16),
-                        }
-                    },
-                    {
-                        "position":"right",
-                        "axisLabel": {
-                            "fontSize": fontSize(.16),
-                        },
-                    }
-                ],
-            })
-            myChart3 && myChart3.setOption({
-            series: [
-                {
-                    type:"bar",
-                    barWidth: fontSize(0.2),
-                },
-                {
-                    type:"bar",
-                    barWidth: fontSize(0.2),
-                }
-            ],
-            xAxis: [
-                {
-                    type: "category",
-                    axisLabel: {
-                        fontSize: fontSize(.25)
-                    }
-                }
-            ],
-            })
-            myChart0 && myChart0.resize();
-            myChart1 && myChart1.resize();
-            myChart2 && myChart2.resize();
-            myChart3 && myChart3.resize();
-            myChart4 && myChart4.resize();
+            adaptive(instance0,instance1,instance2,instance3,instance4,true,props.chiFlag)
         }
-
-
-
     },[])
 
-
     useEffect(()=>{
-        let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth
-        if(clientWidth>=100 && clientWidth<= 750){
-            showdata.pro_data.bar_one.option.xAxis.axisLabel = {
-                "width": calculateWidth(220),
-                "fontSize": 10,
-                "overflow":"breakAll"
-            }
-        }
+        adaptive(instance0,instance1,instance2,instance3,instance4,false,props.chiFlag)
     },[props.chiFlag])
 
     
@@ -159,9 +96,8 @@ function Data(props){
                         <ReactEChartsCore
                             echarts={echarts}
                             option={showdata.pro_data.bar_one.option}
-                            notMerge={false}
-                            lazyUpdate={false}
                             ref={instance0}
+                         
                             />
                     </div>
                     <div className="pro_data_divide"></div>

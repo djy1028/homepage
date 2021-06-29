@@ -75,3 +75,266 @@ export const setPercentage = function (params) {
     }
     return html;
 }
+
+// 屏幕大小自适应/语言切换 情况下样式的修正
+export const adaptive = function(instance0,instance1,instance2,instance3,instance4,resize,chiFlag){
+    let myChart0 = instance0 && instance0.current.getEchartsInstance();
+    let myChart1 = instance1 && instance1.current.getEchartsInstance();
+    let myChart2 = instance2 && instance2.current.getEchartsInstance();
+    let myChart3 = instance3 && instance3.current.getEchartsInstance();
+    let myChart4 = instance4 && instance3.current.getEchartsInstance();
+    let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth
+    //判断是resize的切换函数语言切换
+    if(resize){
+        if(clientWidth>=100 && clientWidth<= 750){
+            if(clientWidth<500){
+                myChart0.setOption({
+                    xAxis:{
+                        axisLabel:{
+                            width: calculateWidth(205),
+                            fontSize: 9,
+                            lineHeight:10
+                        }
+                    }
+                })
+                myChart1.setOption({
+                    yAxis: {
+                        axisLabel:{
+                            width: 18,
+                            fontSize: 13,
+                            padding: 5
+                        }
+                    },
+                    grid: {left: "0",},
+                })
+                myChart2.setOption({
+                    yAxis: {
+                        axisLabel:{
+                            width:80,
+                            overflow:"break",
+                            fontSize: 13,
+                            padding: 3,
+                        }
+                    },
+                    grid: {
+                        left: "0",
+                        right:"10%"
+                    },
+                })
+                myChart3 && myChart3.setOption({
+                    series: [
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.15),
+                        },
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.15),
+                        }
+                    ],
+                    xAxis: [
+                        {
+                            type: "category",
+                            axisLabel: {
+                                fontSize: fontSize(.14)
+                            }
+                        }
+                    ],
+                    legend: {
+                        right:30,
+                        textStyle:{
+                            fontSize: 10
+                        }
+                    },
+                    title: {
+                        right:10,
+                        top:20
+                    },
+                })
+            }
+            else{
+                myChart0.setOption({
+                    xAxis:{
+                        axisLabel:{
+                            width: calculateWidth(210),
+                            fontSize: 10,
+                            lineHeight:15
+                        }
+                    }
+                })
+                myChart3 && myChart3.setOption({
+                    series: [
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.2),
+                        },
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.2),
+                        }
+                    ],
+                    xAxis: [
+                        {
+                            type: "category",
+                            axisLabel: {
+                                fontSize: fontSize(.25)
+                            }
+                        }
+                    ],
+                })
+            }
+           
+        }
+        else{
+            let option = chiFlag == "chi"?{
+                                            xAxis:{
+                                                    axisLabel:{
+                                                        width: 200,
+                                                        fontSize: 16,
+                                                        lineHeight:20
+                                                    }
+                                                }
+                                            }:{
+                                                xAxis:{
+                                                    axisLabel:{
+                                                        width: 200,
+                                                        fontSize: 14,
+                                                        lineHeight:20
+                                                    }
+                                                }
+                                            }
+            myChart0.setOption(option)
+        }
+        myChart0 && myChart0.resize();
+        myChart1 && myChart1.resize();
+        myChart2 && myChart2.resize();
+        myChart3 && myChart3.resize();
+        myChart4 && myChart4.resize();
+    }
+    else{
+        if(clientWidth>=100 && clientWidth<= 750){
+            if(clientWidth<500){
+                myChart0.setOption({
+                    xAxis:{
+                        axisLabel:{
+                            width: calculateWidth(205),
+                            fontSize: 9,
+                            lineHeight:10
+                        }
+                    }
+                })
+                myChart1.setOption({
+                    yAxis: {
+                        axisLabel:{
+                            width: 18,
+                            height: 20,
+                            fontSize: 13,
+                            padding: 5
+                        }
+                    },
+                    grid: {
+                        left: "0",
+                    }
+                })
+                myChart2.setOption({
+                    yAxis: {
+                        axisLabel:{
+                            width:80,
+                            overflow:"break",
+                            height: 20,
+                            fontSize: 13,
+                            padding: 3,
+                        }
+                    },
+                    grid: {
+                        left: "0",
+                        right:"10%"
+                    },
+                })
+                myChart3 && myChart3.setOption({
+                    series: [
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.15),
+                        },
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.15),
+                        }
+                    ],
+                    xAxis: [
+                        {
+                            type: "category",
+                            axisLabel: {
+                                fontSize: fontSize(.14)
+                            }
+                        }
+                    ],
+                    legend: {
+                        right:30,
+                        textStyle:{
+                            fontSize: 10
+                        }
+                    },
+                    title: {
+                        right:10,
+                        top:20
+                    },
+                })
+            }
+            else{
+                myChart0.setOption({
+                    xAxis:{
+                        axisLabel:{
+                            width: calculateWidth(210),
+                            fontSize: 10,
+                            lineHeight:15
+                        }
+                    }
+                })
+                myChart3 && myChart3.setOption({
+                    series: [
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.2),
+                        },
+                        {
+                            type:"bar",
+                            barWidth: fontSize(0.2),
+                        }
+                    ],
+                    xAxis: [
+                        {
+                            type: "category",
+                            axisLabel: {
+                                fontSize: fontSize(.25)
+                            }
+                        }
+                    ],
+                })
+            }
+           
+        }
+        else{
+            let option = chiFlag == "chi"?{
+                                            xAxis:{
+                                                    axisLabel:{
+                                                        width: 200,
+                                                        fontSize: 16,
+                                                        lineHeight:20
+                                                    }
+                                                }
+                                            }:{
+                                                xAxis:{
+                                                    axisLabel:{
+                                                        width: 200,
+                                                        fontSize: 14,
+                                                        lineHeight:20
+                                                    }
+                                                }
+                                            }
+            myChart0.setOption(option)
+        }
+    }
+   
+}

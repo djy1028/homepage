@@ -36,7 +36,7 @@
                             "interval":0,
                             "show": true,
                             "width": 200,
-                            "lineHeight": 15,
+                            "lineHeight": 20,
                             "fontFamily": "MicrosoftYaHei",
                             "fontSize": 16,
                             "fontWeight": "normal",
@@ -99,7 +99,7 @@
                     "grid": {
                         "left": "3%",
                         "right": "4%",
-                        "bottom": "5%",
+                        "bottom": "9%",
                         "containLabel": true
                     },
                     "series": [
@@ -470,7 +470,7 @@
                        
                     },
                     "grid": {
-                        "top": "12%",
+                        "top": "10%",
                         "left": "1%",
                         "right": "10%",
                         "containLabel": true
@@ -1555,6 +1555,12 @@
                             "color": "#333"
                         }
                     },
+                    "grid": {
+                        "left": "3%",
+                        "right": "4%",
+                        "bottom": "9%",
+                        "containLabel": true
+                    },
                     "xAxis": {
                         "type": "category",
                         "data": [ "Total Projects","Applied Projects", "Selected Projects","Pass Mid-term Evaluation(Stay Tuned)", "Pass Final-term Evaluation(Stay Tuned)"],
@@ -1562,7 +1568,7 @@
                             "show": true,
                             "interval" : 0,
                             "width":200,
-                            "lineHeight": 15,
+                            "lineHeight": 20,
                             "fontFamily": "MicrosoftYaHei",
                             "fontSize": 14,
                             "fontWeight": "normal",
