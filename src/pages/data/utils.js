@@ -335,6 +335,22 @@ export const adaptive = function(instance0,instance1,instance2,instance3,instanc
                                             }
             myChart0.setOption(option)
         }
+
+        if(chiFlag == 'en'){
+            myChart3.setOption({
+                grid: {
+                   y2:-30
+                }
+            })
+        }
+        else{
+            myChart3.setOption({
+                grid: {
+                   y2:50
+                }
+            })
+        }
+       
     }
    
 }
