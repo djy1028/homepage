@@ -118,10 +118,6 @@ class HomePage extends React.Component{
                     
 
                 </div>
-                
-
-                
-                
                 <div className="homepageWrapper">
                     <div className="content1200">
                         <div 

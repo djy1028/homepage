@@ -1,6 +1,6 @@
 {
     "link":[
-        "homepage"  ,"org" ,"liveshow","howitworks" ,"apply","help" 
+        "homepage"  ,"org" ,"liveshow","howitworks" ,"data","apply","help" 
     ],
     "chi":{
         "linkdata":[
@@ -9,7 +9,7 @@
                   
             },
             {
-                "name":"查看项目"
+                "name":"项目公示"
                   
             },
             {
@@ -19,6 +19,9 @@
             {
                 "name":"活动规划"
                
+            },
+            {
+                "name":"数据展示"
             },
             {
                 "name":"如何加入"    
@@ -44,6 +47,9 @@
             },
             {
                 "name":"HOW IT WORKS" 
+            },
+            {
+                "name":"RESULT DATA"
             },
             {
                 "name":"GET STARTED"      

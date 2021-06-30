@@ -69,8 +69,6 @@ class Org extends React.Component{
                             )
                         })
                     }
-                    
-                   
                 </div>
                 <div className="OrgWrapper">
                  {this.props.children}

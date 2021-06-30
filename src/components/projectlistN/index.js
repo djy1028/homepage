@@ -11,6 +11,8 @@
  */
 
 import React from 'react'
+import pinyin from 'pinyin';
+import _ from 'lodash'
 import './index.less';
 import { connect } from 'react-redux';
 import { Input } from 'antd';
@@ -20,7 +22,8 @@ import {  Pagination } from 'antd';
 import { getSelectM,getSelectLang,getSelectDToChi,getLangDToChi,getTagSelect} from './util.js'
 import {getSplit,gohash,getSupportLanguage,gourl,goenroll} from "../../util/url.js";
 // import studata from '../../data/stunum.json'
-
+import download from "../../img/download.png";
+import pdf from './list.pdf'
 
 const { Search } = Input;
 
@@ -30,7 +33,7 @@ class ProjectlistN extends React.Component{
        super(props)
        this.state ={   
            page:1,
-           pagesize:40,
+           pagesize:100,
            datall: proData,        // 显示的project所有数据
            searchdatastock:[],      
            datastock:proData,      // project 所有数据
@@ -44,10 +47,6 @@ class ProjectlistN extends React.Component{
        }
        this.itemRender = this.itemRender.bind(this)
     }
-
-   
-
-
 
     componentDidMount(){         
         this.getData()   
@@ -74,6 +73,7 @@ class ProjectlistN extends React.Component{
                 item.tech_tag.toLowerCase().includes(valuel)||
                 item.domain_tag.toLowerCase().includes(valuel)||
                 item.orgname.toLowerCase().includes(valuel)||
+                (item.selectedStudentList.length>0 && item.selectedStudentList[0] !== '-' && item.selectedStudentList[0].includes(valuel))||
                 item.label.includes(valuel)){
                     showdataTemp.push(item)
                 }
@@ -104,10 +104,30 @@ class ProjectlistN extends React.Component{
 
 
     getData(){
-        this.setState({
-            projectlistdata:this.state.datall.slice(0,this.state.pagesize),
+        //处理中选项目按学生姓名排序
+        let oriPro = this.state.datall
+        oriPro.forEach((item)=>{
+            if(item.selectedStudentList[0] != "-"){
+                item["FL"] = item.selectedStudentList.map((itemPY)=>{
+                    return pinyin(itemPY.substr(0,1), {style: pinyin.STYLE_FIRST_LETTER}).flat()[0]
+                }).sort()[0]
+
+               
+            }
+            else{
+                item["FL"] = 'zzz'
+            }
+            item.selectedStudentList = item.selectedStudentList.sort(
+                (param1, param2)=> param1.localeCompare(param2,"zh")
+            )
         })
-        
+        let sortDatall = _.orderBy(oriPro,["FL"],["asc"])
+        this.setState({
+            datall:sortDatall,
+            projectlist:sortDatall,
+            datastock:sortDatall,
+            projectlistdata:sortDatall.slice(0,this.state.pagesize)
+        })
     }
 
     itemRender(current, type, originalElement) {
@@ -265,11 +285,6 @@ class ProjectlistN extends React.Component{
         }
     }
 
-
-
-    
-
-
     render(){
         let showdata = projectlist[this.props.chiFlag]
         let {projectlistdata,degreeselect,langSelect,datall,tagSelect} = this.state
@@ -307,6 +322,10 @@ class ProjectlistN extends React.Component{
                                     <span className="ProjectListPageItemSum">{showdata.pagesum[0]} {Math.ceil(datalllength/this.state.pagesize)} {showdata.pagesum[1]}</span>
                                 </span>
                             </div>
+                            {/* <a className="ProjectListDownload" href={pdf} download="list.pdf">
+                               {showdata.downloadTitle}
+                                <img src={download} />
+                            </a> */}
                         </div>
                         {/* <div className="ProjectListApplyState">{showdata.applyState[2]}</div> */}
                         <div className="ProjectListSelect">
@@ -359,9 +378,9 @@ class ProjectlistN extends React.Component{
                     </div>
 
                     <div className="ProjectListLCWrapper content1200">
-                        
+                    
                     <div className="ProjectListLC">
-                        
+                        <span className = 'sortDescription'>{showdata.sortDes}</span>
                         <div className="ProjectListLCLine Header">
                             <span className="ProjectListLCID ">{showdata.projectNumber}</span>
                             <span className="ProjectListLCName">{showdata.projectName}</span>
@@ -369,64 +388,56 @@ class ProjectlistN extends React.Component{
                             <span className="ProjectListLCLang">{showdata.language}</span>
                             <span className="ProjectListLCDegree">{showdata.proDegree}</span>
                             <span className="ProjectListLCNumber">{showdata.prostunum}</span>
+                            <span className="ProjectListLCStudent">{showdata.selectedStudent}</span>
                             <span className="ProjectListLCOperation">
-                                <div className={["ProjectTip",this.state.tipflag && projectlistdata.length > 0?"":"displaynone"].join(" ")}>
+                                {/* <div className={["ProjectTip",this.state.tipflag && projectlistdata.length > 0?"":"displaynone"].join(" ")}>
                                     <div className="ProjectTipWeb" onClick={()=>this.goApply()}></div>
                                     <div className="ProjectTipWebClose" onClick={()=>{
                                         this.setTipNone()
                                     }}></div>
-                                </div>
+                                </div> */}
                                 <span>{showdata.operation}</span>
                             </span>
                         </div>
                        
                         
-                        {
-                          
-                                         
-                                projectlistdata.map((item,index)=>{
-                                    return(
-                                        <div className="ProjectListLCLine Item" key={index}>
-                                            <span className="ProjectListLCID ">{item.label}</span>
-                                            <span className="ProjectListLCName" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>
+                        {     
+                            projectlistdata.map((item,index)=>{
+                                return(
+                                    <div className="ProjectListLCLine Item" key={index}>
+                                        <span className="ProjectListLCID ">{item.label}</span>
+                                        <span className="ProjectListLCName" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>
+                                            
+                                            {getSplit( item.name,this.props.chiFlag)}
+                                        </span>
+                                        <span className="ProjectListLCCommunity" onClick={()=>{this.gohashlink(item.anchor)}}>
+                                            {getSplit( item.orgname,this.props.chiFlag)}</span>
+                                        <span className="ProjectListLCLang">{getSupportLanguage(item.spl)}</span>
+                                        <span className="ProjectListLCDegree">{this.getDegreeBy(item.difficulty)}</span>
+                                        <span className="ProjectListLCNumber">{studata[item.proid]||0}</span>
+                                        <span className="ProjectListLCStudent">{item.selectedStudentList && item.selectedStudentList.join(" ")}</span>
+                                        <span className="ProjectListLCOperation Item">
+                                            <span className="PLOperationButton prodetail" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>{showdata.operationbutton[0]}</span>                                           
+                                            {/* <span 
+                                            onClick={()=>{this.setIndexPopOver(index)}}
+                                            className={["PLOperationButton","proapply",this.state.indexname === index?"show":""].join(" ")}>
                                                 
-                                                {getSplit( item.name,this.props.chiFlag)}
-                                            </span>
-                                            <span className="ProjectListLCCommunity" onClick={()=>{this.gohashlink(item.anchor)}}>
-                                                {getSplit( item.orgname,this.props.chiFlag)}</span>
-                                            <span className="ProjectListLCLang">{getSupportLanguage(item.spl)}</span>
-                                            <span className="ProjectListLCDegree">{this.getDegreeBy(item.difficulty)}</span>
-                                            <span className="ProjectListLCNumber">{studata[item.proid]||0}</span>
-                                            <span className="ProjectListLCOperation Item">
-                                                
-                                                <span className="PLOperationButton prodetail" onClick={()=>{this.gohashlink(item.anchor,item.label)}}>{showdata.operationbutton[0]}</span>                                           
-                                                <span 
-                                                onClick={()=>{this.setIndexPopOver(index)}}
-                                                className={["PLOperationButton","proapply",this.state.indexname === index?"show":""].join(" ")}>
-                                                    
-                                                    <span onClick={()=>{goenroll(item.proid,this.props.chiFlag)}}>{showdata.operationbutton[1]}</span>
-                                                    {/* <span className="PLPopOver">
-                                                        {showdata.popover[0]}<br/> 
-                                                        {showdata.popover[1]}
-                                                        <a href="https://portal.summer-ospp.ac.cn/summer/" target="_blank">
-                                                           {showdata.popover[2]}
-                                                        </a>
-                                                    </span> */}
-                                                
+                                                <span onClick={()=>{goenroll(item.proid,this.props.chiFlag)}}>{showdata.operationbutton[1]}</span>
+                                                <span className="PLPopOver">
+                                                    {showdata.popover[0]}<br/> 
+                                                    {showdata.popover[1]}
+                                                    <a href="https://portal.summer-ospp.ac.cn/summer/" target="_blank">
+                                                        {showdata.popover[2]}
+                                                    </a>
                                                 </span>
-                                                
-                                               
-                                            </span>
-                                        </div>
-                                    )
-    
-                                })
-                          
-                            
-                        }
-                        
-                      
+                                            
+                                            </span> */}
+                                        </span>
+                                    </div>
+                                )
 
+                            }) 
+                        }
                     </div>
                     </div>
                     <div className=" content1200">

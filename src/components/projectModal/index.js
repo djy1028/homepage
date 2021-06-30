@@ -15,6 +15,7 @@ import './index.less';
 import { connect } from 'react-redux'
 import {getSplit,getSupportLanguage,gohash,gourl} from "../../util/url.js";
 // import studata from '../../data/stunum.json'
+import prolist from '../../data/proList.json'
 class ProjectModal extends React.Component{
     constructor(props){
        super(props)
@@ -50,16 +51,18 @@ class ProjectModal extends React.Component{
         this.props.setProDetail(this.props.item)
         gourl("/#/org/prodetail/"+this.props.item.label)
     }
-
-  
-
- 
-
-
+   
     render(){
         // let showdata = this.props.showdata
         // let item = this.props.item
         const {showdata,item,prourl,studata} = this.props
+        console.log(item)
+        let studentSelected;
+        prolist.forEach(it=>{
+            if(it.proid === item.proid){
+                studentSelected = it.selectedStudentList.join(" ")
+            }
+        })
         return(         
             <div id={item.label} className={["projectListItem",this.getDegree(item.difficulty)].join(" ")} >
                 <div className="projectListItemLeft">
@@ -78,6 +81,9 @@ class ProjectModal extends React.Component{
                         </div>
                                                 
                         <div className="orgProjectBottomLeft">
+                            <div>{showdata.proStudents}{
+                               studentSelected
+                            }</div>
                             <div>{showdata.proDi}{this.getDegreeBy(item.difficulty)}</div>
                             <div>{showdata.lang}{getSupportLanguage(item.spl)}</div>
                             <div>{showdata.orgstunum}{studata[item.proid.toString()]||0}</div>

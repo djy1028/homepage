@@ -26,6 +26,8 @@
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
+    "echarts": "^5.1.2",
+    "echarts-for-react": "^3.0.1",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-react-app": "^6.0.0",
@@ -162,5 +164,8 @@
       "react-app"
     ]
   },
-  "proxy": "http://localhost:8081"
+  "proxy": "http://localhost:8081",
+  "devDependencies": {
+    "pinyin": "^2.10.2"
+  }
 }

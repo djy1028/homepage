@@ -1,0 +1,324 @@
+.datas{
+    position: relative;
+    background-color: #f6f7f8;
+    .datas_header{
+        width: 100%;
+        height: 400px;
+        background-image: url('../../img/dataresult/databanner-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+        display: flex;
+        margin-bottom: 40px;
+        justify-content: center;
+        align-items: center;
+        .datas_header_des{
+            .datas_title{
+                font-family: SourceHanSansCN-Regular;
+                font-size: 48px;
+                letter-spacing: 3px;
+                color: #004f90;
+            }
+            .datas_text{
+                font-family: SourceHanSansCN-Heavy;
+                font-size: 72px;
+                letter-spacing: 5px;
+                color: #004f90;
+                font-weight: bold;
+            }
+        }
+        
+    }
+    .datas_content_show{
+        // width: 1200px;
+        position: relative;
+        margin: 0 auto;
+        .pro_data,.stu_data,.org_data{
+            width:100%;
+            padding: 23px;
+            margin-bottom:50px;
+            background-color: #fff;
+            .pro_data_title,.stu_data_title,.org_data_title{
+                width: 100%;
+                height: 30px;
+                font-family: MicrosoftYaHei;
+                font-size: 30px;
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 2px;
+                color: #333333;
+            }
+            .pro_data_bar1,.pro_data_bar2,.pro_data_bar3,.stu_data_bar2{
+                height:530px;
+                width:100%;
+                position: relative;
+                .echarts-for-react {
+                    width:100%;
+                    height:490px !important;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+            .pro_data_divide{
+                height:1px;
+                width:100%;
+                background-color: #eaeaea;
+            }
+            .pro_data_bar2title,.pro_data_bar3title,.stu_data_bar2_title{
+                width: 100%;
+                height: 27px;
+                font-family: MicrosoftYaHei;
+                font-size: 24px;
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 2px;
+                color: #666666;
+                margin-top: 30px;
+            }
+          
+        }
+        .stu_data,.org_data{
+            .stu_data_title,.org_data_title{
+                margin-bottom: 50px;
+            }
+            .stu_data_des,.org_data_des{
+                width: 100%;
+                height: 200px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                .stu_data_desItem,.org_data_desItem{
+                    width: 350px;
+                    height: 120px;
+                    background-color: #eef7ff;
+                    position: relative;
+                    .stu_data_desInfo,.org_data_desInfo{
+                        width:100%;
+                        position: absolute;
+                        top:50%;
+                        transform: translate(0,-50%);
+                        padding-left: 10%;
+                        .stu_data_desItem_key,.org_data_desItem_key{
+                            font-family: MicrosoftYaHei;
+                            font-size: 18px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 1px;
+                            color: #666666;
+                        }
+                        .stu_data_desItem_val,.org_data_desItem_val{
+                            font-family: MicrosoftYaHei;
+                            font-size: 36px;
+                            font-weight: normal;
+                            font-stretch: normal;
+                            letter-spacing: 3px;
+                            color: #4171ff;
+                            .stu_data_unit{
+                                line-height: 40px;
+                                height: 40px;
+                                vertical-align: middle;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+                .org_data_desItem{
+                    width:540px
+                }
+            }
+            .org_data_des{
+                height:150px;
+            }
+            .org_data_bar1_title{
+                font-family: MicrosoftYaHeiUI;
+                font-size: 24px;
+                font-weight: normal;
+                font-stretch: normal;
+                letter-spacing: 2px;
+                color: #333333;
+                margin-top:90px;
+            }
+            .org_data_bar1{
+                height:530px;
+                width:100%;
+                position: relative;
+                padding-top:30px;
+                .org_map{
+                    display: inline-block;
+                    width:65%;
+                    height:100%;
+                    position:relative;
+                    .echarts-for-react {
+                        width:100%;
+                        height:400px !important;
+                        position: absolute;
+                        left: 50%;
+                        top: 40%;
+                        transform: translate(-50%,-50%);
+                    }
+                    
+                }
+                .org_map_des{
+                    float: right;
+                    width: 30%;
+                    height: 90%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    .org_map_desItem{
+                        margin-bottom:15px;
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 750px) {
+    .datas {
+        .datas_header{
+            background-image: url(../../img/liveshow/banner-h5.png);
+            background-size: 100% 100%;
+            height: 350px;
+            padding-top: 55px;
+            .datas_header_des{
+                width:92%;
+                letter-spacing: 0;
+                font-size: 14px;
+                line-height: 40px;
+                background: #006cc5;
+                border-radius: 68px;
+                padding: 0;
+                margin: 30px 0;
+                color: #ffffff;
+                // display: flex;
+                // justify-content: center;
+                .datas_title{
+                    font-family: SourceHanSansCN-Regular;
+                    font-size: 14px;
+                    letter-spacing: 0px;
+                    color:#fff;
+                    margin-right: 2rem;
+                    text-align: center;
+                }
+                .datas_text{
+                    font-family: SourceHanSansCN-Heavy;
+                    font-size: 16px;
+                    letter-spacing: 0px;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
+        .datas_content_show{
+          .pro_data,.stu_data,.org_data{
+            .pro_data_title,.stu_data_title,.org_data_title,.pro_data_bar2title,.pro_data_bar3title{
+                font-size: 20px;
+                height: 60px;
+            }
+            .stu_data_bar2_title{
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            .stu_data_des,.org_data_des{
+                height:300px;
+                .stu_data_desItem,.org_data_desItem{
+                  width: 350px ;
+                  height: 90px ;
+                  .stu_data_desItem_key,.org_data_desItem_key{
+                    font-size: 16px !important;
+                  }
+                  .stu_data_desItem_val,.org_data_desItem_val{
+                    font-size: 20px !important;
+                    .stu_data_unit{
+                        line-height: 40px;
+                        height: 40px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                    }
+                }
+              }
+            }
+            .org_data_des{
+                height:200px;
+            }
+            .org_data_bar1{
+                height:500px;
+                width:100%;
+                position: relative;
+                padding-top:15px;
+                .org_map{
+                    width:100%;
+                    height:100%;
+                    position:relative;
+                    .echarts-for-react {
+                        width:100%;
+                        height:300px !important;
+                        position: absolute;
+                        left: 50%;
+                        top: 30%;
+                        transform: translate(-50%,-50%);
+                    }
+                    
+                }
+                .org_map_des{
+                    position: absolute;
+                    top: 350px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    height: 0;
+                    flex-direction: row;
+                    .org_map_desItem{
+                        margin-bottom: 5px;
+                        font-size: 13px !important;
+                        width: 140px;
+                    }
+                }
+            }
+          }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 750px) and (max-width: 1200px) {
+    .datas {
+        .datas_content_show{
+          .pro_data,.stu_data,.org_data{
+            .stu_data_des,.org_data_des{
+                .stu_data_desItem,.org_data_desItem{
+                  width: 250px ;
+                  height: 105px ;
+                  .stu_data_desItem_key,.org_data_desItem_key{
+                    font-size: 16px !important;
+                  }
+                  .stu_data_desItem_val,.org_data_desItem_val{
+                    font-size: 20px !important;
+                    .stu_data_unit{
+                        line-height: 40px;
+                        height: 40px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                    }
+                }
+              }
+            }
+            .org_data_des{
+                height:120px;
+            }
+            .org_data_bar1{
+                height:500px;
+                width:100%;
+                position: relative;
+                padding-top:15px;
+            }
+          }
+        }
+    }
+}

@@ -10,6 +10,16 @@
   font-size: 20px;
   padding-bottom: 22px;
   color: #666;
+  .ProjectListDownload{
+    color:#000;
+    font-size: 16px;
+    &:hover{
+      text-decoration: underline;
+    }
+    img{
+      margin-left:8px;
+    }
+  }
 }
 
 .ProjectListPageItemOne {
@@ -249,6 +259,13 @@
   font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
+  position: relative;
+  .sortDescription{
+    font-size: 14px;
+    position: absolute;
+    top:-40px;
+    right:20px;
+  }
 }
 
 .ProjectListLCLine {
@@ -296,7 +313,7 @@
   text-align: center;
 }
 
-.ProjectListLCCommunity {
+.ProjectListLCCommunity,.ProjectListLCStudent{
   width: 200px;
   display: inline-block;
   color: rgba(0, 0, 0, 0.85);
@@ -308,6 +325,12 @@
   cursor: pointer;
 }
 
+.ProjectListLCStudent{
+  text-align: center
+}
+
+
+
 .ProjectListLCDegree {
   width: 80px;
   display: inline-block;
@@ -316,7 +339,8 @@
 }
 
 .ProjectListLCOperation {
-  width: 200px;
+  // width: 200px;
+  width: 110px;
   display: inline-block;
   text-align: center;
 }
@@ -397,11 +421,11 @@
   background: #ffffff;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: unset;
-}
+// *,
+// *::before,
+// *::after {
+//   box-sizing: unset;
+// }
 
 .PLOperationButton {
   width: 84px;
@@ -437,6 +461,12 @@
   .Org .ant-pagination .ant-pagination-prev {
     background-color: #396cc8 !important;
   }
+  .ProjectListPageState{
+    .ProjectListDownload{
+      font-size: 14px;
+    }
+  }
+  
 }
 
 @media screen and (max-width: 1480px) {
