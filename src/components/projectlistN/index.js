@@ -106,19 +106,25 @@ class ProjectlistN extends React.Component{
         //处理中选项目按学生姓名排序
         let oriPro = this.state.datall
         oriPro.forEach((item)=>{
-            if(item.selectedStudentList){
+            if(item.selectedStudentList.length>0){
                 item["FL"] = item.selectedStudentList.map((itemPY)=>{
                     return pinyin(itemPY.substr(0,1), {style: pinyin.STYLE_FIRST_LETTER}).flat()[0]
                 }).sort()[0]
 
-                item.selectedStudentList = item.selectedStudentList.sort(
-                   (param1, param2)=> param1.localeCompare(param2,"zh")
-                )
+               
             }
+            else{
+                item["FL"] = 'zzz'
+            }
+            item.selectedStudentList = item.selectedStudentList.sort(
+                (param1, param2)=> param1.localeCompare(param2,"zh")
+            )
         })
-      
         let sortDatall = _.orderBy(oriPro,["FL"],["asc"])
+      
+        console.log(sortDatall)
         this.setState({
+            datall:sortDatall,
             projectlist:sortDatall,
             projectlistdata:sortDatall.slice(0,this.state.pagesize)
         })
@@ -377,9 +383,9 @@ class ProjectlistN extends React.Component{
                     </div>
 
                     <div className="ProjectListLCWrapper content1200">
-                        
+                    
                     <div className="ProjectListLC">
-                        
+                        <span className = 'sortDescription'>{showdata.sortDes}</span>
                         <div className="ProjectListLCLine Header">
                             <span className="ProjectListLCID ">{showdata.projectNumber}</span>
                             <span className="ProjectListLCName">{showdata.projectName}</span>

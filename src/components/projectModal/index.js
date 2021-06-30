@@ -15,6 +15,7 @@ import './index.less';
 import { connect } from 'react-redux'
 import {getSplit,getSupportLanguage,gohash,gourl} from "../../util/url.js";
 // import studata from '../../data/stunum.json'
+// import selectedJSON from '../../data/selected.json'
 class ProjectModal extends React.Component{
     constructor(props){
        super(props)
@@ -55,6 +56,7 @@ class ProjectModal extends React.Component{
         // let showdata = this.props.showdata
         // let item = this.props.item
         const {showdata,item,prourl,studata} = this.props
+        console.log(item)
         return(         
             <div id={item.label} className={["projectListItem",this.getDegree(item.difficulty)].join(" ")} >
                 <div className="projectListItemLeft">

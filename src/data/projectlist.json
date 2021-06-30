@@ -42,7 +42,8 @@
         "popover":["5月24日至6月13日开放申请，","此前可","注册账号"],
         "tag":"标签：",
         "orgstunum":"当前申请人数：",
-        "downloadTitle":"开源软件供应链点亮计划-暑期2021 中选名单.pdf"
+        "downloadTitle":"开源软件供应链点亮计划-暑期2021 中选名单.pdf",
+        "sortDes":"* 按中选学生姓名进行排序"
 
     },
     "en":{
@@ -87,7 +88,8 @@
         "popover":["Project application will open from May 24 to June 13.","","You can sign up now. "],
         "tag":"Tag: ",
         "orgstunum":"Numbers of Applicants：",
-        "downloadTitle":"List of the Selected Student.pdf"
+        "downloadTitle":"List of the Selected Student.pdf",
+        "sortDes":"* Sort by the name of the selected student"
         
     }
 }
