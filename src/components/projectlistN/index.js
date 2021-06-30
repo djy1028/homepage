@@ -322,10 +322,10 @@ class ProjectlistN extends React.Component{
                                     <span className="ProjectListPageItemSum">{showdata.pagesum[0]} {Math.ceil(datalllength/this.state.pagesize)} {showdata.pagesum[1]}</span>
                                 </span>
                             </div>
-                            {/* <a className="ProjectListDownload" href={pdf} download="list.pdf">
+                            <a className="ProjectListDownload" href={pdf} download={showdata.downloadTitle}>
                                {showdata.downloadTitle}
                                 <img src={download} />
-                            </a> */}
+                            </a>
                         </div>
                         {/* <div className="ProjectListApplyState">{showdata.applyState[2]}</div> */}
                         <div className="ProjectListSelect">
