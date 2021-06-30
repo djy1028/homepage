@@ -442,7 +442,7 @@
         },
         "stu_data":{
             "name":"学生数据",
-            "stu_data_des":[{"申请学生数":1130},{"提交申请数":1818},{"中选学生数":681}],
+            "stu_data_des":[{"申请学生数":1126},{"提交申请数":1814},{"中选学生数":681}],
             "bar_two":{
                 "title":"申请及中选人数高校分布",
                 "option":{
@@ -1942,7 +1942,7 @@
         },
         "stu_data":{
             "name":"Student Data",
-            "stu_data_des":[{"Applicants":1130},{"Total Applications":1818},{"Selected Applicants":681}],
+            "stu_data_des":[{"Applicants":1126},{"Total Applications":1814},{"Selected Applicants":681}],
             "bar_two":{
                 "title":"Distribution of Universities from Applicants and Selected Students",
                 "option":{
