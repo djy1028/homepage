@@ -1528,9 +1528,9 @@
     },
     "en":{
         "banner_title":"Summer 2021 of Open Source Promotion Plan",
-        "banner_text":"Program Statics",
+        "banner_text":"Program Data",
         "pro_data":{
-            "name": "Project Statics",
+            "name": "Project Data",
             "bar_one":{
                 "option":{
                     "tooltip": {
@@ -1941,7 +1941,7 @@
             }
         },
         "stu_data":{
-            "name":"Student Statics",
+            "name":"Student Data",
             "stu_data_des":[{"Applicants":1130},{"Total Applications":1818},{"Selected Applicants":681}],
             "bar_two":{
                 "title":"Distribution of Universities from Applicants and Selected Students",
@@ -3022,7 +3022,7 @@
             }
         },
         "org_data":{
-            "name":"Organization and Higher Educational Institutions Statics",
+            "name":"Organization and Higher Educational Institutions Data",
             "org_data_des":[{"Number of Organizations":109},{"Number of Higher Educational Institutions":447}],
             "bar_one":{
                 "title":"Global Regional Distribution of Universities",
