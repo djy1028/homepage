@@ -38,7 +38,7 @@
         "tech_tag": "Python",
         "domain_tag": "AI",
         "selectedStudentList": [
-            
+            "-"
         ]
     },
     {
@@ -65,7 +65,7 @@
         "spl": 1,
         "tech_tag": "Linux Cloud Native",
         "domain_tag": "OS Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "julia",
@@ -189,7 +189,7 @@
         "spl": 0,
         "tech_tag": "Go Kubernetes",
         "domain_tag": "Cloud Native Security",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "eventmesh",
@@ -215,7 +215,7 @@
         "spl": 2,
         "tech_tag": "C++",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "lcui",
@@ -255,7 +255,7 @@
         "spl": 2,
         "tech_tag": "Python Java SQL",
         "domain_tag": "OS Distributed System openEuler",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "maxkey",
@@ -281,7 +281,7 @@
         "spl": 2,
         "tech_tag": "JavaScript JavaScript",
         "domain_tag": "Virtualization Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -335,7 +335,7 @@
         "spl": 1,
         "tech_tag": "Go Database Git",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "julia",
@@ -347,7 +347,7 @@
         "spl": 2,
         "tech_tag": "Julia",
         "domain_tag": "Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -387,7 +387,7 @@
         "spl": 1,
         "tech_tag": "Linux Rust",
         "domain_tag": "OS Rust",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "postgresql",
@@ -441,7 +441,7 @@
         "spl": 1,
         "tech_tag": "Linux Python Git Docker Qt",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mars",
@@ -677,7 +677,7 @@
         "spl": 2,
         "tech_tag": "JavaScript PHP Git Joomla!",
         "domain_tag": "Web Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -787,7 +787,7 @@
         "spl": 0,
         "tech_tag": "C++ Robotics",
         "domain_tag": "Programming Language Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "julia",
@@ -799,7 +799,7 @@
         "spl": 0,
         "tech_tag": "Julia",
         "domain_tag": "Quantum Computing",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubeedge",
@@ -867,7 +867,7 @@
         "spl": 0,
         "tech_tag": "Go Cloud Native Lua x509",
         "domain_tag": "Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "simplexx",
@@ -935,7 +935,7 @@
         "spl": 2,
         "tech_tag": "C C++ Git",
         "domain_tag": "AI SIMD  WebAssembly",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachecarbondata",
@@ -975,7 +975,7 @@
         "spl": 0,
         "tech_tag": "Rust RDMA",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -1015,7 +1015,7 @@
         "spl": 1,
         "tech_tag": "Linux Cloud Native",
         "domain_tag": "OS Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -1041,7 +1041,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript Distributed System workflow",
         "domain_tag": "Big Data Distributed System workflow",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -1053,7 +1053,7 @@
         "spl": 0,
         "tech_tag": "Go Cloud Native Kubernetes Apache APISIX",
         "domain_tag": "Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "nginx",
@@ -1107,7 +1107,7 @@
         "spl": 1,
         "tech_tag": "Linux MariaDB",
         "domain_tag": "OS 数据库",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "dubbogo",
@@ -1147,7 +1147,7 @@
         "spl": 1,
         "tech_tag": "Distributed System Storage 分布式文件系统",
         "domain_tag": "Distributed System 分布式文件系统、对象存储s3",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -1173,7 +1173,7 @@
         "spl": 2,
         "tech_tag": "Java C OpenGL",
         "domain_tag": "Dev Tools Graphics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -1199,7 +1199,7 @@
         "spl": 0,
         "tech_tag": "C++ Git Robotics",
         "domain_tag": "Programming Language Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "milvus",
@@ -1225,7 +1225,7 @@
         "spl": 1,
         "tech_tag": "C",
         "domain_tag": "Database",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -1237,7 +1237,7 @@
         "spl": 0,
         "tech_tag": "Distributed System P4",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -1361,7 +1361,7 @@
         "spl": 1,
         "tech_tag": "AI",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -1471,7 +1471,7 @@
         "spl": 2,
         "tech_tag": "C",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -1721,7 +1721,7 @@
         "spl": 1,
         "tech_tag": "Rust",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "justauth",
@@ -1761,7 +1761,7 @@
         "spl": 0,
         "tech_tag": "C++ Robotics",
         "domain_tag": "Programming Language Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "dtp",
@@ -1773,7 +1773,7 @@
         "spl": 1,
         "tech_tag": "Rust",
         "domain_tag": "Computer Network",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "serverlessdevs",
@@ -1799,7 +1799,7 @@
         "spl": 2,
         "tech_tag": "C++",
         "domain_tag": "Bioinformatics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "megengine",
@@ -1853,7 +1853,7 @@
         "spl": 0,
         "tech_tag": "Linux Rust",
         "domain_tag": "Big Data Query Engine",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -1935,7 +1935,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ Docker MiniUGI，开源社区",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -1989,7 +1989,7 @@
         "spl": 2,
         "tech_tag": "Java C",
         "domain_tag": "Dev Tools Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2001,7 +2001,7 @@
         "spl": 1,
         "tech_tag": "Linux Cloud Native Container",
         "domain_tag": "Linux Kernel OS Virtualization",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheiotdb",
@@ -2027,7 +2027,7 @@
         "spl": 0,
         "tech_tag": "Python C++ Make shell",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "rcoreos",
@@ -2053,7 +2053,7 @@
         "spl": 0,
         "tech_tag": "Distributed System Rust Micro Service",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2079,7 +2079,7 @@
         "spl": 2,
         "tech_tag": "Python Java C",
         "domain_tag": "Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2105,7 +2105,7 @@
         "spl": 1,
         "tech_tag": "Linux Rust",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "codenameone",
@@ -2117,7 +2117,7 @@
         "spl": 2,
         "tech_tag": "Java Kotlin",
         "domain_tag": "Dev Tools Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "sureness",
@@ -2171,7 +2171,7 @@
         "spl": 1,
         "tech_tag": "Linux Python Emacs  Lisp",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2225,7 +2225,7 @@
         "spl": 1,
         "tech_tag": "Linux openEuler",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -2279,7 +2279,7 @@
         "spl": 1,
         "tech_tag": "kernel，内存管理",
         "domain_tag": "kernel",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -2305,7 +2305,7 @@
         "spl": 1,
         "tech_tag": "AI",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -2345,7 +2345,7 @@
         "spl": 1,
         "tech_tag": "Cloud Native",
         "domain_tag": "Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "piflow",
@@ -2399,7 +2399,7 @@
         "spl": 1,
         "tech_tag": "Linux KSM",
         "domain_tag": "Linux Kernel OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "seata",
@@ -2425,7 +2425,7 @@
         "spl": 1,
         "tech_tag": "AI",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2437,7 +2437,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "OS Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "milvus",
@@ -2491,7 +2491,7 @@
         "spl": 1,
         "tech_tag": "Linux Git Docker",
         "domain_tag": "Linux Kernel Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -2559,7 +2559,7 @@
         "spl": 2,
         "tech_tag": "Java Cloud Native Distributed System",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "codenameone",
@@ -2627,7 +2627,7 @@
         "spl": 2,
         "tech_tag": "Go Linux Python Java Cloud Native Automation",
         "domain_tag": "Linux Kernel Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "aos",
@@ -2709,7 +2709,7 @@
         "spl": 1,
         "tech_tag": "Rust",
         "domain_tag": "Big Data Dev Tools Distributed System Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -2749,7 +2749,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -2761,7 +2761,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "OS 安全",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openlookeng",
@@ -2829,7 +2829,7 @@
         "spl": 0,
         "tech_tag": "Rust",
         "domain_tag": "Linux Kernel",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -2911,7 +2911,7 @@
         "spl": 1,
         "tech_tag": "Java TypeScript Git",
         "domain_tag": "Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -3021,7 +3021,7 @@
         "spl": 1,
         "tech_tag": "Linux Rust",
         "domain_tag": "Linux Kernel OS Virtualization",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachepulsar",
@@ -3131,7 +3131,7 @@
         "spl": 1,
         "tech_tag": "Linux openEuler BPF",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheskywalking",
@@ -3353,7 +3353,7 @@
         "spl": 1,
         "tech_tag": "Linux 编译框架，openEuler",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "arthas",
@@ -3421,7 +3421,7 @@
         "spl": 1,
         "tech_tag": "Python",
         "domain_tag": "Database",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "tensorbase",
@@ -3475,7 +3475,7 @@
         "spl": 2,
         "tech_tag": "C Julia",
         "domain_tag": "Image Processing",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -3487,7 +3487,7 @@
         "spl": 1,
         "tech_tag": "Linux Rust",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -3513,7 +3513,7 @@
         "spl": 1,
         "tech_tag": "Java Rust",
         "domain_tag": "Cloud Native Big Data Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -3553,7 +3553,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native Container Distributed System Kubernetes Micro Service Docker OAM",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "sentinel",
@@ -3565,7 +3565,7 @@
         "spl": 1,
         "tech_tag": "Go Java Cloud Native Micro Service",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheshardingsphere",
@@ -3871,7 +3871,7 @@
         "spl": 1,
         "tech_tag": "Rust",
         "domain_tag": "Computer Network",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -3925,7 +3925,7 @@
         "spl": 1,
         "tech_tag": "iOS OC",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedubbo",
@@ -3979,7 +3979,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "AI OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "tuna",
@@ -4019,7 +4019,7 @@
         "spl": 1,
         "tech_tag": "Java Distributed System Database",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "universaloj",
@@ -4059,7 +4059,7 @@
         "spl": 2,
         "tech_tag": "Git GitHub  CSS  Python  Java Script (optional)",
         "domain_tag": "Web Front end  UX/UI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "graphscope",
@@ -4141,7 +4141,7 @@
         "spl": 0,
         "tech_tag": "Robotics  ROS",
         "domain_tag": "Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "opengauss",
@@ -4237,7 +4237,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native Container Kubernetes Docker",
         "domain_tag": "Cloud Native Container",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -4291,7 +4291,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript NodeJS Git vue",
         "domain_tag": "Virtualization Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "zstackcloud",
@@ -4373,7 +4373,7 @@
         "spl": 1,
         "tech_tag": "Rust",
         "domain_tag": "Computer Network",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "libreoffice",
@@ -4385,7 +4385,7 @@
         "spl": 2,
         "tech_tag": "AI C++ Deep Learning Framework",
         "domain_tag": "AI Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -4397,7 +4397,7 @@
         "spl": 0,
         "tech_tag": "Rust",
         "domain_tag": "Linux Kernel",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openct",
@@ -4535,7 +4535,7 @@
         "spl": 1,
         "tech_tag": "Linux Python C++ Git",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -4617,7 +4617,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native Distributed System Micro Service",
         "domain_tag": "Cloud Native Distributed System Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -4755,7 +4755,7 @@
         "spl": 0,
         "tech_tag": "Python C++ Make shell",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -4851,7 +4851,7 @@
         "spl": 1,
         "tech_tag": "Linux Python Cloud Native AI C++ Deep Learning Framework Git IoT",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "tensorbase",
@@ -4877,7 +4877,7 @@
         "spl": 1,
         "tech_tag": "Go C++ Database Rust Backend，Network",
         "domain_tag": "Web Mirror",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -4959,7 +4959,7 @@
         "spl": 0,
         "tech_tag": "Go Cloud Native Kubernetes",
         "domain_tag": "Cloud Native Dev Tools Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -5125,7 +5125,7 @@
         "spl": 1,
         "tech_tag": "Linux openEuler",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mars",
@@ -5249,7 +5249,7 @@
         "spl": 1,
         "tech_tag": "AI",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -5261,7 +5261,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript Distributed System workflow",
         "domain_tag": "Big Data Distributed System workflow",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheskywalking",
@@ -5273,7 +5273,7 @@
         "spl": 0,
         "tech_tag": "Go",
         "domain_tag": "Distributed System Tracing",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -5299,7 +5299,7 @@
         "spl": 1,
         "tech_tag": "Linux Git Hbase",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "casbin",
@@ -5325,7 +5325,7 @@
         "spl": 2,
         "tech_tag": "C C++",
         "domain_tag": "AI SIMD",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedubbo",
@@ -5379,7 +5379,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript Distributed System workflow",
         "domain_tag": "Big Data Distributed System workflow",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "serverlessdevs",
@@ -5489,7 +5489,7 @@
         "spl": 2,
         "tech_tag": "Linux Git",
         "domain_tag": "Linux Kernel Virtualization Programming Language freepascal  assembler",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "universaloj",
@@ -5585,7 +5585,7 @@
         "spl": 0,
         "tech_tag": "Linux C C++ Rust GTK",
         "domain_tag": "Software Operating System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "opencurve",
@@ -5597,7 +5597,7 @@
         "spl": 1,
         "tech_tag": "Python C++",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachepulsar",
@@ -5623,7 +5623,7 @@
         "spl": 1,
         "tech_tag": "Java",
         "domain_tag": "Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubedl",
@@ -5649,7 +5649,7 @@
         "spl": 1,
         "tech_tag": "Linux EDA",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -5675,7 +5675,7 @@
         "spl": 0,
         "tech_tag": "C++ Robotics",
         "domain_tag": "Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "oiwiki",
@@ -5729,7 +5729,7 @@
         "spl": 2,
         "tech_tag": "C",
         "domain_tag": "OS Graphics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -5811,7 +5811,7 @@
         "spl": 1,
         "tech_tag": "Go Python",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "libreoffice",
@@ -5823,7 +5823,7 @@
         "spl": 2,
         "tech_tag": "Python C++ Make shell",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -5975,7 +5975,7 @@
         "spl": 1,
         "tech_tag": "Go Linux Cloud Native Distributed System",
         "domain_tag": "Cloud Native Virtualization Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -5987,7 +5987,7 @@
         "spl": 1,
         "tech_tag": "RISC-V",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -6139,7 +6139,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native Container Kubernetes",
         "domain_tag": "Cloud Native Container",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "seata",
@@ -6235,7 +6235,7 @@
         "spl": 1,
         "tech_tag": "Linux openEuler",
         "domain_tag": "Linux Kernel Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -6317,7 +6317,7 @@
         "spl": 0,
         "tech_tag": "Java Docker",
         "domain_tag": "Dev Tools Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -6371,7 +6371,7 @@
         "spl": 1,
         "tech_tag": "Linux Git Spark Flink Elasticsearch",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "casbin",
@@ -6411,7 +6411,7 @@
         "spl": 1,
         "tech_tag": "C++ Android",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedubbo",
@@ -6437,7 +6437,7 @@
         "spl": 1,
         "tech_tag": "C",
         "domain_tag": "Database，",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -6603,7 +6603,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -6657,7 +6657,7 @@
         "spl": 1,
         "tech_tag": "Cloud Native NodeJS Micro Service",
         "domain_tag": "Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "volcano",
@@ -6669,7 +6669,7 @@
         "spl": 2,
         "tech_tag": "Go Cloud Native Container Kubernetes",
         "domain_tag": "Cloud Native Container",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -6877,7 +6877,7 @@
         "spl": 1,
         "tech_tag": "lua",
         "domain_tag": "Build System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -6903,7 +6903,7 @@
         "spl": 1,
         "tech_tag": "Linux Android  Gentoo",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "hgbczxjt",
@@ -6915,7 +6915,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -7011,7 +7011,7 @@
         "spl": 0,
         "tech_tag": "Cloud Native Lua HTTP",
         "domain_tag": "Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "seata",
@@ -7051,7 +7051,7 @@
         "spl": 2,
         "tech_tag": "Linux C Git",
         "domain_tag": "OS Display",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "sentinel",
@@ -7091,7 +7091,7 @@
         "spl": 1,
         "tech_tag": "文档",
         "domain_tag": "ERP  管理软件  信息化",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "universaloj",
@@ -7145,7 +7145,7 @@
         "spl": 1,
         "tech_tag": "JDK",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "rtthread",
@@ -7185,7 +7185,7 @@
         "spl": 0,
         "tech_tag": "Go Cloud Native",
         "domain_tag": "Cloud Native Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "milvus",
@@ -7253,7 +7253,7 @@
         "spl": 0,
         "tech_tag": "Distributed System Rust",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "simplexx",
@@ -7489,7 +7489,7 @@
         "spl": 1,
         "tech_tag": "Go Linux Cloud Native Container Kubernetes Git Docker",
         "domain_tag": "Cloud Native Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "rtthread",
@@ -7599,7 +7599,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "serverlessdevs",
@@ -7681,7 +7681,7 @@
         "spl": 1,
         "tech_tag": "C AI RTOS",
         "domain_tag": "AI OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -7847,7 +7847,7 @@
         "spl": 1,
         "tech_tag": "Python AI C++ Automation",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheiotdb",
@@ -8055,7 +8055,7 @@
         "spl": 1,
         "tech_tag": "Java Cloud Native Distributed System Database Micro Service",
         "domain_tag": "Cloud Native Distributed System Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "justauth",
@@ -8193,7 +8193,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT MiniUGI，开源社区",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubevela",
@@ -8261,7 +8261,7 @@
         "spl": 1,
         "tech_tag": "Linux perf",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheshardingsphere",
@@ -8329,7 +8329,7 @@
         "spl": 2,
         "tech_tag": "Cloud Native Container Kubernetes",
         "domain_tag": "Cloud Native Container",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "universaloj",
@@ -8383,7 +8383,7 @@
         "spl": 2,
         "tech_tag": "C C++",
         "domain_tag": "AI SIMD",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -8451,7 +8451,7 @@
         "spl": 1,
         "tech_tag": "Linux Git Spark Flink Socket",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -8575,7 +8575,7 @@
         "spl": 0,
         "tech_tag": "Rust",
         "domain_tag": "Linux Kernel Distributed System Storage",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "piflow",
@@ -8615,7 +8615,7 @@
         "spl": 0,
         "tech_tag": "AI C++ Robotics",
         "domain_tag": "AI Robotics",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -8669,7 +8669,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "graphscope",
@@ -8709,7 +8709,7 @@
         "spl": 1,
         "tech_tag": "risc-v  CPU Cache",
         "domain_tag": "CPU",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -8735,7 +8735,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript Distributed System workflow",
         "domain_tag": "Big Data Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -8747,7 +8747,7 @@
         "spl": 1,
         "tech_tag": "Linux qemu",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -8787,7 +8787,7 @@
         "spl": 1,
         "tech_tag": "Go Linux Cloud Native Container Kubernetes Git Docker",
         "domain_tag": "Cloud Native Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "linux",
@@ -8869,7 +8869,7 @@
         "spl": 0,
         "tech_tag": "Java Distributed System Database Big Data",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "yunionio",
@@ -8937,7 +8937,7 @@
         "spl": 1,
         "tech_tag": "Python JavaScript NodeJS",
         "domain_tag": "Virtualization Tracing Web",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -8949,7 +8949,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "opengauss",
@@ -9017,7 +9017,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript NodeJS Vue",
         "domain_tag": "Dev Tools Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openmessaging",
@@ -9029,7 +9029,7 @@
         "spl": 2,
         "tech_tag": "Java Cloud Native Distributed System",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "eduoj",
@@ -9097,7 +9097,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT 操作系统，MiniUGI，开源社区",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "tengine",
@@ -9123,7 +9123,7 @@
         "spl": 1,
         "tech_tag": "Go Distributed System Micro Service",
         "domain_tag": "Distributed System Web Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -9261,7 +9261,7 @@
         "spl": 0,
         "tech_tag": "Rust LLVM",
         "domain_tag": "Virtualization Compiler",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "wechaty",
@@ -9371,7 +9371,7 @@
         "spl": 2,
         "tech_tag": "Python Java SQL",
         "domain_tag": "OS Container Virtualization Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheshardingsphere",
@@ -9383,7 +9383,7 @@
         "spl": 1,
         "tech_tag": "Java Database",
         "domain_tag": "Big Data Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mars",
@@ -9465,7 +9465,7 @@
         "spl": 1,
         "tech_tag": "Database Git Spark",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "oiwiki",
@@ -9575,7 +9575,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native AI Kubernetes",
         "domain_tag": "AI Cloud Native Container",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "dtp",
@@ -9657,7 +9657,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "Linux Kernel AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "dubbogo",
@@ -9697,7 +9697,7 @@
         "spl": 1,
         "tech_tag": "Go Java Cloud Native Micro Service Service Mesh",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "linux",
@@ -9765,7 +9765,7 @@
         "spl": 0,
         "tech_tag": "Distributed System Rust Micro Service",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedubbo",
@@ -9833,7 +9833,7 @@
         "spl": 0,
         "tech_tag": "FPGA，Spinal HDL，Chisel，RISC-V",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -9901,7 +9901,7 @@
         "spl": 1,
         "tech_tag": "C Git LCUI",
         "domain_tag": "OS Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "eventmesh",
@@ -9955,7 +9955,7 @@
         "spl": 1,
         "tech_tag": "Python ONNX",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -10065,7 +10065,7 @@
         "spl": 2,
         "tech_tag": "C++",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "sofastack",
@@ -10161,7 +10161,7 @@
         "spl": 1,
         "tech_tag": "Java JavaScript Distributed System workflow",
         "domain_tag": "Big Data Distributed System workflow",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -10285,7 +10285,7 @@
         "spl": 1,
         "tech_tag": "Linux C RTOS C++ IoT 操作系统，MiniUGI，开源社区",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheiotdb",
@@ -10339,7 +10339,7 @@
         "spl": 1,
         "tech_tag": "Linux Java JDK",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10351,7 +10351,7 @@
         "spl": 1,
         "tech_tag": "Linux risc-v",
         "domain_tag": "Linux Kernel OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10419,7 +10419,7 @@
         "spl": 1,
         "tech_tag": "Linux Git Neo4j，Scala",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheapisix",
@@ -10487,7 +10487,7 @@
         "spl": 1,
         "tech_tag": "Linux Cloud Native 容器，openEuler",
         "domain_tag": "OS Cloud Native",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "linuxneihe",
@@ -10513,7 +10513,7 @@
         "spl": 1,
         "tech_tag": "Python C++",
         "domain_tag": "Cloud Native Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10553,7 +10553,7 @@
         "spl": 1,
         "tech_tag": "Go Cloud Native Distributed System",
         "domain_tag": "Cloud Native Virtualization Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10635,9 +10635,7 @@
         "spl": 1,
         "tech_tag": "Python JavaScript TypeScript Git",
         "domain_tag": "Web Visualization",
-        "selectedStudentList": [
-            
-        ]
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10705,7 +10703,7 @@
         "spl": 1,
         "tech_tag": "Linux Python Java Cloud Native AI C++ Deep Learning Framework Git IoT",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "mindspore",
@@ -10773,7 +10771,7 @@
         "spl": 2,
         "tech_tag": "C Git",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -10785,7 +10783,7 @@
         "spl": 0,
         "tech_tag": "FPGA，Spinal HDL，Chisel，RISC-V",
         "domain_tag": "Distributed System RDMA，InfiniBand",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "julia",
@@ -10811,7 +10809,7 @@
         "spl": 1,
         "tech_tag": "Python",
         "domain_tag": "Database  Ansible",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -10823,7 +10821,7 @@
         "spl": 1,
         "tech_tag": "Linux 测试 git",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -10877,7 +10875,7 @@
         "spl": 0,
         "tech_tag": "JavaScript React Vue，SQL，Web Shell",
         "domain_tag": "Big Data Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "kubesphere",
@@ -10945,7 +10943,7 @@
         "spl": 2,
         "tech_tag": "C C++",
         "domain_tag": "AI SIMD",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "ubuntukylin",
@@ -10971,7 +10969,7 @@
         "spl": 1,
         "tech_tag": "Python Java",
         "domain_tag": "Big Data",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apacheiotdb",
@@ -11095,7 +11093,7 @@
         "spl": 1,
         "tech_tag": "C C++",
         "domain_tag": "Programming Language",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "dokit",
@@ -11107,7 +11105,7 @@
         "spl": 1,
         "tech_tag": "JavaScript Vue",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "opencurve",
@@ -11119,7 +11117,7 @@
         "spl": 1,
         "tech_tag": "Linux C++ Storage Git",
         "domain_tag": "Distributed System",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "datenlord",
@@ -11229,7 +11227,7 @@
         "spl": 1,
         "tech_tag": "Linux Python Java AI C++ Deep Learning Framework",
         "domain_tag": "AI",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -11269,7 +11267,7 @@
         "spl": 1,
         "tech_tag": "Linux ceph openEuler",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "apachedolphinscheduler",
@@ -11323,7 +11321,7 @@
         "spl": 1,
         "tech_tag": "Linux",
         "domain_tag": "AI OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "openeuler",
@@ -11489,7 +11487,7 @@
         "spl": 2,
         "tech_tag": "C++",
         "domain_tag": "Desktop Office Productivity",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "wine",
@@ -11501,7 +11499,7 @@
         "spl": 2,
         "tech_tag": "C",
         "domain_tag": "OS Virtualization Programming Language qemu",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "tuna",
@@ -11513,7 +11511,7 @@
         "spl": 1,
         "tech_tag": "Linux Emacs  Lisp",
         "domain_tag": "Dev Tools",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "torounikernel",
@@ -11525,7 +11523,7 @@
         "spl": 0,
         "tech_tag": "Linux Automation Micro Service Storage Git",
         "domain_tag": "Linux Kernel Virtualization Programming Language freepascal  assembler  x86  KVM",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "projectc",
@@ -11831,7 +11829,7 @@
         "spl": 1,
         "tech_tag": "Git ObjectC",
         "domain_tag": "OS",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     },
     {
         "anchor": "alcbeijing",
@@ -11913,6 +11911,6 @@
         "spl": 1,
         "tech_tag": "Linux C++ Distributed System Storage",
         "domain_tag": "Distributed System Tracing",
-        "selectedStudentList": []
+        "selectedStudentList": ["-"]
     }
 ]

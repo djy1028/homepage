@@ -106,7 +106,7 @@ class ProjectlistN extends React.Component{
         //处理中选项目按学生姓名排序
         let oriPro = this.state.datall
         oriPro.forEach((item)=>{
-            if(item.selectedStudentList.length>0){
+            if(item.selectedStudentList[0] != "-"){
                 item["FL"] = item.selectedStudentList.map((itemPY)=>{
                     return pinyin(itemPY.substr(0,1), {style: pinyin.STYLE_FIRST_LETTER}).flat()[0]
                 }).sort()[0]
