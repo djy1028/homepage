@@ -122,19 +122,12 @@ class ProjectlistN extends React.Component{
             )
         })
         let sortDatall = _.orderBy(oriPro,["FL"],["asc"])
-      
-        console.log(sortDatall)
         this.setState({
             datall:sortDatall,
             projectlist:sortDatall,
             datastock:sortDatall,
             projectlistdata:sortDatall.slice(0,this.state.pagesize)
         })
-
-        // this.setState({
-        //     projectlistdata:this.state.datall.slice(0,this.state.pagesize),
-        // })
-        
     }
 
     itemRender(current, type, originalElement) {
