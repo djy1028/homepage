@@ -50,7 +50,12 @@
         {
             "img":"nanjing.jpg",
             "url":"http://nj.iscas.ac.cn/"
+        },
+        {
+            "img":"gzy.png",
+            "url":""
         }
+
     ],
     "cohost":[
         {
