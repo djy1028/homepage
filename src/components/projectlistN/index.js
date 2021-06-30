@@ -72,7 +72,8 @@ class ProjectlistN extends React.Component{
                 if(item.name.toLowerCase().includes(valuel)||
                 item.tech_tag.toLowerCase().includes(valuel)||
                 item.domain_tag.toLowerCase().includes(valuel)||
-                item.orgname.toLowerCase().includes(valuel)||(item.selectedStudentList&&item.selectedStudentList.join(" ").includes(valuel))||
+                item.orgname.toLowerCase().includes(valuel)||
+                (item.selectedStudentList.length>0 && item.selectedStudentList[0] !== '-' && item.selectedStudentList[0].includes(valuel))||
                 item.label.includes(valuel)){
                     showdataTemp.push(item)
                 }
@@ -126,6 +127,7 @@ class ProjectlistN extends React.Component{
         this.setState({
             datall:sortDatall,
             projectlist:sortDatall,
+            datastock:sortDatall,
             projectlistdata:sortDatall.slice(0,this.state.pagesize)
         })
 
