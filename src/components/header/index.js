@@ -123,7 +123,7 @@ class Header extends React.Component{
             <div className={["header", this.state.chiFlag].join(" ")}>
                 <div className="content1200 headerContent">
                     
-                    <div className="osscHeaderLogo" onClick={()=>{gohash("/homepage")}}></div>
+                    <div className="osscHeaderLogo" onClick={()=>{this.goPage("homepage")}}></div>
                    
                     
                     <div className="headerList">
