@@ -32,7 +32,7 @@
 				"time": "2021.05.08",
 				"profilelist": [{
 					"name": "夏小雅",
-					"profile": "X-lab、CHAOSS社区、开源社 2020-2021、Google Summer of Docs参与者",
+					"profile": "X-lab、CHAOSS社区、开源社 2020-2021、Season of Docs参与者",
 					"imgurl": "xiaxiaoya.jpg"
 				}],
 				"speechcontent": "根据自身参与GSoD和参与进开源社区的经历，帮助高校同学们融入开源中去",
@@ -217,6 +217,87 @@
 				"ppt":"",
 				"url":"https://www.bilibili.com/video/BV1W54y1H7Kw/"
 			}   
+		],
+		"七月直播":[  
+			{
+				"title":"另眼看开源—多学科视角下的开源",
+				"time":"2021.07.03",
+				
+				"profilelist":[
+					{
+						"name":"赵生宇",
+						"profile":"同济大学在读博士，Wuhan2020 开源社区发起人",
+						"imgurl":"zhaoshengyu.jpg"
+					}
+				],  
+				"speechcontent":"从多学科的视角看待开源社区，为同学们带来不一样的思考",
+				"ppt":"",
+				"url":""
+			},
+			{
+				
+				"title":"二进制女性在开源社区",
+				"time":"2020.07.04",
+				   
+				"profilelist":[
+					{
+						"name":"陈阳",
+						"profile":"",
+						"imgurl":"chenyang.jpg"
+					}
+				],  
+				"speechcontent":"",
+				"ppt":"",
+				"url":""
+			},
+			{
+				
+				"title":"开源商业化——从0到1、网络效应和增长飞轮",
+				"time":"2020.07.11",
+				   
+				"profilelist":[
+					{
+						"name":"吴雪",
+						"profile":"吴雪(雪哥)，Wuhan2020开源社区副理事长，硅谷Plug and Play孵化器导师，5GORAN创业公司顾问，斯坦福商学院校友。专注于SaaS和云服务的全球加速及开源软件商业模式的演进及创新。5G无线虚拟化技术商业化领军人物，曾带领公司取得并长期保持全球市场份额第一。",
+						"imgurl":"wuxue.jpg"
+					}
+				],  
+				"speechcontent":"我在2020分享的《开源的商业创新》，主要是分享开源软件的多种商业化模式以及开源项目在中国商业化落地的观点。本次拟在上期分享的基础上，对开源项目和创业企业的生命周期进行透视分析，并分享与从0到1、网络效应、增长飞轮相关的创业公司的例子，希望对开源领域创业者带来接地气的思考。",
+				"ppt":"",
+				"url":""
+			},
+			{
+				
+				"title":"《Rust 与 开源》",
+				"time":"2020.07.17",
+				   
+				"profilelist":[
+					{
+						"name":"张汉东",
+						"profile":"《Rust 编程之道》作者、资深咨询师",
+						"imgurl":"zhanghandong.jpg"
+					}
+				],  
+				"speechcontent":"众所周知，Rust 语言是一门兼具安全、性能和工程能力的现代化实用语言。除了这些亮点之外，Rust 最大的亮点就是开源社区也是它的一部分。Rust 优秀的开源社区，促进了Rust 语言健康高效的发展，并且对整个开源社区也有巨大影响。这个议题就是给大家介绍 Rust 及其 开源社区。",
+				"ppt":"",
+				"url":""
+			},
+			{
+				
+				"title":"开源社区对我的影响",
+				"time":"2020.07.18",
+				   
+				"profilelist":[
+					{
+						"name":"修宇航",
+						"profile":"Apache Dubbo PMC",
+						"imgurl":"xiuyuhang.jpg"
+					}
+				],  
+				"speechcontent":"给大家介绍如何参与开源社区及参与开源的意义",
+				"ppt":"",
+				"url":""
+			}
 		]
 	}
 	
