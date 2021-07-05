@@ -1056,7 +1056,6 @@
                                 7,
                                 7,
                                 7,
-                                
                                 7,
                                 7,
                                 7,
@@ -1225,7 +1224,6 @@
                                 1,
                                 1,
                                 1,
-                                
                                 1,
                                 1,
                                 1,
@@ -1519,7 +1517,7 @@
             "org_data_des":[{"参与社区数":109},{"涉及高校数":447}],
             "bar_one":{
                 "title":"高校区域分布",
-                "bar_des":[{"中国":331}, {"印度": 31},{"美国":27},
+                "bar_des":[{"中国":342}, {"印度": 31},{"美国":27},
                     {"英国":11},{"加拿大":11},{"德国":5},{"澳大利亚":3},
                     {"荷兰":2},{"马来西亚":2},{"新加坡":2},{"埃及":2},{"斯里兰卡":1},{"新西兰":1},{"丹麦":1},{"巴西":1},
                     {"西班牙":1},{"日本":1},{"瑞士":1},{"韩国":1},{"尼泊尔":1}]
@@ -3026,7 +3024,7 @@
             "org_data_des":[{"Number of Organizations":109},{"Number of Higher Educational Institutions":447}],
             "bar_one":{
                 "title":"Global Regional Distribution of Universities",
-                "bar_des":[{"China":331}, {"India": 31},{"United States":27},
+                "bar_des":[{"China":342}, {"India": 31},{"United States":27},
                     {"UK":11},{"Canada":11},{"Germany":5},{"Australia":3},
                     {"Netherlands":2},{"Malaysia":2},{"Singapore":2},{"Egypt":2},{"Sri Lanka":1},{"New Zealand":1},{" Denmark":1},{"Brazil":1},
                     {"Spain":1},{"Japan":1},{"Switzerland":1},{"Korea":1},{"Nepal":1}] 
