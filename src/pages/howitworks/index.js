@@ -91,9 +91,25 @@ class Howitworks extends React.Component{
                         }
 
                     </div>
+                    <div className = "indexCommittee">
+                        <div className="HowitworksTimeTitle opensource">指导委员会委员</div>
+                        <div className="HowitworksCommitteePinyin">*按委员姓名拼音排序</div>
+                    </div>
+                    <div className="HowitworksCommittee">
+                        {
+                            showdata.committee.map((item,index)=>{
+                                return(
+                                    <div className="HowitworksCommitteeItem" key={index}>
+                                        <div className="HowitworksCommitteeItemUniversity">{item.university}</div>
+                                        <div className="HowitworksCommitteeItemName">{item.name}</div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                   
                 </div>
                </div>
-
             </div>
          )
        
