@@ -69,31 +69,50 @@ class Howitworks extends React.Component{
 
                </div>
                <div className="indexOne">
-               <div className="content1200">
-                    <div className="indexOneTitle">
-                        <span className="indexOneTitleText">{showdata.ttile}</span>
-                        <span className="indexOneTitletip">{showdata.tip}</span>
-                        <div className="yellowRoll"></div>
-                        <div className="pinkRoll"></div>
-                    </div>
-                    <div className="indexOneList">
-                        {
-                            showdata.time.map((item,index)=>{
-                                return (
-                                    <div className={["indexOneListLine", index%2 === 0 ? 'left':'right'].join(" ")}  key={index}>
-                                        <div className="indexOneListItem" >
-                                            <div className="indexOneListItemTitle">{item.title}</div>
-                                            <div className="indexOneListItemTime">{item.time}</div>
+                    <div className="contentFull">
+                        <div className="indexOneTitle">
+                            <span className="indexOneTitleText">{showdata.ttile}</span>
+                            <span className="indexOneTitletip">{showdata.tip}</span>
+                            {/* <div className="yellowRoll"></div>
+                            <div className="pinkRoll"></div> */}
+                        </div>
+                        <div className="indexOneList">
+                            {
+                                showdata.time.map((item,index)=>{
+                                    return (
+                                        <div className={["indexOneListLine", index%2 === 0 ? 'left':'right'].join(" ")}  key={index}>
+                                            <div className="indexOneListItem" >
+                                                <div className="indexOneListItemTitle">{item.title}</div>
+                                                <div className="indexOneListItemTime">{item.time}</div>
+                                            </div>
                                         </div>
+                                    )
+                                })
+                            }
+
+                        </div>
+                    </div>
+                   
+                    <div className="content1200">
+                    <div className = "indexCommittee">
+                        <div className="HowitworksTimeTitle opensource">指导委员会委员</div>
+                        <div className="HowitworksCommitteePinyin">*按委员姓名拼音排序</div>
+                    </div>
+                    <div className="HowitworksCommittee">
+                        {
+                            showdata.committee.map((item,index)=>{
+                                return(
+                                    <div className="HowitworksCommitteeItem" key={index}>
+                                        <div className="HowitworksCommitteeItemUniversity">{item.university}</div>
+                                        <div className="HowitworksCommitteeItemName">{item.name}</div>
                                     </div>
                                 )
                             })
                         }
-
                     </div>
+                   
                 </div>
                </div>
-
             </div>
          )
        

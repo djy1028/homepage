@@ -92,6 +92,11 @@
 
   .indexOne {
     padding-bottom: 100px;
+    .contentFull{
+      width:100%;
+      background-color: #f9fafd;
+      padding-bottom: 40px;
+    }
   }
   .indexOneTitleText {
     font-size: 30px;
@@ -120,6 +125,93 @@
     color: #000000;
     line-height: 28px;
   }
+
+  .indexCommittee{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    .HowitworksTimeTitle.opensource{
+      margin-top:20px;
+    }
+    .HowitworksCommitteePinyin{
+      padding: 20px 0 40px;
+    }
+    .HowitworksTimeTitle{
+        color: #000;
+        font-size: 30px;
+        position: relative;
+        padding: 30px 0 40px;
+        text-align: left;
+    }
+  }
+
+ 
+
+  .HowitworksCommittee{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+     justify-content: space-between;
+     .HowitworksCommitteeItem:nth-child(2)>.HowitworksCommitteeItemName:after,
+    .HowitworksCommitteeItem:nth-child(1)>.HowitworksCommitteeItemName:after{
+        content:"联名主席";
+        position: absolute;
+        font-size: 12px;
+        padding: 4px;
+        top: 0;
+        right: 0;
+        height: 22px;
+        line-height: 14px;
+        background: #c1dafc;
+        color: #416dc4;
+        font-weight: 500;
+    }
+    .HowitworksCommitteeItem{
+        width: 48.3%;
+        display: inline-flex;
+        position: relative;
+        height: 64px;
+        // line-height: 70px;
+        background-color: #e5f1fc;
+        margin-bottom: 30px;
+        font-family: PingFang-SC-Regular;
+        font-size: 18px;
+        @media screen and (min-width: 500px) and (max-width: 750px) {
+          font-size: 14px;
+        }
+        @media screen and (max-width:500px) {
+            width:95%
+        }
+
+        .HowitworksCommitteeItemUniversity{
+            text-align: left;
+            position: relative;
+            background-color: #f1f7ff;
+            width: 60.3%;
+            color: #000;
+            padding-left: 7%;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+        }
+        .HowitworksCommitteeItemName{
+           
+            position: relative;
+            color: #333;
+            padding-left: 6.5%;
+            width: 39.5%;
+            height: 100%;
+            display: inline-flex;
+            align-items: center;
+            font-family: MicrosoftYaHei-Bold;
+            font-weight: 600
+        
+        }
+    }
+  }
+
+
 
   .indexOneListItemTime {
     font-size: 16px;
@@ -178,7 +270,16 @@
     .indexOneListItemTitle {
       font-size: 22px;
     }
+    .HowitworksCommittee{
+      .HowitworksCommitteeItem{
+        font-size: 16px;
+        @media screen and (max-width:500px) {
+          font-size: 10px;
+        }
+      }
+    }
   }
+
 }
 
 .indexOneListLine:nth-child(3) .indexOneListItemTitle {
@@ -214,6 +315,11 @@
       .HowitworksBanner .HowitworksList > div:nth-of-type(2) {
         .HowitworksListItemTitle {
           top: 2px;
+        }
+      }
+      .HowitworksCommittee{
+        .HowitworksCommitteeItem{
+          font-size: 10px;
         }
       }
     }
@@ -311,5 +417,11 @@
     .indexOne .indexOneListLine.left .indexOneListItem {
       padding: 0 0 0 25px;
     }
+    .indexCommittee{
+      .HowitworksTimeTitle{
+        font-size: 24px;
+      }
+    }
   }
 }
+
