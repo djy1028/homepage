@@ -252,6 +252,22 @@
 			},
 			{
 				
+				"title":"《开源世界的那些迷人之处》",
+				"time":"2020.07.10",
+				   
+				"profilelist":[
+					{
+						"name":"适兕",
+						"profile":"开源之道主创，LF APAC 开源布道者，ALC Beijing 成员，开源社成员",
+						"imgurl":"shini.jpg"
+					}
+				],  
+				"speechcontent":"开源是如此的迷人，以至于被现代的信息技术从业人员所拥护，甚至进入了大众的视野，它的迷人之处在哪里？",
+				"ppt":"",
+				"url":"https://www.bilibili.com/video/BV1D44y127iZ/"
+			},
+			{
+				
 				"title":"开源商业化——从0到1、网络效应和增长飞轮",
 				"time":"2020.07.11",
 				   
