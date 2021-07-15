@@ -235,11 +235,11 @@ class ProjectDetail extends React.Component{
                             }
 
                         </div>
-                        <div 
+                        {/* <div 
                             className="OrgTipButton" 
                             onClick={()=>{goenroll(prodetail.proid,this.props.chiFlag)}}>
                                 {showdata.operationbutton[1]}
-                        </div>
+                        </div> */}
 
                     </div>
                     
