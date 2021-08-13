@@ -56,7 +56,7 @@ class ProjectModal extends React.Component{
         // let showdata = this.props.showdata
         // let item = this.props.item
         const {showdata,item,prourl,studata} = this.props
-        console.log(item)
+
         let studentSelected;
         prolist.forEach(it=>{
             if(it.proid === item.proid){

@@ -13,6 +13,7 @@ import React from 'react';
 // 同级找不到，会从npm包里找react
 import Header from './components/header';
 import Footer from './components/footer';
+import stunum from './data/stunum.json'
 import { connect } from 'react-redux';
 
 class Wrapper extends React.Component{
@@ -30,12 +31,13 @@ class Wrapper extends React.Component{
     }
 
     getStunum(){
-        fetch('https://portal.summer-ospp.ac.cn/programAndStudentNum?activityId=1&pageSize=1000',{
-            method:'GET'
-        }).then(res=>res.json()).then(rsp=>{
-            rsp.status == 0 && this.props.setStuData(rsp.data)
-        })
-        .catch(err => console.log(err))
+        this.props.setStuData(stunum)
+        // fetch('https://portal.summer-ospp.ac.cn/programAndStudentNum?activityId=1&pageSize=1000',{
+        //     method:'GET'
+        // }).then(res=>res.json()).then(rsp=>{
+        //     rsp.status == 0 && this.props.setStuData(rsp.data)
+        // })
+        // .catch(err => console.log(err))
     }
 
     componentWillUnmount(){
