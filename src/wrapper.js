@@ -32,12 +32,6 @@ class Wrapper extends React.Component{
 
     getStunum(){
         this.props.setStuData(stunum)
-        // fetch('https://portal.summer-ospp.ac.cn/programAndStudentNum?activityId=1&pageSize=1000',{
-        //     method:'GET'
-        // }).then(res=>res.json()).then(rsp=>{
-        //     rsp.status == 0 && this.props.setStuData(rsp.data)
-        // })
-        // .catch(err => console.log(err))
     }
 
     componentWillUnmount(){

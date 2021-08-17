@@ -58,8 +58,6 @@ var titleChange = function(){
     gettitle();
    
     window.addEventListener('hashchange',()=>{
-      
-        
         gettitle();
     })
 
