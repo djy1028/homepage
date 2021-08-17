@@ -78,7 +78,7 @@ class Header extends React.Component{
 
         //1.0 浏览器语言不是中文的切换到英文版本展示
         if(window.navigator && window.navigator.language){
-            if(window.navigator.language.toLocaleLowerCase() !== "zh-cn"){
+            if(window.navigator.language.toLocaleLowerCase() !== "zh-cn" && window.navigator.language.toLocaleLowerCase() !== "zh"){
                 this.switchFlag('en')
             }
         }
