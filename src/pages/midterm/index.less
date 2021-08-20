@@ -1,0 +1,541 @@
+
+.midterm{
+  position: relative;
+  background-color: #f6f7f8;
+  .midtermheader{
+
+      width: 100%;
+      height: 400px;
+      background-image: url('../../img/dataresult/databanner-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
+      display: flex;
+      margin-bottom: 40px;
+      justify-content: center;
+      align-items: center;
+      .midtermheader_des{
+        line-height: 1.5715;
+          .midtermtitle{
+              font-family: SourceHanSansCN-Regular;
+              // font-size: 48px;
+              letter-spacing: 3px;
+              color: #004f90;
+          }
+          .midtermtext{
+              font-family: SourceHanSansCN-Heavy;
+              // font-size: 60px;
+              letter-spacing: 5px;
+              color: #004f90;
+              font-weight: bold;
+          }
+      }
+      
+  }
+}
+
+
+
+.projectListWrapper {
+  position: relative;
+}
+
+.ProjectListPageState {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-family: MicrosoftYaHei;
+  font-size: 20px;
+  padding-bottom: 22px;
+  color: #666;
+  .ProjectListDownload{
+    color:#000;
+    font-size: 16px;
+    &:hover{
+      text-decoration: underline;
+    }
+    img{
+      margin-left:8px;
+    }
+  }
+}
+
+.ProjectListPageItemOne {
+  margin-right: 40px;
+}
+.ProjectListPageItemSum {
+  display: inline-block;
+  color: #999999;
+}
+
+.ProjectListRank {
+  position: relative;
+  font-family: MicrosoftYaHei;
+  font-size: 20px;
+  line-height: 60px;
+  color: #666;
+}
+
+.ProjectListRankItem {
+  position: relative;
+  display: inline-block;
+  margin: auto 0 auto 20px;
+  color: #666;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ProjectListRankItem:first-child::after {
+  content: "";
+  position: relative;
+  border-left: 2px solid #b0b2b9;
+  right: -10px;
+  height: 40px;
+}
+
+.ProjectListRankItem.selectOrder {
+  color: #1d8eff;
+}
+
+.ProjectTip.displaynone {
+  display: none;
+}
+
+.ProjectTip {
+  position: relative;
+  top: -62px;
+  right: -131px;
+
+  .ProjectTipWeb {
+    width: 212px;
+    height: 120px;
+    position: absolute;
+  }
+
+  .ProjectTipWebClose {
+    width: 20px;
+    height: 20px;
+    right: -24px;
+  }
+}
+
+.ProjectTipWeb {
+  background-image: url(./../../img/tip/cn.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.ProjectTipWebClose {
+  background-image: url(./../../img/tip/close.png);
+  right: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.en {
+  .ProjectTipWeb {
+    background-image: url(./../../img/tip/en.png);
+    background-repeat: no-repeat;
+  }
+
+  .ProjectTipWebClose {
+    right: -51px;
+  }
+  .ProjectListApplyState {
+    line-height: 18px;
+  }
+  .ProjectListLCLine.Header {
+    .ProjectListLCName {
+      text-align: center;
+    }
+
+    .ProjectListLCNumber {
+      text-align: left;
+    }
+  }
+
+  .ProjectListSelectItem.Degree .ProjectListSelectItemTitle {
+    letter-spacing: 0;
+    margin-right: 10px;
+  }
+}
+
+.ProjectListApplyState {
+  padding: 2px 10px;
+  height: auto;
+  background: #e1e6f3;
+  border-radius: 10px;
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.ProjectListSelect {
+  position: relative;
+  width: 100%;
+  background: #f1f1f3;
+
+  padding: 0;
+  margin: 20px 0 30px;
+}
+
+.ProjectListSelectItem {
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 36px;
+  letter-spacing: 0px;
+  color: #666666;
+}
+
+.ProjectListSelectItemContent {
+  display: inline-block;
+  margin-right: 12px;
+  color: #2190ff;
+  cursor: pointer;
+  line-height: 12px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.PLOperationButton {
+  width: 90px;
+  height: 24px;
+  background-color: #4b9dfe;
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  text-align: center;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.PLOperationButton.show {
+  .PLPopOver {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.PLPopOver {
+  font-size: 17px;
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.3s;
+  line-height: 31px;
+  padding: 5px;
+  min-width: 245px;
+  color: #333;
+  bottom: 25px;
+  right: -12px;
+  text-align: left;
+}
+
+.PLOperationButton.proapply {
+  cursor: pointer;
+}
+
+.ProjectListSelectTagDe {
+  background-color: #d7e3fa;
+}
+
+.ProjectListSelectItem.Degree {
+  .ProjectListSelectItemTitle {
+    letter-spacing: 10px;
+  }
+}
+
+.Projectlist {
+  .ant-pagination-next,
+  .ant-pagination-prev {
+    width: 98px;
+    height: 38px;
+    font-size: 18px;
+    background-color: #1d8eff !important;
+    line-height: 38px;
+    a {
+      color: #fff !important;
+    }
+  }
+  .ant-pagination {
+    padding: 69px 0 30px;
+  }
+
+  .ant-pagination-item {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    line-height: 38px;
+    a {
+      color: #1d8eff;
+    }
+  }
+
+  .ant-pagination-prev :hover {
+    background-color: #1d8eff !important;
+
+    a {
+      color: #fff !important;
+    }
+  }
+}
+
+.ProjectListLC {
+  font-family: MicrosoftYaHei;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  position: relative;
+  .sortDescription{
+    font-size: 14px;
+    position: absolute;
+    top:-40px;
+    right:20px;
+  }
+}
+
+.ProjectListLCLine {
+  height: 56px;
+  line-height: 36px;
+  width: 100%;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.ProjectListLCLine.Item:nth-child(2n) {
+  background-color: #ebeef5;
+}
+
+.ProjectListLCLine.Item:nth-child(2n + 1) {
+  background-color: #f3f5f6;
+}
+
+.ProjectListLCID {
+  text-align: center;
+  width: 110px;
+  display: inline-block;
+  color: #000000;
+}
+.ProjectListRes {
+  text-align: center;
+  width: 110px;
+  display: inline-block;
+  color: #396cc8;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.ProjectListLCName {
+  width: 400px;
+  color: #396cc8;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.ProjectListLCLang {
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+}
+.ProjectListLCNumber {
+  width: 80px;
+  text-align: center;
+}
+
+.ProjectListLCCommunity,.ProjectListLCStudent{
+  text-align: left;
+  width: 200px;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.ProjectListLCStudent{
+  text-align: center
+}
+
+
+
+.ProjectListLCDegree {
+  width: 80px;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+}
+
+.ProjectListLCOperation {
+  // width: 200px;
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+}
+
+.ProjectListLCOperation.Item {
+  position: relative;
+}
+
+.ProjectListLCLine.Header {
+  height: 60px;
+  background: #edf0f8;
+  line-height: 40px;
+
+  span {
+    color: #000 !important;
+    cursor: default;
+  }
+
+  .ProjectListLCName,
+  .ProjectListLCCommunity {
+    text-align: left;
+  }
+}
+
+.ProjectListPageItemOne {
+  color: #000;
+}
+
+.ProjectListPageState {
+  color: #000;
+}
+.ProjectListPageItemSum {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.ProjectListBanner .ant-input-affix-wrapper input {
+  font-size: 18px;
+}
+
+.ProjectListSelectItem.Degree .ProjectListSelectItemTitle {
+  letter-spacing: normal;
+  color: #000;
+}
+
+.ProjectListSelectItemContent {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: none;
+  border-radius: 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  margin: 0;
+  padding: 6px 20px;
+}
+
+.ProjectListSelectTagDe {
+  background: #396cc8;
+  color: #fff;
+}
+.ProjectListSelectItemContent:nth-child(2) {
+  border-radius: 4px 0px 0px 4px;
+}
+.ProjectListSelectItemContent:last-child {
+  border-radius: 0px 4px 4px 0px;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+.OrglistSearch,
+.ProjectListBanner {
+  margin: 50px 0;
+  .ant-input-clear-icon {
+    font-size: 18px;
+  }
+}
+
+.ProjectListLCLine.Item:nth-child(2n) {
+  background: #ffffff;
+}
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: unset;
+// }
+
+.PLOperationButton {
+  width: 84px;
+  height: 36px;
+  background: #396cc8;
+  line-height: 36px;
+  font-size: 14px;
+}
+
+.ProjectListSelectItem {
+  color: #000;
+}
+
+.ProjectListSelectItemContent {
+  font-size: 14px;
+}
+
+.ProjectListLCLine.Item {
+  font-size: 14px !important;
+}
+.Projectlist .ant-pagination-next,
+.Projectlist .ant-pagination-prev {
+  background-color: #396cc8 !important;
+}
+.Projectlist .ant-pagination-item a {
+  color: #396cc8;
+}
+@media screen and (min-width: 100px) and (max-width: 750px) {
+  .ProjectListSelectItemContent {
+    padding: 6px 10px;
+  }
+  .Org .ant-pagination .ant-pagination-next,
+  .Org .ant-pagination .ant-pagination-prev {
+    background-color: #396cc8 !important;
+  }
+  .ProjectListPageState{
+    .ProjectListDownload{
+      font-size: 14px;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 1480px) {
+  .ProjectTip {
+    right: 32px;
+  }
+  .ProjectListLC {
+    padding-top: 53px;
+  }
+  .ProjectTipWeb {
+    background-image: url(./../../img/tip/phonecn.png);
+    background-repeat: no-repeat;
+  }
+
+  .en {
+    .ProjectTip {
+      right: 62px;
+    }
+    .ProjectTipWeb {
+      background-image: url(./../../img/tip/p_en.png);
+      background-repeat: no-repeat;
+    }
+  }
+}

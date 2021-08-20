@@ -49,13 +49,17 @@ class Header extends React.Component{
         this.headerlist(false)
     }
 
-    goPage(linkurl){
-        this.props.setPageFlag(linkurl)
-        gohash("/"+linkurl)
 
-        if(linkurl === "org"){
-            this.props.setOrgTabFlag("orglist")
+
+    goPage(linkurl){
+        if(linkurl !== "dataall"){
+            this.props.setPageFlag( linkurl == 'data' || linkurl === 'midtermdata'?'dataall':linkurl)
+            gohash("/"+linkurl)
+            if(linkurl === "org"){
+                this.props.setOrgTabFlag("orglist")
+            }
         }
+       
 
     }
 
@@ -110,11 +114,6 @@ class Header extends React.Component{
        window.open("https://isrc.iscas.ac.cn/summer2020/")
    }
 
-    
-
-    
-
-
     render(){
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
@@ -129,14 +128,28 @@ class Header extends React.Component{
                         {
                             showdata.linkdata.map((ele,index)=>{
                                 const linkurl = link[index]
+                                console.log(pageflagredux,linkurl)
                                 return (
                                    
                                     <div key={index} className={[pageflagredux ===linkurl?"active":"" ,"headerWrapItem", linkurl].join(" ")}>
-                                    <div 
-                                        onClick={()=>{this.goPage(linkurl)}}
-                                        className={[ this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")}>
-                                        <span>{ele.name}</span>
-                                    </div>                                
+                                        <div 
+                                            onClick={()=>{this.goPage(linkurl)}}
+                                            className={[ this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")}>
+                                            <span>{ele.name}</span>
+                                        </div> 
+                                        {
+                                            ele.content?
+                                            <div className="osscListLine" style={{width:this.props.chiFlag === 'chi'?'calc(100% + 40px)':'calc(100% + 100px)'}}>
+                                                {
+                                                    ele.content.map((sitem,sindex)=>{
+                                                        return(
+                                                            <div className="osscListLineItem" style={{fontSize:this.props.chiFlag === 'chi'?'16px':'14px'}} key={sindex} onClick={()=>{this.goPage(sitem.title)}}>{sitem.name}</div>
+                                                        )
+                                                    })
+                                                }
+
+                                            </div>:""
+                                        }                                       
                                     </div>
                                   
                                  
@@ -183,8 +196,6 @@ class Header extends React.Component{
                             <span>{showdata.summer2020}</span>                
                         </div>
                     </div>
-                   
-
                 </div>
 
             </div>

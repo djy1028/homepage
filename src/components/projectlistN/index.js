@@ -21,7 +21,6 @@ import projectlist from '../../data/projectlist.json';
 import {  Pagination } from 'antd';
 import { getSelectM,getSelectLang,getSelectDToChi,getLangDToChi,getTagSelect} from './util.js'
 import {getSplit,gohash,getSupportLanguage,gourl,goenroll} from "../../util/url.js";
-// import studata from '../../data/stunum.json'
 import download from "../../img/download.png";
 import pdf from './list.pdf'
 

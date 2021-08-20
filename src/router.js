@@ -18,6 +18,7 @@
  import Help from './pages/help/index.js';
  import Howitworks from './pages/howitworks/index.js';
  import Data from './pages/data/index.js'
+ import Midtermdata from './pages/midterm/index.js'
  import Apply from './pages/apply/index.js';
  import Org from './pages/org/index.js';
  import OrgDetail from './components/orgdetail/index.js';
@@ -27,13 +28,6 @@ import {asyncComponent} from './components/asynccomp/index.js';
 import SpinLoading  from './components/spin/index.js';
 const Orglist = React.lazy(() => import('./components/orglist/index.js'));
 const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js'));
-
-
-
-
-  
-
-
 
 
  export default class IRouter extends React.Component{
@@ -60,7 +54,6 @@ const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js
                                             <Suspense maxDuration={500}  fallback={<SpinLoading/>}>                          
                                              <Route path = {["/org", "/org/orglist", "/orglist"]}  component={Orglist} exact ></Route>                      
                                              <Route path="/org/projectlist" component={ProjectlistN} exact></Route> 
-                                             
                                              <Route path="/org/orgdetail/:orgname" component={OrgDetail} ></Route>  
                                              <Route path="/org/prodetail/:projectid" component={ProjectDetail} ></Route>   
                                              </Suspense>  
@@ -69,6 +62,9 @@ const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js
                                  </Route>
                                  <Route path="/howitworks"component={Howitworks} ></Route> 
                                  <Route path="/data"component={Data} ></Route> 
+       
+                                <Route path="/midtermdata"component={Midtermdata} ></Route> 
+               
                                  <Route path="/apply"component={Apply} ></Route>
                                  <Route path="/liveshow"component={Liveshow} ></Route>                                                                                                                      
                                  <Route path="/" component={HomePage} /> 

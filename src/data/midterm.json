@@ -1,0 +1,38 @@
+{
+    
+    "chi":{
+        "banner_title":"开源软件供应链点亮计划-暑期2021",
+        "banner_text":"中期考核公示",
+        "studentName":"学生名字",
+        "communityTeacher":"项目导师",
+        "midtermresult":"中期考核结果",
+        "storage":"仓库地址",
+        "pronum":["共","个项目"],
+        "pagenum":["第","页 "],
+        "pagesum":[" / 共","页"],
+        "projectName":"项目名称",
+        "projectCommunity":"社区名称",
+        "sortDes":"* 按学生姓名拼音进行排序",
+        "pass":"通过",
+        "access":"访问",
+        "searchPlaceholder":"请输入关键字/学生名字"
+
+    },
+    "en":{
+        "banner_title":"Summer 2021 of Open Source Promotion Plan",
+        "banner_text":"Midterm Results Announced",
+        "studentName":"Student",
+        "communityTeacher":"Mentor",
+        "midtermresult":"Mid-term Result",
+        "storage":"Repository",
+        "pronum":["Total:","items"],
+        "pagenum":["Displaying ",""],
+        "pagesum":["of","Pages"],
+        "projectName":"Project Name",
+        "projectCommunity":"Community Name",
+        "sortDes":"* Sort by the name of the student",
+        "pass":"Pass",
+        "access":"Access",
+        "searchPlaceholder":"Please enter key words/student name"
+    }
+}

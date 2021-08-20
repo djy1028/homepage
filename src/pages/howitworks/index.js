@@ -73,8 +73,6 @@ class Howitworks extends React.Component{
                         <div className="indexOneTitle">
                             <span className="indexOneTitleText">{showdata.ttile}</span>
                             <span className="indexOneTitletip">{showdata.tip}</span>
-                            {/* <div className="yellowRoll"></div>
-                            <div className="pinkRoll"></div> */}
                         </div>
                         <div className="indexOneList">
                             {

@@ -164,7 +164,6 @@
       "react-app"
     ]
   },
-  "proxy": "http://localhost:8081",
   "devDependencies": {
     "pinyin": "^2.10.2"
   }
