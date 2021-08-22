@@ -35,9 +35,6 @@ class Header extends React.Component{
         })     
     }
 
-   
-
-
     headerlist(flag){
         this.setState({
             moblieListFlag:flag
@@ -59,8 +56,6 @@ class Header extends React.Component{
                 this.props.setOrgTabFlag("orglist")
             }
         }
-       
-
     }
 
     parseQueryString(url) {
@@ -126,6 +121,7 @@ class Header extends React.Component{
                     <div className="headerTabWrapper">
                         
                         {
+                            
                             showdata.linkdata.map((ele,index)=>{
                                 const linkurl = link[index]
                                 console.log(pageflagredux,linkurl)
@@ -183,8 +179,17 @@ class Header extends React.Component{
                                 <div key={index}
                                     onClick={()=>this.getLink(linkurl)}
                                     className={["osscListItem",linkurl].join(" ")}>                                
-                                    <span> {item.name}</span>                
+                                    <span> {item.content?null:item.name}</span> 
+                                    {
+                                        item.content && item.content.map((sitem,sindex)=>{
+                                            return(
+                                                <div className={["osscListItem",linkurl].join(" ")}  key={sindex} onClick={(e)=>{e.stopPropagation();this.getLink(sitem.title)}}>{sitem.name}</div>
+                                            )
+                                        })
+                                            
+                                    }                                      
                                 </div>
+                                    
                               
                             )
                                 

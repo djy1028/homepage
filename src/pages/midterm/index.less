@@ -3,7 +3,6 @@
   position: relative;
   background-color: #f6f7f8;
   .midtermheader{
-
       width: 100%;
       height: 400px;
       background-image: url('../../img/dataresult/databanner-bg.png');
@@ -17,19 +16,32 @@
       align-items: center;
       .midtermheader_des{
         line-height: 1.5715;
-          .midtermtitle{
+          .midtermtitlechi{
               font-family: SourceHanSansCN-Regular;
-              // font-size: 48px;
               letter-spacing: 3px;
+              font-size: 48px;
               color: #004f90;
           }
-          .midtermtext{
+          .midtermtitleen{
+            font-family: SourceHanSansCN-Regular;
+            letter-spacing: 3px;
+            font-size: 36px;
+            color: #004f90;
+        }
+          .midtermtextchi{
               font-family: SourceHanSansCN-Heavy;
-              // font-size: 60px;
               letter-spacing: 5px;
+              font-size: 60px;
               color: #004f90;
               font-weight: bold;
           }
+          .midtermtexten{
+            font-family: SourceHanSansCN-Heavy;
+            letter-spacing: 5px;
+            font-size: 48px;
+            color: #004f90;
+            font-weight: bold;
+        }
       }
       
   }
@@ -538,4 +550,79 @@
       background-repeat: no-repeat;
     }
   }
+}
+
+
+@media screen and (min-width: 100px) and (max-width: 750px) {
+  .midterm {
+      .midtermheader{
+          background-image: url(../../img/liveshow/banner-h5.png);
+          background-size: 100% 100%;
+          height: 350px;
+          padding-top: 55px;
+          .midtermheader_des{
+              width:92%;
+              letter-spacing: 0;
+              font-size: 14px;
+              line-height: 40px;
+              background: #006cc5;
+              border-radius: 68px;
+              padding: 0;
+              margin: 30px 0;
+              color: #ffffff;
+              .midtermtitlechi,.midtermtitleen{
+                  font-family: SourceHanSansCN-Regular;
+                  font-size: 14px;
+                  letter-spacing: 0px;
+                  color:#fff;
+                  margin-right: 2rem;
+                  text-align: center;
+              }
+              .midtermtextchi,.midtermtexten{
+                  font-family: SourceHanSansCN-Heavy;
+                  font-size: 16px;
+                  letter-spacing: 0px;
+                  color: #fff;
+                  text-align: center;
+              }
+          }
+         
+      }
+      .Projectlist{
+        .ProjectListBanner {
+          .ant-input-search{
+            font-size: 14px;
+            width: 90vw;
+            height:44px !important;
+          }
+          .ant-input-affix-wrapper,.ant-input-search-button{
+            height: 40px !important;
+          }
+        }
+        .projectListWrapper{
+          .content1200{
+            .ProjectListPageState{
+              padding-bottom: 16px !important;
+              font-size: 14px !important;
+              color: #666;
+            }
+          }
+          .ProjectListLCWrapper{
+              overflow-x: scroll;
+            .ProjectListLC{
+              padding-top: 30px;
+              min-width: 900px;
+              .sortDescription{
+                left:0px;
+                top:0px;
+              }
+              .Header{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+  }
+  
 }

@@ -124,10 +124,10 @@
         <div className="midterm">   
             <div className="midtermheader"> 
                 <div className ="midtermheader_des"> 
-                    <div className = "midtermtitle" style={{fontSize:props.chiFlag === 'chi'?'48px':'36px'}}>
+                    <div className = {props.chiFlag === 'chi'?"midtermtitlechi":"midtermtitleen"} >
                         {showdata.banner_title}
                     </div>
-                    <div className = "midtermtext" style={{fontSize:props.chiFlag === 'chi'?'60px':'48px'}}>
+                    <div className = {props.chiFlag === 'chi'?"midtermtitlechi":"midtermtitleen"} >
                         {showdata.banner_text}
                     </div>
                 </div>

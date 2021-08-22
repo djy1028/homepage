@@ -63,9 +63,9 @@ function Data(props){
 
     useEffect(()=>{      
         //监听resize事件，字体、宽度随屏幕大小自适应
-        window.onresize = function(){
-            adaptive(instance0,instance1,instance2,instance3,instance4,true,props.chiFlag)
-        }
+        window.addEventListener(
+            "resize",adaptive(instance0,instance1,instance2,instance3,instance4,true,props.chiFlag),false
+        );
     },[])
 
     useEffect(()=>{
