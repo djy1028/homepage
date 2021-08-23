@@ -127,7 +127,7 @@
                     <div className = {props.chiFlag === 'chi'?"midtermtitlechi":"midtermtitleen"} >
                         {showdata.banner_title}
                     </div>
-                    <div className = {props.chiFlag === 'chi'?"midtermtitlechi":"midtermtitleen"} >
+                    <div className = {props.chiFlag === 'chi'?"midtermtextchi":"midtermtexten"} >
                         {showdata.banner_text}
                     </div>
                 </div>
