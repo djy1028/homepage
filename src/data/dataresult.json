@@ -1561,7 +1561,7 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": [ "Total Projects","Applied Projects", "Selected Projects","Pass Mid-term Evaluation(Stay Tuned)", "Pass Final-term Evaluation(Stay Tuned)"],
+                        "data": [ "Total Projects","Applied Projects", "Selected Projects","Pass Mid-term Evaluation", "Pass Final-term Evaluation(Stay Tuned)"],
                         "axisLabel": {
                             "show": true,
                             "interval" : 0,
@@ -1633,7 +1633,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [317, 278, 234, 0, 0],
+                            "data": [317, 278, 234, 208, 0],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -1647,7 +1647,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[435,395,342,0,0],
+                            "data":[435,395,342,301,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -1660,7 +1660,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[125,125,105,0,0],
+                            "data":[125,125,105,87,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -1681,7 +1681,7 @@
                         },
                         {
                             "name":"",
-                            "data":[0,0,0,681,681],
+                            "data":[0,0,0,0,596],
                             "type":"bar",
                             "barWidth":35,
                             "itemStyle":{
