@@ -29,7 +29,7 @@
         const [page,setPage] = useState(1)
         const [pagesize,setPagesize] = useState(100)
         const [datall,setDataall] = useState(proData)
-        const [projectlistdata,setProjectlistdata] = useState([])
+        const [Midtermdata,setMidtermdata] = useState([])
         const [searchdatastock,setSearchdatastock] = useState([])
         const [datastock,setDatastock] = useState(proData)
     
@@ -39,7 +39,7 @@
  
      const getPageData=(page)=>{
         setPage(page)
-        setProjectlistdata(datall.slice(pagesize*(page-1),pagesize*page))
+        setMidtermdata(datall.slice(pagesize*(page-1),pagesize*page))
      }
  
      const filterItem=(value)=>{  
@@ -47,13 +47,13 @@
          if(value){
             const showdataTemp = datastock.filter((item)=>item.name.includes(value))
             setDataall(showdataTemp)  
-            setProjectlistdata(showdataTemp.slice(pagesize*(page-1),pagesize*page))  
+            setMidtermdata(showdataTemp.slice(pagesize*(page-1),pagesize*page))  
             setSearchdatastock(showdataTemp)  
             setPage(1)
          }else{
 
             setDataall(datastock)
-            setProjectlistdata(datastock.slice(pagesize*(page-1),pagesize*page))     
+            setMidtermdata(datastock.slice(pagesize*(page-1),pagesize*page))     
             setSearchdatastock([])  
             setPage(1)
          }       
@@ -80,7 +80,7 @@
          let sortDatall = _.orderBy(oriPro,["FL"],["asc"])
          setDataall(sortDatall)
          setDatastock(sortDatall)
-         setProjectlistdata(sortDatall.slice(0,pagesize))
+         setMidtermdata(sortDatall.slice(0,pagesize))
      }
  
      const itemRender=(current, type, originalElement)=> {
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </div>       
-            <div className="Projectlist">
+            <div className="Midterm">
                 <div className="ProjectListBanner ">
                     <Search                      
                             placeholder={showdata.searchPlaceholder}
@@ -141,57 +141,48 @@
                             onSearch={value =>filterItem(value)}
                         />
                 </div> 
-                <div className="projectListWrapper">
+                <div className="MidtermWrapper">
                     <div className=" content1200">
-                        <div  className="ProjectListPageState">
-                            <div className="ProjectListPage">
-                                <span className="ProjectListPageItemOne">{showdata.pronum[0]} {datalllength} {showdata.pronum[1]}</span>
-                                <span className="ProjectListPageItem">
+                        <div  className="MidtermPageState">
+                            <div className="MidtermPage">
+                                <span className="MidtermPageItemOne">{showdata.pronum[0]} {datalllength} {showdata.pronum[1]}</span>
+                                <span className="MidtermPageItem">
                                     {showdata.pagenum[0]}{page} {showdata.pagenum[1]} 
-                                    <span className="ProjectListPageItemSum">{showdata.pagesum[0]} {Math.ceil(datalllength/pagesize)} {showdata.pagesum[1]}</span>
+                                    <span className="MidtermPageItemSum">{showdata.pagesum[0]} {Math.ceil(datalllength/pagesize)} {showdata.pagesum[1]}</span>
                                 </span>
                             </div>
                     
                         </div>
                     </div>
 
-                    <div className="ProjectListLCWrapper content1200">
+                    <div className="MidtermWrapper content1200">
                     
-                    <div className="ProjectListLC">
+                    <div className="Midterm">
                         <span className = 'sortDescription'>{showdata.sortDes}</span>
-                        <div className="ProjectListLCLine Header">
-                            <span className="ProjectListLCID ">{showdata.studentName}</span>
-                            <span className="ProjectListLCName">{showdata.projectName}</span>
-                            <span className="ProjectListLCCommunity">{showdata.projectCommunity}</span>
-                            <span className="ProjectListLCStudent">{showdata.communityTeacher}</span>
-                            <span className="ProjectListLCStudent">{showdata.midtermresult}</span>
-                            <span className="ProjectListLCOperation">
+                        <div className="MidtermLine Header">
+                            <span className="MidtermID ">{showdata.studentName}</span>
+                            <span className="MidtermName">{showdata.projectName}</span>
+                            <span className="MidtermCommunity">{showdata.projectCommunity}</span>
+                            <span className="MidtermStudent">{showdata.communityTeacher}</span>
+                            <span className="MidtermStudent">{showdata.midtermresult}</span>
+                            <span className="MidtermOperation">
                                 <span>{showdata.storage}</span>
                             </span>
                         </div>
                         {     
-                            projectlistdata.map((item,index)=>{
+                            Midtermdata.map((item,index)=>{
                                 return(
-                                    <div className="ProjectListLCLine Item" key={index}>
-                                        <span className="ProjectListLCID ">{item.name}</span>
-                                        {/* <span className="ProjectListLCName" onClick={()=>{gohashlink(item.anchor,item.label)}}>
-                                            
-                                            {getSplit( item.name,props.chiFlag)}
-                                        </span> */}
-                                        <span className="ProjectListLCName" onClick={()=>{gohashlink('',item.projectid)}}>
-                                            
+                                    <div className="MidtermLine Item" key={index}>
+                                        <span className="MidtermID ">{item.name}</span>
+                                        <span className="MidtermName" onClick={()=>{gohashlink(item.anchor,item.projectid)}}>
                                             {getSplit( item.projectname,props.chiFlag)}
                                         </span> 
-                                        {/* <span className="ProjectListLCCommunity" onClick={()=>{gohashlink(item.anchor)}}>
-                                            {getSplit( item.orgname,props.chiFlag)}
-                                        </span> */}
-                                        <span className="ProjectListLCCommunity" onClick={()=>{gohashlink(item.communityname)}}>
+                                        <span className="MidtermCommunity">
                                             {getSplit( item.communityname,props.chiFlag)}
                                         </span>
-                                        <span className="ProjectListLCStudent">{item.tutor}</span>
-                                        <span className="ProjectListLCStudent">{showdata.pass}</span>
-                                       
-                                        <span className="ProjectListRes">
+                                        <span className="MidtermStudent">{item.tutor}</span>
+                                        <span className="MidtermStudent">{showdata.pass}</span>
+                                        <span className="MidtermRes">
                                             <span onClick={()=>window.open(item.repolink)}>{showdata.access}</span>
                                          
                                         </span>

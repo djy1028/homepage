@@ -124,7 +124,6 @@ class Header extends React.Component{
                             
                             showdata.linkdata.map((ele,index)=>{
                                 const linkurl = link[index]
-                                console.log(pageflagredux,linkurl)
                                 return (
                                    
                                     <div key={index} className={[pageflagredux ===linkurl?"active":"" ,"headerWrapItem", linkurl].join(" ")}>

@@ -30,7 +30,7 @@
                     },
                     "xAxis": {
                         "type": "category",
-                        "data": ["上线数", "被申请数", "中选数", "中期通过数（敬请期待）", "结项数（敬请期待）"],
+                        "data": ["上线数", "被申请数", "中选数", "中期通过数", "结项数（敬请期待）"],
                         "interval" : 0,
                         "axisLabel": {
                             "interval":0,
@@ -109,7 +109,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data": [317, 278, 234, 0, 0],
+                            "data": [317, 278, 234, 208, 0],
                             "type": "bar",
                             "itemStyle":{
                                 "color":"#006cc5"
@@ -124,7 +124,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[435,395,342,0,0],
+                            "data":[435,395,342,301,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#55a5ff"
@@ -138,7 +138,7 @@
                             "emphasis": {
                                 "focus": "series"
                             },
-                            "data":[125,125,105,0,0],
+                            "data":[125,125,105,87,0],
                             "type":"bar",
                             "itemStyle":{
                                 "color":"#9cd9ff"
@@ -161,7 +161,7 @@
                       
                         {
                             "name":"",
-                            "data":[0,0,0,681,681],
+                            "data":[0,0,0,0,596],
                             "type":"bar",
                             "barWidth":35,
                             "itemStyle":{
@@ -175,7 +175,7 @@
                         {
                             "name":"total",
                        
-                            "data":["",798,681,"",""],
+                            "data":["",798,681,596,""],
                             "type":"bar",
                             "barGap":"-100%",
                             "itemStyle":{

@@ -37,10 +37,10 @@ export const setPercentage = function (params) {
         let content =  params[0].name == "中选数"?"  总占比":" Total Percentage"
         html=params[0].name+":"+681+content +":79%"+"<br>";
     }
-    else if(params[0].name == "中期通过数（敬请期待）" ||params[0].name == "Pass Mid-term Evaluation(Stay Tuned)"){
-        let content =  params[0].name == "中期通过数（敬请期待）"?"  总占比":" Total Percentage"
-        let name = params[0].name == "中期通过数（敬请期待）"?"  中期通过数":" Pass Mid-term Evaluation"
-        html=name +":"+ 0 + content + ":0%"+"<br>";
+    else if(params[0].name == "中期通过数" ||params[0].name == "Pass Mid-term Evaluation"){
+        let content =  params[0].name == "中期通过数"?"  总占比":" Total Percentage"
+        let name = params[0].name == "中期通过数"?"  中期通过数":" Pass Mid-term Evaluation"
+        html=name +":"+ 596 + content + ":87.5%"+"<br>";
     }
     else if(params[0].name == "结项数（敬请期待）" ||params[0].name == "Pass Final-term Evaluation(Stay Tuned)"){
         let content =  params[0].name == "结项数（敬请期待）"?"  总占比":" Total Percentage"
@@ -63,9 +63,9 @@ export const setPercentage = function (params) {
             let content =  params[0].name == "中选数"?"  占比:":" Percentage:"
             html+=params[i].seriesName+":"+params[i].value+ content + (params[i].value/681*100).toFixed(2)+ "%" + "<br>";
         }
-        else if(params[0].name == "中期通过数（敬请期待）" ||params[0].name == "Pass Mid-term Evaluation(Stay Tuned)"){
-            let content =  params[0].name == "中期通过数（敬请期待）"?"  占比:":" Percentage:"
-            html+=params[i].seriesName+":"+params[i].value+ content+ 0+ "%" + "<br>";
+        else if(params[0].name == "中期通过数" ||params[0].name == "Pass Mid-term Evaluation"){
+            let content =  params[0].name == "中期通过数"?"  占比:":" Percentage:"
+            html+=params[i].seriesName+":"+params[i].value+ content+ (params[i].value/596*100).toFixed(2)+ "%" + "<br>";
         }
         else if(params[0].name == "结项数（敬请期待）" ||params[0].name == "Pass Final-term Evaluation(Stay Tuned)"){
             let content =  params[0].name == "结项数（敬请期待）"?"  占比:":" Percentage:"
