@@ -142,7 +142,7 @@
                         />
                 </div> 
                 <div className="MidtermWrapper">
-                    <div className=" content1200">
+                    <div className="content1200">
                         <div  className="MidtermPageState">
                             <div className="MidtermPage">
                                 <span className="MidtermPageItemOne">{showdata.pronum[0]} {datalllength} {showdata.pronum[1]}</span>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
 
-                    <div className="MidtermWrapper content1200">
+                    <div className="content1200">
                     
                     <div className="Midterm">
                         <span className = 'sortDescription'>{showdata.sortDes}</span>
