@@ -27,11 +27,6 @@ class Index extends React.Component{
         window.open(url)
     }
 
-
-
-    
-
-
     render(){    
         let showdata = this.state.data[this.props.chiFlag]
         return(         
@@ -44,7 +39,6 @@ class Index extends React.Component{
                             <span className="indexButtonText" onClick={()=>{this.gourl(this.state.url)}}>{showdata.banner.textone}</span>
                         </div>
                    </div>
-                   
                 </div>
                 <div className="indexOne">
                     <div className="content1200">
@@ -64,7 +58,6 @@ class Index extends React.Component{
                                 )
                             })
                         }
-
                     </div>
                    </div>
                 </div>
@@ -81,11 +74,7 @@ class Index extends React.Component{
                             </div>
                         </div>
                     </div>
-                   
-                    
-
                 </div>
-
             </div>
          )
        

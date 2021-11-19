@@ -1,6 +1,6 @@
 {
     "link":[
-        "homepage","org" ,"liveshow","howitworks" ,"dataall","apply","help","data","midtermdata"
+        "homepage","org" ,"liveshow","howitworks" ,"dataall","apply","help","data","midtermdata","loginall"
     ],
     "chi":{
         "linkdata":[
@@ -41,7 +41,24 @@
                 "name":"帮助"        
             }
         ],
-        "summer2020":"2020活动回顾"
+        "summer2020":"2020活动回顾",
+        "login":{
+            "name": "登录",
+            "content": [
+                {
+                    "name": "学生登录",
+                    "title": "studentLogin"
+                },
+                {
+                    "name": "导师登录",
+                    "title": "tutorLogin"
+                },
+                {
+                    "name": "组织登录",
+                    "title": "orgLogin"
+                }
+            ]
+        }
     },
     "en":{
         "linkdata":[

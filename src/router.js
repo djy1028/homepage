@@ -35,44 +35,41 @@ const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js
          super(props);   
               
      }
- 
-    
      render(){
          return(
              <Router >
                  <App>
-                 
-                     <Route path="/" render={()=>
-                         <Wrapper>
-                             <Switch >                           
-                                 <Route path="/homepage"component={HomePage} ></Route> 
-                                 <Route path="/help"component={Help} ></Route>
-                                 <Route path="/org" component={Org}>
-                    
-                                     <Org>                                  
-                                         <Switch>   
-                                            <Suspense maxDuration={500}  fallback={<SpinLoading/>}>                          
-                                             <Route path = {["/org", "/org/orglist", "/orglist"]}  component={Orglist} exact ></Route>                      
-                                             <Route path="/org/projectlist" component={ProjectlistN} exact></Route> 
-                                             <Route path="/org/orgdetail/:orgname" component={OrgDetail} ></Route>  
-                                             <Route path="/org/prodetail/:projectid" component={ProjectDetail} ></Route>   
-                                             </Suspense>  
-                                         </Switch>                                     
-                                     </Org>
-                                 </Route>
-                                 <Route path="/howitworks"component={Howitworks} ></Route> 
-                                 <Route path="/data"component={Data} ></Route> 
-       
-                                <Route path="/midtermdata"component={Midtermdata} ></Route> 
-               
-                                 <Route path="/apply"component={Apply} ></Route>
-                                 <Route path="/liveshow"component={Liveshow} ></Route>                                                                                                                      
-                                 <Route path="/" component={HomePage} /> 
-                             </Switch>
-                            
-                         </Wrapper>
+                     <Route path="/" render={() =>
+                         <>
+                            <Wrapper>
+                                <Switch >                           
+                                        <Route path="/homepage"component={HomePage} ></Route> 
+                                        <Route path="/help"component={Help} ></Route>
+                                        <Route path="/org" component={Org}>
+                                            <Org>                                  
+                                                <Switch>   
+                                                    <Suspense maxDuration={500}  fallback={<SpinLoading/>}>                          
+                                                    <Route path = {["/org", "/org/orglist", "/orglist"]}  component={Orglist} exact ></Route>                      
+                                                    <Route path="/org/projectlist" component={ProjectlistN} exact></Route> 
+                                                    <Route path="/org/orgdetail/:orgname" component={OrgDetail} ></Route>  
+                                                    <Route path="/org/prodetail/:projectid" component={ProjectDetail} ></Route>   
+                                                    </Suspense>  
+                                                </Switch>                                     
+                                            </Org>
+                                        </Route>
+                                        <Route path="/howitworks"component={Howitworks} ></Route> 
+                                        <Route path="/data"component={Data} ></Route> 
+                                        <Route path="/midtermdata"component={Midtermdata} ></Route> 
+                                        <Route path="/apply"component={Apply} ></Route>
+                                        <Route path="/liveshow" component={Liveshow} ></Route>
+                                        
+                                        <Route path="/" component={HomePage} /> 
+                                </Switch>
+                            </Wrapper>
+                             <Route path="studentLogin" component={Login}></Route>
+
+                         </>
                      }/>
-                    
                  </App>
              </Router>
          );

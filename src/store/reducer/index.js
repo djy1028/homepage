@@ -10,7 +10,6 @@ const initState = {
 }
 
 export const reducer = (state = initState,action)=>{
-    console.log(action)
     if(action.type === "chiFlag_chi"){
         window.location.hash = window.location.hash.split("?")[0] + "?lang=chi"
     }
@@ -57,6 +56,4 @@ export const reducer = (state = initState,action)=>{
             return state
 
     }
-    
-
 }

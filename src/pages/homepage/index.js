@@ -29,7 +29,6 @@ class HomePage extends React.Component{
         if(url){
             gourl(url)
         }
-        
     }
 
     goLiveshow(){
@@ -79,7 +78,6 @@ class HomePage extends React.Component{
                             )
                         })
                     }
-                    
                 </div>
             )
             return 0;
@@ -115,8 +113,6 @@ class HomePage extends React.Component{
                         })
                     }
                     </div>
-                    
-
                 </div>
                 <div className="homepageWrapper">
                     <div className="content1200">
@@ -157,17 +153,13 @@ class HomePage extends React.Component{
                             </div>
                             <div className="homepageLogoItemList ">
                                 {this.createLogo("homepageLogoImage",logocoopdata.cohost)}
-                            </div>
-                           
-                            
+                            </div>                            
                             <div className="homepageLogoItemTitle ">
                                 {showdata.logotitle[4]}
                             </div>
                             <div className="homepageLogoItemList Media">
                                 {this.createLogo("homepagelogocoop",logocoopdata.media)}                           
                             </div>
-
-
                             <div className="homepageLogoItemTitle CoopTitle">
                                 <div>{showdata.logotitle[5]}</div>
                                 <div className="CoopTitleRank">{showdata.rank}</div>
@@ -177,20 +169,11 @@ class HomePage extends React.Component{
                                 <br/>
                                 {this.createLogo("homepagelogocoop",logocoopdata.university,'school/')}
                             </div>
-                           
                         </div>
-
                     </div>
-                   
-
-
                 </div>
-
             </div>
          )
-       
-        
-        
     }
 }
 

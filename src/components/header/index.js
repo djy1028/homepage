@@ -49,8 +49,9 @@ class Header extends React.Component{
 
 
     goPage(linkurl){
-        if(linkurl !== "dataall"){
-            this.props.setPageFlag( linkurl == 'data' || linkurl === 'midtermdata'?'dataall':linkurl)
+        if (linkurl !== "dataall" || linkurl !== "loginall") {
+            const logining = 
+            this.props.setPageFlag( linkurl == 'data' || linkurl === 'midtermdata'?'dataall': linkurl.includes("Login")?"loginall": linkurl)
             gohash("/"+linkurl)
             if(linkurl === "org"){
                 this.props.setOrgTabFlag("orglist")
@@ -107,25 +108,27 @@ class Header extends React.Component{
 
    gosummer2020(){
        window.open("https://isrc.iscas.ac.cn/summer2020/")
-   }
+    }
+    gosummerbackend() {
+        window.open("https://test-portal.summer-ospp.ac.cn/")
+    }
+
 
     render(){
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
+        console.log(pageflagredux)
         return(         
             <div className={["header", this.state.chiFlag].join(" ")}>
                 <div className="content1200 headerContent">
                     <div className="osscHeaderLogo" onClick={()=>{this.goPage("homepage")}}></div>
                     <div className="headerList">
                     <div className="headerTabWrapper">
-                        
                         {
-                            
                             showdata.linkdata.map((ele,index)=>{
                                 const linkurl = link[index]
                                 return (
-                                   
                                     <div key={index} className={[pageflagredux ===linkurl?"active":"" ,"headerWrapItem", linkurl].join(" ")}>
                                         <div 
                                             onClick={()=>{this.goPage(linkurl)}}
@@ -142,56 +145,67 @@ class Header extends React.Component{
                                                         )
                                                     })
                                                 }
-
                                             </div>:""
                                         }                                       
                                     </div>
-                                  
-                                 
-                                    
                                 )
                             })
                         }
-                        <div onClick={()=>{this.gosummer2020()}}className={[this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")} key="summer2020">
+                        <div onClick={()=>{this.gosummer2020()}} className={[this.state.chiFlag == "chi"?"headerTabItem":"headerTabItemEn","headerNav"].join(" ")} key="summer2020">
                                         <span>{showdata.summer2020}</span>
                         </div> 
-                        
-
                     </div>
                    
                     <div className="headerChiEn headerTabItem" >
                             <div className="headerChi" onClick={()=>{this.switchFlag('chi')}}>中文</div>
                             <div className="headerEn" onClick={()=>{this.switchFlag('en')}}>ENG</div>
                     </div>
-                    <div className="headerMobileIcon" onClick={()=>this.headerlist(true)}>
+                        
+
+                    <div className={[pageflagredux === 'loginall'?"active":"", "headerWrapItem", "loginall"].join(" ")}>
+                        <div onClick={() => { this.goPage('loginall') }}
+                            className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
+                            <span>{showdata.login.name}</span>
+                        </div>
+                        {
+                            showdata.login.content ?
+                                <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                                    {
+                                        showdata.login.content.map((sitem, sindex) => {
+                                            return (
+                                                <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => { sindex === 0 ? this.goPage(sitem.title) : this.gosummerbackend() }}>{sitem.name}</div>
+                                            )
+                                        })
+                                    }
+
+                                </div> : ""
+                        }
+                    </div>
+                     
+                    <div className="headerMobileIcon" onClick={() => this.headerlist(true)}>
                     </div>
 
                     </div>
-                    
-
                     <div className={["headerMobileList" ,this.state.moblieListFlag?"displayblock":""].join(" ")}>
                         <div className="headerClose" onClick={()=>this.headerlist(false)}></div>
                         {
                             showdata.linkdata.map((item,index)=>{
-                            const linkurl = link[index]
-                            return (                            
-                                <div key={index}
-                                    onClick={()=>this.getLink(linkurl)}
-                                    className={["osscListItem",linkurl].join(" ")}>                                
-                                    <span> {item.content?null:item.name}</span> 
-                                    {
-                                        item.content && item.content.map((sitem,sindex)=>{
-                                            return(
-                                                <div className={["osscListItem",linkurl].join(" ")}  key={sindex} onClick={(e)=>{e.stopPropagation();this.getLink(sitem.title)}}>{sitem.name}</div>
-                                            )
-                                        })
-                                            
-                                    }                                      
-                                </div>
-                                    
-                              
-                            )
-                                
+                                const linkurl = link[index]
+                                return (                            
+                                    <div key={index}
+                                        onClick={()=>this.getLink(linkurl)}
+                                        className={["osscListItem",linkurl].join(" ")}>                                
+                                        <span> {item.content?null:item.name}</span> 
+                                        {
+                                            item.content && item.content.map((sitem,sindex)=>{
+                                                return(
+                                                    <div className={["osscListItem",linkurl].join(" ")}  key={sindex} onClick={(e)=>{e.stopPropagation();this.getLink(sitem.title)}}>{sitem.name}</div>
+                                                )
+                                            })
+                                                
+                                        }                                      
+                                    </div>
+                                )
                             })
                         }
                         <div

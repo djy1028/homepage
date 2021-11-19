@@ -73,8 +73,6 @@ var data = {
     }
     
 }
-
-
 export {
     data  
 }
