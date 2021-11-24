@@ -214,7 +214,7 @@ function Data(props){
  
 const mapStateToProps = (state)=>{
     return {
-        chiFlag:state.chiFlag
+        chiFlag: state.homepage.chiFlag
     }
 }
 export default connect(mapStateToProps)(Data)

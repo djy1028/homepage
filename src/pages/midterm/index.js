@@ -213,8 +213,8 @@
  const mapStateToProps = (state)=>{
  
      return {
-        chiFlag:state.chiFlag,
-        studata:state.studata
+        chiFlag: state.homepage.chiFlag,
+        studata:state.homepage.studata
     }
   }
  

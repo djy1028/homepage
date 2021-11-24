@@ -13,7 +13,7 @@
 import React from 'react'
 import './index.less';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
+// import {withRouter} from 'react-router-dom';
 import projectlist from '../../data/projectlist.json';
 import {getSplit,getSupportLanguage,goenroll,gohash} from "../../util/url.js";
 import data from '../../data/orglist2021.json';
@@ -50,9 +50,9 @@ class ProjectDetail extends React.Component{
         //1.0 判断prodetail有无值
         if(Object.keys(this.props.prodetail).length === 0){
             //2.0 获取projectid
-            console.log(this.props.history.location)
-            const proid = this.props.history.location.pathname.split("/org/prodetail/") 
-            
+            // console.log(this.props.history.location)
+            // const proid = this.props.history.location.pathname.split("/org/prodetail/") 
+            const proid = window.location.hash.split("/org/prodetail/")
             if(proid[1]){
                 //3.0 从数据中查找projectid
                 for(let orgitem of data ){
@@ -255,11 +255,11 @@ class ProjectDetail extends React.Component{
 const mapStateToProps = (state)=>{
     
     return {
-        chiFlag:state.chiFlag,
-        prodetail:state.prodetail,
-        proalldata:state.proalldata
+        chiFlag:state.homepage.chiFlag,
+        prodetail:state.homepage.prodetail,
+        proalldata:state.homepage.proalldata
     }
  }
 
 
-export default connect(mapStateToProps)(withRouter(ProjectDetail))
+export default connect(mapStateToProps)(ProjectDetail)

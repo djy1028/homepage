@@ -15,6 +15,7 @@ import './index.less';
 import { connect } from 'react-redux';
 import data from './../../data/nav.json';
 import {titleChange,gohash} from './../../util/url.js';
+import { getToken } from 'auth-provider';
 class Header extends React.Component{
     constructor(props){
        super(props)
@@ -46,12 +47,10 @@ class Header extends React.Component{
         this.headerlist(false)
     }
 
-
-
     goPage(linkurl){
         if (linkurl !== "dataall" || linkurl !== "loginall") {
-            const logining = 
-            this.props.setPageFlag( linkurl == 'data' || linkurl === 'midtermdata'?'dataall': linkurl.includes("Login")?"loginall": linkurl)
+          
+            this.props.setPageFlag(linkurl == 'data' || linkurl === 'midtermdata' ? 'dataall' : linkurl.includes("Login") ? "loginall" : linkurl)
             gohash("/"+linkurl)
             if(linkurl === "org"){
                 this.props.setOrgTabFlag("orglist")
@@ -93,7 +92,7 @@ class Header extends React.Component{
        }
 
        //3.0 查看当前hash
-       let hashu = window.location.hash.split("?")[0].split("#/")[1].split("/")[0]
+        let hashu = window.location.hash && window.location.hash.split("?")[0].split("#/")[1].split("/")[0]
        
        this.props.setPageFlag(hashu||'homepage')
 
@@ -155,32 +154,51 @@ class Header extends React.Component{
                                         <span>{showdata.summer2020}</span>
                         </div> 
                     </div>
-                   
                     <div className="headerChiEn headerTabItem" >
                             <div className="headerChi" onClick={()=>{this.switchFlag('chi')}}>中文</div>
                             <div className="headerEn" onClick={()=>{this.switchFlag('en')}}>ENG</div>
                     </div>
-                        
-
-                    <div className={[pageflagredux === 'loginall'?"active":"", "headerWrapItem", "loginall"].join(" ")}>
-                        <div onClick={() => { this.goPage('loginall') }}
-                            className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
-                            <span>{showdata.login.name}</span>
-                        </div>
-                        {
-                            showdata.login.content ?
-                                <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                    {
+                            getToken() ?
+                            <div className={["active", "headerWrapItem", "logout"].join(" ")}>
+                                    <div className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
+                                        <span>{showdata.logout.name}</span>
+                                    </div>
                                     {
-                                        showdata.login.content.map((sitem, sindex) => {
-                                            return (
-                                                <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => { sindex === 0 ? this.goPage(sitem.title) : this.gosummerbackend() }}>{sitem.name}</div>
-                                            )
-                                        })
+                                        showdata.logout.content ?
+                                            <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                                                {
+                                                    showdata.logout.content.map((sitem, sindex) => {
+                                                        return (
+                                                            <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => {console.log(11)}}>{sitem.name}</div>
+                                                        )
+                                                    })
+                                                }
+                                            </div> : ""
                                     }
 
-                                </div> : ""
-                        }
-                    </div>
+                            </div> :
+                                <div className={[pageflagredux === 'loginall' ? "active" : "", "headerWrapItem", "loginall"].join(" ")}>
+                                    <div onClick={() => { this.goPage('loginall') }}
+                                        className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
+                                        <span>{showdata.login.name}</span>
+                                    </div>
+                                    {
+                                        showdata.login.content ?
+                                            <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                                                {
+                                                    showdata.login.content.map((sitem, sindex) => {
+                                                        return (
+                                                            <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => { sindex === 0 ? this.goPage(sitem.title) : this.gosummerbackend() }}>{sitem.name}</div>
+                                                        )
+                                                    })
+                                                }
+                                            </div> : ""
+                                    }
+                                </div>
+                    
+                    }
+                    
                      
                     <div className="headerMobileIcon" onClick={() => this.headerlist(true)}>
                     </div>
@@ -256,7 +274,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state)=>{
     
     return {
-        pageflag:state.pageflag,
+        pageflag:state.homepage.pageflag,
        
     }
  }

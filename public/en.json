@@ -1,0 +1,48 @@
+
+{
+    "home":"Home",
+    "homeheader":{
+        "homepage":"Homepage",
+        "help":"Help"
+    },
+    "login":{
+        "username_message":"please enter user name",
+        "username_placeholder":"username",
+        "password_message":"Please enter your password",
+        "password_placeholder":"password",
+        "validcode_message":"Please enter the verification code",
+        "validcode_placeholder":"Verification Code",
+        "validcode_title":"Click to replace the verification code",
+        "lang_label":"language selection",
+        "login_btn":"Log in",
+        "lang_zh":"Chinese",
+        "lang_en":"English",
+        "invite_login": "Please login",
+        "invite_regis": "Please register",
+        "login_title":"Login/Register to continue",
+        "noaccount": "Organization Register",
+        "existaccount": "Already have an account? Sign in directly",
+        "remember":"Remeber me",
+        "forget_pwd":"Forgot password",
+        "findback_pwd": "Get your password back",
+        "findback_mes": "Please check your mailbox and reset your password",
+        "setNewPwd": "Set a new password",
+        "newpws": "New password",
+        "confirmagain": "Reconfirm",
+        "checkingaccount": "In account verification..."
+    },
+    "logout":"log out",
+    "register":{
+        "register_btn":"Register",
+        "email_message":"Please fill in the email address correctly",
+        "email_validmessage":"Please fill in a valid email address",
+        "email_placeholder":"Mailbox",
+        "cpassword_placeholder": "Confirm password",
+        "cpassword_message":"Please confirm input password",
+        "validate_pwd":"More than 8-digit password, combination of lower-case letters, capital letters and numbers",
+        "type":["Student","Organization","teacher"],
+        "confirm_pwd":"Please confirm your password!",
+        "check_confirm":"The two passwords that you entered do not match",
+        "org_regis":"Organization Register"
+    }
+}

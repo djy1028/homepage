@@ -12,31 +12,23 @@
 
 import React from 'react'
 import './index.less';
-import { connect } from 'react-redux';
-import data from "./../../data/homepage.json";
-import {gohash, gourl} from "./../../util/url.js";
+import datas from "./../../data/homepage.json";
+import {gourl} from "./../../util/url.js";
 import logocoopdata from "./../../data/coorganizer.json"
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
-class HomePage extends React.Component{
-    constructor(props){
-       super(props)
-       this.state ={
-            data
-       }
-    }
-
-    goLogoLink(url){
+const HomePage = ()=>{
+    const homepage = useSelector(state => state.homepage)
+    const [data,setData] = useState(datas)
+    const goLogoLink = (url)=>{
         if(url){
             gourl(url)
         }
     }
 
-    goLiveshow(){
-        this.props.setPageFlag("liveshow")
-        gohash("/liveshow")
-    }
 
-    createLogo(logoclassname,data,path){
+    const createLogo = (logoclassname,data,path)=>{
         let pathurl = 'logo/'
         if(path){
             pathurl=path
@@ -48,7 +40,7 @@ class HomePage extends React.Component{
             logo.push(
                 <div 
                 key={index}
-                onClick={()=>{this.goLogoLink(item.url)}}
+                onClick={()=>{goLogoLink(item.url)}}
                 className={[logoclassname,item.url?'':'cursordefault'].join(" ")}
                 style={{backgroundImage:"url("+iconUrl + ")"}} >
 
@@ -58,7 +50,7 @@ class HomePage extends React.Component{
         return logo;
     }
 
-    createIconBanner(text){
+    const createIconBanner = (text)=>{
         var iconcontainer = []
         text.map((item,index)=>{
             const iconUrl = require('./../../img/index/icon'+index+'.jpg').default
@@ -86,113 +78,92 @@ class HomePage extends React.Component{
      
     }
 
- 
+    let showdata = data[homepage.chiFlag]
+    return(         
+        <div className="homepage">
+        <div className="GoApply"
+            dangerouslySetInnerHTML={{ __html: showdata.goapply }}>
+            
+        </div>
+            <div className="homepageBanner One">
+                <div className="homepageBannerTitle">{showdata.title}</div>
+                <div className="homepageTextOne">
+                {
+                    showdata.bannerone.map((item,index)=>{
+                        return(
+                            <div className="homepageBannerFline" key={index} >
+                                <span className="homepageBannerFlineText">
+                                <span   dangerouslySetInnerHTML={{ __html: index + 1 + '. ' + item }}></span>
+                                </span>
+                            </div>
+                        )
 
-
-    render(){
-        let showdata = this.state.data[this.props.chiFlag]
-        return(         
-            <div className="homepage">
-            <div className="GoApply"
-                dangerouslySetInnerHTML={{ __html: showdata.goapply }}>
-               
-            </div>
-                <div className="homepageBanner One">
-                    <div className="homepageBannerTitle">{showdata.title}</div>
-                    <div className="homepageTextOne">
-                    {
-                        showdata.bannerone.map((item,index)=>{
-                            return(
-                                <div className="homepageBannerFline" key={index} >
-                                    <span className="homepageBannerFlineText">
-                                    <span   dangerouslySetInnerHTML={{ __html: index + 1 + '. ' + item }}></span>
-                                    </span>
-                                </div>
-                            )
-
-                        })
-                    }
-                    </div>
+                    })
+                }
                 </div>
-                <div className="homepageWrapper">
-                    <div className="content1200">
-                        <div 
-                        className="homepageDesc"
-                        dangerouslySetInnerHTML={{ __html: showdata.bannertext }}
-                        ></div>
+            </div>
+            <div className="homepageWrapper">
+                <div className="content1200">
+                    <div 
+                    className="homepageDesc"
+                    dangerouslySetInnerHTML={{ __html: showdata.bannertext }}
+                    ></div>
 
+                    
+                    <div className="homepageIcon">
+                        {
+                            createIconBanner(showdata.icontext)
+                        }
+                    </div>
+                    <div className="homepageLogo">
+                        <div className="homepageLogoTitle">
+                            <span className="title-wrapper">
+                                <span className="title-left-icon"></span>
+                                <span className="title-text">{showdata.logotitle[0]}</span>
+                                <span className="title-right-icon"></span>
+                                </span>
+                        </div>
                         
-                        <div className="homepageIcon">
-                            {
-                                this.createIconBanner(showdata.icontext)
-                            }
+                        <div className="homepageLogoItemTitle">
+                            {showdata.logotitle[1]}
                         </div>
-                        <div className="homepageLogo">
-                            <div className="homepageLogoTitle">
-                                <span className="title-wrapper">
-                                    <span className="title-left-icon"></span>
-                                    <span className="title-text">{showdata.logotitle[0]}</span>
-                                    <span className="title-right-icon"></span>
-                                    </span>
-                            </div>
-                           
-                            <div className="homepageLogoItemTitle">
-                                {showdata.logotitle[1]}
-                            </div>
-                            <div className="homepageLogoItemList ">
-                                {this.createLogo("homepageLogoImage",logocoopdata.host)}
-                            </div>
-                            <div className="homepageLogoItemTitle ">
-                                {showdata.logotitle[3]}
-                            </div>
-                            <div className="homepageLogoItemList ">
-                            {this.createLogo("homepageLogoImage",logocoopdata.organizer)}                      
-                            </div>
-                            <div className="homepageLogoItemTitle">
-                                {showdata.logotitle[2]}
-                            </div>
-                            <div className="homepageLogoItemList ">
-                                {this.createLogo("homepageLogoImage",logocoopdata.cohost)}
-                            </div>                            
-                            <div className="homepageLogoItemTitle ">
-                                {showdata.logotitle[4]}
-                            </div>
-                            <div className="homepageLogoItemList Media">
-                                {this.createLogo("homepagelogocoop",logocoopdata.media)}                           
-                            </div>
-                            <div className="homepageLogoItemTitle CoopTitle">
-                                <div>{showdata.logotitle[5]}</div>
-                                <div className="CoopTitleRank">{showdata.rank}</div>
-                            </div>
-                            <div className="homepageLogoItemList Coop">
-                                {this.createLogo("homepagelogocoop",logocoopdata.cooper)}
-                                <br/>
-                                {this.createLogo("homepagelogocoop",logocoopdata.university,'school/')}
-                            </div>
+                        <div className="homepageLogoItemList ">
+                            {createLogo("homepageLogoImage",logocoopdata.host)}
+                        </div>
+                        <div className="homepageLogoItemTitle ">
+                            {showdata.logotitle[3]}
+                        </div>
+                        <div className="homepageLogoItemList ">
+                        {createLogo("homepageLogoImage",logocoopdata.organizer)}                      
+                        </div>
+                        <div className="homepageLogoItemTitle">
+                            {showdata.logotitle[2]}
+                        </div>
+                        <div className="homepageLogoItemList ">
+                            {createLogo("homepageLogoImage",logocoopdata.cohost)}
+                        </div>                            
+                        <div className="homepageLogoItemTitle ">
+                            {showdata.logotitle[4]}
+                        </div>
+                        <div className="homepageLogoItemList Media">
+                            {createLogo("homepagelogocoop",logocoopdata.media)}                           
+                        </div>
+                        <div className="homepageLogoItemTitle CoopTitle">
+                            <div>{showdata.logotitle[5]}</div>
+                            <div className="CoopTitleRank">{showdata.rank}</div>
+                        </div>
+                        <div className="homepageLogoItemList Coop">
+                            {createLogo("homepagelogocoop",logocoopdata.cooper)}
+                            <br/>
+                            {createLogo("homepagelogocoop",logocoopdata.university,'school/')}
                         </div>
                     </div>
                 </div>
             </div>
-         )
-    }
+        </div>
+        )
 }
 
-const mapStateToProps = (state)=>{
-    
-     return {
-         chiFlag:state.chiFlag
-     }
-  }
 
-  const mapDispatchToProps = dispatch => {
-    return {
-        setPageFlag:(data)=>{
-            dispatch({
-                type:'setPageFlag',
-                payload:data
-            })
-        }
-    }
-}
  
- export default connect(mapStateToProps,mapDispatchToProps)(HomePage)
+export default HomePage

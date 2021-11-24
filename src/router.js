@@ -11,8 +11,7 @@
  */
 
  import React , { Suspense }from 'react';
- import {HashRouter as Router, Route, Switch} from 'react-router-dom';
- import App from './App';
+import { HashRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
  import Wrapper from './wrapper.js';
  import HomePage from './pages/homepage/index.js';
  import Help from './pages/help/index.js';
@@ -24,54 +23,33 @@
  import OrgDetail from './components/orgdetail/index.js';
 import Liveshow from './pages/liveshow/index.js';
 import ProjectDetail from './components/projectDetail/index.js';
-import {asyncComponent} from './components/asynccomp/index.js';
 import SpinLoading  from './components/spin/index.js';
+import { LoginApp } from 'pages/login';
+import { Student } from 'pages/student';
+import { getToken } from 'auth-provider.js';
 const Orglist = React.lazy(() => import('./components/orglist/index.js'));
 const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js'));
 
-
- export default class IRouter extends React.Component{
-     constructor(props){
-         super(props);   
-              
-     }
-     render(){
-         return(
-             <Router >
-                 <App>
-                     <Route path="/" render={() =>
-                         <>
-                            <Wrapper>
-                                <Switch >                           
-                                        <Route path="/homepage"component={HomePage} ></Route> 
-                                        <Route path="/help"component={Help} ></Route>
-                                        <Route path="/org" component={Org}>
-                                            <Org>                                  
-                                                <Switch>   
-                                                    <Suspense maxDuration={500}  fallback={<SpinLoading/>}>                          
-                                                    <Route path = {["/org", "/org/orglist", "/orglist"]}  component={Orglist} exact ></Route>                      
-                                                    <Route path="/org/projectlist" component={ProjectlistN} exact></Route> 
-                                                    <Route path="/org/orgdetail/:orgname" component={OrgDetail} ></Route>  
-                                                    <Route path="/org/prodetail/:projectid" component={ProjectDetail} ></Route>   
-                                                    </Suspense>  
-                                                </Switch>                                     
-                                            </Org>
-                                        </Route>
-                                        <Route path="/howitworks"component={Howitworks} ></Route> 
-                                        <Route path="/data"component={Data} ></Route> 
-                                        <Route path="/midtermdata"component={Midtermdata} ></Route> 
-                                        <Route path="/apply"component={Apply} ></Route>
-                                        <Route path="/liveshow" component={Liveshow} ></Route>
-                                        
-                                        <Route path="/" component={HomePage} /> 
-                                </Switch>
-                            </Wrapper>
-                             <Route path="studentLogin" component={Login}></Route>
-
-                         </>
-                     }/>
-                 </App>
-             </Router>
-         );
-     }
+export const IRouter = () => {
+    return (
+        <Wrapper>
+            <Router >
+                 <Routes>
+                    <Route path="/homepage" element={<HomePage />} ></Route>
+                    <Route path="/help" element={<Help />} ></Route>
+                    <Route path="/org/*" element={<Org/>}></Route>
+                    <Route path="/howitworks" element={<Howitworks />} ></Route>
+                    <Route path="/data" element={<Data />} ></Route>
+                    <Route path="/midtermdata" element={<Midtermdata />} ></Route>
+                    <Route path="/apply" element={<Apply />} ></Route>
+                    <Route path="/liveshow" element={<Liveshow />} ></Route>
+                    <Route path="/studentLogin" element={<LoginApp />}></Route>
+                    <Route path="/student/*" element={<Student />}></Route>
+                    <Route path="/" element={<HomePage />} />
+                </Routes>
+                {/* {getToken() && <Navigate to={"/student"} />} */}
+            </Router>
+        </Wrapper>
+         )
+     
  }

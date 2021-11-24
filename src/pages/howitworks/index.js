@@ -26,9 +26,10 @@ class Howitworks extends React.Component{
  
 
 
-    render(){
+    render() {
+        console.log(this.props)
         let showdata = this.state.data[this.props.chiFlag]
-        
+         
         return(         
             <div className="Howitworks">
                 <div className="HowitworksBanner">
@@ -122,7 +123,7 @@ class Howitworks extends React.Component{
 const mapStateToProps = (state)=>{
     
     return {
-        chiFlag:state.chiFlag
+        chiFlag:state.homepage.chiFlag
     }
  }
 

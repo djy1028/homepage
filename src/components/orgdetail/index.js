@@ -15,7 +15,7 @@ import './index.less';
 import data from '../../data/org.json';
 import { connect } from 'react-redux';
 import orglist from '../../data/orglist2021.json';
-import {withRouter} from 'react-router-dom';
+// import {withRouter} from 'react-router-dom';
 import OrgTip from '../OrgTip/index.js';
 import prolistjson from '../../data/projectlist.json';
 import ProjectModal from '../projectModal/index.js';
@@ -54,12 +54,9 @@ class OrgDetail extends React.Component{
 
    
     componentDidMount(){
-
-     
-       
         let showorg = this.props.orgdetail
-        
-        var hashurl = this.props.history.location.pathname.split("/")[3].toString();  
+        var hashurl = window.location.hash.split("/")[3].toString();
+        console.log(hashurl)
         // 1.0 判断redux里是否有数据
         if(hashurl!==showorg.anchor || Object.keys(showorg).length === 0){
              // 2.0 若无，则从orglist里搜索
@@ -214,10 +211,10 @@ class OrgDetail extends React.Component{
 const mapStateToProps = (state)=>{
     
     return {
-        orgdetail:state.orgdetail,
-        chiFlag:state.chiFlag
+        orgdetail:state.homepage.orgdetail,
+        chiFlag:state.homepage.chiFlag
     }
  }
 
 
-export default connect(mapStateToProps)(withRouter(OrgDetail))
+export default connect(mapStateToProps)(OrgDetail)

@@ -152,7 +152,7 @@ class Help extends React.Component{
 const mapStateToProps = (state)=>{
     
     return {
-        chiFlag:state.chiFlag
+        chiFlag: state.homepage.chiFlag
     }
  }
 

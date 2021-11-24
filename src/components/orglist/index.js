@@ -18,6 +18,7 @@ import OrgTip from '../../components/OrgTip/index.js';
 import {getSplit} from "../../util/url.js";
 import { Input } from 'antd';
 import orglist from "../../data/orglist2021.json";
+import store from 'store';
 const { Search } = Input;
 
 
@@ -81,15 +82,8 @@ class Orglist extends React.Component{
         }            
         return 0;
     }
-
-
-
-   
-
- 
-
-
-    render(){
+    render() {
+        console.log(store.getState())
         let showdata = this.state.data[this.props.chiFlag]
         let showorglist = this.state.showorglist
         const lenorg = showorglist.length
@@ -149,7 +143,7 @@ class Orglist extends React.Component{
 
 const mapStateToProps = (state)=>{
     return {
-        chiFlag:state.chiFlag
+        chiFlag:state.homepage.chiFlag
     }
  }
 

@@ -5,12 +5,29 @@ import './pages/homepage/pad.less';
 import './pages/homepage/mobile.less';
 import './pages/homepage/common.less';
 import './pages/index/index.less';
-import IRouter from './router.js';
+import { IRouter } from './router.js';
+import './lang/i18n'
+import { Provider } from 'react-redux';
+import store from './store/index.js';
+import { QueryClient, QueryClientProvider } from 'react-query'
+import './App.css';
 
+const queryclient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false
+    }
+  }
+})
 ReactDOM.render(
-  <React.StrictMode>
-    <IRouter />
-  </React.StrictMode>,
+ 
+  <Provider store={store}>
+     <QueryClientProvider client={queryclient}>
+        <IRouter />
+    </QueryClientProvider>
+      </Provider>
+   ,
   document.getElementById('root')
 );
 

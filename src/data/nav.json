@@ -58,6 +58,15 @@
                     "title": "orgLogin"
                 }
             ]
+        },
+        "logout":{
+            "name":"用户中心",
+            "content":[
+                {
+                    "name": "退出",
+                    "title": "studentLoginout"
+                }
+            ]
         }
     },
     "en":{

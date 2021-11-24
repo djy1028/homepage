@@ -28,7 +28,7 @@ class Index extends React.Component{
     }
 
     render(){    
-        let showdata = this.state.data[this.props.chiFlag]
+        let showdata = this.state.data[this.props.homepage.chiFlag]
         return(         
             <div className={["index", this.props.chiFlag].join(" ")}>
                
@@ -84,9 +84,6 @@ class Index extends React.Component{
 }
 
 
-const mapStateToProps = (state)=>{
-   console.log(state)
-    return state
- }
+const mapStateToProps = (state)=>state.homepage
 
 export default connect(mapStateToProps)(Index)

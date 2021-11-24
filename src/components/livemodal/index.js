@@ -97,9 +97,6 @@ export default class LiveModal extends React.Component{
         </div>      
            
          )
-       
-        
-        
     }
 }
 
