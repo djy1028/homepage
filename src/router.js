@@ -26,11 +26,13 @@ import ProjectDetail from './components/projectDetail/index.js';
 import SpinLoading  from './components/spin/index.js';
 import { LoginApp } from 'pages/login';
 import { Student } from 'pages/student';
-import { getToken } from 'auth-provider.js';
+import { useSelector } from 'react-redux';
 const Orglist = React.lazy(() => import('./components/orglist/index.js'));
 const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js'));
 
 export const IRouter = () => {
+    const user = useSelector(state => state.user)
+    console.log(user.token)
     return (
         <Wrapper>
             <Router >
@@ -43,11 +45,13 @@ export const IRouter = () => {
                     <Route path="/midtermdata" element={<Midtermdata />} ></Route>
                     <Route path="/apply" element={<Apply />} ></Route>
                     <Route path="/liveshow" element={<Liveshow />} ></Route>
-                    <Route path="/studentLogin" element={<LoginApp />}></Route>
-                    <Route path="/student/*" element={<Student />}></Route>
+                    {
+                        user.token ? <Route path="/student/*" element={<Student />}></Route> :
+                            <Route path="/studentLogin" element={<LoginApp />}></Route>
+                    }
+                   
                     <Route path="/" element={<HomePage />} />
                 </Routes>
-                {/* {getToken() && <Navigate to={"/student"} />} */}
             </Router>
         </Wrapper>
          )

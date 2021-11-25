@@ -6,13 +6,15 @@ const LOAD_DATA = 'LOAD_DATA'
 const ERROR_MSG = 'ERROR_MSG';
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const LOG_OUT = 'LOG_OUT'
+const MENU_ITEM = 'MENU_ITEM'
 const initState = {
     // isAuth:'',   //是否已经登陆
     msg:'',
     name:'',
     pwd:'',
     type: '',
-    token:''
+    token: '',
+    menu:''
 }
 
 export function user(state=initState,action){
@@ -24,6 +26,8 @@ export function user(state=initState,action){
         case AUTH_SUCCESS:
             return {...state,msg:'',...action.payload}
         case LOAD_DATA:
+            return { ...state, ...action.payload }
+        case MENU_ITEM:
             return {...state,...action.payload}
             //退出登录后，清空所有用户状态，redirectTo指向/login
         case LOG_OUT:
@@ -39,7 +43,6 @@ function registerSuccess(data){
     return {type:AUTH_SUCCESS,payload:data}
 }
 //登陆成功dispatch
-
 export const loginSuccess = (data)=>{
     return {type:AUTH_SUCCESS,payload:data}
 }
@@ -47,6 +50,8 @@ export const loginSuccess = (data)=>{
 export const authSuccess = (data)=>{
     return {type:AUTH_SUCCESS,payload:data}
 }
+
+export const changeMenu = (data) => ({ type: MENU_ITEM, payload: data})
 
 function errorMsg(msg){
     return {msg,type:ERROR_MSG}
@@ -93,6 +98,6 @@ export function loadData(data){
     return {type:LOAD_DATA,payload:data}
 }
 //用户退出登录
-export const submitLogout=()=>{
+export const submitLogout = () => {
     return {type:LOG_OUT}
 }

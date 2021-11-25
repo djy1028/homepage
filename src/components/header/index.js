@@ -15,7 +15,7 @@ import './index.less';
 import { connect } from 'react-redux';
 import data from './../../data/nav.json';
 import {titleChange,gohash} from './../../util/url.js';
-import { getToken, logout } from 'auth-provider';
+import { logout } from 'auth-provider';
 import { submitLogout } from 'store/redux/userRedux';
 class Header extends React.Component{
     constructor(props){
@@ -49,13 +49,16 @@ class Header extends React.Component{
     }
 
     goPage(linkurl){
-        if (linkurl !== "dataall" || linkurl !== "loginall") {
-          
+        if (linkurl !== "dataall" && linkurl !== "loginall") {
             this.props.setPageFlag(linkurl == 'data' || linkurl === 'midtermdata' ? 'dataall' : linkurl.includes("Login") ? "loginall" : linkurl)
-            gohash("/"+linkurl)
-            if(linkurl === "org"){
+            gohash("/" + linkurl)
+            if (linkurl === "org") {
                 this.props.setOrgTabFlag("orglist")
             }
+        }
+        else {
+            this.props.setPageFlag(linkurl === "dataall" ? "dataall":"loginall")
+            gohash(linkurl === "dataall"?"/data":"/studentLogin")
         }
     }
 
@@ -113,10 +116,11 @@ class Header extends React.Component{
         window.open("https://test-portal.summer-ospp.ac.cn/")
     }
 
-    logout() {
+    logoutstu() {
         const that = this
         logout().then(() => {
-            window.history.replaceState('studentLogin', '', '/')
+            that.goPage('studentLogin')
+            // window.location.hash = '/studentLogin'
             that.props.setLogout()
             // queryClient.clear()
         })
@@ -129,8 +133,7 @@ class Header extends React.Component{
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
-        console.log(pageflagredux)
-        console.log(getToken())
+        const { token,menu } = this.props
         return(         
             <div className={["header", this.state.chiFlag].join(" ")}>
                 <div className="content1200 headerContent">
@@ -172,43 +175,44 @@ class Header extends React.Component{
                             <div className="headerEn" onClick={()=>{this.switchFlag('en')}}>ENG</div>
                     </div>
                     {
-                            // getToken() ?
-                            // <div className={["active", "headerWrapItem", "logout"].join(" ")}>
-                            //         <div className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
-                            //             <span>{showdata.logout.name}</span>
-                            //         </div>
-                            //         {
-                            //             showdata.logout.content ?
-                            //                 <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
-                            //                     {
-                            //                         showdata.logout.content.map((sitem, sindex) => {
-                            //                             return (
-                            //                                 <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => logout()}>{sitem.name}</div>
-                            //                             )
-                            //                         })
-                            //                     }
-                            //                 </div> : ""
-                            //         }
-
-                            // </div> :
-                                <div className={[pageflagredux === 'loginall' ? "active" : "", "headerWrapItem", "loginall"].join(" ")}>
-                                    <div onClick={() => { this.goPage('loginall') }}
+                            token ?
+                                <div style={{position:'relative',left:'5rem'}} className={["active", "headerWrapItem", "logout"].join(" ")}>
+                                    <div onClick={() => { this.goPage(menu?`student/${menu}`:'student/bulletin') }}
                                         className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
-                                        <span>{showdata.login.name}</span>
+                                        <span>{showdata.logout.name}</span>
                                     </div>
                                     {
-                                        showdata.login.content ?
+                                        showdata.logout.content ?
                                             <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
                                                 {
-                                                    showdata.login.content.map((sitem, sindex) => {
+                                                    showdata.logout.content.map((sitem, sindex) => {
                                                         return (
-                                                            <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => { sindex === 0 ? this.goPage(sitem.title) : this.gosummerbackend() }}>{sitem.name}</div>
+                                                            <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => this.logoutstu()}>{sitem.name}</div>
                                                         )
                                                     })
                                                 }
                                             </div> : ""
                                     }
+
+                            </div> :
+                            <div style={{ position: 'relative', left: '5rem' }} className={[pageflagredux === 'loginall' ? "active" : "", "headerWrapItem", "loginall"].join(" ")}>
+                                <div onClick={() => { this.goPage('loginall') }}
+                                    className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
+                                    <span>{showdata.login.name}</span>
                                 </div>
+                                {
+                                    showdata.login.content ?
+                                        <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                                            {
+                                                showdata.login.content.map((sitem, sindex) => {
+                                                    return (
+                                                        <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => { sindex === 0 ? this.goPage(sitem.title) : this.gosummerbackend() }}>{sitem.name}</div>
+                                                    )
+                                                })
+                                            }
+                                        </div> : ""
+                                }
+                            </div>
                     
                     }
                     
@@ -288,7 +292,9 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state)=>{
     
     return {
-        pageflag:state.homepage.pageflag,
+        pageflag: state.homepage.pageflag,
+        token: state.user.token,
+        menu:state.user.menu
        
     }
  }

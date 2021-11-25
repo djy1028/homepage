@@ -1,16 +1,9 @@
-import React, {useCallback, useEffect, useState } from 'react'
-import { Layout, Menu,LayoutProps, Dropdown, Button, Tabs, Form, Input, Space } from 'antd';
-import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    LogoutOutlined,
-    KeyOutlined
-  } from '@ant-design/icons';
+import React, {useEffect, useState } from 'react'
+import { Layout, Menu, Button, Form, Input } from 'antd';
 import styled from '@emotion/styled';
 import { useTranslation } from 'react-i18next';
 import {usePane} from './config'
-import { MenuClickEventHandler } from 'rc-menu/lib/interface';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useRouteType } from 'utils/url';
 import { ComModal } from 'components/com-modal';
 import { FormItem } from 'components/form_item';
@@ -18,15 +11,15 @@ import { pwdPattern } from 'utils/pattern'
 import { useForm } from 'antd/lib/form/Form';
 import { resetpwd } from 'auth-provider';
 import { openNotificationWithIcon } from 'components/com-notify';
-const { Header, Sider, Content } = Layout;
+import { useDispatch } from 'react-redux';
+import { changeMenu } from 'store/redux/userRedux';
 
+const { Sider, Content } = Layout;
 export const LayOut = (props) => {
   const { t } = useTranslation()
-  const [collapsed,setCollapsed] = useState(false)                        /*  控制menu折叠或展开 */
-  const toggle = () => setCollapsed(!collapsed)
-  const [allTab, allName] = usePane({ t })                          /*  menu 以及tab的title和key的配置信息 */
+  const dispatch = useDispatch()
+  const [allTab, allName] = usePane({ t })                                /*  menu 以及tab的title和key的配置信息 */
   const pane = Boolean(allTab) ?allTab.slice(0,1):[]                      /*  第一个值初始化 */
-  const [tabActiveKey,setTabActiveKey] = useState('1')                    /*  定义tabitem高亮 */
   const [menuActiveKey,setMenuActiveKey] = useState(['1'])                /*  定义menuitem高亮 */
   const [panes,setPanes] = useState(pane)                                 /*  定义显示在nav的tab页 */
   const [modifypwds,setModifypwds] = useState(false)
@@ -35,6 +28,7 @@ export const LayOut = (props) => {
   const changMenu=({key})=> {
     !panes.map(item => item.key).includes(key) && setPanes([...panes, allTab[allTab.map(item => item.key).indexOf(key)]])
     setMenuActiveKey([key])
+    dispatch(changeMenu({ menu:["bulletin", "myinfomation", "project", "modifypwd"][Number(key)-1]}))
   }
 
   /* 修改密码 */
