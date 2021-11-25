@@ -117,5 +117,86 @@ module.exports = {
             ctx.response.status = response.data.code
         }
         ctx.body = JSON.stringify(response.data)
+    },
+    myapplication: async (ctx, next) => {
+        const { pageNum, pageSize} = ctx.request.body
+        ctx.request.body.pageNum = pageNum ? pageNum : '1'
+        ctx.request.body.pageSize = pageSize ? pageSize : '10'
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: '/system/studentProgram/my-application',
+            method: 'post',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        response.data.code === 200 ? response.data.rows = response.data.rows.map(item => ({ ...item, ...{ key: item.orgProgramId } })) : ctx.response.status = response.data.code
+        ctx.body = JSON.stringify(response.data)
+    },
+    orgdetail: async (ctx, next) => {
+        const { orgId } = ctx.request.body
+        const response = await request({
+            url: `/system/org/detail/${Number(orgId)}`,
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code === 200) {
+            const temparea = response.data.suOrg.areaTag && response.data.suOrg.areaTag.split(',')
+            const temptech = response.data.suOrg.techTag && response.data.suOrg.techTag.split(',')
+            const tempareaname = response.data.areaTags && response.data.areaTags.join(', ')
+            const temptechname = response.data.techTags && response.data.techTags.join(', ')
+            requ(response.data.suOrg.orgLogo).pipe(fs.createWriteStream(path.join(__dirname, '../upload', 'logo.png')))
+            response.data.suOrg.orgLogo = [{
+                uid: 1,
+                status: 'done',
+                url: response.data.suOrg.orgLogo,
+                name: 'logo.png'
+            }]
+            response.data.suOrg.areaTag = temparea && temparea.map(item => parseInt(item))
+            response.data.suOrg.techTag = temptech && temptech.map(item => parseInt(item))
+            response.data.suOrg.areaTagName = tempareaname ? tempareaname : null
+            response.data.suOrg.techTagName = temptechname ? temptechname : null
+            ctx.body = JSON.stringify(response.data.suOrg)
+        }
+        else {
+            ctx.response.status = response.data.code
+            ctx.body = JSON.stringify(response.data)
+        }
+    },
+    prodetail: async (ctx, next) => {
+        const { proId } = ctx.request.body
+        const response = await request({
+            url: `/system/program/detail/${proId}`,
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code === 200) {
+            const temparea = response.data.suOrgProgram.areaTag && response.data.suOrgProgram.areaTag.split(',')
+            const temptech = response.data.suOrgProgram.techTag && response.data.suOrgProgram.techTag.split(',')
+            response.data.suOrgProgram.areaTag = temparea && temparea.map(item => parseInt(item))
+            response.data.suOrgProgram.techTag = temptech && temptech?.map(item => parseInt(item))
+            response.data.suOrgProgram.teachers = response.data.teachers
+            const teacherres = await request({
+                url: `/system/org/teachers`,
+                headers: { Authorization: ctx.request.header.authorization },
+                data: Qs.stringify({ id: response.data.suOrgProgram.orgId }),
+                method: 'post'
+            })
+            teacherres.data.code === 200 ? teacherres.data.rows = teacherres.data.rows && teacherres.data.rows.map(item => ({ ...item, ...{ key: item.userId } })) : ctx.response.status = teacherres.data.code
+            response.data.suOrgProgram.teacherlist = teacherres.data.rows
+            ctx.body = JSON.stringify(response.data.suOrgProgram)
+        }
+        else {
+            ctx.response.status = response.data.code
+            ctx.body = JSON.stringify(response.data)
+        }
+    },
+    deletepro: async (ctx, next) => {
+        const { orgProgramId } = ctx.request.body
+        const response = await request({
+            url: `/system/program/remove/${orgProgramId}`,
+            method: 'delete',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        ctx.body = JSON.stringify(response.data)
     }
 }

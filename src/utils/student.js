@@ -32,18 +32,12 @@ export const useStudent = () =>{
     )
 }
 
-export const useStudentsQueryKey = ()=>{
-    const [params] = useStudentSearchParms();
-    return [useRouteType(),params]
-}
-
 export const useStudents = () => {
     const client = useHttp()
     const cachekey = useRouteType()
     const params = {}
     return useQuery([cachekey, 'bulletin'], () => client('/notice/detail/student', { data: params, method: 'post' }))
 }
-
 
 export const useAddStudent=()=>{
     const client = useHttp()

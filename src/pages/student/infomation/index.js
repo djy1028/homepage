@@ -41,7 +41,6 @@ export const Info = () => {
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 refetch().then(rsp => {
-                    console.log(rsp.data)
                     rsp.data.res && form.setFieldsValue(rsp.data.res)
                     setEditprofile(false)
                     close()
@@ -98,7 +97,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                            src={editingStudent.cardFrontUrl[0].url}
+                        src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
                         /> :
                             <Upload maxCount={1} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
@@ -117,7 +116,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                            src={editingStudent.cardBackUrl[0].url}
+                        src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
                         /> :
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
@@ -137,7 +136,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                            src={editingStudent.studentCardUrl[0].url}
+                        src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
                         /> :
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {

@@ -6,7 +6,7 @@ import {
     EditOutlined
   } from '@ant-design/icons';
 export const usePane = (props)=>{
-    const {t,user} = props
+    const {t} = props
     const studentTitle = t(`student.menu`,{returnObjects: true})
     const studentIcon = [BranchesOutlined, ApartmentOutlined, UserSwitchOutlined, EditOutlined]
     const studentName = ["bulletin","myinfomation","project","modifypwd"]

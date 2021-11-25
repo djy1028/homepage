@@ -14,9 +14,14 @@ router.post("/profile/resetPwd", Route.auth.resetPwd)
 /* 学生接口 */
 router.post("/notice/detail/student",Route.student.bulletin)
 router.post("/student/myProfile",Route.student.detail)
-router.all('/upload/:img', Route.student.uploadimg)
+router.all("/upload/:img", Route.student.uploadimg)
 router.post("/student/add", Route.student.add)
 router.post("/student/edit", Route.student.edit)
+
+router.post("/studentProgram/my-application", Route.student.myapplication)
+router.post("/org/detail", Route.student.orgdetail)
+router.post("/program/detail", Route.student.prodetail)
+router.post("/program/delete",Route.student.deletepro)
 
 /* 防止前端 history 路由 404 ,利用koa-view渲染动态模板*/
 router.all("/*", async (ctx,next) => {

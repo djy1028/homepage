@@ -18,15 +18,13 @@ import { pwdPattern } from 'utils/pattern'
 import { useForm } from 'antd/lib/form/Form';
 import { resetpwd } from 'auth-provider';
 import { openNotificationWithIcon } from 'components/com-notify';
-import { useSelector } from 'react-redux';
 const { Header, Sider, Content } = Layout;
 
 export const LayOut = (props) => {
-  const user = useSelector(state => state.user)
   const { t } = useTranslation()
   const [collapsed,setCollapsed] = useState(false)                        /*  控制menu折叠或展开 */
   const toggle = () => setCollapsed(!collapsed)
-  const [allTab, allName] = usePane({ t, user })                          /*  menu 以及tab的title和key的配置信息 */
+  const [allTab, allName] = usePane({ t })                          /*  menu 以及tab的title和key的配置信息 */
   const pane = Boolean(allTab) ?allTab.slice(0,1):[]                      /*  第一个值初始化 */
   const [tabActiveKey,setTabActiveKey] = useState('1')                    /*  定义tabitem高亮 */
   const [menuActiveKey,setMenuActiveKey] = useState(['1'])                /*  定义menuitem高亮 */
@@ -66,7 +64,7 @@ export const LayOut = (props) => {
               {
                   Boolean(allTab) && allTab.map((tab,index)=>{
                       return  <Menu.Item key={index+1} icon={React.createElement(tab.icon)}>
-                                <Link to={'/'+user?.type +'/'+ tab.route} style={{color:'rgba(0,0,0)'}}>
+                                <Link to={'/student/'+ tab.route} style={{color:'rgba(0,0,0)'}}>
                                   {tab.title}
                                 </Link>
                               </Menu.Item>

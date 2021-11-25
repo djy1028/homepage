@@ -45,7 +45,12 @@ export const register = (data)=>{
     })
 }
 
-export const logout = async ()=> window.localStorage.removeItem(localStorageKey)
+export const logout = async () => {
+    let d = new Date();
+    d.setTime(d.getTime() + (-1 * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = "tgt= ";
+}
 
 export const verifycode = ()=>{
     return fetch('/verifyPic',{method:"GET"})

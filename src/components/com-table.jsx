@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 export const ComTable  =(props)=>{
     const {t} = useTranslation()
     const {rowSelection,searchparam,list,setParam,...restProps} = props
-    const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
+    const [selectionType, setSelectionType] = useState('checkbox');
     const  handleTableChange = (pagination, filters, sorter) => {
         setParam({...searchparam, pageNum:pagination.current,pageSize:pagination.pageSize,orderByColumn:sorter.field,isAsc:sorter.order==='ascend'?'asc':sorter.order==='descend'?'desc':undefined})
        };

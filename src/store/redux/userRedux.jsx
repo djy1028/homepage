@@ -20,14 +20,14 @@ export function user(state=initState,action){
         // case REGISTER_SUCCESS:
         //     return {...state,msg:'',redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
         case LOGIN_SUCCESS:
-            return {...state,msg:'',isAuth:true,...action.payload}
+            return {...state,msg:'',...action.payload}
         case AUTH_SUCCESS:
             return {...state,msg:'',...action.payload}
         case LOAD_DATA:
             return {...state,...action.payload}
             //退出登录后，清空所有用户状态，redirectTo指向/login
         case LOG_OUT:
-            return {...initState,redirectTo:'/login'}
+            return {...initState}
         case ERROR_MSG:
             return {...state,isAuth:false,msg:action.msg}
         default:
@@ -73,18 +73,6 @@ export function register({user,pwd,repeatpwd,type}){
    
 }
 
-//用户登陆
-export function login(values){
-    return async dispatch=>{
-        let res = await run(login(values))
-        if(res.status == 200&&res.data.code ==0){
-            dispatch(authSuccess(res.data.data))
-        }
-        else{
-            dispatch(errorMsg(res.data.msg))
-        }
-    }
-}
 
 //用户登陆、注册后信息更新
 export function update(data){
@@ -105,6 +93,6 @@ export function loadData(data){
     return {type:LOAD_DATA,payload:data}
 }
 //用户退出登录
-export function submitLogout(){
+export const submitLogout=()=>{
     return {type:LOG_OUT}
 }

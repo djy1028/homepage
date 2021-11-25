@@ -15,7 +15,8 @@ import './index.less';
 import { connect } from 'react-redux';
 import data from './../../data/nav.json';
 import {titleChange,gohash} from './../../util/url.js';
-import { getToken } from 'auth-provider';
+import { getToken, logout } from 'auth-provider';
+import { submitLogout } from 'store/redux/userRedux';
 class Header extends React.Component{
     constructor(props){
        super(props)
@@ -105,19 +106,31 @@ class Header extends React.Component{
 
    }
 
-   gosummer2020(){
+    gosummer2020(){
        window.open("https://isrc.iscas.ac.cn/summer2020/")
     }
     gosummerbackend() {
         window.open("https://test-portal.summer-ospp.ac.cn/")
     }
 
+    logout() {
+        const that = this
+        logout().then(() => {
+            window.history.replaceState('studentLogin', '', '/')
+            that.props.setLogout()
+            // queryClient.clear()
+        })
+    }
 
+    
+
+    
     render(){
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
         console.log(pageflagredux)
+        console.log(getToken())
         return(         
             <div className={["header", this.state.chiFlag].join(" ")}>
                 <div className="content1200 headerContent">
@@ -159,25 +172,25 @@ class Header extends React.Component{
                             <div className="headerEn" onClick={()=>{this.switchFlag('en')}}>ENG</div>
                     </div>
                     {
-                            getToken() ?
-                            <div className={["active", "headerWrapItem", "logout"].join(" ")}>
-                                    <div className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
-                                        <span>{showdata.logout.name}</span>
-                                    </div>
-                                    {
-                                        showdata.logout.content ?
-                                            <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
-                                                {
-                                                    showdata.logout.content.map((sitem, sindex) => {
-                                                        return (
-                                                            <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => {console.log(11)}}>{sitem.name}</div>
-                                                        )
-                                                    })
-                                                }
-                                            </div> : ""
-                                    }
+                            // getToken() ?
+                            // <div className={["active", "headerWrapItem", "logout"].join(" ")}>
+                            //         <div className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
+                            //             <span>{showdata.logout.name}</span>
+                            //         </div>
+                            //         {
+                            //             showdata.logout.content ?
+                            //                 <div className="osscListLine" style={{ width: this.props.chiFlag === 'chi' ? 'calc(100% + 40px)' : 'calc(100% + 100px)' }}>
+                            //                     {
+                            //                         showdata.logout.content.map((sitem, sindex) => {
+                            //                             return (
+                            //                                 <div className="osscListLineItem" style={{ fontSize: this.props.chiFlag === 'chi' ? '16px' : '14px' }} key={sindex} onClick={() => logout()}>{sitem.name}</div>
+                            //                             )
+                            //                         })
+                            //                     }
+                            //                 </div> : ""
+                            //         }
 
-                            </div> :
+                            // </div> :
                                 <div className={[pageflagredux === 'loginall' ? "active" : "", "headerWrapItem", "loginall"].join(" ")}>
                                     <div onClick={() => { this.goPage('loginall') }}
                                         className={[this.state.chiFlag == "chi" ? "headerTabItem" : "headerTabItemEn", "headerNav"].join(" ")}>
@@ -265,7 +278,8 @@ const mapDispatchToProps = dispatch => {
                 type:'setPageFlag',
                 payload:data
             })
-        }
+        },
+        setLogout: () => dispatch(submitLogout())
     }
 }
 
