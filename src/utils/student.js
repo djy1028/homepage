@@ -63,3 +63,37 @@ export const useEditStudent = () => {
     )
 }
 
+export const useStuproupload = (queryKey) => {
+    const client = useHttp()
+    return useMutation(
+        (params) => client(`/studentProgram/uploadAgreement/student`, {
+            data: params,
+            method: 'POST',
+        }),
+        useEditConfig(queryKey)
+    )
+}
+
+export const useStuBankInfo = (id) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    return useQuery(
+        [cachekey, id],
+        () => client(`/admin/bankinfo`, { data: { studentId: id }, method: 'post' }),
+        { enabled: Boolean(id) }
+    )
+}
+
+export const useStuEditbank = (queryKey) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    return useMutation(
+        (params) => client(`/bank/edit`, {
+            data: params,
+            method: 'POST'
+        }),
+        useEditConfig([cachekey, queryKey])
+    )
+}
+
+

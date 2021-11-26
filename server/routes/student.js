@@ -198,5 +198,112 @@ module.exports = {
             ctx.response.status = response.data.code
         }
         ctx.body = JSON.stringify(response.data)
-    }
+    },
+    applydetail:async (ctx, next) => {
+        const {id} = ctx.request.body
+        const response = await request({
+            url: `/system/studentProgram/detail/${id}`,
+          headers: {Authorization: ctx.request.header.authorization}     
+        })
+        if (response.data.code !== 200) {
+          ctx.response.status = response.data.code
+        }
+        response.data.code === 200? ctx.body = JSON.stringify(response.data.suStudentProgram): ctx.body = JSON.stringify(response.data)
+    },
+    downloadApplication: async (ctx, next) => {
+        const { id, phase } = ctx.request.body
+        const response = await request({
+            url: `/system/studentProgram/downloadApplication/${id}/${phase}`,
+            headers: {
+                Authorization: ctx.request.header.authorization
+            },
+            responseType: 'arraybuffer'
+        })
+        ctx.set({
+            'Content-Type': response.headers['content-type'], //告诉浏览器这是一个二进制文件  
+            'Content-Disposition': response.headers['content-disposition'], //告诉浏览器这是一个需要下载的文件  
+        });
+        ctx.body = response.data
+    },
+
+    downloadAgreement: async (ctx, next) => {
+        const { id } = ctx.request.body
+        const response = await request({
+            url: `/system/studentProgram/downloadAgreement/${id}/`,
+            headers: {
+                Authorization: ctx.request.header.authorization
+            },
+            responseType: 'arraybuffer'
+        })
+
+        ctx.set({
+            'Content-Type': response.headers['content-type'], //告诉浏览器这是一个二进制文件  
+            'Content-Disposition': response.headers['content-disposition'], //告诉浏览器这是一个需要下载的文件  
+        });
+        ctx.body = response.data
+    },
+    uploadAgreement: async (ctx, next) => {
+        const { id } = ctx.request.body
+        let formdata = new formData()
+        if (!fs.existsSync(path.join(__dirname, '../upload', 'studentAgreement.pdf'))) {
+            ctx.body = JSON.stringify({ code: -1, message: '请选择pdf文件' })
+        }
+        else {
+            if (id === -1 && fs.existsSync(path.join(__dirname, '../upload', 'studentAgreement.pdf'))) {
+                fs.unlinkSync(path.join(__dirname, '../upload', `studentAgreement.pdf`))
+                ctx.body = JSON.stringify({ code: 200, message: '操作成功' })
+            }
+            else {
+                id ? formdata.append('id', id) : formdata.append('id', '')
+                formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', 'studentAgreement.pdf')))
+                const response = await request({
+                    data: formdata,
+                    url: '/system/studentProgram/uploadAgreement',
+                    headers: {
+                        Authorization: ctx.request.header.authorization,
+                        ...formdata.getHeaders()
+                    },
+                    method: 'post'
+                })
+                ctx.body = JSON.stringify(response.data)
+            }
+        }
+    },
+    uploadpdf: async (ctx, next) => {
+        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`))
+        }
+        const { name, path: filePath, size, type } = ctx.request.files.file
+        const dest = path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`) // 目标目录，没有没有这个文件夹会自动创建
+        await fse.move(filePath, dest) // 移动文件
+        ctx.body = {
+            name, // 文件名称
+            filePath, // 临时路径
+            size, // 文件大小
+            type // 文件类型
+        }
+    },
+    bankinfo: async (ctx, next) => {
+        const response = await request({
+            url: `/system/bank/my-bank`,
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        response.data.code === 200 && response.data.bank ? response.data.rows = [response.data.bank].map(item => ({ ...item, ...{ key: item.userId } })) : response.data.rows = []
+        ctx.body = JSON.stringify(response.data)
+    },
+    bankedit: async (ctx, next) => {
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: '/system/bank/edit',
+            method: 'post',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        ctx.body = JSON.stringify(response.data)
+    },
 }

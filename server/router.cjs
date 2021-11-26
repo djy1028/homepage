@@ -21,7 +21,14 @@ router.post("/student/edit", Route.student.edit)
 router.post("/studentProgram/my-application", Route.student.myapplication)
 router.post("/org/detail", Route.student.orgdetail)
 router.post("/program/detail", Route.student.prodetail)
-router.post("/program/delete",Route.student.deletepro)
+router.post("/program/delete", Route.student.deletepro)
+router.post("/studentProgram/detail", Route.student.applydetail)
+router.all("/downloadApplication", Route.student.downloadApplication)
+router.all("/downloadAgreement", Route.student.downloadAgreement)
+router.all("/uploadPdf/:pdf", Route.student.uploadpdf)
+router.all("/studentProgram/uploadAgreement/student", Route.student.uploadAgreement)
+router.post("/admin/bankinfo", Route.student.bankinfo)
+router.post("/bank/edit", Route.student.bankedit)
 
 /* 防止前端 history 路由 404 ,利用koa-view渲染动态模板*/
 router.all("/*", async (ctx,next) => {

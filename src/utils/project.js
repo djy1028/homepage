@@ -46,20 +46,34 @@ export const useProinfo = (proId) => {
     )
 }
 
+export const useApplyinfo = (id) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    return useQuery(
+        [cachekey, id],
+        () => client(`/studentProgram/detail`, { data: { id }, method: 'post' }),
+        { enabled: Boolean(id) }
+    )
+}
+
 
 
 export const useStuProgramModal = () => {
     const [{ inquiryOrgId }, setInquiryOrgId] = useUrlQueryParam(['inquiryOrgId'])
     const [{ inquiryProId }, setInquiryProId] = useUrlQueryParam(['inquiryProId'])
+    const [{ inquiryApplyId }, setInquiryApply] = useUrlQueryParam(['inquiryApplyId'])
     const { data: orgInfo, isLoading: orgInfoLoading } = useOrginfo(inquiryOrgId)
     const { data: proInfo, isLoading: proInfoLoading } = useProinfo(inquiryProId)
+    const { data: applyInfo, isLoading: applyInfoLoading } = useApplyinfo(inquiryApplyId)
     const close = useCallback(() => {
         inquiryOrgId && setInquiryOrgId({ inquiryOrgId: undefined })
-        inquiryProId && setInquiryProId({ inquiryProId:undefined })
+        inquiryProId && setInquiryProId({ inquiryProId: undefined })
+        inquiryApplyId && setInquiryApply({ inquiryApplyId: undefined })
     }, [inquiryOrgId, setInquiryOrgId])
     const inquiryOrg = useCallback((id) => setInquiryOrgId({ inquiryOrgId: id }), [setInquiryOrgId])
     const inquiryPro = useCallback((id) => setInquiryProId({ inquiryProId: id }), [setInquiryProId])
-   
+    const inquiryApply = useCallback((id) => setInquiryApply({ inquiryApplyId: id }), [setInquiryApply])
+
     return {
         projectModalOpen: Boolean(inquiryOrgId) || Boolean(inquiryProId),
         inquiryPro,
@@ -69,10 +83,28 @@ export const useStuProgramModal = () => {
         orgInfo,
         orgInfoLoading,
         proInfo,
-        proInfoLoading
-        // DrawerOpen: Boolean(editingMyprogramId)
+        proInfoLoading,
+        DrawerOpen: Boolean(inquiryApplyId),
+        inquiryApply,
+        applyInfo,
+        applyInfoLoading
     }
 }
+
+export const useBankModal = () => {
+    const [{ editBankinfo }, setEditBankinfo] = useUrlQueryParam(['editBankinfo'])
+    const editBank = useCallback(() => setEditBankinfo({ editBankinfo: true }), [setEditBankinfo])
+    const closeBank = useCallback(() => {
+        editBankinfo && setEditBankinfo({ editBankinfo: undefined })
+    }, [editBankinfo, setEditBankinfo])
+
+    return {
+        projectModal:Boolean(editBankinfo),
+        editBank,
+        closeBank
+    }
+}
+
 
 export const useDeleteProgram = (queryKey) => {
     const client = useHttp()
@@ -84,3 +116,5 @@ export const useDeleteProgram = (queryKey) => {
         useDeleteConfig(queryKey)
     )
 }
+
+

@@ -1,4 +1,4 @@
-import { Button, Popconfirm, Space,Input } from 'antd'
+import { Popconfirm, Space,Input } from 'antd'
 import FormItem from 'antd/lib/form/FormItem'
 import { ComModal } from 'components/com-modal'
 import { ComTable } from 'components/com-table'
@@ -9,25 +9,18 @@ import { useDebounce } from 'utils'
 // import { Detail as ActivityDetail } from 'authenticated-app/pages/admin/activity/detail'
 import { useDeleteProgram, useStuPrograms, useStuProSearchParms, useStuProgramModal, useStuProQueryKey  } from 'utils/project'
 import styled from '@emotion/styled'
-// import { useActivityModal } from 'utils/organization/activelist'
-// import { useMentorModal } from 'utils/organization/mentor'
-// import { Check } from 'authenticated-app/pages/org/program/check'
-// import { Alink, EditTable } from 'authenticated-app/pages/admin/activity'
-// import { PlusOutlined } from '@ant-design/icons'
-// import { Program } from 'authenticated-app/pages/org/activelist/program'
-// import { Applicant } from 'authenticated-app/pages/org/program/applicant'
-// import { ComDrawer } from 'components/com-drawer'
+import { ComDrawer } from 'components/com-drawer'
 import { useTranslation } from 'react-i18next'
 import { clearSpace } from 'utils/pattern'
 import { Check } from './check'
 import { Checkpro } from './checkpro'
+import { Detail } from './detail'
 
 export const Project = () => {
     const { t } = useTranslation()
     const [searchparam, setParam] = useStuProSearchParms()
     const { isLoading, data: list } = useStuPrograms(useDebounce(searchparam, 500))
-    const { inquiryOrg, projectModalOpen, close, inquiryOrgId,inquiryPro } = useStuProgramModal()
-    // const inquiryApplicant = (id: number, status: number, stuactiveId: number) => InquiryApplicant(id, status, stuactiveId, searchparam)
+    const { inquiryOrg, projectModalOpen, close, inquiryOrgId, inquiryPro, inquiryApply, DrawerOpen } = useStuProgramModal()
     const { mutateAsync: deleteProgram, isLoading: deleteLoading } = useDeleteProgram(useStuProQueryKey())
     const colums = [
         {
@@ -64,7 +57,7 @@ export const Project = () => {
         {
             title: t('project.columns_title.6'),
             render: (value, record) => <Space size={4}>
-                <Acheck >{t('project.check')}</Acheck>
+                <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
                 <Popconfirm placement={ 'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ orgProgramId: record.orgProgramId }).then(() => close())}
                     onVisibleChange={(vis) => !vis}>
                     <Alink>{t('project.delete')}</Alink>
@@ -85,7 +78,7 @@ export const Project = () => {
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : 'project.prodetail')} width={'120rem'} footer={null}
                 children={inquiryOrgId?<Check />:<Checkpro/>} />
-            {/* {(activeDrawerOpen || Boolean(myProgramId) || DrawerOpen) && <ComDrawer close={Boolean(myProgramId) ? closeStu : DrawerOpen ? close2 : close} visible={activeDrawerOpen || Boolean(myProgramId) || DrawerOpen} child={Boolean(myProgramId) ? <Applicant /> : <Program />} title={t(Boolean(myProgramId) ? 'tutor.findapp' : 'tutor.publishpro')} />} */}
+            {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail />} title={'学生申请详情'} />}
         </Main>
     )
 }
