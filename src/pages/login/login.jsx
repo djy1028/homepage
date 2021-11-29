@@ -17,7 +17,6 @@ import { useNavigate } from 'react-router-dom'
 
 
 export const LoginScreen = ({ onError }) => {
-    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const { t } = useTranslation()
     const [form] = useForm()
@@ -115,20 +114,20 @@ export const Pwdback = (props)=>{
     const {t} = useTranslation()
     const {close} = props
     const onFinish = (fields)=>{
-        // backpwd(fields).then(res=>{
-        //     openNotificationWithIcon(0,t('login.findback_mes'))
-        // }).catch(err=>openNotificationWithIcon(1,err.message))
+        backpwd(fields).then(res=>{
+            openNotificationWithIcon(0,t('login.findback_mes'))
+        }).catch(err=>openNotificationWithIcon(1,err.message))
     }
     return  <Form onFinish={onFinish}>
                 <FormItem name={'email'} ruleMessage={t('register.email_message')} emailRule={{type:'email',message: t('register.email_validmessage')}}>
                     <Input type={'text'} allowClear placeholder={t('register.email_placeholder')} />
                 </FormItem>
-                <Form.Item  wrapperCol={{ offset: 10}}>
+                <Form.Item  wrapperCol={{ offset: 9}}>
                     <Button type="primary" htmlType="submit">
-                        {t('admin.activity.savebtn')}
+                        {t('admin.student.savebtn')}
                     </Button>
                     <Button  htmlType="button" onClick={close} style={{margin:'0 2rem'}}>
-                        {t('admin.activity.cancelbtn')}
+                        {t('admin.student.cancelbtn')}
                     </Button>
                 </Form.Item>
     

@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Upload, Image, Spin} from 'antd'
+import { Button, Form, Input, message, Upload, Image, Spin, Descriptions, Divider} from 'antd'
 import React, { useEffect } from 'react'
 import { useForm } from 'antd/lib/form/Form'
 import { CloudUploadOutlined } from '@ant-design/icons';
@@ -8,6 +8,7 @@ import { openNotificationWithIcon } from 'components/com-notify';
 import { emptyPattern } from 'utils/pattern';
 import styled from '@emotion/styled'
 import { useState } from 'react';
+import { SearchContainer } from 'components/search-container';
 
 export const Info = () => {
     const [form] = useForm()
@@ -60,8 +61,14 @@ export const Info = () => {
             form.setFieldsValue(editingStudent)
         }
     }, [editingStudent, form])
-    return ((isLoading || mutateLoading)?<Spin>loading...</Spin>:
-            <Form form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
+    return ((isLoading || mutateLoading) ? <Spin>loading...</Spin> :
+        <div id={'studentinfo'} style={{ width: '100%',height:'100%' }}>
+            <Descriptions column={ 2}>
+                <Descriptions.Item style={{display:'flex',justifyContent:'center'}} label={t('admin.student.columns_title.9')}>{ editingStudent.createTime }</Descriptions.Item>
+                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : "#f52929" }}>{t(editingStudent.isApproved === 1 ?'student.approved':'student.noapproved')}</span> }</Descriptions.Item>
+            </Descriptions>
+            <Divider />
+            <Form style={{height: 'calc(100vh - 320px)',overflow: 'auto'}} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
                 <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
                     required: true, validator(_, value) {
                         return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
@@ -181,7 +188,7 @@ export const Info = () => {
                         setEditprofile(true)
                         edit()
                     }} htmlType={''}>
-                                                                {t('admin.student.editbtn')}
+                            {t('admin.student.editbtn')}
                         </SubmitBtn>
                         }
                         {
@@ -197,6 +204,7 @@ export const Info = () => {
                         }
                     </Form.Item>
             </Form>
+            </div>
     )
 }
 

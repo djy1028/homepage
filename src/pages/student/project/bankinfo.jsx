@@ -1,12 +1,10 @@
 import { Button, Form, Input } from 'antd'
 import React, { useEffect } from 'react'
 import { useForm } from 'antd/lib/form/Form'
-// import { useTutorAddbank, useTutorBankModal, useTutorBankQueryKey, useTutorEditbank } from 'utils/tutor/bank';
 import { openNotificationWithIcon } from 'components/com-notify';
 import { emptyPattern } from 'utils/pattern';
 import { useTranslation } from 'react-i18next';
-import { useStuProgramModal } from 'utils/project';
-import { useStuBankInfo, useStuEditbank } from 'utils/student';
+import { useStuAddbank, useStuBankInfo, useStuEditbank } from 'utils/student';
 
 export const Bankinfo = (props) => {
     const { studentId,close } = props
@@ -18,8 +16,10 @@ export const Bankinfo = (props) => {
         wrapperCol: { span: 16 },
     };
     const { mutateAsync: edit, isLoading: editLoading } = useStuEditbank(studentId)
+    const { mutateAsync: add, isLoading: addLoading } = useStuAddbank(studentId)
     const onFinish = (fieldsValue) => {
-        edit({ ...fieldsValue, studentBankId: studentId }).then(res => {
+        const operate = data.rows && data.rows.length>0?edit:add
+        operate({ ...fieldsValue, studentBankId: studentId }).then(res => {
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 form.resetFields()
@@ -28,7 +28,7 @@ export const Bankinfo = (props) => {
             else {
                 openNotificationWithIcon(1, res.message)
             }
-        })
+        }).catch(err => openNotificationWithIcon(1, err.message))
     }
     useEffect(() => {
         if (data && data.rows) {
@@ -38,12 +38,8 @@ export const Bankinfo = (props) => {
 
     return (
         <Form scrollToFirstError={true} form={form} {...layout} onFinish={onFinish} name="bankinfo_detail" >
-            <Form.Item label={''} wrapperCol={{ offset: i18n.language === 'zh' ? 9 : 1 }}>
-                <h3><strong>{t('tutor.bank_title')}</strong></h3>
-            </Form.Item>
-            <Form.Item label={''} wrapperCol={{ offset: i18n.language === 'zh' ? 5 : 1 }}>
-                <p>{t('tutor.bank_subtl1')}{t('tutor.bank_sbutl2')}</p>
-            </Form.Item>
+            <h3 style={{position:'relative',left:'38%'}}><strong>{t('tutor.bank_title')}</strong></h3>
+            <p style={{ position: 'relative', left: '20%' }}>{t('tutor.bank_subtl1')}{t('tutor.bank_sbutl2')}</p>
             <Form.Item name="field1" label={t('admin.firsttrial.bankinfodes.0')} rules={[{
                 required: true, validator(_, value) {
                     return !value ? Promise.reject(t('tutor.input_receiver')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
@@ -86,7 +82,7 @@ export const Bankinfo = (props) => {
                 <Input.TextArea placeholder={t('tutor.addressmes')} autoSize allowClear />
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 10 }}>
-                <Button loading={editLoading} type="primary" htmlType="submit">
+                <Button loading={editLoading||addLoading} type="primary" htmlType="submit">
                     {t('admin.student.savebtn')}
                 </Button>
                 <Button htmlType="button" onClick={close} style={{ margin: '0 2rem' }} >

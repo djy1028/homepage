@@ -1,7 +1,6 @@
 import { notification } from 'antd';
 import {getToken, logout} from '../auth-provider'
 import { useCallback } from 'react'
-import { useSelector } from 'react-redux';
 
 /* 通用的http异步请求方法。未登录状态下使用,封装http，方便每次调用时候带上token */
 export const http = (endpoint,{data,token,headers,...customConfig})=>{

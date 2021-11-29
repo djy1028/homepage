@@ -1,5 +1,12 @@
 {
     "home":"首页",
+    "logout": "退出登录",
+    "modifypwd": "修改密码",
+    "resetpwd": "重置密码",
+    "oldpwd": "旧密码",
+    "newpwd": "新密码",
+    "confirmnewpwd": "再次确认",
+    "loginname": "登录名称",
     "homeheader":{
         "homepage":"活动官网",
         "help":"帮助"
@@ -33,12 +40,6 @@
         "checkingaccount":"账户验证中...",
         "admin_title":"点亮计划后台管理系统"
     },
-    "logout":"退出登录",
-    "modifypwd":"修改密码",
-    "resetpwd":"重置密码",
-    "oldpwd":"旧密码",
-    "newpwd":"新密码",
-    "confirmnewpwd":"再次确认",
     "register":{
         "register_btn":"注册",
         "email_message":"请填写邮箱",
@@ -59,7 +60,9 @@
         "bulletin":{
             "column_title":["序号","日期","事项","备注"],
             "title":"开源软件供应链点亮计划-暑期2022学生参与流程"
-        }
+        },
+        "approved":"已通过",
+        "noapproved":"未通过"
     },
     "admin":{
         "emptycheck": "内容不能仅为空格",

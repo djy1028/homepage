@@ -9,9 +9,8 @@
  * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  * See the Mulan PSL v2 for more details.
  */
-
- import React , { Suspense }from 'react';
-import { HashRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
+ import React from 'react';
+ import { HashRouter as Router, Route, Routes} from 'react-router-dom';
  import Wrapper from './wrapper.js';
  import HomePage from './pages/homepage/index.js';
  import Help from './pages/help/index.js';
@@ -20,26 +19,35 @@ import { HashRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
  import Midtermdata from './pages/midterm/index.js'
  import Apply from './pages/apply/index.js';
  import Org from './pages/org/index.js';
- import OrgDetail from './components/orgdetail/index.js';
 import Liveshow from './pages/liveshow/index.js';
-import ProjectDetail from './components/projectDetail/index.js';
-import SpinLoading  from './components/spin/index.js';
 import { LoginApp } from 'pages/login';
 import { Student } from 'pages/student';
-import { useSelector } from 'react-redux';
-const Orglist = React.lazy(() => import('./components/orglist/index.js'));
-const ProjectlistN = React.lazy(() => import('./components/projectlistN/index.js'));
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { bootstrapUser } from 'auth-provider.js';
+import { Spin } from 'antd'
+import { loginSuccess } from 'store/redux/userRedux.jsx';
+import { useAsync } from 'utils/use-async.js';
+import { FullPageError } from 'components/lib.jsx';
 
 export const IRouter = () => {
     const user = useSelector(state => state.user)
-    console.log(user.token)
-    return (
+    const { run, isLoading, isError } = useAsync(undefined, { throwNewError: true })
+    const dispatch = useDispatch()
+    useEffect(async () => {
+        /* 页面刷新后状态保持 */
+        // localStorage.getItem('lang') && i18n.changeLanguage(String(localStorage.getItem('lang')))
+        /* 加上run函数，可以复用loading部分逻辑，实现页面在异步处理时的loading 状态 */
+        const res = await run(bootstrapUser())
+        res && res.token && dispatch(loginSuccess(res))
+    }, [])
+    return ( isError ? <FullPageError error={error} />:isLoading ? <Spin>loading...</Spin>:
         <Wrapper>
             <Router >
-                 <Routes>
+                <Routes>
                     <Route path="/homepage" element={<HomePage />} ></Route>
                     <Route path="/help" element={<Help />} ></Route>
-                    <Route path="/org/*" element={<Org/>}></Route>
+                    <Route path="/org/*" element={<Org />}></Route>
                     <Route path="/howitworks" element={<Howitworks />} ></Route>
                     <Route path="/data" element={<Data />} ></Route>
                     <Route path="/midtermdata" element={<Midtermdata />} ></Route>
@@ -49,11 +57,9 @@ export const IRouter = () => {
                         user.token ? <Route path="/student/*" element={<Student />}></Route> :
                             <Route path="/studentLogin" element={<LoginApp />}></Route>
                     }
-                   
                     <Route path="/" element={<HomePage />} />
                 </Routes>
             </Router>
         </Wrapper>
-         )
-     
+    )
  }

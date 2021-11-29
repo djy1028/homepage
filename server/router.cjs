@@ -29,6 +29,7 @@ router.all("/uploadPdf/:pdf", Route.student.uploadpdf)
 router.all("/studentProgram/uploadAgreement/student", Route.student.uploadAgreement)
 router.post("/admin/bankinfo", Route.student.bankinfo)
 router.post("/bank/edit", Route.student.bankedit)
+router.post("/bank/add", Route.student.bankadd)
 
 /* 防止前端 history 路由 404 ,利用koa-view渲染动态模板*/
 router.all("/*", async (ctx,next) => {

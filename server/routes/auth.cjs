@@ -29,20 +29,10 @@ module.exports = {
         }
     },
     register: async (ctx, next) => {
-      const {type,username,password} = ctx.request.body;
-      let url = ''
-      switch(type){
-        case 'stu':
-          url = '/register/student'
-          break
-        case 'org':
-          url = '/register/org'
-          break
-        default:
-      }
+      const {username,password} = ctx.request.body;
       const response = await request({
         data:Qs.stringify({loginName:username,password:password}),
-        url:url,
+        url: '/register/student',
         method:'post'
       })
       if(response.data.code === 200){

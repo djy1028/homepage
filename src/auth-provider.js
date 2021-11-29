@@ -1,3 +1,5 @@
+import { http } from "utils/http";
+
 export const getToken = () => {
     if (document.cookie.length > 0) {
         let arr = document.cookie.split("; "); //分割成一个个独立的“key=value”的形式
@@ -10,11 +12,27 @@ export const getToken = () => {
     }
 }
 
+export const handleUserResponse = (user) => {
+    // window.localStorage.setItem(
+    //     localStorageKey,user.token || ''
+    // )
+    return user
+}
+
+export const bootstrapUser = async () => {
+    let user = null
+    const token = getToken()
+    if (token) {
+        const data = await http('/getUserInfo', { token })
+        user = { ...data, token: token }
+    }
+    return user
+}
+
 
 export const login =(data)=>{
     return fetch('/login',{
         method:"POST",
-        //post里面一定要指定headers
         headers:{
             "Content-Type":"application/json"
         },
@@ -23,7 +41,6 @@ export const login =(data)=>{
         //async返回的是一个promise
         if(!response.ok){
             return Promise.reject(await response.json())
-           
         }
         return await response.json()
     })
@@ -83,7 +100,6 @@ export const downloadApplication = async (id,phase,token,fileName) => {
         a.click();
         a.remove();
         URL.revokeObjectURL(objectUrl);
-      
     }) 
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import { Button, notification, Spin, Typography } from "antd";
+import { Button, Spin, Typography } from "antd";
 export const Row = styled.div`
 display:flex;
 align-items: center;

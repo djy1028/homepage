@@ -1,6 +1,5 @@
 import React from 'react'
-// import { useAuth } from 'context/auth-context'
-import { Form,Input, Radio } from 'antd'
+import { Form,Input } from 'antd'
 import {LongButton} from './index'
 import { useAsync } from 'utils/use-async'
 import {FormItem} from 'components/form_item'
@@ -17,14 +16,13 @@ export const RegisterScreen = ({ onError, setRegister }) =>{
             const res = await run(register(values))
             setRegister(true)
             res.code === 200?openNotificationWithIcon(0,res.message):openNotificationWithIcon(1,res.message)
-
         }
         catch(e){
             onError(new Error(e.message))
         }
     }
 
-    return <Form onFinish={handleSubmit} initialValues={{ 'type': 'stu' }} style={{height: '30rem'}} >
+    return <Form onFinish={handleSubmit} style={{ height: '30rem', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} >
                 <FormItem name={'username'} ruleMessage={t('register.email_message')} emailRule={{type:'email',message: t('register.email_validmessage')}}>
                     <Input type={'text'} allowClear placeholder={t('register.email_placeholder')} />
                 </FormItem>
@@ -43,16 +41,10 @@ export const RegisterScreen = ({ onError, setRegister }) =>{
                                 }
                                 return Promise.reject(new Error(t('register.check_confirm')));
                                 },
-                            }),
+                            })
                             ]}>
                     <Input.Password allowClear placeholder={t('register.cpassword_placeholder')} />
                 </Form.Item>
-                <FormItem name={'type'}>
-                    <Radio.Group>
-                        <Radio value={'stu'}>{t('register.type.0')}</Radio>
-                        <Radio value={'org'}>{t('register.type.1')}</Radio>
-                    </Radio.Group>
-                </FormItem>
             <LongButton loading={isLoading} htmlType={'submit'} type={'primary'} >{t('register.register_btn')}</LongButton>
         </Form>
 }

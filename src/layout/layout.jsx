@@ -40,16 +40,12 @@ export const LayOut = (props) => {
   const runrouter = useRouteType()
 
   /* 不添加依赖，只在初始化或刷新时加载一次 */
-  useEffect(()=>{    
-    const key = Boolean(allTab) && allTab.find(item=>item.route === runrouter)?.key
-   
-    if(allName.includes(runrouter)) {
-      key && setMenuActiveKey([key])
-    }
+  useEffect(() => {
+    let key
+    ["bulletin", "myinfomation", "project", "modifypwd"].forEach((item, index) => {if (item === runrouter) { key =  Number(index+1) }})
+    setMenuActiveKey([String(key)])
   },[])
     
-
-
   return (
     <Layout style={{ minHeight: 'calc(100vh - 164px)'}} >
       <Sider style={{margin:'2rem'}}>
@@ -69,7 +65,7 @@ export const LayOut = (props) => {
       <Layout style={{background: '#fff',margin: '2rem 2rem 2rem 0rem'}}>
         <Content
           style={{
-            margin: '24px 16px',
+            margin: '20px 16px',
             minHeight: 280,
           }}
         >
@@ -146,18 +142,6 @@ export const LayOut = (props) => {
     font-weight: 600;
     line-height: 4rem;
     font-size: 1.8rem;
-  `
-  const Nav = styled.nav`
-    width:100%;
-    height:40px;
-    background-color: #fff;
-  `
-
-  const Contents = styled(Content)`
-      margin: 0 1.5rem;
-      padding: 1rem;
-      min-height: 280px;
-      height:calc(100vh - 132px)
   `
  
 

@@ -306,4 +306,16 @@ module.exports = {
         }
         ctx.body = JSON.stringify(response.data)
     },
+    bankadd: async (ctx, next) => {
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: '/system/bank/add',
+            method: 'post',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        ctx.body = JSON.stringify(response.data)
+    },
 }

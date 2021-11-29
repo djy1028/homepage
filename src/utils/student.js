@@ -1,4 +1,3 @@
-import { QueryKey } from 'react-query';
 import { useEditConfig, useAddConfig } from 'utils/use-optimistic-options';
 import { useRouteType, useUrlQueryParam } from 'utils/url';
 import { useHttp } from 'utils/http';
@@ -93,6 +92,18 @@ export const useStuEditbank = (queryKey) => {
             method: 'POST'
         }),
         useEditConfig([cachekey, queryKey])
+    )
+}
+
+export const useStuAddbank = (queryKey) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    return useMutation(
+        (params) => client(`/bank/add`, {
+            data: params,
+            method: 'POST'
+        }),
+        useAddConfig([cachekey, queryKey])
     )
 }
 
