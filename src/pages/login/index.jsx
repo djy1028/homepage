@@ -55,7 +55,7 @@ export const LoginApp = () => {
                             <More>
                                 <A type={"link"} onClick={() => setIsRegister(!isRegister)}>
                                     {isRegister ? t('login.noaccount') : t('login.existaccount')}</A>
-                                <A href="https://summer.iscas.ac.cn/" target="_blank" rel="noreferrer">{t('homeheader.homepage')}</A>
+                                {/* <A href="https://summer.iscas.ac.cn/" target="_blank" rel="noreferrer">{t('homeheader.homepage')}</A> */}
                                 <A href="https://summer.iscas.ac.cn/help/" target="_blank" rel="noreferrer"><span >&nbsp;<span>{t('homeheader.help')}</span>&nbsp;</span></A>
 
                             </More>
@@ -123,7 +123,7 @@ const Imgtitle = styled.img`
 
 const More = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
 `
 

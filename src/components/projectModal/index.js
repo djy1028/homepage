@@ -13,80 +13,81 @@
 import React from 'react'
 import './index.less';
 import { connect } from 'react-redux'
-import {getSplit,getSupportLanguage,gohash,gourl} from "../../util/url.js";
+import { getSplit, getSupportLanguage, gohash, gourl } from "../../util/url.js";
 // import studata from '../../data/stunum.json'
 import prolist from '../../data/proList.json'
-class ProjectModal extends React.Component{
-    constructor(props){
-       super(props)
+class ProjectModal extends React.Component {
+    constructor(props) {
+        super(props)
     }
- 
 
-    getDegree(degree){
+
+    getDegree(degree) {
         return {
-            "高":"org2",
-            "中":"org1",
-            "低":"org0"
-        }[degree]||'org0'
+            "高": "org2",
+            "中": "org1",
+            "低": "org0"
+        }[degree] || 'org0'
     }
 
-    getDegreeBy(degree){
-        if(this.props.chiFlag === "chi"){
+    getDegreeBy(degree) {
+        if (this.props.chiFlag === "chi") {
             return degree
         }
         return {
-            "高":"High",
-            "中":"Medium",
-            "低":"Low"
-        }[degree]||"Low"
+            "高": "High",
+            "中": "Medium",
+            "低": "Low"
+        }[degree] || "Low"
     }
 
 
 
-    goLink(link){
+    goLink(link) {
         window.open(link)
     }
 
-    goHash(){
+    goHash() {
         this.props.setProDetail(this.props.item)
-        gourl("/#/org/prodetail/"+this.props.item.label)
+        //gourl("/#/org/prodetail/" + this.props.item.label)
+        gohash("/org/prodetail/" + this.props.item.label)
     }
-   
-    render(){
+
+    render() {
         // let showdata = this.props.showdata
         // let item = this.props.item
-        const {showdata,item,prourl,studata} = this.props
+        const { showdata, item, prourl, studata } = this.props
 
         let studentSelected;
-        prolist.forEach(it=>{
-            if(it.proid === item.proid){
+        prolist.forEach(it => {
+            if (it.proid === item.proid) {
                 studentSelected = it.selectedStudentList.join(" ")
             }
         })
-        return(         
-            <div id={item.label} className={["projectListItem",this.getDegree(item.difficulty)].join(" ")} >
+        return (
+            <div id={item.label} className={["projectListItem", this.getDegree(item.difficulty)].join(" ")} >
                 <div className="projectListItemLeft">
-                    <div className="orgProjectTitleBar">                
+                    <div className="orgProjectTitleBar">
                         <div className="orgProjectTitle">
-                            {getSplit(item.name,this.props.chiFlag)}                      
+                            {getSplit(item.name, this.props.chiFlag)}
                         </div>
                         <div className="orgProjectLine">
                             <div className="orgProjectId">{showdata.projectID} {item.label}</div>
                             {
-                                item.wiki?
-                                <div className="orgProjectWiki">
-                                    <a href={item.wiki} target="_blank" rel="noopener noreferrer">{showdata.proStore}</a>
-                                </div> :""
-                            }                                          
+                                item.wiki ?
+                                    <div className="orgProjectWiki">
+                                        <a href={item.wiki} target="_blank" rel="noopener noreferrer">{showdata.proStore}</a>
+                                    </div> : ""
+                            }
                         </div>
-                                                
+
                         <div className="orgProjectBottomLeft">
                             <div>{showdata.proStudents}{
-                               studentSelected
+                                studentSelected
                             }</div>
                             <div>{showdata.proDi}{this.getDegreeBy(item.difficulty)}</div>
                             <div>{showdata.lang}{getSupportLanguage(item.spl)}</div>
-                            <div>{showdata.orgstunum}{studata[item.proid.toString()]||0}</div>
+                            <div>{showdata.orgstunum}{studata[item.proid.toString()] || 0}</div>
                             {/* 功能暂未上线 */}
                             {/* <div>{showdata.proSelectStu}{item.student_name}</div> */}
                             {/* <div className="orgProjectName">{item.orgtitle}</div> */}
@@ -95,57 +96,56 @@ class ProjectModal extends React.Component{
 
                 </div>
                 <div className="projectListItemRight">
-                    <div 
+                    <div
                         className="orgProjectDes"
-                        dangerouslySetInnerHTML={{ __html: getSplit(item.description,this.props.chiFlag) }}>
-                        
-                        </div>
+                        dangerouslySetInnerHTML={{ __html: getSplit(item.description, this.props.chiFlag) }}>
+
+                    </div>
                     <div className="proCardUL">
                         <ul className="projectListItemRightUl">
                             <li>{showdata.proMentor}{item.mentor}</li>
-                            <li>{showdata.proMentorContact}<a href={"mailto:"+item.contact}>{item.contact}</a></li>
+                            <li>{showdata.proMentorContact}<a href={"mailto:" + item.contact}>{item.contact}</a></li>
                         </ul>
                         <div className="proCardULButton">
-                            <div className="orgProjectButton" onClick={()=>{this.goHash()}}>{showdata.proDetail}</div>                        
+                            <div className="orgProjectButton" onClick={() => { this.goHash() }}>{showdata.proDetail}</div>
                             {
-                                item.link?
-                                <div className=" orgProjectButton" onClick={()=>{this.goLink(item.link)}}>{showdata.proCommuDe}</div>:
-                                prourl?
-                                <div className=" orgProjectButton" onClick={()=>{this.goLink(prourl)}}>{showdata.proCommuDe}</div>:""
+                                item.link ?
+                                    <div className=" orgProjectButton" onClick={() => { this.goLink(item.link) }}>{showdata.proCommuDe}</div> :
+                                    prourl ?
+                                        <div className=" orgProjectButton" onClick={() => { this.goLink(prourl) }}>{showdata.proCommuDe}</div> : ""
 
                             }
 
                         </div>
-                        
+
                     </div>
                 </div>
 
             </div>
-         )
-       
-        
-        
+        )
+
+
+
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
 
     return {
-       chiFlag:state.homepage.chiFlag,
-       studata:state.homepage.studata
-   }
- }
+        chiFlag: state.homepage.chiFlag,
+        studata: state.homepage.studata
+    }
+}
 
- const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
-        setProDetail:(data)=>{
+        setProDetail: (data) => {
             dispatch({
-                type:'setProDetail',
-                payload:data
+                type: 'setProDetail',
+                payload: data
             })
         }
     }
 }
- 
- export default connect(mapStateToProps,mapDispatchToProps)(ProjectModal)
- 
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectModal)

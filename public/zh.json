@@ -21,9 +21,6 @@
         "validcode_message":"请输入验证码",
         "validcode_placeholder":"验证码",
         "validcode_title":"点击更换验证码",
-        "lang_label":"语言选择",
-        "lang_zh":"简体中文",
-        "lang_en":"English",
         "login_btn":"登录",
         "invite_login":"请登录",
         "invite_regis":"请注册",
@@ -37,8 +34,7 @@
         "setNewPwd":"设置新的密码",
         "newpws":"新密码",
         "confirmagain":"再次确认",
-        "checkingaccount":"账户验证中...",
-        "admin_title":"点亮计划后台管理系统"
+        "checkingaccount":"账户验证中..."
     },
     "register":{
         "register_btn":"注册",
@@ -116,25 +112,6 @@
             "card_validmessage": "请填写有效身份证"
         },
         "origanize": {
-            "columns_title": [
-                "组织名称",
-                "组织编号",
-                "组织类型",
-                "官网地址",
-                "组织logo",
-                "组织简介",
-                "联系人",
-                "审批状态",
-                "创建时间",
-                "操作"
-            ],
-            "colums_opc": [
-                "审核",
-                "编辑",
-                "查看"
-            ],
-            "name_placeholder": "请输入组织名称",
-            "namedefault": "全部",
             "namesel": [
                 "开源社区",
                 "基金会",
@@ -142,30 +119,10 @@
                 "学校",
                 "其他"
             ],
-            "approvedefault": "全部",
             "approvedsel": [
                 "审核未通过",
                 "待审核",
                 "已通过"
-            ],
-            "modal_title": "组织详情",
-            "modal_title_edit": "组织详情编辑",
-            "detail_title": [
-                "组织名称",
-                "组织编号",
-                "组织类型",
-                "官网地址",
-                "组织logo",
-                "组织简介",
-                "详细介绍",
-                "开发者邮箱列表",
-                "公共联系电话",
-                "公共邮箱",
-                "专注领域标签",
-                "涉及技术领域标签",
-                "联系人",
-                "联系人电话",
-                "联系人邮箱"
             ],
             "detail_title_check": [
                 "组织名称",
@@ -178,16 +135,9 @@
                 "公共邮箱",
                 "专注领域标签",
                 "涉及技术领域标签",
-                "联系人",
-                "联系人电话",
-                "联系人邮箱",
                 "组织简介",
                 "详细介绍"
             ],
-            "check": "审核",
-            "check_pass": "通过",
-            "check_reject": "拒绝",
-            "check_log": "审批日志",
             "wait_check": "待审核",
             "wait_check_org": "待组织审核",
             "wait_check_adm": "待组委会审核",
@@ -199,7 +149,6 @@
             "approveTime": "审核时间",
             "isApproved": "审核状态",
             "approvedComment": "审核意见",
-            "emaillist": "请输入开发者邮箱，以换行隔开",
             "areasel": [
                 "Linux Kernel",
                 "AI",
@@ -243,11 +192,7 @@
                 "Git",
                 "Docker",
                 "IoT"
-            ],
-            "upload": "上传文件",
-            "orgCode_valid": "组织编号需为数字",
-            "orgCode_unique": "组织编号已存在",
-            "orgLogo_mes": "请上传组织logo"
+            ]
         },
         "project": {
             "columns_title": [
@@ -306,13 +251,6 @@
                 "预览",
                 "请输入分要点",
                 "新增细分项"
-            ],
-            "detail_title": [
-                "项目描述",
-                "项目备注",
-                "项目支持报名语言",
-                "项目主导师",
-                "项目联合导师"
             ],
             "columns_detail_title_en": [
                 "Project ID",
@@ -378,14 +316,6 @@
                 "请输入分要点/Please enter points",
                 "新增细分项/New subdivisions"
             ],
-            "detail_title_en": [
-                "Project Description",
-                "Project Notes",
-                "Project Support Language",
-                "Project Leader",
-                "Project Co-Mentor"
-            ],
-            "diffculity": "难度",
             "diff": [
                 "低",
                 "中",
@@ -400,10 +330,6 @@
                 "低/Low",
                 "中/Medium",
                 "高/High"
-            ],
-            "programReq": [
-                "项目产出要求",
-                "项目技术要求"
             ],
             "supportlang": [
                 "中英文均可",
@@ -420,23 +346,6 @@
                 "仅中文(Chinese only)",
                 "仅英文(English only)"
             ],
-            "addUnionteach": "未找到相关导师，点击新建",
-            "addteacher": "新增导师",
-            "teachername": "导师姓名",
-            "teachertemail": "导师邮箱",
-            "phone": "手机号",
-            "approvedsel": [
-                "组委会审核未通过",
-                "组织审核未通过",
-                "待组织审核",
-                "待组委会审核",
-                "审核通过"
-            ],
-            "modal_title": "项目详情",
-            "modal_title_edit": "项目详情编辑",
-            "modal_titleapprove": "项目审核",
-            "name_placeholder": "请输入项目名称",
-            "id_placeholder": "请输入项目ID",
             "check_log": "审批日志",
             "check_log_en": "Approval Log",
             "check_log_mix": "审批日志/Approval Log",
@@ -477,38 +386,6 @@
             "noempty_mix": "不能为空/cannot be empty"
         },
         "firsttrial": {
-            "columns_title": [
-                "项目名称",
-                "所属活动",
-                "中选学生",
-                "导师",
-                "状态",
-                "操作",
-                "所属组织"
-            ],
-            "status": {
-                "1": "已上传材料，待排序后提交审核",
-                "2": "提交成功，待评选",
-                "3": "已完成排序，待组委会审核",
-                "4": "待组委会初审",
-                "5": "组委会初审已通过",
-                "6": "组委会初审未通过",
-                "7": "中期成果待审核",
-                "8": "未通过导师中期审核",
-                "9": "已通过导师中期审核",
-                "10": "未通过组委会中期审核",
-                "11": "已通过组委会中期审核",
-                "12": "结项成果待审核",
-                "13": "未通过导师结项审核",
-                "14": "已通过导师结项审核",
-                "15": "未通过组委会结项审核",
-                "16": "已通过组委会结项审核",
-                "-1": "已落选",
-                "-2": "已过期"
-            },
-            "statu0": "待上传项目申请材料",
-            "name_placeholder": "请输入项目名称",
-            "modal_title": "审核详情",
             "step_title": [
                 "提交项目申请材料",
                 "提交中期成果",
@@ -527,9 +404,6 @@
                 "组委会初审已通过",
                 "组委会初审未通过"
             ],
-            "organizeAll": "所属组织",
-            "check_pass": "审核通过",
-            "check_reject": "拒绝通过",
             "first_teacher_approve": "导师初审已通过",
             "mid_teacher_approve": "导师中审已通过",
             "mid_teacher_reject": "导师中审未通过",
@@ -558,8 +432,6 @@
                 "组委会末审已通过",
                 "组委会末审未通过"
             ],
-            "approve_change": "审核变更",
-            "approve_cancel": "取消变更",
             "giturl": "https://gitlab.summer-ospp.ac.cn",
             "gitword": "已为您开通git账号，请点击查看",
             "bankinfo": "点击查看收款银行信息",
@@ -583,17 +455,130 @@
             "bankerror_mes": "银行信息填写有误，请重新填写!",
             "approve_title": "是否确定变更审核",
             "midteacherchange": "导师中审变更",
-            "midcommitchange": "组委会中审变更",
-            "approve_pass": "审核通过",
-            "approve_reject": "拒绝通过",
-            "commit": "提交"
+            "midcommitchange": "组委会中审变更"
+        },
+        "activity": {
+            "colums_title": [
+                "业务ID",
+                "活动名称",
+                "活动主页",
+                "活动描述",
+                "创建时间",
+                "操作"
+            ],
+            "colums_opc": [
+                "查看",
+                "编辑",
+                "删除"
+            ],
+            "delcomfirm": [
+                "确认要删除选中的",
+                "条数据吗?"
+            ],
+            "tabledel": "确定删除该条 '活动' 吗？",
+            "name_placeholder": "请输入活动名称",
+            "page_placeholder": "请输入活动主页",
+            "addact": "新增活动",
+            "delact": "删除",
+            "delmodaltitle": "活动数据删除",
+            "modal_title": "活动详情",
+            "modal_title_edit": "活动详情编辑",
+            "modal_radio1": "必填",
+            "modal_radio2": "非必填",
+            "savebtn": "保存",
+            "cancelbtn": "取消",
+            "act_des": "活动描述",
+            "sponsor": "主办方",
+            "spon_mes": "多个主办方以中文逗号','分割",
+            "co_sponsor": "协办方",
+            "co_sponmes": "多个协办方以中文逗号','分割",
+            "undertaker": "承办方",
+            "und_mes": "多个承办方以中文逗号','分割",
+            "sup": "赞助方",
+            "sup_mes": "多个赞助方以中文逗号','分割",
+            "mediapar": "媒体合作方",
+            "med_mes": "多个媒体合作方以中文逗号','分割",
+            "partner": "合作方",
+            "par_mes": "多个合作方以中文逗号','分割",
+            "orgExpTime": "社区报名截止时间",
+            "orgProExpTime": "社区项目报名截止时间",
+            "stuExpTime": "学生报名截止日期",
+            "fstAppComTime": "初审核报告提交时间",
+            "tFstAppExpTime": "导师初审核截止日期",
+            "sumFstAppPubTm": "组委会初审核并公示日期",
+            "stutMidTime": "学生中期提交日期",
+            "teaMidTime": "导师中期审核截止日期",
+            "sumMidTime": "组委会中期审核并公示日期",
+            "stuEndTime": "学生末期提交日期",
+            "teaEndTime": "导师末期审核截止日期",
+            "sumEndTime": "组委会末期审核截止日期",
+            "setbonus": "设置奖金激励",
+            "bonusdiff": "设置难度",
+            "bonusstu": "设置学生领取总金额",
+            "bonusstu_unit": "单位:元",
+            "bonusteach": "设置导师领取总金额",
+            "stubonuesrule": "学生奖金发放规则",
+            "bonusmid": "中期项目通过",
+            "bonusend": "结项通过",
+            "bonusrole_unit": "单位：%",
+            "teabonuesrule": "导师奖金发放规则",
+            "questionset": "活动报名问题设置",
+            "question1": "问题一",
+            "question2": "问题二",
+            "question3": "问题三",
+            "question4": "问题四",
+            "question5": "问题五",
+            "question6": "问题六",
+            "question7": "问题七",
+            "question1val": "您的组织参加“暑期2021”希望有什么样的收获？",
+            "question2val": "您的社区认一个成功的“暑期2021”是什么样的？（新的贡献者，完成新的特性，编写更多的代码，更好地引导新开发人员进入开源世界，等等）",
+            "question3val": "今年有多少潜在的导师同意参与指导该项目？",
+            "question4val": "您的组织将如何让导师与学生保持互动？",
+            "question5val": "您的组织将如何帮助选中的学生按时完成他们的项目？",
+            "question6val": "您的组织在“暑期2020”吸引了多少学生参与？",
+            "question7val": "过去60天里面，参与暑期2020的学生中有多少人活跃在您的社区？",
+            "selectData": "请选择要删除的数据",
+            "confirm_btn": "确定",
+            "addplus": "中期项目通过+结项通过不能超过100",
+            "activity_dif": [
+                {
+                    "id": "高",
+                    "name": "高"
+                },
+                {
+                    "id": "中",
+                    "name": "中"
+                },
+                {
+                    "id": "低",
+                    "name": "低"
+                }
+            ],
+            "input_activityName": "请输入活动名称",
+            "input_activityPage": "请输入活动主页",
+            "input_activityDes": "请输入活动描述",
+            "input_orgSignupExpiredTime": "请输入社区报名截止时间",
+            "input_orgProgramSignupExpiredTime": "请输入社区项目报名截止时间",
+            "input_studentSignupExpiredTime": "请输入学生报名截止日期",
+            "input_firstApproveCommitTime": "请输入初审核报告提交时间",
+            "input_teacherFirstApproveExpiredTime": "请输入导师初审核截止日期",
+            "input_summerFirstApprovePublicTime": "请输入组委会初审核并公示日期",
+            "input_studentMiddleCommitTime": "请输入学生中期提交日期",
+            "input_teacherMiddleApproveExpiredTime": "请输入导师中期审核截止日期",
+            "input_summerMiddleApprovePublicTime": "请输入组委会中期审核并公示日期",
+            "input_studentEndCommitTime": "请输入学生末期提交日期",
+            "input_teacherEndApproveExpiredTime": "请输入导师末期审核截止日期",
+            "input_summerEndApprovePublicTime": "请输入组委会末期审核截止日期"
         },
         "pagination": [
             "显示第",
             "到第",
             "条记录，共",
             "条记录"
-        ]
+        ],
+        "account":{
+            "phone_validmessage": "请填写有效手机号码"
+        }
     },
     "project":{
         "columns_title": ["项目名称","所属活动","所属组织","状态","中选次序","申请时间","操作"],
@@ -620,6 +605,8 @@
         },
         "orgdetail":"组织详情",
         "prodetail":"项目详情",
+        "activitydetail":"活动详情",
+        "studentApply": "学生申请详情",
         "info": {
             "check_status": "审批状态",
             "regis_title": "请填写组织资料，审核通过，才可报名参加活动！",
@@ -631,49 +618,17 @@
         },
         "check":"查看申请详情",
         "delete":"删除",
-        "delcomfirm": "确定删除该条 '项目' 吗？"
+        "delcomfirm": "确定删除该条 '项目' 吗？",
+        "restNum":["剩余可申请项目数：","   个"]
     },
     "tutor": {
-        "menu": [
-            "资料修改",
-            "项目管理",
-            "导师中期审核",
-            "导师结项审核",
-            "银行卡信息"
-        ],
-        "nickname": "昵称",
-        "out_nickname": "对外昵称",
-        "input_nickname": "请输入对外昵称",
-        "profile_modaltitle": "资料修改",
-        "programsel": "所属项目",
-        "appstatus": [
-            "学生申请状态",
-            "项目状态"
-        ],
-        "publishpro": "项目发布",
         "noapply": "待上传项目申请材料",
-        "belpro": "所属活动",
-        "findapp": "查看申请",
-        "stat": "状态",
-        "applytime": "申请时间",
-        "sortstu": "确认无误并提交审核",
-        "firstApprovecomment": "组委会初审评语",
-        "apply_title": "设定中选学生排名，并提交组委会审核",
-        "stu_modal": "设置学生排序",
         "nosort": "未排序",
-        "approvecom": "审核结论：",
-        "sortstutitle": "设定中选学生排名，并提交组委会审核",
-        "substu_title1": "每个项目最终仅可以中选1位学生！",
-        "substu_title2": "当排名第一位的学生不能参加时，顺延至第二名中选，以此类推。",
-        "substu_title3": "若未给学生排序，则视为放弃该人选；若所有学生均未被排序，则项目流产。",
-        "reset_btn": "点击并重新设置中选优先级",
         "downloadpdf": "下载《参与协议书》",
         "despdf": "请打印签字并扫描上传为PDF格式文件",
         "pdf_upload_mes": "仅可上传pdf文件！",
         "upload": "选择文件",
         "uploadpdf": "点击提交《参与协议书》",
-        "midcomment": "组委会中期审核评语",
-        "endcomment": "组委会末期审核评语",
         "midenddate": "导师中审截至日期",
         "finalenddate": "导师末审截至日期",
         "addbankinfo": "添加银行卡信息",
@@ -690,22 +645,14 @@
         "addbank_modal": "添加银行卡",
         "editbank_modal": "编辑银行卡",
         "banknum_mes": "开户行号必须为12位数字",
-        "approve_program": "审核项目",
         "check_program": "查看项目",
         "input_receiver": "请输入收款人信息",
         "input_bank": "请输入开户行",
         "input_certrecer": "请输入结项证书收件人",
         "input_certaddr": "请输入结项证书收件地址",
         "program_alert": "该账号下无可报名的活动，如需发布项目，请联系所属组织先报名活动",
-        "approvement": "请输入审批内容",
-        "first_comment": "审核评语：",
         "length_limit": "内容长度不能超过100",
         "length_limit2": "内容长度不能超过200",
-        "program": {
-            "alert_msg": [
-                "您未在导师审核截止日期",
-                "前及时审核项目，已视为自动放弃，无法继续参与该项目"
-            ]
-        }
+        "banknum_valid":"请填写有效银行卡号"
     }
 }

@@ -10,14 +10,14 @@ export const Check = () =>{
         wrapperCol: { span: 12 },
     }
     const data = ['orgName','orgCode','orgType','orgWebsite','orgLogo',
-                    'developerEmailList','publicPhone','publicEmail','areaTagName','techTagName','contact','contactPhone','contactEmail','orgProfile','orgIntroduction']
+                    'developerEmailList','publicPhone','publicEmail','areaTagName','techTagName','orgProfile','orgIntroduction']
     return orgInfoLoading?<Spin>loading</Spin>:
             <div id={'infomation.check'}>
                 <Space direction="vertical"  style={{width:'100%'}}>
                     <Descriptions bordered >
                         {
                             orgInfo && data.map((item,index)=> 
-                            <Descriptions.Item span={item==='orgProfile'||item ==='orgIntroduction'||item==='contactEmail'?3:1} key={index} label={t(`admin.origanize.detail_title_check.${index}`)}>
+                                <Descriptions.Item span={item === 'orgProfile' || item === 'orgIntroduction' || item === 'techTagName'?3:1} key={index} label={t(`admin.origanize.detail_title_check.${index}`)}>
                                 {  
                                     item === 'orgType'?t(`admin.origanize.namesel.${orgInfo[item]-1}`) :
                                     item === 'areaTagName' && orgInfo['areaText']?orgInfo['areaTagName']?orgInfo['areaTagName']+', '+orgInfo['areaText']:orgInfo['areaText']:

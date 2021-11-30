@@ -43,8 +43,8 @@ module.exports = {
             ctx.body = JSON.stringify(response.data.res)
         }
         ctx.body = JSON.stringify(response.data.res)
-        
-       
+
+
     },
     uploadimg: async (ctx, next) => {
         fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.img}.png`))
@@ -119,7 +119,7 @@ module.exports = {
         ctx.body = JSON.stringify(response.data)
     },
     myapplication: async (ctx, next) => {
-        const { pageNum, pageSize} = ctx.request.body
+        const { pageNum, pageSize } = ctx.request.body
         ctx.request.body.pageNum = pageNum ? pageNum : '1'
         ctx.request.body.pageSize = pageSize ? pageSize : '10'
         const response = await request({
@@ -134,7 +134,7 @@ module.exports = {
     orgdetail: async (ctx, next) => {
         const { orgId } = ctx.request.body
         const response = await request({
-            url: `/system/org/detail/${Number(orgId)}`,
+            url: `/system/org/intro/${Number(orgId)}`,
             headers: { Authorization: ctx.request.header.authorization }
         })
         if (response.data.code === 200) {
@@ -187,6 +187,17 @@ module.exports = {
             ctx.body = JSON.stringify(response.data)
         }
     },
+    activitydetail: async (ctx, next) => {
+        const { activityId } = ctx.request.body
+        const response = await request({
+            url: `/system/activity/detail/${activityId}`,
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        response.data.code === 200 ? ctx.body = JSON.stringify(response.data.suActivity) : ctx.body = JSON.stringify(response.data)
+    },
     deletepro: async (ctx, next) => {
         const { orgProgramId } = ctx.request.body
         const response = await request({
@@ -199,16 +210,16 @@ module.exports = {
         }
         ctx.body = JSON.stringify(response.data)
     },
-    applydetail:async (ctx, next) => {
-        const {id} = ctx.request.body
+    applydetail: async (ctx, next) => {
+        const { id } = ctx.request.body
         const response = await request({
             url: `/system/studentProgram/detail/${id}`,
-          headers: {Authorization: ctx.request.header.authorization}     
+            headers: { Authorization: ctx.request.header.authorization }
         })
         if (response.data.code !== 200) {
-          ctx.response.status = response.data.code
+            ctx.response.status = response.data.code
         }
-        response.data.code === 200? ctx.body = JSON.stringify(response.data.suStudentProgram): ctx.body = JSON.stringify(response.data)
+        response.data.code === 200 ? ctx.body = JSON.stringify(response.data.suStudentProgram) : ctx.body = JSON.stringify(response.data)
     },
     downloadApplication: async (ctx, next) => {
         const { id, phase } = ctx.request.body
@@ -291,6 +302,7 @@ module.exports = {
         if (response.data.code !== 200) {
             ctx.response.status = response.data.code
         }
+        console.log(response)
         response.data.code === 200 && response.data.bank ? response.data.rows = [response.data.bank].map(item => ({ ...item, ...{ key: item.userId } })) : response.data.rows = []
         ctx.body = JSON.stringify(response.data)
     },
@@ -318,4 +330,16 @@ module.exports = {
         }
         ctx.body = JSON.stringify(response.data)
     },
+    apply: async (ctx, next) => {
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: `/system/studentProgram`,
+            headers: { Authorization: ctx.request.header.authorization },
+            method: 'put'
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        ctx.body = JSON.stringify(response.data)
+    }
 }

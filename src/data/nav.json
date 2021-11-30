@@ -105,6 +105,32 @@
             }
     
         ],
-        "summer2020":"Summer2020"
+        "summer2020":"Summer2020",
+        "login": {
+            "name": "LOGIN",
+            "content": [
+                {
+                    "name": "Student Login",
+                    "title": "studentLogin"
+                },
+                {
+                    "name": "Mentor Login",
+                    "title": "tutorLogin"
+                },
+                {
+                    "name": "Organization Login",
+                    "title": "orgLogin"
+                }
+            ]
+        },
+        "logout": {
+            "name": "User Center",
+            "content": [
+                {
+                    "name": "Log Out",
+                    "title": "studentLoginout"
+                }
+            ]
+        }
     }
 }

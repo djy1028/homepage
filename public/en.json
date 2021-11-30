@@ -20,8 +20,8 @@
         "invite_login": "Please login",
         "invite_regis": "Please register",
         "login_title":"Login/Register to continue",
-        "noaccount": "Organization Register",
-        "existaccount": "Already have an account? Sign in directly",
+        "noaccount": "Student Register",
+        "existaccount": "Sign In Directly",
         "remember":"Remeber me",
         "forget_pwd":"Forgot password",
         "findback_pwd": "Get your password back",
@@ -44,5 +44,23 @@
         "confirm_pwd":"Please confirm your password!",
         "check_confirm":"The two passwords that you entered do not match",
         "org_regis":"Organization Register"
+    },
+    "student": {
+        "menu": ["Bulletin Board", "My Profile", "Projects", "Change Password"],
+        "side_head": "User Center",
+        "bulletin": {
+            "column_title": ["Serial Number", "Date", "Things", "Notes"],
+            "title": "Open Source Software Supply Chain Lighting Program - Summer 2022 Student Engagement Process"
+        },
+        "approved": "Passed",
+        "noapproved": "Failed"
+    },
+    "admin":{
+        "pagination": [
+            "show items from",
+            "to",
+            ",total",
+            "items"
+        ]
     }
 }

@@ -19,7 +19,7 @@ export const Bankinfo = (props) => {
     const { mutateAsync: add, isLoading: addLoading } = useStuAddbank(studentId)
     const onFinish = (fieldsValue) => {
         const operate = data.rows && data.rows.length>0?edit:add
-        operate({ ...fieldsValue, studentBankId: studentId }).then(res => {
+        operate({ ...fieldsValue, studentBankId: data.bank.studentBankId }).then(res => {
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 form.resetFields()
@@ -60,7 +60,7 @@ export const Bankinfo = (props) => {
             <Form.Item name="field4" label={t('admin.firsttrial.bankinfodes.3')} rules={[{ required: true, pattern: /^([0-9]{12})$/g, type: 'string', max: 12, message: t('tutor.banknum_mes') }]}>
                 <Input allowClear placeholder={t('tutor.bankNumber')} />
             </Form.Item>
-            <Form.Item name="field5" label={t('admin.firsttrial.bankinfodes.4')} rules={[{ required: true, pattern: /^([0-9]{1})(\d{14}|\d{17})[^\s]$/g, type: 'string', max: 100 }]}>
+            <Form.Item name="field5" label={t('admin.firsttrial.bankinfodes.4')} rules={[{ required: true, pattern: /^([0-9]{1})(\d{14}|\d{17})[^\s]$/g, type: 'string', max: 100, message: t('tutor.banknum_valid') }]}>
                 <Input allowClear placeholder={t('tutor.cardNumber')} />
             </Form.Item>
             <Form.Item name="field6" label={t('admin.firsttrial.bankinfodes.5')} rules={[{ required: true, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.firsttrial.card_validmessage') }]}>
