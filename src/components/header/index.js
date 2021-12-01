@@ -147,7 +147,6 @@ class Header extends React.Component {
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
-        console.log(pageflagredux)
         const { token, menu } = this.props
         return (
             <div className={['header', this.state.chiFlag].join(' ')}>
@@ -308,7 +307,6 @@ class Header extends React.Component {
                         </div>
                     ) : (
                         <div
-                            style={{ position: 'relative', left: '5rem' }}
                             className={[
                                 pageflagredux === 'loginall' ? 'active' : '',
                                 'headerWrapItem',

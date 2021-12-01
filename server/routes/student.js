@@ -341,5 +341,16 @@ module.exports = {
             ctx.response.status = response.data.code
         }
         ctx.body = JSON.stringify(response.data)
+    },
+    isSignupAvailable: async (ctx, next) => {
+        const response = await request({
+            url: `/public/isSignupAvailable`,
+            headers: { Authorization: ctx.request.header.authorization },
+            method: 'get'
+        })
+        if (response.data.code !== 200) {
+            ctx.response.status = response.data.code
+        }
+        ctx.body = JSON.stringify(response.data)
     }
 }

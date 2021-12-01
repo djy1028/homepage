@@ -7,9 +7,9 @@ const request = (paramInfo) => {
         const getData = {
             url: obj.url,
             method: obj.method || 'get',
-            baseURL: 'http://192.168.2.19/summer',
+            //baseURL: 'http://192.168.2.19/summer',
             // 使用前需要在系统上设置环境变量 SUMMER_OSPP_JAVA_IP 的值和 SUMMER_OSPP_JAVA_PORT 的值，用来设置summer_ospp_java后台的请求ip和端口
-            //baseURL:process.env.OS === 'Windows_NT'?'http://localhost:9899/summer':'http://'+process.env.SUMMER_OSPP_JAVA_IP+':'+process.env.SUMMER_OSPP_JAVA_PORT+'/summer',
+            baseURL: process.env.OS === 'Windows_NT' ? 'http://localhost:9899/summer' : 'http://' + process.env.SUMMER_OSPP_JAVA_IP + ':' + process.env.SUMMER_OSPP_JAVA_PORT + '/summer',
             headers: obj.headers
         }
         /* 默认为DomString,文件流下载是会出现乱码，node中需要以arrayBuffer形式存储服务返回的流 */

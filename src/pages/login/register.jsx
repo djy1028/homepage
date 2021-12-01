@@ -6,12 +6,12 @@ import {FormItem} from 'components/form_item'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { pwdPattern } from 'utils/pattern'
 import { useTranslation } from 'react-i18next';
+import { register } from 'auth-provider'
 
 export const RegisterScreen = ({ onError, setRegister }) =>{
     const { t } = useTranslation()
     const {run,isLoading} = useAsync(undefined,{throwNewError:true})
     const handleSubmit = async ({cpassword,...values})=>{
-
         try{
             const res = await run(register(values))
             setRegister(true)

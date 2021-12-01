@@ -1,10 +1,12 @@
-@media screen and (min-width: 750px) and (max-width: 1200px) {
+@media screen and (min-width: 800px) and (max-width: 1200px) {
   .en {
     .headerContent {
-      .headerTabItem,.headerTabItemEn{
+      .headerTabItem,
+      .headerTabItemEn {
         font-size: 12px;
         margin-left: 5px;
         font-weight: 500;
+        width: 5rem;
       }
     }
   }
@@ -21,7 +23,29 @@
   }
   .headerContent {
     .osscHeaderLogo {
-      width: 40vw;
+      width: 25vw;
+    }
+    .headerList {
+      margin: 0 1rem;
+      .headerTabWrapper {
+        .headerTabItem {
+          font-size: 14px;
+          margin-left: 5px;
+        }
+      }
+      .headerChiEn {
+        width: 8rem;
+      }
+      .headerTabItem {
+        font-size: 14px;
+      }
+    }
+    .loginall {
+      left: 0rem;
+      .headerTabItem {
+        font-size: 14px;
+        margin-left: 5px;
+      }
     }
 
     .headerTabItem.org {
@@ -77,7 +101,7 @@
     }
 
     .OrgListItem:nth-child(even) .OrgTipItemContent {
-      left: calc(~"-97vw + 386px");
+      left: calc(~'-97vw + 386px');
     }
   }
 

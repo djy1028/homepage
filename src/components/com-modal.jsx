@@ -1,18 +1,7 @@
-import React, { ReactNode, useRef, useState } from 'react'
-import { Modal, ModalProps} from 'antd';
+import React, { useRef, useState } from 'react'
+import { Modal } from 'antd';
 import Draggable from 'react-draggable';
 
-// interface modalProps extends ModalProps{
-//     visible?:boolean,
-//     title:string,
-//     width?:number | string,
-//     children:ReactNode,
-//     footer?:ReactNode | null,
-//     close:()=>void,
-//     onOk?:()=>void,
-//     isloading?:boolean,
-//     scroll?:object
-// }
 
 export const ComModal = (props)=> {
     const draggleRef = useRef(null);;

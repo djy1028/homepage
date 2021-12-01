@@ -58,7 +58,8 @@
             "title":"开源软件供应链点亮计划-暑期2022学生参与流程"
         },
         "approved":"已通过",
-        "noapproved":"未通过"
+        "noapproved":"未通过",
+        "waitapproved":"待审核"
     },
     "admin":{
         "emptycheck": "内容不能仅为空格",
@@ -619,7 +620,10 @@
         "check":"查看申请详情",
         "delete":"删除",
         "delcomfirm": "确定删除该条 '项目' 吗？",
-        "restNum":["剩余可申请项目数：","   个"]
+        "restNum":["剩余可申请项目数：","   个"],
+        "program_overdue":"该项目申请时间已截止",
+        "alert_msg":"完善个人信息之后才可以申请项目!",
+        "mes_alert":"提示"
     },
     "tutor": {
         "noapply": "待上传项目申请材料",

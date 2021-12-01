@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { LoginScreen } from './login'
 import { RegisterScreen } from './register'
 import styled from '@emotion/styled'
-import { Button, Card, Radio, Result, Space, Form, Input } from 'antd'
+import { Button, Card, Result, Form, Input } from 'antd'
 import { useDocumentTitle } from 'utils'
 import { ErrorBox } from 'components/lib'
-// import { useAuth } from 'context/auth-context'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import i18n from "i18next";
 import { useTranslation } from 'react-i18next';
 import { regisactive, setNewPwd } from 'auth-provider'
 import { openNotificationWithIcon } from 'components/com-notify'
@@ -19,21 +17,23 @@ export const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
     const [error, setError] = useState(null)
-    const [checkRegis, setCheckRegis] = useState(window.location.search.includes('link'))
-    const [forgetPwd, setforgetPwd] = useState(window.location.search.includes('forgetCode'))
+    const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
+    const [forgetPwd, setforgetPwd] = useState(window.location.hash.includes('studentLogin?forgetCode'))
     useDocumentTitle(t('login.login_title'))
 
     useEffect(() => {
         if (checkRegis) {
-            const linkparam = window.location.search.split('=')[1]
+            const linkparam = window.location.hash.split('=')[1]
             regisactive({ link: linkparam }).then(res => {
                 openNotificationWithIcon(0, res.message)
                 setCheckRegis(false)
-                window.history.replaceState('login', '', '/')
+                window.location.hash = '/studentLogin'
+                // window.history.replaceState('login', '', '/')
             }).catch(err => {
                 openNotificationWithIcon(1, err.message)
                 setCheckRegis(false)
-                window.history.replaceState('login', '', '/')
+                window.location.hash = '/studentLogin'
+                // window.history.replaceState('login', '', '/')
             })
         }
     }, [])
@@ -70,7 +70,6 @@ export const LoginApp = () => {
 
 export const LongButton = styled(Button)`
     width:100%;
-
     background-color: #4c9bf5;
     border-radius: 5px;
     border:none
@@ -142,15 +141,17 @@ const NewPwd = (props) => {
         wrapperCol: { span: 18 },
     };
     const onFinish = (fields) => {
-        /* setNewPwd({ newPassword: fields.newPassword, forgetCode: visible ? window.location.search.split('=')[1] : '' }).then(res => {
+        setNewPwd({ newPassword: fields.newPassword, forgetCode: visible ? window.location.hash.split('=')[1] : '' }).then(res => {
             openNotificationWithIcon(0, res.message)
             setforgetPwd(false)
-            window.history.replaceState('login', '', '/')
+            window.location.hash = '/studentLogin'
+            //window.history.replaceState('login', '', '/')
         }).catch(err => {
             openNotificationWithIcon(1, err.message)
             setforgetPwd(false)
-            window.history.replaceState('login', '', '/')
-        }) */
+            window.location.hash = '/studentLogin'
+            //window.history.replaceState('login', '', '/')
+        })
     }
     return <Form onFinish={onFinish} {...layout}>
                 <FormItem name={'newPassword'} label={t('login.newpws')} ruleMessage={t('login.password_message')} passwordRule={{ pattern: pwdPattern, message: t('register.validate_pwd') }}  >

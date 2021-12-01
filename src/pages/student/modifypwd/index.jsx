@@ -14,6 +14,7 @@ export const Modifypwd = () => {
     const { t} = useTranslation()
     const [resetloading, setloading] = useState(false)
     const user = useSelector(state=>state.user)
+    
     const layout = {
         labelCol: { span: 4 },
         wrapperCol: { span: 16 },

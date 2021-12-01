@@ -18,6 +18,7 @@ import { getSplit, getSupportLanguage, goenroll, gohash } from "../../util/url.j
 import data from '../../data/orglist2021.json';
 import { http } from 'utils/http';
 import { getToken } from 'auth-provider';
+import { openNotificationWithIcon } from 'components/com-notify';
 class ProjectDetail extends React.Component {
     constructor(props) {
         super(props)
@@ -41,11 +42,14 @@ class ProjectDetail extends React.Component {
                 "spl": 1,
                 "organchor": "hgbczxjt",
                 "orgname": "合璧操作系统"
-            }
+            },
+            hasApplyed: false,
+            canApply: true
         }
     }
 
     componentDidMount() {
+        this.getActivity()
         let showprodata = this.props.prodetail
         //1.0 判断prodetail有无值
         if (Object.keys(this.props.prodetail).length === 0) {
@@ -77,10 +81,32 @@ class ProjectDetail extends React.Component {
         })
     }
 
+    /* 获取活动详情 */
+
+    getActivity() {
+        const that = this
+        http('/public/isSignupAvailable', { data: '', token: getToken(), method: 'get' }).then(rsp => {
+            that.setState({
+                canApply: rsp.res
+            })
+        })
+    }
+
     /* 学生申请项目 */
-    async applyProject(proid) {
-        const res = await http('/studentProgram/apply', { data: { orgProgramId: proid }, token: getToken(), method: 'post' })
-        console.log(res.json)
+    applyProject(proid) {
+        const that = this
+        if (this.state.canApply) {
+            http('/studentProgram/apply', { data: { orgProgramId: proid }, token: getToken(), method: 'post' }).then(res => {
+                openNotificationWithIcon(0, res.message)
+                that.setState({
+                    hasApplyed: true
+                })
+            })
+        }
+        else {
+            openNotificationWithIcon(1, '该项目申请时间已截止')
+        }
+
     }
 
     getDegreeBy(degree) {
@@ -98,6 +124,7 @@ class ProjectDetail extends React.Component {
         let showdata = projectlist[this.props.chiFlag]
         let prodetail = this.state.showPro
         const { token } = this.props.user
+        const { hasApplyed } = this.state
         return (
             <div className="ProjectDetail content1200">
                 <div className="ProjectDetailNavLink">
@@ -235,23 +262,20 @@ class ProjectDetail extends React.Component {
                             }
 
                         </div>
-                        {token && <div
-                            className="OrgTipButton"
-                            onClick={() => {
-                                this.applyProject(prodetail.proid)
-                                // goenroll(prodetail.proid, this.props.chiFlag)
-                            }}>
-                            {showdata.operationbutton[1]}
-                        </div>}
+                        {token ? hasApplyed ? <div className="OrgTipButton" style={{ background: '#55585a' }} >
+                            {showdata.operationbutton[2]}
+                        </div> :
+                            <div
+                                className="OrgTipButton"
+                                onClick={() => {
+                                    this.applyProject(prodetail.proid)
+                                    // goenroll(prodetail.proid, this.props.chiFlag)
+                                }}>
+                                {showdata.operationbutton[1]}
+                            </div> : null
+                        }
 
                     </div>
-                    {/* {
-                        token && <div onClick={() => this.applyProject()} className="ApplyProject_Area">
-                            <div className="ApplyProject_Btn">
-                                提交申请
-                            </div>
-                        </div>
-                    } */}
                 </div>
             </div>
         )

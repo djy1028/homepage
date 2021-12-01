@@ -1,21 +1,22 @@
-import { Button, Form, Input, message, Upload, Image, Spin, Descriptions, Divider} from 'antd'
+import { Button, Form, Input, message, Upload, Image, Spin, Descriptions, Divider, Space } from 'antd'
 import React, { useEffect } from 'react'
 import { useForm } from 'antd/lib/form/Form'
-import { CloudUploadOutlined } from '@ant-design/icons';
+import { CloudUploadOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { useEditStudent, useAddStudent, useStudentModal } from 'utils/student';
 import { openNotificationWithIcon } from 'components/com-notify';
 import { emptyPattern } from 'utils/pattern';
 import styled from '@emotion/styled'
 import { useState } from 'react';
-import { SearchContainer } from 'components/search-container';
+import { ComModal } from 'components/com-modal';
 
 export const Info = () => {
     const [form] = useForm()
     const { t, i18n } = useTranslation()
-    const [editprofile,setEditprofile] = useState(false)
+    const [editprofile, setEditprofile] = useState(false)
+    const [showalert, setShowalert] = useState(true)
     const { edit, editingStudent, isLoading, close, refetch, studentEdit } = useStudentModal()
-    const useStudentMutate = studentEdit?useEditStudent:useAddStudent
+    const useStudentMutate = studentEdit ? useEditStudent : useAddStudent
     const { mutateAsync, isLoading: mutateLoading } = useStudentMutate()
     const formData = new FormData()
     const normFile = (e) => {
@@ -32,8 +33,13 @@ export const Info = () => {
     };
 
     const onFinish = (fieldsValue) => {
-        mutateAsync({
+        mutateAsync(studentEdit ? {
             ...fieldsValue, studentId: editingStudent['studentId'],
+            cardFrontUrl: fieldsValue['cardFrontUrl'] && fieldsValue['cardFrontUrl'].length > 0 ? fieldsValue['cardFrontUrl'][0].name : '',
+            cardBackUrl: fieldsValue['cardBackUrl'] && fieldsValue['cardBackUrl'].length > 0 ? fieldsValue['cardBackUrl'][0].name : '',
+            studentCardUrl: fieldsValue['studentCardUrl'][0].name,
+        } : {
+            ...fieldsValue,
             cardFrontUrl: fieldsValue['cardFrontUrl'] && fieldsValue['cardFrontUrl'].length > 0 ? fieldsValue['cardFrontUrl'][0].name : '',
             cardBackUrl: fieldsValue['cardBackUrl'] && fieldsValue['cardBackUrl'].length > 0 ? fieldsValue['cardBackUrl'][0].name : '',
             studentCardUrl: fieldsValue['studentCardUrl'][0].name,
@@ -62,13 +68,13 @@ export const Info = () => {
         }
     }, [editingStudent, form])
     return ((isLoading || mutateLoading) ? <Spin>loading...</Spin> :
-        <div id={'studentinfo'} style={{ width: '100%',height:'100%' }}>
-            <Descriptions column={ 2}>
-                <Descriptions.Item style={{display:'flex',justifyContent:'center'}} label={t('admin.student.columns_title.9')}>{ editingStudent.createTime }</Descriptions.Item>
-                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : "#f52929" }}>{t(editingStudent.isApproved === 1 ?'student.approved':'student.noapproved')}</span> }</Descriptions.Item>
-            </Descriptions>
-            <Divider />
-            <Form style={{height: 'calc(100vh - 320px)',overflow: 'auto'}} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
+        <div id={'studentinfo'} style={{ width: '100%', height: '100%' }}>
+            {editingStudent && <Descriptions column={2}>
+                <Descriptions.Item style={{ display: 'flex', justifyContent: 'center' }} label={t('admin.student.columns_title.9')}>{editingStudent.createTime}</Descriptions.Item>
+                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -11 ? 'student.noapproved' : 'student.waitapproved')}</span>}</Descriptions.Item>
+            </Descriptions>}
+            {editingStudent && <Divider />}
+            <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
                 <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
                     required: true, validator(_, value) {
                         return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
@@ -104,7 +110,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                        src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
+                            src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
                         /> :
                             <Upload maxCount={1} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
@@ -123,7 +129,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                        src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
+                            src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
                         /> :
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
@@ -143,7 +149,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Image
                             width={190}
                             height={120}
-                        src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
+                            src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
                         /> :
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
@@ -182,29 +188,31 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
                     }
                 </Form.Item>
-                <Form.Item wrapperCol={{ offset: (!editingStudent || !editprofile)?11:10 }}>
-                        {
-                    (editingStudent && !editprofile) && <SubmitBtn onClick={() => {
-                        setEditprofile(true)
-                        edit()
-                    }} htmlType={''}>
+                <Form.Item wrapperCol={{ offset: (!editingStudent || !editprofile) ? 11 : 10 }}>
+                    {
+                        (editingStudent && !editprofile) && <SubmitBtn onClick={() => {
+                            setEditprofile(true)
+                            edit()
+                        }} htmlType={''}>
                             {t('admin.student.editbtn')}
                         </SubmitBtn>
-                        }
-                        {
-                            (!editingStudent||editprofile) && <SubmitBtn loading={mutateLoading} htmlType="submit">
-                                {t('admin.student.savebtn')}
-                            </SubmitBtn>
-                        }
-                        {
-                    editprofile && <CancelBtn onClick={() => {
-                        setEditprofile(false)
-                        close()
-                    } }>{t('admin.student.cancelbtn')}</CancelBtn>
-                        }
-                    </Form.Item>
+                    }
+                    {
+                        (!editingStudent || editprofile) && <SubmitBtn loading={mutateLoading} htmlType="submit">
+                            {t('admin.student.savebtn')}
+                        </SubmitBtn>
+                    }
+                    {
+                        editprofile && <CancelBtn onClick={() => {
+                            setEditprofile(false)
+                            close()
+                        }}>{t('admin.student.cancelbtn')}</CancelBtn>
+                    }
+                </Form.Item>
             </Form>
-            </div>
+            {!editingStudent && showalert && <ComModal style={{ top: '20rem' }} footer={<Button onClick={() => setShowalert(false)} style={{ background: '#0d86ff', border: 'none' }} type={'primary'}>{'知道了'}</Button>} visible={showalert} close={() => setShowalert(false)} children={<Space align={"start"}><InfoCircleOutlined style={{ color: '#ffb100', fontSize: '1.8rem' }} /> <p style={{ fontSize: '1.8rem' }}>{t('project.alert_msg')}</p></Space>} title={t('project.mes_alert')} />}
+
+        </div>
     )
 }
 
