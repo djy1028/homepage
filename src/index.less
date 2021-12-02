@@ -35,13 +35,13 @@ body {
 /* Edge && Chrome 全局滚动条样式修改 */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 12px;
+  height: 8px;
   background-color: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
   display: block;
-  min-height: 12px;
+  min-height: 8px;
   min-width: 8px;
   border-radius: 6px;
   background-color: rgba(223, 222, 222, 0.6);
@@ -49,7 +49,7 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   display: block;
-  min-height: 12px;
+  min-height: 8px;
   min-width: 8px;
   border-radius: 6px;
   background-color: rgba(223, 222, 222, 0.6);
@@ -107,4 +107,11 @@ body {
 .ant-radio-disabled + span {
   // background-color: #fff !important;
   color: #333 !important;
+}
+
+.ant-layout-sider-zero-width-trigger {
+  right: -18px !important;
+  background: #d5d5d5 !important;
+  width: 15px !important;
+  border-radius: 4px !important;
 }

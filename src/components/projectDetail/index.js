@@ -49,7 +49,7 @@ class ProjectDetail extends React.Component {
     }
 
     componentDidMount() {
-        this.getActivity()
+        // this.getActivity()
         let showprodata = this.props.prodetail
         //1.0 判断prodetail有无值
         if (Object.keys(this.props.prodetail).length === 0) {
@@ -81,21 +81,11 @@ class ProjectDetail extends React.Component {
         })
     }
 
-    /* 获取活动详情 */
-
-    getActivity() {
-        const that = this
-        http('/public/isSignupAvailable', { data: '', token: getToken(), method: 'get' }).then(rsp => {
-            that.setState({
-                canApply: rsp.res
-            })
-        })
-    }
-
     /* 学生申请项目 */
-    applyProject(proid) {
+    async applyProject(proid) {
         const that = this
-        if (this.state.canApply) {
+        const rsp = await http('/public/isSignupAvailable', { data: '', token: getToken(), method: 'get' })
+        if (rsp.res) {
             http('/studentProgram/apply', { data: { orgProgramId: proid }, token: getToken(), method: 'post' }).then(res => {
                 openNotificationWithIcon(0, res.message)
                 that.setState({
@@ -106,6 +96,18 @@ class ProjectDetail extends React.Component {
         else {
             openNotificationWithIcon(1, '该项目申请时间已截止')
         }
+
+        // if (this.state.canApply) {
+        //     http('/studentProgram/apply', { data: { orgProgramId: proid }, token: getToken(), method: 'post' }).then(res => {
+        //         openNotificationWithIcon(0, res.message)
+        //         that.setState({
+        //             hasApplyed: true
+        //         })
+        //     })
+        // }
+        // else {
+        //     openNotificationWithIcon(1, '该项目申请时间已截止')
+        // }
 
     }
 

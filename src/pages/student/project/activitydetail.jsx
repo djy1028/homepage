@@ -16,8 +16,20 @@ export const Detail = () => {
     const { formarea, formbonus, formaqfield, timeObj, aqvalue, formbonuesrole1, formbonuesrole2 } = useDetialCfg()
     const disabled = inquiryActivityId ? true : false
     const layout = {
-        labelCol: { flex: 'wrap', span: 6 },
-        wrapperCol: { span: 14 },
+        labelCol: {
+            // xs: { flex: 'wrap', span: 8},
+            sm: { flex: 'wrap', span: 12 },
+            md: { flex: 'wrap',span: 10 },
+            lg: { flex: 'wrap', span: 10 },
+            xl: { flex: 'wrap', span: 6 },
+        },
+        wrapperCol: {
+            // xs: { span: 24 },
+            sm: { span: 12 },
+            md: { span: 12 },
+            lg: { span: 12 },
+            xl: { span: 14 },
+        },
     };
     const initialValues = {
         ...aqvalue,
@@ -136,7 +148,7 @@ export const Detail = () => {
                         formaqfield.fielditems.map(
                             item => <Form.Item key={item.inputname + item.radioname} labelCol={{ span: 6 }} wrapperCol={{ span: 18, offset: 4 }}>
                                 <Form.Item colon={true} key={item.inputname} name={item.inputname} label={item.inputlabel} rules={[{ required: item.require }]}>
-                                    <Input.TextArea disabled bordered={false} />
+                                    <Input.TextArea autoSize disabled bordered={false} />
                                 </Form.Item>
                                 <Form.Item key={item.radioname} name={item.radioname} label={item.radiolabel} rules={[{ required: item.require }]} wrapperCol={{ offset: 4 }} >
                                     <Radio.Group disabled={disabled} >

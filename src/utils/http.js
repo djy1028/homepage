@@ -32,7 +32,11 @@ export const http = (endpoint, { data, token, headers, ...customConfig }) => {
     return fetch(`${endpoint}`, config).then(async response => {
         if (response.status === 401) {
             await logout();
-            window.location.reload()
+            // window.location.reload()
+            window.location.hash = '/studentLogin'
+            notification.error({
+                message: '该用户没有权限请登录'
+            });
             return Promise.reject({ message: "请重新登录" })
         }
         const data = await response.json()

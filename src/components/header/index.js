@@ -189,8 +189,8 @@ class Header extends React.Component {
                                                 style={{
                                                     width:
                                                         this.props.chiFlag === 'chi'
-                                                            ? 'calc(100% + 40px)'
-                                                            : 'calc(100% + 100px)',
+                                                            ? 'calc(100% + 4rem)'
+                                                            : 'calc(100% + 8rem)',
                                                 }}
                                             >
                                                 {ele.content.map((sitem, sindex) => {
@@ -281,8 +281,8 @@ class Header extends React.Component {
                                     style={{
                                         width:
                                             this.props.chiFlag === 'chi'
-                                                ? 'calc(100% + 40px)'
-                                                : 'calc(100% + 100px)',
+                                                ? 'calc(100% + 4rem)'
+                                                : 'calc(100% + 8rem)',
                                     }}
                                 >
                                     {showdata.logout.content.map((sitem, sindex) => {
@@ -332,8 +332,8 @@ class Header extends React.Component {
                                     style={{
                                         width:
                                             this.props.chiFlag === 'chi'
-                                                ? 'calc(100% + 40px)'
-                                                : 'calc(100% + 100px)',
+                                                ? 'calc(100% + 4rem)'
+                                                : 'calc(100% + 8rem)',
                                     }}
                                 >
                                     {showdata.login.content.map((sitem, sindex) => {

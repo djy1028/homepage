@@ -188,7 +188,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
                     }
                 </Form.Item>
-                <Form.Item wrapperCol={{ offset: (!editingStudent || !editprofile) ? 11 : 10 }}>
+                <Form.Item wrapperCol={{ span: 24 }} style={{ textAlign: 'center' }}>
                     {
                         (editingStudent && !editprofile) && <SubmitBtn onClick={() => {
                             setEditprofile(true)
@@ -211,7 +211,6 @@ export const Info = () => {
                 </Form.Item>
             </Form>
             {!editingStudent && showalert && <ComModal style={{ top: '20rem' }} footer={<Button onClick={() => setShowalert(false)} style={{ background: '#0d86ff', border: 'none' }} type={'primary'}>{'知道了'}</Button>} visible={showalert} close={() => setShowalert(false)} children={<Space align={"start"}><InfoCircleOutlined style={{ color: '#ffb100', fontSize: '1.8rem' }} /> <p style={{ fontSize: '1.8rem' }}>{t('project.alert_msg')}</p></Space>} title={t('project.mes_alert')} />}
-
         </div>
     )
 }
@@ -220,11 +219,20 @@ const SubmitBtn = styled(Button)`
     width: 9.5rem;
     height: 3rem;
     color: #0d86ff;
-    border-color: #0d86ff;`
+    border-color: #0d86ff;
+     @media (max-width: 1200px) {
+        width: auto;
+        height: auto;
+    }
+`
 
 const CancelBtn = styled(Button)`
     width: 9.5rem;
     height: 3rem;
     margin-left: 2rem;
+     @media (max-width: 1200px) {
+        width: auto;
+        height: auto;
+    }
 `
 

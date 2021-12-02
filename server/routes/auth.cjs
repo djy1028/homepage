@@ -13,11 +13,13 @@ const getInfo = async (token) => {
 
 module.exports = {
   login: async (ctx, next) => {
+    console.log(ctx.request.header)
     const response = await request({
       data: Qs.stringify({ ...ctx.request.body, ...{ uuid: ctx.cookies.get('uid') } }),
       url: '/login',
       method: 'post'
     })
+    // console.log(response)
     if (response.data.code === 200) {
       ctx.cookies.set('tgt', response.headers.authorization, { httpOnly: false })
       const userInfo = await getInfo(response.headers.authorization)
@@ -44,12 +46,12 @@ module.exports = {
     }
   },
   verifyPic: async (ctx, next) => {
+    console.log(ctx.request.header)
     const response = await request({
       url: '/captcha/captchaImage'
     })
     ctx.type = 'image/jpeg;charset=UTF-8'
     ctx.cookies.set('uid', response.data.uuid)
-
     ctx.body = JSON.stringify(response.data.img)
   },
   getUserInfo: async (ctx, next) => {

@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Input } from 'antd'
+import { Popconfirm, Space, Input, Tooltip } from 'antd'
 import FormItem from 'antd/lib/form/FormItem'
 import { ComModal } from 'components/com-modal'
 import { ComTable } from 'components/com-table'
@@ -26,18 +26,26 @@ export const Project = () => {
         {
             title: t('project.columns_title.0'),
             dataIndex: 'programName',
-
-            render: (value, record) => <a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{value}</a>
+            ellipsis: {
+                showTitle: false,
+            },
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{value}</a></Tooltip>
         },
         {
             title: t('project.columns_title.1'),
             dataIndex: 'activityName',
-            render: (value, record) => <a style={{ color: '#0d86ff' }} onClick={() => inquiryActivity(record.activityId)}>{value}</a>
+            ellipsis: {
+                showTitle: false,
+            },
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryActivity(record.activityId)}>{value}</a></Tooltip>
         },
         {
             title: t('project.columns_title.2'),
             dataIndex: 'orgName',
-            render: (value, record) => <a style={{ color: '#0d86ff' }} onClick={() => inquiryOrg(record.orgId)}>{value}</a>
+            ellipsis: {
+                showTitle: false,
+            },
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryOrg(record.orgId)}>{value}</a></Tooltip>
         },
         {
             title: t('project.columns_title.3'),
@@ -52,10 +60,12 @@ export const Project = () => {
         },
         {
             title: t('project.columns_title.5'),
-            dataIndex: 'createTime'
+            dataIndex: 'createTime',
+            width: '18rem'
         },
         {
             title: t('project.columns_title.6'),
+            width: '18rem',
             render: (value, record) => <Space size={4}>
                 <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
                 <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ orgProgramId: record.orgProgramId }).then(() => close())}
@@ -75,9 +85,9 @@ export const Project = () => {
                 </FormItem>
             </SearchContainer>
             <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span><span>{t('project.restNum.1')}</span></div>
-            <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined}
+            <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
-            <ComModal visible={projectModalOpen} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'120rem'} footer={null}
+            <ComModal visible={projectModalOpen} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : <Checkpro />} />
             {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail />} title={t('project.studentApply')} />}
         </Main>
