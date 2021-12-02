@@ -79,13 +79,13 @@ export const Project = () => {
     return (
         <Main>
             <SearchContainer name={'btn_tutor_program'}>
-                <FormItem label={t('project.columns_title.1')}>
+                <FormItem label={t('project.columns_title.1')} style={{ marginBottom: "1rem" }}>
                     <Input placeholder={t('project.name_placeholder')} allowClear value={searchparam.activityName}
                         onChange={e => setParam({ ...searchparam, activityName: clearSpace(e.target.value), pageNum: undefined, pageSize: undefined })} />
                 </FormItem>
             </SearchContainer>
             <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span><span>{t('project.restNum.1')}</span></div>
-            <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ x: '120rem' }}
+            <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : <Checkpro />} />

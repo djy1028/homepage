@@ -11,10 +11,10 @@ export const SearchContainer = (props)=>{
 
 const Container = styled(Form)`
     width: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1rem ;
     box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
     border-radius: 5px;
     display:flex;
     justify-content: ${props=>props.name && props.name?.includes('btn')?'space-between':'flex-end'};
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 `

@@ -7,7 +7,8 @@ import { useState } from 'react';
 import { FormItem } from 'components/form_item';
 import { pwdPattern } from 'utils/pattern';
 import { openNotificationWithIcon } from 'components/com-notify';
-import { resetpwd} from 'auth-provider'
+import { resetpwd } from 'auth-provider'
+import styled from '@emotion/styled'
 
 export const Modifypwd = () => {
     const [form] = useForm()
@@ -15,10 +16,26 @@ export const Modifypwd = () => {
     const [resetloading, setloading] = useState(false)
     const user = useSelector(state=>state.user)
     
+    // const layout = {
+    //     labelCol: { span: 4 },
+    //     wrapperCol: { span: 16 },
+    // }
     const layout = {
-        labelCol: { span: 4 },
-        wrapperCol: { span: 16 },
-    }
+        labelCol: {
+            // xs: { flex: 'wrap', span: 8},
+            sm: { flex: 'wrap', span: 6 },
+            md: { flex: 'wrap', span: 7 },
+            lg: { flex: 'wrap', span: 7 },
+            xl: { flex: 'wrap', span: 6 },
+        },
+        wrapperCol: {
+            // xs: { span: 24 },
+            sm: { span: 14 },
+            md: { span: 17 },
+            lg: { span: 17 },
+            xl: { span: 14 },
+        },
+    };
     const onFinish = (fields) => {
         const { oldPassword, newPassword } = fields
         setloading(true)
@@ -59,14 +76,31 @@ export const Modifypwd = () => {
             ]}>
                 <Input.Password allowClear placeholder={t('register.cpassword_placeholder')} />
             </Form.Item>
-            <Form.Item wrapperCol={{ offset: 10 }} style={{marginTop:'5rem'}}>
-                <Button style={{width:'8rem'}}  loading={resetloading} type="primary" htmlType="submit">
+            <Form.Item wrapperCol={{ span: 24 }} style={{ textAlign: 'center' }}>
+                <SubmitBtn  loading={resetloading} type="primary" htmlType="submit">
                     {t('admin.student.savebtn')}
-                </Button>
-                <Button htmlType="button" onClick={() => { form.resetFields() }} style={{ margin: '0 2rem', width: '8rem' }} >
+                </SubmitBtn>
+                <CancelBtn htmlType="button" onClick={() => { form.resetFields() }} >
                     {t('admin.student.cancelbtn')}
-                </Button>
+                </CancelBtn>
             </Form.Item>
         </Form>
     )
 }
+
+const SubmitBtn = styled(Button)`
+    width: 8rem;
+     @media (max-width: 1200px) {
+        width: auto;
+        height: auto;
+    }
+`
+
+const CancelBtn = styled(Button)`
+    width: 8rem;
+    margin-left: 2rem;
+     @media (max-width: 1200px) {
+        width: auto;
+        height: auto;
+    }
+`

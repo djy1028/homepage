@@ -48,7 +48,7 @@ export const LayOut = (props) => {
     
   return (
     <Layout style={{ minHeight: 'calc(100vh - 164px)'}} >
-      <Sider style={{ margin: '2rem' }} breakpoint="md" collapsedWidth="0">
+      <Sider style={{ margin: '1.5rem' }} breakpoint="md" collapsedWidth="0">
         <Head>{t('student.side_head')}</Head>
             <Menu mode="inline" defaultSelectedKeys={['1']} selectedKeys={menuActiveKey}  onClick={changMenu}>
               {
@@ -62,10 +62,10 @@ export const LayOut = (props) => {
               }         
             </Menu>
       </Sider>
-      <Layout style={{background: '#fff',margin: '2rem 2rem 2rem 0rem'}}>
+      <Layout style={{background: '#fff',margin: '1.5rem 1.5rem 1.5rem 0'}}>
         <Content
           style={{
-            margin: '20px 16px',
+            margin: '1rem',
             minHeight: 280,
           }}
         >

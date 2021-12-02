@@ -20,7 +20,7 @@ export const Detail = () => {
             // xs: { flex: 'wrap', span: 8},
             sm: { flex: 'wrap', span: 12 },
             md: { flex: 'wrap',span: 10 },
-            lg: { flex: 'wrap', span: 10 },
+            lg: { flex: 'wrap', span: 8 },
             xl: { flex: 'wrap', span: 6 },
         },
         wrapperCol: {
