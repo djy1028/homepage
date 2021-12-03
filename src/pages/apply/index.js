@@ -15,79 +15,79 @@ import './index.less';
 import { connect } from 'react-redux';
 import data from "./../../data/apply.json"
 
-class Apply extends React.Component{
-    constructor(props){
-       super(props)
-       this.state ={
+class Apply extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
             data
-       }
+        }
     }
 
- 
 
 
-    render(){
+
+    render() {
         let showdata = this.state.data[this.props.chiFlag]
-        return(         
+        return (
             <div className="Apply">
                 <div className="ApplyBanner">
                     <div className="HowitworksBannerContent content1200">
-                      
-                       <div className="HowitworksList" >
-                           {
-                               showdata.banner.map((item,index)=>{
-                                   return (
-                                    <div className="HowitworksListItem" key={index}>
+
+                        <div className="HowitworksList" >
+                            {
+                                showdata.banner.map((item, index) => {
+                                    return (
+                                        <div className="HowitworksListItem" key={index}>
                                             <div className="ApplyBannerListItemTitle">{item.title}</div>
                                             <div className="HowitworksListItemContent" dangerouslySetInnerHTML={{ __html: item.text }}></div>
-                                    </div>
-                                   )
-                               })
-                           }                       
-                       </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
 
-                   </div>
+                    </div>
 
                 </div>
                 <div className="ApplyRes content1200">
-                        <div className="HowitworksList" >
-                           {
-                               showdata.re.map((item,index)=>{
-                                   return (
+                    <div className="HowitworksList" >
+                        {
+                            showdata.re.map((item, index) => {
+                                return (
                                     <div className="HowitworksListItem" key={index}>
-                                            <div className="ApplyListItemTitle">{item.title}</div>
-                                            <div className="HowitworksListItemContent">
-                                                {
-                                                    item.text.map((sitem,sindex)=>{
-                                                        return(
-                                                            <span key={sindex}  dangerouslySetInnerHTML={{ __html: sitem }}></span>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
+                                        <div className="ApplyListItemTitle">{item.title}</div>
+                                        <div className="HowitworksListItemContent">
+                                            {
+                                                item.text.map((sitem, sindex) => {
+                                                    return (
+                                                        <span key={sindex} dangerouslySetInnerHTML={{ __html: sitem }}></span>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
-                                   )
-                               })
-                           }                       
-                       </div>
+                                )
+                            })
+                        }
+                    </div>
 
 
                 </div>
 
             </div>
-         )
-       
-        
-        
+        )
+
+
+
     }
 }
 
-const mapStateToProps = (state)=>{
-    
+const mapStateToProps = (state) => {
+
     return {
-        chiFlag:state.homepage.chiFlag
+        chiFlag: state.homepage.chiFlag
     }
- }
+}
 
 
 export default connect(mapStateToProps)(Apply)
