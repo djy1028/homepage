@@ -1,5 +1,5 @@
 # 基础镜像
-FROM node:latest
+FROM node:14.17
 #FROM isrc.iscas.ac.cn/honghua/summer_front/summer_front_base
 
 # 维护人邮箱
