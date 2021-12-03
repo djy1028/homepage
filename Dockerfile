@@ -17,6 +17,7 @@ WORKDIR /usr/local/summer_offical_web/
 COPY . .
 
 # 安装依赖并编译
+RUN npm uninstall webpack-dev-server
 RUN npm install
 
 ## 安装依赖并编译
