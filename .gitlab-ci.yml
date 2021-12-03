@@ -1,20 +1,74 @@
-image: node:12
+stages:
+  - check
+  - build
+  - install
+  - release
+  - deploy
 
-pages:
-  cache:
-    paths:
-      - ./node_modules/
+variables:
+  SUMMER_OFFICAL_WEB_DOCKER_NAME: summer_offical_web
+  SUMMER_OSPP_JAVA_IP: 192.168.8.104
+  SUMMER_OSPP_JAVA_IP_TEST: 192.168.8.108
+  SUMMER_OSPP_JAVA_PORT: 9899
+  SUMMER_OSPP_JAVA_PORT_TEST: 9899
+  SUMMER_OFFICAL_WEB_PORT: 8084
+  SUMMER_OFFICAL_WEB_PORT_TEST: 8084
 
-  stage: deploy
-  tags:
-    - internal
+
+check:
+  stage: check
   script:
-    - npm install
-    - CI=false npm run build
-    - mv build/* public/
-  artifacts:
-    paths:
-      - public # mandatory, other folder won't work
+    - echo 'static code check'
   only:
-    - master
-    - dev
+    - main
+    - tags
+  tags:
+    - summer_ospp
+
+build:
+  stage: build
+  script:
+    - docker build -f Dockerfile -t ${CI_REGISTRY_IMAGE}:latest .
+  only:
+    - main
+    - tags
+  tags:
+    - summer_ospp
+
+install:
+  stage: install
+  before_script:
+    - docker rm -f ${SUMMER_OFFICAL_WEB_DOCKER_NAME}
+  script:
+    - docker run --name ${SUMMER_OFFICAL_WEB_DOCKER_NAME} -d -e SUMMER_OSPP_JAVA_IP=${SUMMER_OSPP_JAVA_IP} -e SUMMER_OSPP_JAVA_PORT=${SUMMER_OSPP_JAVA_PORT} -p ${SUMMER_OFFICAL_WEB_PORT}:801 --restart=always ${CI_REGISTRY_IMAGE}:latest
+  only:
+    - main
+    - tags
+  tags:
+    - summer_ospp
+
+
+release:
+  stage: release
+  script:
+    - docker tag ${CI_REGISTRY_IMAGE}:latest ${CI_REGISTRY_IMAGE}:$CI_COMMIT_TAG
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+  only:
+    - tags
+  tags:
+    - summer_ospp
+
+deploy-front:
+  stage: deploy
+  before_script:
+    - docker rm -f ${SUMMER_OFFICAL_WEB_DOCKER_NAME}
+  script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker pull ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+    - docker run --name ${SUMMER_OFFICAL_WEB_DOCKER_NAME} -d -e SUMMER_OSPP_JAVA_IP=${SUMMER_OSPP_JAVA_IP_TEST} -e SUMMER_OSPP_JAVA_PORT=${SUMMER_OSPP_JAVA_PORT_TEST} -p ${SUMMER_OFFICAL_WEB_PORT_TEST}:801 --restart=always ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+  only:
+    - tags
+  tags:
+    - summer_ospp_test_ci
