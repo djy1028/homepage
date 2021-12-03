@@ -19,7 +19,6 @@ module.exports = {
       url: '/login',
       method: 'post'
     })
-    // console.log(response)
     if (response.data.code === 200) {
       ctx.cookies.set('tgt', response.headers.authorization, { httpOnly: false })
       const userInfo = await getInfo(response.headers.authorization)

@@ -153,6 +153,7 @@ class Header extends React.Component {
                 <div className="content1200 headerContent" style={{ width: '145rem' }}>
                     <div
                         className="osscHeaderLogo"
+                        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}'/img/logo_n.svg')` }}
                         onClick={() => {
                             this.goPage('homepage')
                         }}

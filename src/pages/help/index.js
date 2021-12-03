@@ -27,8 +27,6 @@ class Help extends React.Component {
         window.open(url)
     }
 
-
-
     render() {
         let showdata = this.state.data[this.props.chiFlag]
         return (
@@ -133,7 +131,6 @@ class Help extends React.Component {
 
 
                 </div>
-
             </div>
         )
 
