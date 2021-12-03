@@ -1,0 +1,20 @@
+image: node:12
+
+pages:
+  cache:
+    paths:
+      - ./node_modules/
+
+  stage: deploy
+  tags:
+    - internal
+  script:
+    - npm install
+    - CI=false npm run build
+    - mv build/* public/
+  artifacts:
+    paths:
+      - public # mandatory, other folder won't work
+  only:
+    - master
+    - dev
