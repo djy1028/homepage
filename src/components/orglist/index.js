@@ -104,11 +104,12 @@ class Orglist extends React.Component{
                 <div className="OrgListWrapper">
                     {                     
                         showorglist.map((item,index)=>{
-                            const iconUrl = require('./../../img/organisation/'+item.img).default;
+                            //const iconUrl = require('./../../img/organisation/'+item.img).default;
                             return(
                                 <div className="OrgListItem" key={index} >
                                     <div className="OrgListItemModal" onClick={()=>{this.openOrgModal(item.anchor)}}>
-                                        <div className="OrgListItemModalImage" style={{backgroundImage:"url("+iconUrl + ")"}}></div>
+                                        <div className="OrgListItemModalImage" 
+                                        style={{backgroundImage:`url(${process.env.PUBLIC_URL}/img/organisation/${item.img})`}}></div>
                                         <div className="OrgListItemModalTitle">
                                             {
                                                 getSplit(item.title,this.props.chiFlag)

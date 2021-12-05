@@ -36,13 +36,15 @@ const HomePage = () => {
 
         var logo = [];
         data.map((item, index) => {
-            const iconUrl = require('./../../img/' + `${pathurl}${item.img}`).default;
+            
             logo.push(
                 <div
                     key={index}
                     onClick={() => { goLogoLink(item.url) }}
                     className={[logoclassname, item.url ? '' : 'cursordefault'].join(" ")}
-                    style={{ backgroundImage: "url(" + iconUrl + ")" }} >
+                    // style={{ backgroundImage: "url(" + iconUrl + ")" }} 
+                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${pathurl}${item.img})`}}                  
+                    >
 
                 </div>
             )
@@ -53,14 +55,14 @@ const HomePage = () => {
     const createIconBanner = (text) => {
         var iconcontainer = []
         text.map((item, index) => {
-            const iconUrl = require('./../../img/index/icon' + index + '.jpg').default
+            // const iconUrl = require(`${process.env.PUBLIC_URL}/img/index/icon${index}.jpg`).default
             iconcontainer.push(
                 <div className="homepageIconItem" key={index}>
 
                     <div className="homepageIconItemImageWrapper">
                         <div
                             className="homepageIconItemImage"
-                            style={{ backgroundImage: "url(" + iconUrl + ")" }}
+                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/icon${index}.jpg)`}}
                         ></div>
                     </div>
                     {
@@ -85,7 +87,7 @@ const HomePage = () => {
             dangerouslySetInnerHTML={{ __html: showdata.goapply }}>
             
         </div> */}
-            <div className="homepageBanner One">
+            <div className="homepageBanner One" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
                 <div className="homepageBannerTitle">{showdata.title}</div>
                 <div className="homepageTextOne">
                     {

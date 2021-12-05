@@ -144,6 +144,7 @@ class Header extends React.Component {
     }
 
     render() {
+     
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag

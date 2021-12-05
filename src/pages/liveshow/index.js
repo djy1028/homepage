@@ -37,7 +37,7 @@ export default class Liveshow extends React.Component{
         const tabheader = Object.keys(tablist)
         return(         
             <div className="Liveshow">
-                <div className="LiveshowBanner">
+                <div className="LiveshowBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}'/img/liveshow/banner.png')` }}>
                     <div className="LiveshowBannerTitle">{showdata.bannertitle}</div>
                     <div className="LiveshowBannerorg">{showdata.org}</div>
                     <div className="LiveshowBannerText">
