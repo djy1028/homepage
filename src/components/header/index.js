@@ -317,9 +317,7 @@ class Header extends React.Component {
                             ].join(' ')}
                         >
                             <div
-                                onClick={() => {
-                                    this.goPage('loginall')
-                                }}
+
                                 className={[
                                     this.state.chiFlag == 'chi'
                                         ? 'headerTabItem'
