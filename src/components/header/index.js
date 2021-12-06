@@ -144,7 +144,7 @@ class Header extends React.Component {
     }
 
     render() {
-     
+
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
@@ -256,6 +256,7 @@ class Header extends React.Component {
                         </div>
                         <div
                             className="headerMobileIcon"
+                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/icon_nav.png)` }}
                             onClick={() => this.headerlist(true)}
                         ></div>
                     </div>
@@ -371,6 +372,7 @@ class Header extends React.Component {
                     >
                         <div
                             className="headerClose"
+                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/close.svg)` }}
                             onClick={() => this.headerlist(false)}
                         ></div>
                         {showdata.linkdata.map((item, index) => {
