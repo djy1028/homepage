@@ -31,7 +31,7 @@ class Help extends React.Component {
         let showdata = this.state.data[this.props.chiFlag]
         return (
             <div className="Help">
-                <div className="HelpBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}'/img/contact/bannerC.png')` }}>
+                <div className="HelpBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/contact/bannerC.png)` }}>
                     <div className="HelpBannerText">
                         <div>帮助</div>
                         <div>Help</div>
