@@ -44,7 +44,7 @@ const Org = (props)=>{
     }  
     return(         
         <div className="Org">
-            <div className="OrgBanner"></div>
+            <div className="OrgBanner" style={{backgroundImage:`url(${process.env.PUBLIC_URL}/img/organisation/banner1.png`}}></div>
             <div className="OrgTab">
                 {
                     showdata.tab.map((item,index)=>{

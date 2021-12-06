@@ -32,7 +32,7 @@ class Index extends React.Component{
         return(         
             <div className={["index", this.props.chiFlag].join(" ")}>
                
-                <div className="indexBanner">
+                <div className="indexBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
                    <div className="content1200 indexBannerWrapper">
                         <div className="indexText"></div>
                         <div className="indexButton">

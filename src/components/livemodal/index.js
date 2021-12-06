@@ -12,7 +12,6 @@
 
 import React from 'react'
 import './index.less';
-import liveTwoCode from "../../img/liveshow/liveTwoCode.png";
 import {gourl} from "./../../util/url.js";
 export default class LiveModal extends React.Component{
     constructor(props){
@@ -25,18 +24,17 @@ export default class LiveModal extends React.Component{
 
    
  
-
+   
 
     render(){
+        console.log("liveshow",process.env.PUBLIC_URL)
     const item = this.props.item
     
         return( 
             <div className="LiveShowItem" >
             <div className="LiveShowItemHeader">
-                <div 
-                    
-                    style={{backgroundImage:"url("+require("./../../img/liveshow/"+item.profilelist[0].imgurl).default + ")"}}
-                    className="LiveShowItemHeaderImage"></div>
+ 
+                    <img className="LiveShowItemHeaderImage" src={`${process.env.PUBLIC_URL}/img/liveshow/${item.profilelist[0].imgurl}`}/>
                 <div className="LiveShowItemHeaderTitle">
                     <div className="LiveShowItemHeaderTitleOne">{this.props.item.title}</div>
                     {
@@ -69,8 +67,9 @@ export default class LiveModal extends React.Component{
                     }
                    
                 </div>
+                
                 <div className="LiveShowItemHeaderTwoCode">
-                    <img src={liveTwoCode} alt="直播二维码"/>
+                    <img src={`${process.env.PUBLIC_URL}/img/liveshow/liveTwoCode.png`} alt="直播二维码"/>
                     <span className="mobiledisplaynone">可扫码观看 </span>
                 </div>
             </div>
