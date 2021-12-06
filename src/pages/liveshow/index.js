@@ -15,47 +15,47 @@ import './index.less';
 import LiveModal from '../../components/livemodal/index.js'
 import data from '../../data/liveshow.json';
 import showdata from '../../data/liveshowdata.json';
-export default class Liveshow extends React.Component{
-    constructor(props){
-       super(props)
-       this.state={
-           tabSelect:0,
-       }
+export default class Liveshow extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            tabSelect: 0,
+        }
     }
 
-    setTab(keyindex){
+    setTab(keyindex) {
         this.setState({
-            tabSelect:keyindex
+            tabSelect: keyindex
         })
     }
 
- 
 
 
-    render(){
-        const {tablist} = data;
+
+    render() {
+        const { tablist } = data;
         const tabheader = Object.keys(tablist)
-        return(         
+        return (
             <div className="Liveshow">
-                <div className="LiveshowBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}'/img/liveshow/banner.png')` }}>
+                <div className="LiveshowBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/liveshow/banner.png)` }}>
                     <div className="LiveshowBannerTitle">{showdata.bannertitle}</div>
                     <div className="LiveshowBannerorg">{showdata.org}</div>
                     <div className="LiveshowBannerText">
-                         {showdata.text}
-                         <br className="mobiledisplaynone"/>
-                         {showdata.text2}
+                        {showdata.text}
+                        <br className="mobiledisplaynone" />
+                        {showdata.text2}
                     </div>
 
                 </div>
                 <div className="LiveShowWrapper">
                     <div className="LiveShowTabHeader">
                         {
-                            tabheader.map((item,index)=>{
-                                return(
-                                    <span 
-                                    onClick={()=>{this.setTab(index)}}
-                                    key={index} 
-                                    className={["LiveShowTabHeaderItem",this.state.tabSelect === index?'active':""].join(" ")}>
+                            tabheader.map((item, index) => {
+                                return (
+                                    <span
+                                        onClick={() => { this.setTab(index) }}
+                                        key={index}
+                                        className={["LiveShowTabHeaderItem", this.state.tabSelect === index ? 'active' : ""].join(" ")}>
                                         {item}
                                     </span>
                                 )
@@ -65,36 +65,36 @@ export default class Liveshow extends React.Component{
                     </div>
                     <div className="LiveShowContent content1200">
                         {
-                            tabheader.map((item,index)=>{
+                            tabheader.map((item, index) => {
                                 return (
-                                    <div 
-                                    className={["LiveModalWrapper" ,this.state.tabSelect === index?"show":""].join(" ")}
-                                    key={index}>
+                                    <div
+                                        className={["LiveModalWrapper", this.state.tabSelect === index ? "show" : ""].join(" ")}
+                                        key={index}>
                                         {
-                                            tablist[item].map((sitem,sindex)=>{
-                                                return(
-                                                    <LiveModal 
-                                                        key = {sindex}
-                                                        item ={sitem}/>
+                                            tablist[item].map((sitem, sindex) => {
+                                                return (
+                                                    <LiveModal
+                                                        key={sindex}
+                                                        item={sitem} />
                                                 )
                                             })
                                         }
                                     </div>
                                 )
-                                
+
                             })
                         }
-                       
-                    
+
+
                     </div>
 
                 </div>
 
             </div>
-         )
-       
-        
-        
+        )
+
+
+
     }
 }
 
