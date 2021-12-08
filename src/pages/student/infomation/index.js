@@ -71,47 +71,69 @@ export const Info = () => {
         <div id={'studentinfo'} style={{ width: '100%', height: '100%' }}>
             {editingStudent && <Descriptions column={2}>
                 <Descriptions.Item style={{ display: 'flex', justifyContent: 'center' }} label={t('admin.student.columns_title.9')}>{editingStudent.createTime}</Descriptions.Item>
-                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -11 ? 'student.noapproved' : 'student.waitapproved')}</span>}</Descriptions.Item>
+                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -1 ? 'student.noapproved' : 'student.waitapproved')}</span>}</Descriptions.Item>
             </Descriptions>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
-                <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
-                    required: true, validator(_, value) {
-                        return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
-                    }, type: 'string', max: 100
-                }]}>
-                    {
-                        (editingStudent && !editprofile) ? editingStudent.name : <Input allowClear />
-                    }
-                </Form.Item>
-                <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true, pattern: /^[1]([3-9])[0-9]{9}$/, message: t('admin.student.phone_validmessage') }]}>
-                    {
-                        (editingStudent && !editprofile) ? editingStudent.phone : <Input allowClear />
-                    }
-                </Form.Item>
-                <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
-                    required: true, validator(_, value) {
-                        return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
-                    }, type: 'string', max: 200
-                }]}>
-                    {
-                        (editingStudent && !editprofile) ? editingStudent.school : <Input allowClear />
-                    }
-                </Form.Item>
-                <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.student.card_validmessage') }]}>
-                    {
-                        (editingStudent && !editprofile) ? editingStudent.cardNumber : <Input allowClear maxLength={100} />
-                    }
-                </Form.Item>
-                <Form.Item name="cardFrontUrl" label={t('admin.student.detail_title.3')} rules={[{ required: i18n.language === 'zh' ? true : false, message: t('admin.student.cardfront_mes') }]}
-                    valuePropName="fileList"
-                    getValueFromEvent={normFile}>
-                    {
-                        (editingStudent && !editprofile) ? <Image
-                            width={190}
-                            height={120}
-                            src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
-                        /> :
+
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="name_check" label={t('admin.student.detail_title.0')}>
+                            {editingStudent.name}
+                        </Form.Item> :
+                        <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
+                            required: editprofile ? true : false, validator(_, value) {
+                                return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
+                            }, type: 'string', max: 100
+                        }]}>
+                            <Input allowClear />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="phone_check" label={t('admin.student.detail_title.1')}>
+                            {editingStudent.phone}
+                        </Form.Item> :
+                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: editprofile ? true : false, pattern: /^[1]([3-9])[0-9]{9}$/, message: t('admin.student.phone_validmessage') }]}>
+                            <Input allowClear />
+                        </Form.Item>
+                }
+
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="school_check" label={t('admin.student.detail_title.2')}>
+                            {editingStudent.school}
+                        </Form.Item> :
+                        <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
+                            required: editprofile ? true : false, validator(_, value) {
+                                return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
+                            }, type: 'string', max: 200
+                        }]}>
+                            <Input allowClear />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="cardNumber_check" label={t('admin.student.detail_title.6')}>
+                            {editingStudent.cardNumber}
+                        </Form.Item> :
+                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: editprofile ? true : false, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.student.card_validmessage') }]}>
+                            <Input allowClear maxLength={100} />
+                        </Form.Item>
+                }
+
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="cardFrontUrl_check" label={t('admin.student.detail_title.3')}>
+                            {editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url ? <Image
+                                width={190}
+                                height={120}
+                                src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
+                            /> : null}
+                        </Form.Item> :
+                        <Form.Item name="cardFrontUrl" label={t('admin.student.detail_title.3')} rules={[{ required: i18n.language === 'zh' && editprofile ? true : false, message: t('admin.student.cardfront_mes') }]}
+                            valuePropName="fileList"
+                            getValueFromEvent={normFile}>
                             <Upload maxCount={1} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
                                     message.error(t('admin.student.img_des'));
@@ -120,17 +142,20 @@ export const Info = () => {
                             }} listType="picture" accept={'image/*'} action={`/upload/${'cardFrontUrl'}`}>
                                 <Button icon={<CloudUploadOutlined />}>{t('admin.student.upload1')}</Button>
                             </Upload>
-                    }
-                </Form.Item>
-                <Form.Item name="cardBackUrl" label={t('admin.student.detail_title.4')} rules={[{ required: i18n.language === 'zh' ? true : false, message: t('admin.student.cardback_mes') }]}
-                    valuePropName="fileList"
-                    getValueFromEvent={normFile}>
-                    {
-                        (editingStudent && !editprofile) ? <Image
-                            width={190}
-                            height={120}
-                            src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
-                        /> :
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="cardBackUrl_check" label={t('admin.student.detail_title.4')}>
+                            {editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url ? <Image
+                                width={190}
+                                height={120}
+                                src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
+                            /> : null}
+                        </Form.Item> :
+                        <Form.Item name="cardBackUrl" label={t('admin.student.detail_title.4')} rules={[{ required: i18n.language === 'zh' && editprofile ? true : false, message: t('admin.student.cardback_mes') }]}
+                            valuePropName="fileList"
+                            getValueFromEvent={normFile}>
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
                                     message.error(t('admin.student.img_des'));
@@ -139,18 +164,20 @@ export const Info = () => {
                             }} maxCount={1} listType="picture" action={`/upload/${'cardBackUrl'}`}>
                                 <Button icon={<CloudUploadOutlined />}>{t('admin.student.upload2')}</Button>
                             </Upload>
-                    }
-
-                </Form.Item>
-                <Form.Item name="studentCardUrl" label={t('admin.student.detail_title.5')} rules={[{ required: true, message: t('admin.student.idcard_mes') }]}
-                    valuePropName="fileList"
-                    getValueFromEvent={normFile}>
-                    {
-                        (editingStudent && !editprofile) ? <Image
-                            width={190}
-                            height={120}
-                            src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
-                        /> :
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="studentCardUrl_check" label={t('admin.student.detail_title.5')}>
+                            <Image
+                                width={190}
+                                height={120}
+                                src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
+                            />
+                        </Form.Item> :
+                        <Form.Item name="studentCardUrl" label={t('admin.student.detail_title.5')} rules={[{ required: editprofile ? true : false, message: t('admin.student.idcard_mes') }]}
+                            valuePropName="fileList"
+                            getValueFromEvent={normFile}>
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
                                 if (!file.type.includes('image/')) {
                                     message.error(t('admin.student.img_des'));
@@ -159,35 +186,53 @@ export const Info = () => {
                             }} maxCount={1} listType="picture" action={`/upload/${'studentCardUrl'}`}>
                                 <Button icon={<CloudUploadOutlined />}>{t('admin.student.upload3')}</Button>
                             </Upload>
-                    }
-
-                </Form.Item>
-
-                <Form.Item name="education" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
-                    {
-                        (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
-                    }
-                </Form.Item>
-                <Form.Item name="internship" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
-                    {
-                        (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
-                    }
-                </Form.Item>
-                <Form.Item name="program" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
-                    {
-                        (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
-                    }
-                </Form.Item>
-                <Form.Item name="openSoource" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
-                    {
-                        (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
-                    }
-                </Form.Item>
-                <Form.Item name="skill" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
-                    {
-                        (editingStudent && !editprofile) ? <Input.TextArea readOnly /> : <Input.TextArea allowClear showCount maxLength={500} />
-                    }
-                </Form.Item>
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="education_check" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
+                            <Input.TextArea defaultValue={editingStudent.education} readOnly />
+                        </Form.Item> :
+                        <Form.Item name="education" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
+                            <Input.TextArea allowClear showCount maxLength={500} />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="internship_check" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
+                            <Input.TextArea defaultValue={editingStudent.internship} readOnly />
+                        </Form.Item> :
+                        <Form.Item name="internship" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
+                            <Input.TextArea allowClear showCount maxLength={500} />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="program_check" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
+                            <Input.TextArea defaultValue={editingStudent.program} readOnly />
+                        </Form.Item> :
+                        <Form.Item name="program" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
+                            <Input.TextArea allowClear showCount maxLength={500} />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="openSoource_check" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
+                            <Input.TextArea defaultValue={editingStudent.openSoource} readOnly />
+                        </Form.Item> :
+                        <Form.Item name="openSoource" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
+                            <Input.TextArea allowClear showCount maxLength={500} />
+                        </Form.Item>
+                }
+                {
+                    (editingStudent && !editprofile) ?
+                        <Form.Item name="skill_check" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
+                            <Input.TextArea defaultValue={editingStudent.skill} readOnly />
+                        </Form.Item> :
+                        <Form.Item name="skill" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
+                            <Input.TextArea allowClear showCount maxLength={500} />
+                        </Form.Item>
+                }
                 <Form.Item wrapperCol={{ span: 24 }} style={{ textAlign: 'center' }}>
                     {
                         (editingStudent && !editprofile) && <SubmitBtn onClick={() => {

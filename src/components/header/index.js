@@ -139,7 +139,7 @@ class Header extends React.Component {
             that.goPage('studentLogin')
             // window.location.hash = '/studentLogin'
             that.props.setLogout()
-            // queryClient.clear()
+            // QueryClient.clear()
         })
     }
 
@@ -148,7 +148,7 @@ class Header extends React.Component {
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
-        const { token, menu } = this.props
+        const { token, menu, name } = this.props
         return (
             <div className={['header', this.state.chiFlag].join(' ')}>
                 <div className="content1200 headerContent" style={{ width: '145rem' }}>
@@ -276,7 +276,7 @@ class Header extends React.Component {
                                     'headerNav',
                                 ].join(' ')}
                             >
-                                <span>{showdata.logout.name}</span>
+                                <span>{showdata.logout.name}{'  (' + name + ')'}</span>
                             </div>
                             {showdata.logout.content ? (
                                 <div
@@ -446,6 +446,7 @@ const mapStateToProps = (state) => {
         pageflag: state.homepage.pageflag,
         token: state.user.token,
         menu: state.user.menu,
+        name: state.user.name
     }
 }
 

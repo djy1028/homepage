@@ -4,8 +4,8 @@ import { useHttp } from 'utils/http';
 import { useMutation, useQuery } from 'react-query';
 import { useMemo, useCallback } from 'react';
 
-export const useStudentModal = ()=>{
-    const { data: editingStudent, isLoading,refetch } = useStudent()
+export const useStudentModal = () => {
+    const { data: editingStudent, isLoading, refetch } = useStudent()
     const [{ studentEdit }, setStudentEdit] = useUrlQueryParam(['studentEdit'])
     const edit = useCallback(() => setStudentEdit({ studentEdit: true }), [setStudentEdit])
     const close = useCallback(() => {
@@ -18,16 +18,16 @@ export const useStudentModal = ()=>{
         isLoading,
         refetch,
         studentEdit
-     } 
+    }
 }
 
-export const useStudent = () =>{
+export const useStudent = () => {
     const client = useHttp()
     const cachekey = useRouteType()
     const params = {}
     return useQuery(
-        [cachekey,'myinfo'],
-        () => client(`/student/myProfile`,{data:params,method:'post'})                                       
+        [cachekey, 'myinfo'],
+        () => client(`/student/myProfile`, { data: params, method: 'post' })
     )
 }
 
@@ -38,13 +38,13 @@ export const useStudents = () => {
     return useQuery([cachekey, 'bulletin'], () => client('/notice/detail/student', { data: params, method: 'post' }))
 }
 
-export const useAddStudent=()=>{
+export const useAddStudent = () => {
     const client = useHttp()
     const cachekey = useRouteType()
     return useMutation(
-        (params)=>client(`/student/add`,{
-            data:params,
-            method:'POST'
+        (params) => client(`/student/add`, {
+            data: params,
+            method: 'POST'
         }),
         useAddConfig([cachekey, 'myinfo'])
     )
@@ -66,6 +66,17 @@ export const useStuproupload = (queryKey) => {
     const client = useHttp()
     return useMutation(
         (params) => client(`/studentProgram/uploadAgreement/student`, {
+            data: params,
+            method: 'POST',
+        }),
+        useEditConfig(queryKey)
+    )
+}
+
+export const useStuprozipupload = (queryKey) => {
+    const client = useHttp()
+    return useMutation(
+        (params) => client(`/studentProgram/edit`, {
             data: params,
             method: 'POST',
         }),

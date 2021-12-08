@@ -8,11 +8,18 @@ export const useStuPrograms = (searchparam) => {
     const client = useHttp()
     const cachekey = useRouteType()
     const params = { ...searchparam }
-    return useQuery([cachekey, searchparam], () => client('/studentProgram/my-application', { data: params, method: 'post' }))
+    return useQuery([cachekey, searchparam], () => client('/studentProgram/my-application', { data: params, method: 'post' }), { enabled: Boolean(searchparam.activityId) })
+}
+
+export const useSetPriority = (searchparam) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    const params = { ...searchparam }
+    return useQuery([cachekey, searchparam.activityId], () => client('/studentProgram/toSetPriority', { data: params, method: 'post' }), { enabled: Boolean(searchparam.activityId) })
 }
 
 export const useStuProSearchParms = () => {
-    const [param, setParam] = useUrlQueryParam(['pageSize', 'pageNum', 'activityName'])
+    const [param, setParam] = useUrlQueryParam(['pageSize', 'pageNum', 'activityId'])
     return [
         useMemo(() => ({ ...param }), [param]),
         setParam
@@ -70,6 +77,7 @@ export const useStuProgramModal = () => {
     const [{ inquiryProId }, setInquiryProId] = useUrlQueryParam(['inquiryProId'])
     const [{ inquiryApplyId }, setInquiryApply] = useUrlQueryParam(['inquiryApplyId'])
     const [{ inquiryActivityId }, setInquiryActivityId] = useUrlQueryParam(['inquiryActivityId'])
+    const [{ stuPriority }, setStuPriority] = useUrlQueryParam(['stuPriority'])
     const { data: orgInfo, isLoading: orgInfoLoading } = useOrginfo(inquiryOrgId)
     const { data: proInfo, isLoading: proInfoLoading } = useProinfo(inquiryProId)
     const { data: activityInfo, isLoading: activityLoading } = useActivityinfo(inquiryActivityId)
@@ -79,13 +87,15 @@ export const useStuProgramModal = () => {
         inquiryProId && setInquiryProId({ inquiryProId: undefined })
         inquiryActivityId && setInquiryActivityId({ inquiryActivityId: undefined })
         inquiryApplyId && setInquiryApply({ inquiryApplyId: undefined })
+        stuPriority && setStuPriority({ stuPriority: undefined })
     }, [inquiryOrgId, setInquiryOrgId])
     const inquiryOrg = useCallback((id) => setInquiryOrgId({ inquiryOrgId: id }), [setInquiryOrgId])
     const inquiryPro = useCallback((id) => setInquiryProId({ inquiryProId: id }), [setInquiryProId])
     const inquiryApply = useCallback((id) => setInquiryApply({ inquiryApplyId: id }), [setInquiryApply])
     const inquiryActivity = useCallback((id) => setInquiryActivityId({ inquiryActivityId: id }), [setInquiryActivityId])
+    const updateSort = useCallback(() => setStuPriority({ stuPriority: true }), [setStuPriority])
     return {
-        projectModalOpen: Boolean(inquiryOrgId) || Boolean(inquiryProId) || Boolean(inquiryActivityId),
+        projectModalOpen: Boolean(inquiryOrgId) || Boolean(inquiryProId) || Boolean(inquiryActivityId) || Boolean(stuPriority),
         inquiryPro,
         close,
         inquiryOrg,
@@ -101,7 +111,9 @@ export const useStuProgramModal = () => {
         inquiryActivity,
         activityInfo,
         activityLoading,
-        inquiryActivityId
+        inquiryActivityId,
+        updateSort,
+        stuPriority
     }
 }
 
@@ -128,6 +140,34 @@ export const useDeleteProgram = (queryKey) => {
         }),
         useDeleteConfig(queryKey)
     )
+}
+
+export const useUpdateStuPriority = (queryKey) => {
+    const client = useHttp()
+    return useMutation(
+        (params) => client(`/studentProgram/updatePriority`, {
+            data: params,
+            method: 'POST'
+        }),
+        useEditConfig(queryKey)
+    )
+}
+
+export const useActivitys = (searchparam) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    const params = { ...searchparam }
+    const url = '/activity/lists'
+    return useQuery(
+        [cachekey, searchparam],
+        () => client(url, { data: params, method: 'post' })
+    )
+}
+
+export const useCheckTime = (activeId) => {
+    const client = useHttp()
+    const cachekey = useRouteType()
+    return useQuery([cachekey, stuactiveId], () => client('/teacherProgram/canSetPriority', { data: { activityId: stuactiveId }, method: 'post' }), { enabled: Boolean(stuactiveId) })
 }
 
 

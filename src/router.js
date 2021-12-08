@@ -9,39 +9,33 @@
  * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
  * See the Mulan PSL v2 for more details.
  */
- import React from 'react';
- import { HashRouter as Router, Route, Routes} from 'react-router-dom';
- import Wrapper from './wrapper.js';
- import HomePage from './pages/homepage/index.js';
- import Help from './pages/help/index.js';
- import Howitworks from './pages/howitworks/index.js';
- import Data from './pages/data/index.js'
- import Midtermdata from './pages/midterm/index.js'
- import Apply from './pages/apply/index.js';
- import Org from './pages/org/index.js';
+import React from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Wrapper from './wrapper.js';
+import HomePage from './pages/homepage/index.js';
+import Help from './pages/help/index.js';
+import Howitworks from './pages/howitworks/index.js';
+import Data from './pages/data/index.js'
+import Midtermdata from './pages/midterm/index.js'
+import Apply from './pages/apply/index.js';
+import Org from './pages/org/index.js';
 import Liveshow from './pages/liveshow/index.js';
 import { LoginApp } from 'pages/login';
 import { Student } from 'pages/student';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { bootstrapUser } from 'auth-provider.js';
-import { Spin } from 'antd'
 import { loginSuccess } from 'store/redux/userRedux.jsx';
-import { useAsync } from 'utils/use-async.js';
-import { FullPageError } from 'components/lib.jsx';
 
 export const IRouter = () => {
     const user = useSelector(state => state.user)
-    const { run, isLoading, isError } = useAsync(undefined, { throwNewError: true })
     const dispatch = useDispatch()
     useEffect(async () => {
         /* 页面刷新后状态保持 */
-        // localStorage.getItem('lang') && i18n.changeLanguage(String(localStorage.getItem('lang')))
-        /* 加上run函数，可以复用loading部分逻辑，实现页面在异步处理时的loading 状态 */
-        const res = await run(bootstrapUser())
+        const res = await bootstrapUser()
         res && res.token && dispatch(loginSuccess(res))
     }, [])
-    return ( isError ? <FullPageError error={error} />:isLoading ? <Spin>loading...</Spin>:
+    return (
         <Wrapper>
             <Router >
                 <Routes>
@@ -62,4 +56,4 @@ export const IRouter = () => {
             </Router>
         </Wrapper>
     )
- }
+}

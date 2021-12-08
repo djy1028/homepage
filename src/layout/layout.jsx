@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useRouteType } from 'utils/url';
 import { ComModal } from 'components/com-modal';
 import { FormItem } from 'components/form_item';
-import { pwdPattern } from 'utils/pattern'
+import { newPwd } from 'utils/pattern'
 import { useForm } from 'antd/lib/form/Form';
 import { resetpwd } from 'auth-provider';
 import { openNotificationWithIcon } from 'components/com-notify';
@@ -100,10 +100,10 @@ export const LayOut = (props) => {
                 <Form.Item label={t('admin.account.columns_title.0')} name={'loginName'}>
                     <Input disabled type={'text'} />
                 </Form.Item>
-                <FormItem label={t('oldpwd')} name={'oldPassword'}  ruleMessage={t('login.oldpassword_message')} passwordRule={{ pattern: pwdPattern , message: t('register.validate_pwd') }}  >
+                <FormItem label={t('oldpwd')} name={'oldPassword'}  ruleMessage={t('login.oldpassword_message')} passwordRule={{ pattern: newPwd , message: t('register.validate_pwd') }}  >
                     <Input.Password allowClear placeholder={t('login.password_placeholder')} />
                 </FormItem>
-                <FormItem label={t('newpwd')} name={'newPassword'}  ruleMessage={t('login.newpassword_message')} passwordRule={{ pattern: pwdPattern , message: t('register.validate_pwd') }}  >
+        <FormItem label={t('newpwd')} name={'newPassword'} ruleMessage={t('login.newpassword_message')} passwordRule={{ pattern: newPwd , message: t('register.validate_pwd') }}  >
                     <Input.Password allowClear placeholder={t('login.password_placeholder')} />
                 </FormItem>
                 <Form.Item label={t('confirmnewpwd')} dependencies={['newPassword']} name={'cpassword'} rules={[

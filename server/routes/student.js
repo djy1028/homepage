@@ -122,6 +122,11 @@ module.exports = {
         const { pageNum, pageSize } = ctx.request.body
         ctx.request.body.pageNum = pageNum ? pageNum : '1'
         ctx.request.body.pageSize = pageSize ? pageSize : '10'
+        if (ctx.request.body.pageSize === '50001') {
+            ctx.request.body.pageNum = ''
+            ctx.request.body.pageSize = '',
+                ctx.request.body.status = 1
+        }
         const response = await request({
             data: Qs.stringify({ ...ctx.request.body }),
             url: '/system/studentProgram/my-application',
@@ -199,9 +204,9 @@ module.exports = {
         response.data.code === 200 ? ctx.body = JSON.stringify(response.data.suActivity) : ctx.body = JSON.stringify(response.data)
     },
     deletepro: async (ctx, next) => {
-        const { orgProgramId } = ctx.request.body
+        const { ids } = ctx.request.body
         const response = await request({
-            url: `/system/program/remove/${orgProgramId}`,
+            url: `/system/studentProgram/remove/${ids}`,
             method: 'delete',
             headers: { Authorization: ctx.request.header.authorization }
         })
@@ -236,6 +241,20 @@ module.exports = {
         });
         ctx.body = response.data
     },
+    downloadTemplate: async (ctx, next) => {
+        const response = await request({
+            url: `/system/studentProgram/downloadTemplate`,
+            headers: {
+                Authorization: ctx.request.header.authorization
+            },
+            responseType: 'arraybuffer'
+        })
+        ctx.set({
+            'Content-Type': response.headers['content-type'], //告诉浏览器这是一个二进制文件  
+            'Content-Disposition': response.headers['content-disposition'], //告诉浏览器这是一个需要下载的文件  
+        });
+        ctx.body = response.data
+    },
 
     downloadAgreement: async (ctx, next) => {
         const { id } = ctx.request.body
@@ -246,7 +265,6 @@ module.exports = {
             },
             responseType: 'arraybuffer'
         })
-
         ctx.set({
             'Content-Type': response.headers['content-type'], //告诉浏览器这是一个二进制文件  
             'Content-Disposition': response.headers['content-disposition'], //告诉浏览器这是一个需要下载的文件  
@@ -286,6 +304,36 @@ module.exports = {
         }
         const { name, path: filePath, size, type } = ctx.request.files.file
         const dest = path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`) // 目标目录，没有没有这个文件夹会自动创建
+        await fse.move(filePath, dest) // 移动文件
+        ctx.body = {
+            name, // 文件名称
+            filePath, // 临时路径
+            size, // 文件大小
+            type // 文件类型
+        }
+    },
+    uploadreport: async (ctx, next) => {
+        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.report}.zip`))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.report}.zip`))
+        }
+        const { name, path: filePath, size, type } = ctx.request.files.file
+
+        const dest = path.join(__dirname, '../upload', `${ctx.params.report}.zip`) // 目标目录，没有没有这个文件夹会自动创建
+        await fse.move(filePath, dest) // 移动文件
+        ctx.cookies.set(ctx.params.report, name)
+        ctx.body = {
+            name, // 文件名称
+            filePath, // 临时路径
+            size, // 文件大小
+            type // 文件类型
+        }
+    },
+    uploadzip: async (ctx, next) => {
+        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.zip}.zip`))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.zip}.zip`))
+        }
+        const { name, path: filePath, size, type } = ctx.request.files.file
+        const dest = path.join(__dirname, '../upload', `${ctx.params.zip}.zip`) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
         ctx.body = {
             name, // 文件名称
@@ -352,5 +400,92 @@ module.exports = {
             ctx.response.status = response.data.code
         }
         ctx.body = JSON.stringify(response.data)
-    }
+    },
+    programedit: async (ctx, next) => {
+        const { id, phase } = ctx.request.body
+        let formdata = new formData()
+        let name
+
+        switch (phase) {
+            case 'apply':
+                name = 'studentApplication.zip'
+                break
+            case 'mid':
+                name = 'studentReportMid.zip'
+                break
+            case 'end':
+                name = 'studentReportEnd.zip'
+                break
+        }
+        if (!fs.existsSync(path.join(__dirname, '../upload', name))) {
+            ctx.body = JSON.stringify({ code: -1, message: '目标文件不存在' })
+        }
+        else {
+            if (id === -1 && fs.existsSync(path.join(__dirname, '../upload', name))) {
+                fs.unlinkSync(path.join(__dirname, '../upload', name))
+                ctx.body = JSON.stringify({ code: 200, message: '操作成功' })
+            }
+            else {
+                id ? formdata.append('id', id) : formdata.append('id', '')
+                formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', name)))
+                const response = await request({
+                    data: formdata,
+                    url: `/system/studentProgram/edit/${phase}`,
+                    headers: {
+                        Authorization: ctx.request.header.authorization,
+                        ...formdata.getHeaders()
+                    },
+                    method: 'post'
+                })
+                ctx.body = JSON.stringify(response.data)
+            }
+        }
+    },
+    updatePriority: async (ctx, next) => {
+        const response = await request({
+            url: '/system/studentProgram/updatePriority',
+            headers: { Authorization: ctx.request.header.authorization },
+            data: ctx.request.body,
+            method: 'post'
+        })
+        ctx.body = JSON.stringify(response.data)
+    },
+    activityList: async (ctx, next) => {
+        const { pageNum, pageSize, isAsc, orderByColumn } = ctx.request.body
+        ctx.request.body.pageNum = pageNum ? pageNum : '1'
+        ctx.request.body.pageSize = pageSize ? pageSize : '10'
+        ctx.request.body.isAsc = isAsc ? isAsc : 'desc'
+        ctx.request.body.orderByColumn = orderByColumn ? orderByColumn : 'createTime'
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: '/system/activity/list',
+            method: 'post',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        response.data.code === 200 ? response.data.rows = response.data.rows.map(item => ({ ...item, ...{ key: item.activityId } })) : ctx.response.status = response.data.code
+        ctx.body = JSON.stringify(response.data)
+    },
+    canSetPriority: async (ctx, next) => {
+        const response = await request({
+            url: '/system/studentProgram/canSetPriority',
+            headers: { Authorization: ctx.request.header.authorization },
+            data: Qs.stringify({ ...ctx.request.body }),
+            method: 'post'
+        })
+        ctx.body = JSON.stringify(response.data)
+    },
+    toSetPriority: async (ctx, next) => {
+        ctx.request.body.pageNum = ''
+        ctx.request.body.pageSize = '',
+            ctx.request.body.maxStatus = 2
+        ctx.request.body.minStatus = 1
+        const response = await request({
+            data: Qs.stringify({ ...ctx.request.body }),
+            url: '/system/studentProgram/toSetPriority',
+            method: 'post',
+            headers: { Authorization: ctx.request.header.authorization }
+        })
+        response.data.code === 200 ? response.data.rows = response.data.rows.map(item => ({ ...item, ...{ key: item.orgProgramId } })) : ctx.response.status = response.data.code
+        ctx.body = JSON.stringify(response.data)
+    },
 }

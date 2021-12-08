@@ -12,7 +12,7 @@ import { regisactive, setNewPwd } from 'auth-provider'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { ComModal } from 'components/com-modal'
 import { FormItem } from 'components/form_item'
-import { pwdPattern } from 'utils/pattern'
+import { newPwd, pwdPattern } from 'utils/pattern'
 export const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
@@ -28,12 +28,10 @@ export const LoginApp = () => {
                 openNotificationWithIcon(0, res.message)
                 setCheckRegis(false)
                 window.location.hash = '/studentLogin'
-                // window.history.replaceState('login', '', '/')
             }).catch(err => {
                 openNotificationWithIcon(1, err.message)
                 setCheckRegis(false)
                 window.location.hash = '/studentLogin'
-                // window.history.replaceState('login', '', '/')
             })
         }
     }, [])
@@ -55,7 +53,6 @@ export const LoginApp = () => {
                             <More>
                                 <A type={"link"} onClick={() => setIsRegister(!isRegister)}>
                                     {isRegister ? t('login.noaccount') : t('login.existaccount')}</A>
-                                {/* <A href="https://summer.iscas.ac.cn/" target="_blank" rel="noreferrer">{t('homeheader.homepage')}</A> */}
                                 <A href="https://summer.iscas.ac.cn/help/" target="_blank" rel="noreferrer"><span >&nbsp;<span>{t('homeheader.help')}</span>&nbsp;</span></A>
 
                             </More>
@@ -145,16 +142,14 @@ const NewPwd = (props) => {
             openNotificationWithIcon(0, res.message)
             setforgetPwd(false)
             window.location.hash = '/studentLogin'
-            //window.history.replaceState('login', '', '/')
         }).catch(err => {
             openNotificationWithIcon(1, err.message)
             setforgetPwd(false)
             window.location.hash = '/studentLogin'
-            //window.history.replaceState('login', '', '/')
         })
     }
     return <Form onFinish={onFinish} {...layout}>
-                <FormItem name={'newPassword'} label={t('login.newpws')} ruleMessage={t('login.password_message')} passwordRule={{ pattern: pwdPattern, message: t('register.validate_pwd') }}  >
+        <FormItem name={'newPassword'} label={t('login.newpws')} ruleMessage={t('login.password_message')} passwordRule={{ pattern: newPwd, message: t('register.validate_pwd') }}  >
                     <Input.Password allowClear placeholder={t('login.password_placeholder')} />
                 </FormItem>
 

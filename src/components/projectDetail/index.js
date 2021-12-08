@@ -49,20 +49,15 @@ class ProjectDetail extends React.Component {
     }
 
     componentDidMount() {
-        // this.getActivity()
         let showprodata = this.props.prodetail
         //1.0 判断prodetail有无值
         if (Object.keys(this.props.prodetail).length === 0) {
             //2.0 获取projectid
-            // console.log(this.props.history.location)
-            // const proid = this.props.history.location.pathname.split("/org/prodetail/") 
             const proid = window.location.hash.split("/org/prodetail/")
             if (proid[1]) {
                 //3.0 从数据中查找projectid
                 for (let orgitem of data) {
                     const prolablelist = orgitem.project_list.map((pro) => { return pro.label })
-                    // console.log(prolablelist)
-
                     const indexp = prolablelist.indexOf(proid[1])
                     if (indexp > -1) {
                         showprodata = orgitem.project_list[indexp]
@@ -96,19 +91,6 @@ class ProjectDetail extends React.Component {
         else {
             openNotificationWithIcon(1, '该项目申请时间已截止')
         }
-
-        // if (this.state.canApply) {
-        //     http('/studentProgram/apply', { data: { orgProgramId: proid }, token: getToken(), method: 'post' }).then(res => {
-        //         openNotificationWithIcon(0, res.message)
-        //         that.setState({
-        //             hasApplyed: true
-        //         })
-        //     })
-        // }
-        // else {
-        //     openNotificationWithIcon(1, '该项目申请时间已截止')
-        // }
-
     }
 
     getDegreeBy(degree) {

@@ -5,36 +5,36 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FormItem } from 'components/form_item';
-import { pwdPattern } from 'utils/pattern';
+import { newPwd } from 'utils/pattern';
 import { openNotificationWithIcon } from 'components/com-notify';
-import { resetpwd } from 'auth-provider'
+import { logout, resetpwd } from 'auth-provider'
 import styled from '@emotion/styled'
+import { useQueryClient } from 'react-query';
+import { useDispatch } from 'react-redux';
+import { submitLogout } from 'store/redux/userRedux'
+
+
 
 export const Modifypwd = () => {
     const [form] = useForm()
     const { t} = useTranslation()
     const [resetloading, setloading] = useState(false)
-    const user = useSelector(state=>state.user)
-    
-    // const layout = {
-    //     labelCol: { span: 4 },
-    //     wrapperCol: { span: 16 },
-    // }
+    const user = useSelector(state => state.user)
+    const queryClient = useQueryClient()
+    const dispatch = useDispatch()
     const layout = {
         labelCol: {
-            // xs: { flex: 'wrap', span: 8},
             sm: { flex: 'wrap', span: 6 },
             md: { flex: 'wrap', span: 7 },
             lg: { flex: 'wrap', span: 7 },
             xl: { flex: 'wrap', span: 6 },
         },
         wrapperCol: {
-            // xs: { span: 24 },
             sm: { span: 14 },
             md: { span: 17 },
             lg: { span: 17 },
             xl: { span: 14 },
-        },
+        }
     };
     const onFinish = (fields) => {
         const { oldPassword, newPassword } = fields
@@ -43,6 +43,12 @@ export const Modifypwd = () => {
             openNotificationWithIcon(0, res.message)
             form.resetFields()
             setloading(false)
+            logout().then(() => {
+                queryClient.clear()
+                window.location.hash = '/studentLogin'
+                dispatch(submitLogout())
+                
+            })
         }).catch(err => {
             openNotificationWithIcon(1, err.message)
             form.resetFields()
@@ -54,10 +60,10 @@ export const Modifypwd = () => {
             <Form.Item label={t('loginname')} name={'loginName'}>
                 <Input disabled type={'text'} />
             </Form.Item>
-            <FormItem label={t('oldpwd')} name={'oldPassword'} ruleMessage={t('login.oldpassword_message')} passwordRule={{ pattern: pwdPattern, message: t('register.validate_pwd') }}  >
+            <FormItem label={t('oldpwd')} name={'oldPassword'} ruleMessage={t('login.oldpassword_message')} passwordRule={{ pattern: newPwd, message: t('register.validate_pwd') }}  >
                 <Input.Password allowClear placeholder={t('login.password_placeholder')} />
             </FormItem>
-            <FormItem label={t('newpwd')} name={'newPassword'} ruleMessage={t('login.newpassword_message')} passwordRule={{ pattern: pwdPattern, message: t('register.validate_pwd') }}  >
+            <FormItem label={t('newpwd')} name={'newPassword'} ruleMessage={t('login.newpassword_message')} passwordRule={{ pattern: newPwd, message: t('register.validate_pwd') }}  >
                 <Input.Password allowClear placeholder={t('login.password_placeholder')} />
             </FormItem>
             <Form.Item label={t('confirmnewpwd')} dependencies={['newPassword']} name={'cpassword'} rules={[

@@ -1,0 +1,43 @@
+[2021-12-08T14:07:02.152] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:08:25.491] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:09:35.262] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:17:45.174] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:18:24.661] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:35:50.634] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:36:02.716] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:37:22.734] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-08T14:39:26.212] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7

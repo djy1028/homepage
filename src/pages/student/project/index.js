@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Input, Tooltip } from 'antd'
+import { Popconfirm, Space, Tooltip, Button, Modal } from 'antd'
 import FormItem from 'antd/lib/form/FormItem'
 import { ComModal } from 'components/com-modal'
 import { ComTable } from 'components/com-table'
@@ -6,21 +6,28 @@ import { Main } from 'components/main'
 import { SearchContainer } from 'components/search-container'
 import React from 'react'
 import { useDebounce } from 'utils'
-import { useDeleteProgram, useStuPrograms, useStuProSearchParms, useStuProgramModal, useStuProQueryKey } from 'utils/project'
+import { useDeleteProgram, useStuPrograms, useStuProSearchParms, useStuProgramModal, useStuProQueryKey, useActivitys } from 'utils/project'
 import styled from '@emotion/styled'
 import { ComDrawer } from 'components/com-drawer'
 import { useTranslation } from 'react-i18next'
-import { clearSpace } from 'utils/pattern'
 import { Check } from './check'
 import { Checkpro } from './checkpro'
 import { Detail as ActivityDetail } from './activitydetail'
 import { Detail } from './detail'
+import { FormOutlined } from '@ant-design/icons'
+import { SortStu } from './sortStu'
+import { CommonSelect } from 'components/com-select'
+import { checkSetPriority } from 'auth-provider'
+import { useSelector } from 'react-redux'
 
 export const Project = () => {
     const { t } = useTranslation()
+    const token = useSelector(state => state.user)?.token
     const [searchparam, setParam] = useStuProSearchParms()
-    const { isLoading, data: list } = useStuPrograms(useDebounce(searchparam, 500))
-    const { inquiryOrg, projectModalOpen, close, inquiryOrgId, inquiryPro, inquiryApply, DrawerOpen, inquiryActivity, inquiryActivityId } = useStuProgramModal()
+    const { isLoading, data: list, refetch } = useStuPrograms(useDebounce(searchparam, 500))
+    const { inquiryOrg, projectModalOpen, close, inquiryOrgId, inquiryPro, inquiryApply, DrawerOpen, inquiryActivity, inquiryActivityId,
+        updateSort, stuPriority } = useStuProgramModal()
+    const { data: options1 } = useActivitys({ pageSize: 10000, pageNum: 1, activityName: "", activityPage: "" })
     const { mutateAsync: deleteProgram, isLoading: deleteLoading } = useDeleteProgram(useStuProQueryKey())
     const colums = [
         {
@@ -68,27 +75,59 @@ export const Project = () => {
             width: '18rem',
             render: (value, record) => <Space size={4}>
                 <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
-                <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ orgProgramId: record.orgProgramId }).then(() => close())}
-                    onVisibleChange={(vis) => !vis}>
-                    <Alink>{t('project.delete')}</Alink>
-                </Popconfirm>
+                {
+                    record.status >= 1 ? null :
+                        <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ ids: record.id }).then(() => close())}
+                            onVisibleChange={(vis) => !vis}>
+                            <Alink>{t('project.delete')}</Alink>
+                        </Popconfirm>
+                }
             </Space>
         }
     ]
+    const setPriority = () => {
+        if (searchparam.activityId) {
+            checkSetPriority(token, { activityId: searchparam.activityId }).then(rsp => {
+                if (!rsp.res) {
+                    Modal.info({
+                        title: t('project.mes_alert'),
+                        content: (
+                            <p>{t('project.alert_msgs.0') + rsp.FirstApproveCommitTime + t('project.alert_msgs.1')}</p>
+                        )
+                    });
+                }
+                else {
+                    updateSort()
+                }
+            })
+        }
+        else {
+            Modal.info({
+                title: t('project.mes_alert'),
+                content: (
+                    <p>{t('project.noactivity')}</p>
+                )
+            });
+        }
 
+    }
     return (
         <Main>
             <SearchContainer name={'btn_tutor_program'}>
                 <FormItem label={t('project.columns_title.1')} style={{ marginBottom: "1rem" }}>
-                    <Input placeholder={t('project.name_placeholder')} allowClear value={searchparam.activityName}
-                        onChange={e => setParam({ ...searchparam, activityName: clearSpace(e.target.value), pageNum: undefined, pageSize: undefined })} />
+                    <CommonSelect defaultOptionName={t('project.activity_default')} value={Number(searchparam.activityId)}
+                        options={options1?.rows.map((item) => ({ name: item.activityName, id: item.activityId }))} width={'25rem'}
+                        onChange={e => setParam({ ...searchparam, activityId: Boolean(e) ? e : '', pageNum: undefined, pageSize: undefined })} />
                 </FormItem>
             </SearchContainer>
-            <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span><span>{t('project.restNum.1')}</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem', alignItems: 'center' }}>
+                <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span> {searchparam.activityId && <span>{t('project.restNum.1')}</span>}</div>
+                <Button onClick={setPriority} style={{ marginBottom: '1rem', color: '#fff', background: '#0052cc', border: 'none' }}><FormOutlined />{t('project.apply_title')}</Button>
+            </div>
             <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
-            <ComModal visible={projectModalOpen} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
-                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : <Checkpro />} />
+            <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
+                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu refetch={refetch} close={close} searchparam={searchparam} /> : <Checkpro />} />
             {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail />} title={t('project.studentApply')} />}
         </Main>
     )
