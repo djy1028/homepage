@@ -44,6 +44,7 @@ export const Detail = ()=>{
             res.code === 200 ? openNotificationWithIcon(0, res.message) : openNotificationWithIcon(1, res.message)
         })
     }
+
     const judge = (name) => ['.zip', '.rar', '.tar', '.tar.gz', '.7z'].some(item => name.includes(item))
 
     return (
@@ -78,6 +79,7 @@ export const Detail = ()=>{
                                                     status: 'done'
                                                 }
                                             ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => null} beforeUpload={file => {
+                                            
                                                 if (!judge(file.name)) {
                                                     message.error(t('project.zip_upload_mes'));
                                                 }
@@ -179,7 +181,6 @@ export const Detail = ()=>{
                                         status: 'done'
                                     }
                                         ] : []} onPreview={() => null} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => null} beforeUpload={file => {
-                                          
                                             if (!judge(file.name)) {
                                                 message.error(t('project.zip_upload_mes'));
                                             }

@@ -319,8 +319,7 @@ module.exports = {
         }
         const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
-        console.log(name, 11)
-        ctx.params.report ? ctx.cookies.set('MIDNAME', name) : ctx.cookies.set('ENDNAME', name)
+        ctx.params.report ? ctx.cookies.set('MIDNAME', encodeURI(name)) : ctx.cookies.set('ENDNAME', encodeURI(name))
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径
@@ -335,7 +334,7 @@ module.exports = {
         }
         const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
-        ctx.cookies.set('APPLYNAME', name)
+        ctx.cookies.set('APPLYNAME', encodeURI(name))
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径
@@ -351,7 +350,6 @@ module.exports = {
         if (response.data.code !== 200) {
             ctx.response.status = response.data.code
         }
-        console.log(response)
         response.data.code === 200 && response.data.bank ? response.data.rows = [response.data.bank].map(item => ({ ...item, ...{ key: item.userId } })) : response.data.rows = []
         ctx.body = JSON.stringify(response.data)
     },
@@ -408,19 +406,19 @@ module.exports = {
         let name
         switch (phase) {
             case 'apply':
-                name = ctx.cookies.get('APPLYNAME')
+                name = decodeURI(ctx.cookies.get('APPLYNAME'))
                 if (!name) {
                     ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
                 }
                 break
             case 'mid':
-                name = ctx.cookies.get('MIDNAME')
+                name = decodeURI(ctx.cookies.get('MIDNAME'))
                 if (!name) {
                     ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
                 }
                 break
             case 'end':
-                name = ctx.cookies.get('ENDNAME')
+                name = decodeURI(ctx.cookies.get('ENDNAME'))
                 if (!name) {
                     ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
                 }
