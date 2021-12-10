@@ -86,29 +86,29 @@ export const Project = () => {
         }
     ]
     const setPriority = () => {
-        if (searchparam.activityId) {
-            checkSetPriority(token, { activityId: searchparam.activityId }).then(rsp => {
-                if (!rsp.res) {
-                    Modal.info({
-                        title: t('project.mes_alert'),
-                        content: (
-                            <p>{t('project.alert_msgs.0') + rsp.FirstApproveCommitTime + t('project.alert_msgs.1')}</p>
-                        )
-                    });
-                }
-                else {
-                    updateSort()
-                }
-            })
-        }
-        else {
-            Modal.info({
-                title: t('project.mes_alert'),
-                content: (
-                    <p>{t('project.noactivity')}</p>
-                )
-            });
-        }
+        // if (searchparam.activityId) {
+        //     checkSetPriority(token, { activityId: searchparam.activityId, status: 'first' }).then(rsp => {
+        //         if (!rsp.res) {
+        //             Modal.info({
+        //                 title: t('project.mes_alert'),
+        //                 content: (
+        //                     <p>{t('project.alert_msgs.0') + rsp.FirstApproveCommitTime + t('project.alert_msgs.1')}</p>
+        //                 )
+        //             });
+        //         }
+        //         else {
+        //updateSort()
+        //         }
+        //     })
+        // }
+        // else {
+        //     Modal.info({
+        //         title: t('project.mes_alert'),
+        //         content: (
+        //             <p>{t('project.noactivity')}</p>
+        //         )
+        //     });
+        // }
 
     }
     return (
@@ -122,13 +122,13 @@ export const Project = () => {
             </SearchContainer>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem', alignItems: 'center' }}>
                 <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span> {searchparam.activityId && <span>{t('project.restNum.1')}</span>}</div>
-                <Button onClick={setPriority} style={{ marginBottom: '1rem', color: '#fff', background: '#0052cc', border: 'none' }}><FormOutlined />{t('project.apply_title')}</Button>
+                <Button onClick={updateSort} style={{ marginBottom: '1rem', color: '#fff', background: '#0052cc', border: 'none' }}><FormOutlined />{t('project.apply_title')}</Button>
             </div>
             <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu searchparam={searchparam} /> : <Checkpro />} />
-            {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail />} title={t('project.studentApply')} />}
+            {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail refetch={refetch} />} title={t('project.studentApply')} />}
         </Main>
     )
 }

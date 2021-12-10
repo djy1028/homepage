@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react'
-import { Button, Descriptions, Divider, message, Space, Spin, Steps, Upload } from 'antd';
+import { Button, Descriptions, Divider, message, Modal, Space, Spin, Steps, Upload } from 'antd';
 import { CheckCircleTwoTone, CloseCircleTwoTone, CloudUploadOutlined, DownloadOutlined, ExclamationCircleOutlined}  from '@ant-design/icons'
-import { downloadApplication, downloadTemplate, getToken } from 'auth-provider';
+import { checkSetPriority, downloadApplication, downloadTemplate, getToken } from 'auth-provider';
 import { openNotificationWithIcon } from 'components/com-notify';
 import { useTranslation } from 'react-i18next';
 import { useBankModal, useStuProgramModal, useStuProQueryKey } from 'utils/project';
@@ -10,8 +10,9 @@ import { useStuproupload, useStuprozipupload } from 'utils/student';
 import { Bankinfo } from './bankinfo';
 import { ComModal } from 'components/com-modal';
 
-export const Detail = ()=>{
-    const {t} = useTranslation()
+export const Detail = (props)=>{
+    const { t } = useTranslation()
+    const { refetch } = props
     const token = getToken()
     const { applyInfo, applyInfoLoading, isFetching, inquiryApplyId } = useStuProgramModal()
     const { close } = useStuProgramModal()
@@ -24,15 +25,39 @@ export const Detail = ()=>{
         })
     }
     const uploadzip = (phase) => {
-        mutateAsynczip({ id: applyInfo.id,phase:phase }).then(res => {
-            if (res.code === 200) {
-                openNotificationWithIcon(0, res.message)
-                close()
+        let status = ''
+        switch (phase) {
+            case 'apply':
+                status = 'first'
+                break
+            case 'mid':
+                status = 'mid'
+                break
+            case 'end':
+                status = 'end'
+                break
+        }
+        checkSetPriority(token, { activityId: applyInfo.activityId, status: status }).then(rsp => {
+            if (rsp.res) {
+                mutateAsynczip({ id: applyInfo.id, phase: phase }).then(res => {
+                    if (res.code === 200) {
+                        openNotificationWithIcon(0, res.message)
+                        close()
+                        refetch()
+
+                    }
+                    else {
+                        openNotificationWithIcon(1, res.message)
+                    }
+                })
             }
             else {
-                openNotificationWithIcon(1, res.message)
+                openNotificationWithIcon(1, t(status === 'first' ? 'project.reject_first' : status === 'mid' ? 'project.reject_mid' :'project.reject_end'))
             }
+           
         })
+
+        
     }
     const deleteuploadfile = ()=>{
         mutateAsync({id:-1}).then(res=>{
@@ -61,12 +86,10 @@ export const Detail = ()=>{
                             <>
                                 <Descriptions.Item label={''} >
                                     <Space direction={'vertical'} size={10}>
-                                        <a onClick={() => downloadTemplate(token,t('project.moban'))}>
-                                            <DownloadOutlined /> {t('project.application_model')}
-                                        </a>
-                                      
-                                            <div style={{display:'flex',alignItems: 'center'}}><Button loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red',marginLeft:'2rem' }}>{t('project.upload_btn_mes')}</div></div>
-                                        {applyInfo.firstApproveCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
+                                        <a onClick={() => downloadTemplate(token,t('project.moban'))}><DownloadOutlined /> {t('project.application_model')}</a>
+                                        <div style={{display:'flex',alignItems: 'center'}}><Button loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red',marginLeft:'2rem' }}>{t('project.upload_btn_mes')}</div></div>
+                                        {applyInfo.firstApproveCommitTime && applyInfo.status ===0 && <p><span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
+                                        {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 0 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
                                     </Space>
                                 </Descriptions.Item>
                                 <Descriptions.Item label={''} >
@@ -83,7 +106,10 @@ export const Detail = ()=>{
                                                 if (!judge(file.name)) {
                                                     message.error(t('project.zip_upload_mes'));
                                                 }
-                                                return judge(file.name) ? true : Upload.LIST_IGNORE
+                                                if (file.size > 20971520) {
+                                                    message.error(t('project.zip_upload_messize'));
+                                                }
+                                                return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
                                             }} maxCount={1} action={`/uploadZIP/${'studentApplication'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                             </Upload>
@@ -95,7 +121,7 @@ export const Detail = ()=>{
                             <a  onClick={()=>downloadApplication(applyInfo.id,'application',token,applyInfo.applicationUrl.split('/').pop())}>{applyInfo.applicationUrl.split('/').pop()}
                             </a>
                                 </Descriptions.Item>}
-                        {applyInfo.summerFirstApprovePublicTime && applyInfo.status<=4 && applyInfo.status>0 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item> }
+                        
                         {applyInfo.status >= 3 && <Descriptions.Item label={''} ><div id={'mid.first_teacher_approve'} style={{ color: '#52c41a' }}> <CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.first_teacher_approve')}</div></Descriptions.Item>}
                         {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{applyInfo.firstTeacherApprover}</Descriptions.Item>}
                         {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
@@ -184,7 +210,10 @@ export const Detail = ()=>{
                                             if (!judge(file.name)) {
                                                 message.error(t('project.zip_upload_mes'));
                                             }
-                                            return judge(file.name) ? true : Upload.LIST_IGNORE
+                                            if (file.size > 20971520) {
+                                                message.error(t('project.zip_upload_messize'));
+                                            }
+                                            return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
                                         }} maxCount={1} action={`/uploadReport/${'studentReportMid'}`}>
                                     <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                 </Upload>
@@ -247,7 +276,10 @@ export const Detail = ()=>{
                                             if (!judge(file.name)) {
                                                 message.error(t('project.zip_upload_mes'));
                                             }
-                                            return judge(file.name) ? true : Upload.LIST_IGNORE
+                                            if (file.size > 20971520) {
+                                                message.error(t('project.zip_upload_messize'));
+                                            }
+                                            return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
                                         }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
                                     <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                 </Upload>

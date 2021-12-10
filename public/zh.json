@@ -628,6 +628,7 @@
         "moban":"项目申请模板.pdf",
         "upload_mes":"请提供项目申请书及简历并上传为压缩包格式",
         "zip_upload_mes":"请上传压缩格式文件!",
+        "zip_upload_messize":"文件最大为20M !",
         "upload_btn":"提交",
         "upload_btn_mes":"点击提交后，不可撤回或删除该申请",
         "apply_title":"设定项目中选排序并提交审核",
@@ -648,7 +649,11 @@
         "firstapply_mes":["请在初审截至日期","前提交申请材料"],
         "firstpublic_mes":["项目申请材料已提交，等待审核…预计","公布中选结果"],
         "midresport_mes":["请务必在","前提交，过期未提交视为放弃项目"],
-        "noemptyitem":"请为项目设置中选优先级！"
+        "noemptyitem":"请为项目设置中选优先级！",
+        "reject_first":"已超过项目申请材料提交时间，无法提交",
+        "reject_mid": "已超过中期项目报告提交时间，无法提交",
+        "reject_end": "已超过末期项目报告提交时间，无法提交",
+        "deadline":["您未在","之前排序并提交审核，被视为自动放弃，无法继续参与该活动"]
     },
     "tutor": {
         "noapply": "待上传项目申请材料",

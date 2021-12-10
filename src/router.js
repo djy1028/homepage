@@ -32,7 +32,7 @@ export const IRouter = () => {
     const dispatch = useDispatch()
     useEffect(async () => {
         /* 页面刷新后状态保持 */
-        const res = await bootstrapUser()
+        const res = await bootstrapUser(dispatch)
         res && res.token && dispatch(loginSuccess(res))
     }, [])
     return (

@@ -1,9 +1,10 @@
 import { notification } from 'antd';
 import { getToken, logout } from '../auth-provider'
 import { useCallback } from 'react'
+import { useDispatch } from 'react-redux';
 
 /* 通用的http异步请求方法。未登录状态下使用,封装http，方便每次调用时候带上token */
-export const http = (endpoint, { data, token, headers, ...customConfig }) => {
+export const http = (endpoint, { data, token, headers, ...customConfig }, dispatch = undefined) => {
     let config = {}
     if (headers) {
         config = {
@@ -32,6 +33,7 @@ export const http = (endpoint, { data, token, headers, ...customConfig }) => {
     return fetch(`${endpoint}`, config).then(async response => {
         if (response.status === 401) {
             await logout();
+            dispatch && dispatch({ type: 'LOG_OUT' })
             window.location.hash = '/studentLogin'
             notification.error({
                 message: '登录已过期，请重新登录'

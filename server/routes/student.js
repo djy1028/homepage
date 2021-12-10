@@ -224,6 +224,8 @@ module.exports = {
         if (response.data.code !== 200) {
             ctx.response.status = response.data.code
         }
+
+
         response.data.code === 200 ? ctx.body = JSON.stringify({ ...response.data.activity, ...response.data.suStudentProgram }) : ctx.body = JSON.stringify(response.data)
     },
     downloadApplication: async (ctx, next) => {
@@ -478,7 +480,7 @@ module.exports = {
     },
     canSetPriority: async (ctx, next) => {
         const response = await request({
-            url: '/system/studentProgram/canSetPriority',
+            url: '/system/studentProgram/commitStatus',
             headers: { Authorization: ctx.request.header.authorization },
             data: Qs.stringify({ ...ctx.request.body }),
             method: 'post'

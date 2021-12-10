@@ -15,7 +15,7 @@ import './index.less'
 import { connect } from 'react-redux'
 import data from './../../data/nav.json'
 import { titleChange, gohash } from './../../util/url.js'
-import { logout } from 'auth-provider'
+import { getToken, logout } from 'auth-provider'
 import { submitLogout } from 'store/redux/userRedux'
 import i18n from 'i18next'
 class Header extends React.Component {
@@ -148,7 +148,8 @@ class Header extends React.Component {
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag
-        const { token, menu, name } = this.props
+        const { menu, name } = this.props
+        const token = getToken()
         return (
             <div className={['header', this.state.chiFlag].join(' ')}>
                 <div className="content1200 headerContent" style={{ width: '145rem' }}>

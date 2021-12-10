@@ -187,7 +187,7 @@ export const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="education_check" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
-                            <Input.TextArea defaultValue={editingStudent.education} readOnly />
+                            <Input.TextArea autoSize defaultValue={editingStudent.education} readOnly />
                         </Form.Item> :
                         <Form.Item name="education" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
                             <Input.TextArea allowClear showCount maxLength={500} />
@@ -196,7 +196,7 @@ export const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="internship_check" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
-                            <Input.TextArea defaultValue={editingStudent.internship} readOnly />
+                            <Input.TextArea autoSize defaultValue={editingStudent.internship} readOnly />
                         </Form.Item> :
                         <Form.Item name="internship" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
                             <Input.TextArea allowClear showCount maxLength={500} />
@@ -205,7 +205,7 @@ export const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="program_check" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
-                            <Input.TextArea defaultValue={editingStudent.program} readOnly />
+                            <Input.TextArea autoSize defaultValue={editingStudent.program} readOnly />
                         </Form.Item> :
                         <Form.Item name="program" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
                             <Input.TextArea allowClear showCount maxLength={500} />
@@ -214,7 +214,7 @@ export const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="openSoource_check" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
-                            <Input.TextArea defaultValue={editingStudent.openSoource} readOnly />
+                            <Input.TextArea autoSize defaultValue={editingStudent.openSoource} readOnly />
                         </Form.Item> :
                         <Form.Item name="openSoource" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
                             <Input.TextArea allowClear showCount maxLength={500} />
@@ -223,7 +223,7 @@ export const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="skill_check" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
-                            <Input.TextArea defaultValue={editingStudent.skill} readOnly />
+                            <Input.TextArea autoSize defaultValue={editingStudent.skill} readOnly />
                         </Form.Item> :
                         <Form.Item name="skill" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
                             <Input.TextArea allowClear showCount maxLength={500} />

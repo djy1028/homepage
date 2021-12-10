@@ -19,11 +19,11 @@ export const handleUserResponse = (user) => {
     return user
 }
 
-export const bootstrapUser = async () => {
+export const bootstrapUser = async (dispatch) => {
     let user = null
     const token = getToken()
     if (token) {
-        const data = await http('/getUserInfo', { token })
+        const data = await http('/getUserInfo', { token }, dispatch)
         user = { ...data, token: token }
     }
     return user
