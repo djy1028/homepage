@@ -34,7 +34,8 @@
         "setNewPwd":"设置新的密码",
         "newpws":"新密码",
         "confirmagain":"再次确认",
-        "checkingaccount":"账户验证中..."
+        "checkingaccount":"账户验证中...",
+        "noeffectlink":"链接已失效"
     },
     "register":{
         "register_btn":"注册",
@@ -635,7 +636,7 @@
         "sortstu": "确认无误并提交审核",
         "mes_alert":"信息提示",
         "alert_msgs":[
-            "审核截止日期为",
+            "审核报告提交截止日期为",
             "，无法继续排序该项目"
         ],
         "program_sort":"设置项目排序",
@@ -643,7 +644,11 @@
         "activity_default":"请选择所属活动",
         "mid_model":"项目报告模板",
         "rarmoban":"项目报告模板.rar",
-        "noactivity":"请选择所属活动，再对项目进行排序！"
+        "noactivity":"请选择所属活动，再对项目进行排序！",
+        "firstapply_mes":["请在初审截至日期","前提交申请材料"],
+        "firstpublic_mes":["项目申请材料已提交，等待审核…预计","公布中选结果"],
+        "midresport_mes":["请务必在","前提交，过期未提交视为放弃项目"],
+        "noemptyitem":"请为项目设置中选优先级！"
     },
     "tutor": {
         "noapply": "待上传项目申请材料",

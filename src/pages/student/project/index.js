@@ -127,7 +127,7 @@ export const Project = () => {
             <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
-                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu refetch={refetch} close={close} searchparam={searchparam} /> : <Checkpro />} />
+                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu searchparam={searchparam} /> : <Checkpro />} />
             {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail />} title={t('project.studentApply')} />}
         </Main>
     )

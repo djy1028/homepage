@@ -113,7 +113,8 @@ export const useStuProgramModal = () => {
         activityLoading,
         inquiryActivityId,
         updateSort,
-        stuPriority
+        stuPriority,
+        inquiryApplyId
     }
 }
 

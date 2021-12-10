@@ -75,12 +75,13 @@ export const useStuproupload = (queryKey) => {
 
 export const useStuprozipupload = (queryKey) => {
     const client = useHttp()
+    const cachekey = useRouteType()
     return useMutation(
         (params) => client(`/studentProgram/edit`, {
             data: params,
             method: 'POST',
         }),
-        useEditConfig(queryKey)
+        useEditConfig([cachekey, queryKey])
     )
 }
 

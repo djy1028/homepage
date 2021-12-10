@@ -8,17 +8,18 @@ import { ErrorBox } from 'components/lib'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import { regisactive, setNewPwd } from 'auth-provider'
+import { forgetCodecheck, regisactive, setNewPwd } from 'auth-provider'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { ComModal } from 'components/com-modal'
 import { FormItem } from 'components/form_item'
-import { newPwd, pwdPattern } from 'utils/pattern'
+import { newPwd } from 'utils/pattern'
 export const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
     const [error, setError] = useState(null)
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
     const [forgetPwd, setforgetPwd] = useState(window.location.hash.includes('studentLogin?forgetCode'))
+    const [resetPwd,setrePwd] = useState(false)
     useDocumentTitle(t('login.login_title'))
 
     useEffect(() => {
@@ -31,6 +32,17 @@ export const LoginApp = () => {
             }).catch(err => {
                 openNotificationWithIcon(1, err.message)
                 setCheckRegis(false)
+                window.location.hash = '/studentLogin'
+            })
+        }
+        if (forgetPwd) {
+            const codeparam = window.location.hash.split('=')[1]
+            forgetCodecheck({ forgetCode: codeparam }).then(res => {
+                openNotificationWithIcon(0, res.message)
+                setrePwd(true)
+            }).catch(err => {
+                openNotificationWithIcon(1, t('login.noeffectlink'))
+                setrePwd(false)
                 window.location.hash = '/studentLogin'
             })
         }
@@ -58,9 +70,9 @@ export const LoginApp = () => {
                             </More>
                     </ShadowCard>
             }
-            {
-                forgetPwd && <ComModal footer={null} visible={forgetPwd} title={t('login.setNewPwd')} children={<NewPwd setforgetPwd={setforgetPwd} visible={forgetPwd} close={() => setforgetPwd(false)} />} close={() => setforgetPwd(false)} />
-            }
+            
+            <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />
+            
         </Container>
     )
 }
@@ -132,19 +144,23 @@ const A = styled.a`
 
 const NewPwd = (props) => {
     const { t } = useTranslation()
-    const { close, visible, setforgetPwd } = props
+    const { close, visible, setrePwd } = props
     const layout = {
         labelCol: { flex: 'wrap', span: 5 },
         wrapperCol: { span: 18 },
     };
+    console.log(window.location.hash.split('=')[1])
     const onFinish = (fields) => {
-        setNewPwd({ newPassword: fields.newPassword, forgetCode: visible ? window.location.hash.split('=')[1] : '' }).then(res => {
+        const forgetCode = window.location.hash.split('=')[1]
+        const params = { newPassword: fields.newPassword, forgetCode: forgetCode }
+        console.log(forgetCode,params)
+        setNewPwd(params).then(res => {
             openNotificationWithIcon(0, res.message)
-            setforgetPwd(false)
+            setrePwd(false)
             window.location.hash = '/studentLogin'
         }).catch(err => {
             openNotificationWithIcon(1, err.message)
-            setforgetPwd(false)
+            setrePwd(false)
             window.location.hash = '/studentLogin'
         })
     }

@@ -33,7 +33,8 @@ export const LoginScreen = ({ onError }) => {
             navigate("/student/bulletin")
         }
         catch(e){
-            onError(new Error(e.message))
+            // onError(new Error(e.message))
+            openNotificationWithIcon(1, e.message)
         }
     }
 

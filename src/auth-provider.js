@@ -208,6 +208,21 @@ export const regisactive = (data) => {
     })
 }
 
+export const forgetCodecheck = (data) => {
+    return fetch(`/profile/checkForgetCode`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(async response => {
+        if (!response.ok) {
+            return Promise.reject(await response.json())
+        }
+        return handleUserResponse(await response.json())
+    })
+}
+
 export const setNewPwd = (data) => {
     return fetch(`/profile/setNewPwd`, {
         method: "POST",

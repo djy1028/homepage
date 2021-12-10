@@ -224,7 +224,7 @@ module.exports = {
         if (response.data.code !== 200) {
             ctx.response.status = response.data.code
         }
-        response.data.code === 200 ? ctx.body = JSON.stringify(response.data.suStudentProgram) : ctx.body = JSON.stringify(response.data)
+        response.data.code === 200 ? ctx.body = JSON.stringify({ ...response.data.activity, ...response.data.suStudentProgram }) : ctx.body = JSON.stringify(response.data)
     },
     downloadApplication: async (ctx, next) => {
         const { id, phase } = ctx.request.body
@@ -313,14 +313,14 @@ module.exports = {
         }
     },
     uploadreport: async (ctx, next) => {
-        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.report}.zip`))) {
-            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.report}.zip`))
-        }
         const { name, path: filePath, size, type } = ctx.request.files.file
-
-        const dest = path.join(__dirname, '../upload', `${ctx.params.report}.zip`) // 目标目录，没有没有这个文件夹会自动创建
+        if (fs.existsSync(path.join(__dirname, '../upload', name))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', name))
+        }
+        const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
-        ctx.cookies.set(ctx.params.report, name)
+        console.log(name, 11)
+        ctx.params.report ? ctx.cookies.set('MIDNAME', name) : ctx.cookies.set('ENDNAME', name)
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径
@@ -329,12 +329,13 @@ module.exports = {
         }
     },
     uploadzip: async (ctx, next) => {
-        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.zip}.zip`))) {
-            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.zip}.zip`))
-        }
         const { name, path: filePath, size, type } = ctx.request.files.file
-        const dest = path.join(__dirname, '../upload', `${ctx.params.zip}.zip`) // 目标目录，没有没有这个文件夹会自动创建
+        if (fs.existsSync(path.join(__dirname, '../upload', name))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', name))
+        }
+        const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
+        ctx.cookies.set('APPLYNAME', name)
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径
@@ -405,20 +406,28 @@ module.exports = {
         const { id, phase } = ctx.request.body
         let formdata = new formData()
         let name
-
         switch (phase) {
             case 'apply':
-                name = 'studentApplication.zip'
+                name = ctx.cookies.get('APPLYNAME')
+                if (!name) {
+                    ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
+                }
                 break
             case 'mid':
-                name = 'studentReportMid.zip'
+                name = ctx.cookies.get('MIDNAME')
+                if (!name) {
+                    ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
+                }
                 break
             case 'end':
-                name = 'studentReportEnd.zip'
+                name = ctx.cookies.get('ENDNAME')
+                if (!name) {
+                    ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
+                }
                 break
         }
         if (!fs.existsSync(path.join(__dirname, '../upload', name))) {
-            ctx.body = JSON.stringify({ code: -1, message: '目标文件不存在' })
+            ctx.body = JSON.stringify({ code: -1, message: '请选择文件后提交！' })
         }
         else {
             if (id === -1 && fs.existsSync(path.join(__dirname, '../upload', name))) {
@@ -437,6 +446,10 @@ module.exports = {
                     },
                     method: 'post'
                 })
+                ctx.cookies.set('MIDNAME', undefined)
+                ctx.cookies.set('ENDNAME', undefined)
+                ctx.cookies.set('APPLYNAME', undefined)
+                fs.unlinkSync(path.join(__dirname, '../upload', name))
                 ctx.body = JSON.stringify(response.data)
             }
         }

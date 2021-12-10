@@ -15,7 +15,7 @@ export const Info = () => {
     const { t, i18n } = useTranslation()
     const [editprofile, setEditprofile] = useState(false)
     const [showalert, setShowalert] = useState(true)
-    const { edit, editingStudent, isLoading, close, refetch, studentEdit } = useStudentModal()
+    const { edit, editingStudent, isLoading, close, studentEdit } = useStudentModal()
     const useStudentMutate = studentEdit ? useEditStudent : useAddStudent
     const { mutateAsync, isLoading: mutateLoading } = useStudentMutate()
     const formData = new FormData()
@@ -44,14 +44,10 @@ export const Info = () => {
             cardBackUrl: fieldsValue['cardBackUrl'] && fieldsValue['cardBackUrl'].length > 0 ? fieldsValue['cardBackUrl'][0].name : '',
             studentCardUrl: fieldsValue['studentCardUrl'][0].name,
         }).then((res) => {
-            form.resetFields()
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
-                refetch().then(rsp => {
-                    rsp.data.res && form.setFieldsValue(rsp.data.res)
-                    setEditprofile(false)
-                    close()
-                })
+                setEditprofile(false)
+                close()
             }
             else {
                 openNotificationWithIcon(1, res.message)
@@ -82,7 +78,7 @@ export const Info = () => {
                             {editingStudent.name}
                         </Form.Item> :
                         <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
-                            required: editprofile ? true : false, validator(_, value) {
+                            required: true, validator(_, value) {
                                 return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                             }, type: 'string', max: 100
                         }]}>
@@ -94,7 +90,7 @@ export const Info = () => {
                         <Form.Item name="phone_check" label={t('admin.student.detail_title.1')}>
                             {editingStudent.phone}
                         </Form.Item> :
-                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: editprofile ? true : false, pattern: /^[1]([3-9])[0-9]{9}$/, message: t('admin.student.phone_validmessage') }]}>
+                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true, pattern: /^[1]([3-9])[0-9]{9}$/, message: t('admin.student.phone_validmessage') }]}>
                             <Input allowClear />
                         </Form.Item>
                 }
@@ -105,7 +101,7 @@ export const Info = () => {
                             {editingStudent.school}
                         </Form.Item> :
                         <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
-                            required: editprofile ? true : false, validator(_, value) {
+                            required: true, validator(_, value) {
                                 return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                             }, type: 'string', max: 200
                         }]}>
@@ -117,7 +113,7 @@ export const Info = () => {
                         <Form.Item name="cardNumber_check" label={t('admin.student.detail_title.6')}>
                             {editingStudent.cardNumber}
                         </Form.Item> :
-                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: editprofile ? true : false, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.student.card_validmessage') }]}>
+                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.student.card_validmessage') }]}>
                             <Input allowClear maxLength={100} />
                         </Form.Item>
                 }
@@ -131,7 +127,7 @@ export const Info = () => {
                                 src={editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url}
                             /> : null}
                         </Form.Item> :
-                        <Form.Item name="cardFrontUrl" label={t('admin.student.detail_title.3')} rules={[{ required: i18n.language === 'zh' && editprofile ? true : false, message: t('admin.student.cardfront_mes') }]}
+                        <Form.Item name="cardFrontUrl" label={t('admin.student.detail_title.3')} rules={[{ required: i18n.language === 'zh' ? true : false, message: t('admin.student.cardfront_mes') }]}
                             valuePropName="fileList"
                             getValueFromEvent={normFile}>
                             <Upload maxCount={1} onPreview={() => null} beforeUpload={file => {
@@ -153,7 +149,7 @@ export const Info = () => {
                                 src={editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url}
                             /> : null}
                         </Form.Item> :
-                        <Form.Item name="cardBackUrl" label={t('admin.student.detail_title.4')} rules={[{ required: i18n.language === 'zh' && editprofile ? true : false, message: t('admin.student.cardback_mes') }]}
+                        <Form.Item name="cardBackUrl" label={t('admin.student.detail_title.4')} rules={[{ required: i18n.language === 'zh' ? true : false, message: t('admin.student.cardback_mes') }]}
                             valuePropName="fileList"
                             getValueFromEvent={normFile}>
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {
@@ -175,7 +171,7 @@ export const Info = () => {
                                 src={editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url}
                             />
                         </Form.Item> :
-                        <Form.Item name="studentCardUrl" label={t('admin.student.detail_title.5')} rules={[{ required: editprofile ? true : false, message: t('admin.student.idcard_mes') }]}
+                        <Form.Item name="studentCardUrl" label={t('admin.student.detail_title.5')} rules={[{ required: true, message: t('admin.student.idcard_mes') }]}
                             valuePropName="fileList"
                             getValueFromEvent={normFile}>
                             <Upload accept={'image/*'} onPreview={() => null} beforeUpload={file => {

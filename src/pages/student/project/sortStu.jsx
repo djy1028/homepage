@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Typography, Form, Spin, Button } from 'antd'
+import { Typography, Form, Spin, Button, Modal } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { CommonSelect } from 'components/com-select'
@@ -8,12 +8,12 @@ import { useTranslation } from 'react-i18next'
 import { useSetPriority, useStuProQueryKey, useUpdateStuPriority } from 'utils/project'
 
 export const SortStu = (props) => {
-    const { searchparam,refetch } = props;
+    const { searchparam } = props;
     const [reset, setReset] = useState(false)
     const { Text, Title } = Typography
     const [form] = useForm()
     const { t } = useTranslation()
-    const { data: list, isLoading } = useSetPriority({ ...searchparam})
+    const { data: list, isLoading,refetch } = useSetPriority({ ...searchparam})
     const { mutateAsync, isLoading: mutateLoading } = useUpdateStuPriority(useStuProQueryKey())
 
     const onFinish = (fieldsValue) => {
@@ -22,18 +22,30 @@ export const SortStu = (props) => {
                 fieldsValue[item] = ''
             }
         })
-        mutateAsync(fieldsValue).then((res) => {
-            if (res.code === 200) {
-                openNotificationWithIcon(0, res.message)
-                refetch().then(rsp => {
-                    setReset(false)
+        if (Object.values(fieldsValue).some(item => item)) {
+            mutateAsync(fieldsValue).then((res) => {
+                if (res.code === 200) {
+                    openNotificationWithIcon(0, res.message)
+                   
                     form.resetFields()
-                })
-            }
-            else {
-                openNotificationWithIcon(1, res.message)
-            }
-        })
+                    refetch().then(rsp => {
+                        setReset(false)
+                    })
+                }
+                else {
+                    openNotificationWithIcon(1, res.message)
+                }
+            })
+        }
+        else {
+            Modal.warning({
+                title: t('project.mes_alert'),
+                content: (
+                    <p>{t('project.noemptyitem')}</p>
+                )
+            });
+        }
+        
     }
 
     useEffect(() => {
@@ -73,9 +85,6 @@ export const SortStu = (props) => {
                 </Form>
             </Contain> :
             <Contain><strong>{t('project.no_program')}</strong></Contain>
-            
-        
-        
     }
 
 const Contain = styled.div`

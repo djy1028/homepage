@@ -18,8 +18,9 @@ export const Bankinfo = (props) => {
     const { mutateAsync: edit, isLoading: editLoading } = useStuEditbank(studentId)
     const { mutateAsync: add, isLoading: addLoading } = useStuAddbank(studentId)
     const onFinish = (fieldsValue) => {
-        const operate = data.rows && data.rows.length>0?edit:add
-        operate({ ...fieldsValue, studentBankId: data.bank.studentBankId }).then(res => {
+        const operate = data.rows && data.rows.length > 0 ? edit : add
+        const params = data.rows && data.rows.length > 0 ? { ...fieldsValue, studentBankId: data.bank.studentBankId } : {...fieldsValue}
+        operate(params).then(res => {
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 form.resetFields()

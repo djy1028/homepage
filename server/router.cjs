@@ -10,6 +10,7 @@ router.post("/profile/forgetPwd", Route.auth.findpwd)
 router.post("/profile/activate", Route.auth.activate)
 router.post("/profile/setNewPwd", Route.auth.setNewPwd)
 router.post("/profile/resetPwd", Route.auth.resetPwd)
+router.post("/profile/checkForgetCode", Route.auth.checkForgetCode)
 
 /* 学生接口 */
 router.post("/notice/detail/student", Route.student.bulletin)

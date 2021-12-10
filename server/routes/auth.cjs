@@ -101,5 +101,16 @@ module.exports = {
       ctx.response.status = response.data.code
     }
     ctx.body = JSON.stringify(response.data)
+  },
+  checkForgetCode: async (ctx, next) => {
+    const response = await request({
+      data: Qs.stringify({ ...ctx.request.body }),
+      url: '/system/user/profile/checkForgetCode',
+      method: 'post'
+    })
+    if (response.data.code !== 200) {
+      ctx.response.status = response.data.code
+    }
+    ctx.body = JSON.stringify(response.data)
   }
 };
