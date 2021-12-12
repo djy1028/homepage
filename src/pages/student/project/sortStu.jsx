@@ -1,23 +1,18 @@
 import styled from '@emotion/styled'
 import { Typography, Form, Spin, Button, Modal } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
-import { checkSetPriority } from 'auth-provider'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { CommonSelect } from 'components/com-select'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { useSetPriority, useStuProQueryKey, useUpdateStuPriority } from 'utils/project'
 
 export const SortStu = (props) => {
-    const { searchparam } = props;
+    const { searchparam,showBtn } = props;
     const [reset, setReset] = useState(false)
-    const [stop, setStop] = useState(false)
-    const [deadline,setDeadline] = useState('')
     const { Text, Title } = Typography
     const [form] = useForm()
     const { t } = useTranslation()
-    const token = useSelector(state => state.user)?.token
     const { data: list, isLoading,refetch } = useSetPriority({ ...searchparam})
     const { mutateAsync, isLoading: mutateLoading } = useUpdateStuPriority(useStuProQueryKey())
 
@@ -55,24 +50,16 @@ export const SortStu = (props) => {
     }
 
     useEffect(() => {
-        checkSetPriority(token, { activityId: searchparam.activityId, status: 'first' }).then(rsp => {
-            if (!rsp.res) {
-                setStop(true)
-                setDeadline(rsp.time)
-            }
-            else {
-                setStop(false)
-                setReset(false)
-            }
-        })
-       
+        setReset(false)
     }, [])
+
+    console.log(showBtn)
     return isLoading ? <Spin>loading...</Spin> :
         
             (list.rows && list.rows.length > 0) ?
             <Contain>
                 <Title level={3}>{t('project.sortstutitle')}</Title>
-                <Text mark>{stop ? t('project.deadline.0') + deadline+t('project.deadline.1'):t('project.substu_title1')}</Text>
+                <Text mark>{t('project.substu_title1')}</Text>
                 <Form style={{ width: '65%', padding: '2rem 0' }} form={form} scrollToFirstError={true} name="teacherpriority" onFinish={onFinish}  >
                     {
                         (list.rows && list.rows?.length > 0) && list.rows.map((item) =>
@@ -88,7 +75,7 @@ export const SortStu = (props) => {
                     }
                     {
 
-                        (list.rows && list.rows?.length > 0 && !stop) && <Form.Item wrapperCol={{ offset: 8 }} >
+                        (list.rows && list.rows?.length > 0 && showBtn) && <Form.Item wrapperCol={{ offset: 8 }} >
                             {!reset ? <Button type="link" onClick={() => setReset(true)}>
                                 {t('tutor.reset_btn')}
                             </Button> :
