@@ -66,7 +66,7 @@ export const logout = async () => {
     let d = new Date();
     d.setTime(d.getTime() + (-1 * 24 * 60 * 60 * 1000));
     let expires = "expires=" + d.toUTCString();
-    document.cookie = "tgt= ";
+    document.cookie = "tgt=;path=/";
 }
 
 export const verifycode = () => {
@@ -126,6 +126,7 @@ export const downloadTemplate = async (token, fileName) => {
             URL.revokeObjectURL(objectUrl);
         })
 }
+
 
 export const checkOrgCodeUnique = (token, data) => {
     return fetch(`/org/checkOrgCodeUnique`, {

@@ -19,7 +19,7 @@ export const Bankinfo = (props) => {
     const { mutateAsync: add, isLoading: addLoading } = useStuAddbank(studentId)
     const onFinish = (fieldsValue) => {
         const operate = data.rows && data.rows.length > 0 ? edit : add
-        const params = data.rows && data.rows.length > 0 ? { ...fieldsValue, studentBankId: data.bank.studentBankId } : {...fieldsValue}
+        const params = data.rows && data.rows.length > 0 ? { ...fieldsValue, bankId: data.bank.bankId } : {...fieldsValue}
         operate(params).then(res => {
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)

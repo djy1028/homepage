@@ -9,6 +9,7 @@ import { useBankModal, useStuProgramModal, useStuProQueryKey } from 'utils/proje
 import { useStuproupload, useStuprozipupload } from 'utils/student';
 import { Bankinfo } from './bankinfo';
 import { ComModal } from 'components/com-modal';
+import { useState } from 'react';
 
 export const Detail = (props)=>{
     const { t } = useTranslation()
@@ -16,6 +17,7 @@ export const Detail = (props)=>{
     const token = getToken()
     const { applyInfo, applyInfoLoading, isFetching, inquiryApplyId } = useStuProgramModal()
     const { close } = useStuProgramModal()
+    const [commit,setCommit] = useState(false)
     const { projectModal, editBank,closeBank } = useBankModal()
     const { mutateAsync, isLoading: uploadLoading } = useStuproupload(useStuProQueryKey())
     const { mutateAsync: mutateAsynczip, isLoading: uploadzipLoading } = useStuprozipupload(inquiryApplyId)
@@ -56,10 +58,8 @@ export const Detail = (props)=>{
             }
            
         })
-
-        
     }
-    const deleteuploadfile = ()=>{
+    const deleteuploadfile = () => {
         mutateAsync({id:-1}).then(res=>{
             res.code === 200? openNotificationWithIcon(0,res.message):openNotificationWithIcon(1,res.message)
         })
@@ -87,7 +87,7 @@ export const Detail = (props)=>{
                                 <Descriptions.Item label={''} >
                                     <Space direction={'vertical'} size={10}>
                                         <a onClick={() => downloadTemplate(token,t('project.moban'))}><DownloadOutlined /> {t('project.application_model')}</a>
-                                        <div style={{display:'flex',alignItems: 'center'}}><Button loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red',marginLeft:'2rem' }}>{t('project.upload_btn_mes')}</div></div>
+                                            <div style={{ display: 'flex', alignItems: 'center' }}><Button disabled={ !commit } loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red',marginLeft:'2rem' }}>{t('project.upload_btn_mes')}</div></div>
                                         {applyInfo.firstApproveCommitTime && applyInfo.status ===0 && <p><span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
                                         {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 0 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
                                     </Space>
@@ -95,21 +95,22 @@ export const Detail = (props)=>{
                                 <Descriptions.Item label={''} >
                                         <Space direction={'vertical'}>
                                             <p><ExclamationCircleOutlined />  <span style={{ color:'#a7a5a5'}}>{ t('project.upload_mes')}</span></p>
-                                            <Upload onRemove={() => deleteuploadzip('apply')} defaultFileList={applyInfo?.applicationUrl ? [
+                                            <Upload onChange={({ file })=>file.status === 'done' && setCommit(true) } onRemove={() => deleteuploadzip('apply')} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'application', token, applyInfo.applicationUrl.split('/').pop())} defaultFileList={applyInfo?.applicationUrl ? [
                                                 {
                                                     uid: '1',
                                                     name: applyInfo.applicationUrl ? applyInfo.applicationUrl.split("/").pop():'application.zip',
-                                                    status: 'done'
+                                                    status: 'done',
+                                                    url:applyInfo.applicationUrl
                                                 }
-                                            ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => null} beforeUpload={file => {
+                                            ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} beforeUpload={file => {
                                             
                                                 if (!judge(file.name)) {
                                                     message.error(t('project.zip_upload_mes'));
                                                 }
-                                                if (file.size > 20971520) {
+                                                if (file.size > 104857600) {
                                                     message.error(t('project.zip_upload_messize'));
                                                 }
-                                                return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
+                                                return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
                                             }} maxCount={1} action={`/uploadZIP/${'studentApplication'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                             </Upload>
@@ -162,14 +163,14 @@ export const Detail = (props)=>{
                                     <span><a  onClick={()=>downloadApplication(1,undefined,token,t('admin.firsttrial.pdfname2'))}>
                                         {t('tutor.downloadpdf')}
                                     </a>{t('tutor.despdf')}</span>
-                                        <Button loading={uploadLoading} onClick={()=>uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                            <Button disabled={ !commit } loading={uploadLoading} onClick={()=>uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                     </Space>
                                 </Descriptions.Item>
                                 <Descriptions.Item label={''} >
-                                        <Upload onRemove={() => deleteuploadfile()} defaultFileList={applyInfo?.studentAgreement?[
+                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()} defaultFileList={applyInfo?.studentAgreement?[
                                         {
                                             uid: '1',
-                                                name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
+                                            name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
                                             status: 'done'
                                         }
                                     ]:[]}  accept={'.pdf'} onPreview={()=>null} beforeUpload={file => {
@@ -194,27 +195,28 @@ export const Detail = (props)=>{
                                 <a onClick={() => downloadApplication(4,undefined,token, t('project.rarmoban'))}>
                                     <DownloadOutlined /> {t('project.mid_model')}
                                 </a>
-                                <Button loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
                                 {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>}
                             </Space>
                         </Descriptions.Item>
                         <Descriptions.Item label={''} >
                             <Space direction={'vertical'}>
-                                        <Upload onRemove={() => deleteuploadzip('mid')} defaultFileList={applyInfo.middleApplicationUrl ? [
+                                <Upload onRemove={() => deleteuploadzip('mid')} defaultFileList={applyInfo.middleApplicationUrl ? [
                                     {
                                         uid: '1',
                                         name: applyInfo.middleApplicationUrl ? applyInfo.middleApplicationUrl.split("/").pop() : 'midreport.zip',
-                                        status: 'done'
+                                        status: 'done',
+                                        url: applyInfo.middleApplicationUrl
                                     }
-                                        ] : []} onPreview={() => null} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => null} beforeUpload={file => {
-                                            if (!judge(file.name)) {
-                                                message.error(t('project.zip_upload_mes'));
-                                            }
-                                            if (file.size > 20971520) {
-                                                message.error(t('project.zip_upload_messize'));
-                                            }
-                                            return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
-                                        }} maxCount={1} action={`/uploadReport/${'studentReportMid'}`}>
+                                    ] : []} onChange={({ file }) => file.status === 'done' && setCommit(true)} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => !file.response && downloadApplication(applyInfo.id, 'mid', token, applyInfo.middleApplicationUrl.split('/').pop())} beforeUpload={file => {
+                                    if (!judge(file.name)) {
+                                        message.error(t('project.zip_upload_mes'));
+                                    }
+                                    if (file.size > 104857600) {
+                                        message.error(t('project.zip_upload_messize'));
+                                    }
+                                    return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
+                                }} maxCount={1} action={`/uploadReport/${'studentReportMid'}`}>
                                     <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                 </Upload>
                             </Space>
@@ -260,26 +262,27 @@ export const Detail = (props)=>{
                                 <a onClick={() => downloadApplication(4,undefined,token, t('project.rarmoban'))}>
                                     <DownloadOutlined /> {t('project.mid_model')}
                                 </a>
-                                <Button loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
                                 {applyInfo.studentEndCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></p>}
                             </Space>
                         </Descriptions.Item>
                         <Descriptions.Item label={''} >
                             <Space direction={'vertical'}>
-                                        <Upload onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
+                                    <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
                                     {
                                         uid: '1',
                                         name: applyInfo?.endApplicationUrl ? applyInfo.endApplicationUrl.split("/").pop() : 'endreport.zip',
-                                        status: 'done'
+                                        status: 'done',
+                                        url: applyInfo?.endApplicationUrl
                                     }
-                                        ] : []} onPreview={() => null} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => null} beforeUpload={file => {
-                                            if (!judge(file.name)) {
-                                                message.error(t('project.zip_upload_mes'));
-                                            }
-                                            if (file.size > 20971520) {
-                                                message.error(t('project.zip_upload_messize'));
-                                            }
-                                            return (judge(file.name) && file.size < 20971520) ? true : Upload.LIST_IGNORE
+                                    ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={() => !file.response && downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())} beforeUpload={file => {
+                                    if (!judge(file.name)) {
+                                        message.error(t('project.zip_upload_mes'));
+                                    }
+                                    if (file.size > 104857600) {
+                                        message.error(t('project.zip_upload_messize'));
+                                    }
+                                    return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
                                         }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
                                     <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                 </Upload>

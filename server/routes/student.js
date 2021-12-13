@@ -276,17 +276,18 @@ module.exports = {
     uploadAgreement: async (ctx, next) => {
         const { id } = ctx.request.body
         let formdata = new formData()
-        if (!fs.existsSync(path.join(__dirname, '../upload', 'studentAgreement.pdf'))) {
+        const name = decodeURI(ctx.cookies.get('STUAGREEMENT'))
+        if (!fs.existsSync(path.join(__dirname, '../upload', name))) {
             ctx.body = JSON.stringify({ code: -1, message: '请选择pdf文件' })
         }
         else {
-            if (id === -1 && fs.existsSync(path.join(__dirname, '../upload', 'studentAgreement.pdf'))) {
-                fs.unlinkSync(path.join(__dirname, '../upload', `studentAgreement.pdf`))
+            if (id === -1 && fs.existsSync(path.join(__dirname, '../upload', name))) {
+                fs.unlinkSync(path.join(__dirname, '../upload', name))
                 ctx.body = JSON.stringify({ code: 200, message: '操作成功' })
             }
             else {
                 id ? formdata.append('id', id) : formdata.append('id', '')
-                formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', 'studentAgreement.pdf')))
+                formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', name)))
                 const response = await request({
                     data: formdata,
                     url: '/system/studentProgram/uploadAgreement',
@@ -296,17 +297,20 @@ module.exports = {
                     },
                     method: 'post'
                 })
+                ctx.cookies.set('STUAGREEMENT', undefined)
+                fs.unlinkSync(path.join(__dirname, '../upload', name))
                 ctx.body = JSON.stringify(response.data)
             }
         }
     },
     uploadpdf: async (ctx, next) => {
-        if (fs.existsSync(path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`))) {
-            fs.unlinkSync(path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`))
-        }
         const { name, path: filePath, size, type } = ctx.request.files.file
-        const dest = path.join(__dirname, '../upload', `${ctx.params.pdf}.pdf`) // 目标目录，没有没有这个文件夹会自动创建
+        if (fs.existsSync(path.join(__dirname, '../upload', name))) {
+            fs.unlinkSync(path.join(__dirname, '../upload', name))
+        }
+        const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
+        ctx.cookies.set('STUAGREEMENT', encodeURI(name))
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径
@@ -451,6 +455,7 @@ module.exports = {
                 ctx.cookies.set('APPLYNAME', undefined)
                 fs.unlinkSync(path.join(__dirname, '../upload', name))
                 ctx.body = JSON.stringify(response.data)
+
             }
         }
     },

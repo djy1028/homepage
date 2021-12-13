@@ -1,0 +1,281 @@
+[2021-12-13T16:19:55.579] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:23:28.788] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:25:09.874] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:26:55.762] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:27:33.944] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:27:57.704] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:28:31.148] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:29:39.402] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:32:46.782] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:42:54.047] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:42:57.174] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:43:07.025] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:43:18.937] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:45:12.785] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:46:18.393] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:46:20.710] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:46:25.249] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:46:49.666] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:46:57.372] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:47:32.905] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:47:46.541] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:48:56.474] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:49:30.588] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:49:43.795] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:50:12.167] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:50:53.786] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:50:58.047] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:51:19.416] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:51:23.444] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:51:31.655] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:51:52.711] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:51:55.156] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:51:55.309] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:52:21.469] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:53:00.003] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:53:02.887] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:53:35.723] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:53:39.396] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:54:18.918] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T16:54:46.162] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:55:00.911] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T16:59:44.106] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T17:01:19.091] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T17:12:38.156] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T17:16:02.389] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T17:22:50.132] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7
+[2021-12-13T19:08:24.345] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
+[2021-12-13T19:08:28.587] [ERROR] application - TypeError: Cannot read property 'status' of undefined
+    at module.exports (D:\rjs_program\summer_homepage\homepage\server\middleware\errorHandler.cjs:11:36)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async scheduleLogs (D:\rjs_program\summer_homepage\homepage\server\logger\clear.cjs:54:5)
+    at async D:\rjs_program\summer_homepage\homepage\node_modules\koa-log4\koa-logger.js:86:7 {
+  headerSent: true
+}
