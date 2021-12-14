@@ -245,7 +245,7 @@ module.exports = {
     },
     downloadTemplate: async (ctx, next) => {
         const response = await request({
-            url: `/system/studentProgram/downloadTemplate`,
+            url: `/summer/template/5`,
             headers: {
                 Authorization: ctx.request.header.authorization
             },
@@ -261,7 +261,7 @@ module.exports = {
     downloadAgreement: async (ctx, next) => {
         const { id } = ctx.request.body
         const response = await request({
-            url: `/system/studentProgram/downloadAgreement/${id}/`,
+            url: `/summer/template/${id}/`,
             headers: {
                 Authorization: ctx.request.header.authorization
             },
@@ -325,7 +325,8 @@ module.exports = {
         }
         const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
-        ctx.params.report ? ctx.cookies.set('MIDNAME', encodeURI(name)) : ctx.cookies.set('ENDNAME', encodeURI(name))
+        console.log(ctx.params.report)
+        ctx.params.report === 'studentReportEnd' ? ctx.cookies.set('ENDNAME', encodeURI(name)) : ctx.cookies.set('MIDNAME', encodeURI(name))
         ctx.body = {
             name, // 文件名称
             filePath, // 临时路径

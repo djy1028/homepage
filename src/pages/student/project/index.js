@@ -63,9 +63,9 @@ export const Project = () => {
         },
         {
             title: t('project.columns_title.4'),
-            dataIndex: 'teacherPriority',
+            dataIndex: 'studentPriority',
             width: '12rem',
-            render: (value, record) => (record.status >= 5 && record.status !== 6) ? value : '-'
+            render: (value, record) => value ? value : '-'
         },
         {
             title: t('project.columns_title.5'),
@@ -137,7 +137,7 @@ export const Project = () => {
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu showBtn={showBtn} searchparam={searchparam} /> : <Checkpro />} />
-            {DrawerOpen && <ComDrawer close={close} visible={DrawerOpen} child={<Detail refetch={refetch} />} title={t('project.studentApply')} />}
+            {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} />} title={t('project.studentApply')} />}
         </Main>
     )
 }

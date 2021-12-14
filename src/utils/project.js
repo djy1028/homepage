@@ -81,7 +81,7 @@ export const useStuProgramModal = () => {
     const { data: orgInfo, isLoading: orgInfoLoading } = useOrginfo(inquiryOrgId)
     const { data: proInfo, isLoading: proInfoLoading } = useProinfo(inquiryProId)
     const { data: activityInfo, isLoading: activityLoading } = useActivityinfo(inquiryActivityId)
-    const { data: applyInfo, isLoading: applyInfoLoading } = useApplyinfo(inquiryApplyId)
+    const { data: applyInfo, isLoading: applyInfoLoading, refetch: fetchapply } = useApplyinfo(inquiryApplyId)
     const close = useCallback(() => {
         inquiryOrgId && setInquiryOrgId({ inquiryOrgId: undefined })
         inquiryProId && setInquiryProId({ inquiryProId: undefined })
@@ -114,7 +114,8 @@ export const useStuProgramModal = () => {
         inquiryActivityId,
         updateSort,
         stuPriority,
-        inquiryApplyId
+        inquiryApplyId,
+        fetchapply
     }
 }
 
