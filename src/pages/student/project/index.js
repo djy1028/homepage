@@ -78,11 +78,11 @@ export const Project = () => {
             render: (value, record) => <Space size={4}>
                 <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
                 {
-                    record.status >= 1 ? null :
-                        <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ ids: record.id }).then(() => close())}
-                            onVisibleChange={(vis) => !vis}>
-                            <Alink>{t('project.delete')}</Alink>
-                        </Popconfirm>
+                    record === 0 &&
+                    <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ ids: record.id }).then(() => close())}
+                        onVisibleChange={(vis) => !vis}>
+                        <Alink>{t('project.delete')}</Alink>
+                    </Popconfirm>
                 }
             </Space>
         }

@@ -245,7 +245,7 @@ module.exports = {
     },
     downloadTemplate: async (ctx, next) => {
         const response = await request({
-            url: `/summer/template/5`,
+            url: `/template/5`,
             headers: {
                 Authorization: ctx.request.header.authorization
             },
@@ -261,7 +261,7 @@ module.exports = {
     downloadAgreement: async (ctx, next) => {
         const { id } = ctx.request.body
         const response = await request({
-            url: `/summer/template/${id}/`,
+            url: `/template/${id}`,
             headers: {
                 Authorization: ctx.request.header.authorization
             },

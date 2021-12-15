@@ -33,11 +33,15 @@ export const http = (endpoint, { data, token, headers, ...customConfig }, dispat
     return fetch(`${endpoint}`, config).then(async response => {
         if (response.status === 401) {
             await logout();
-            dispatch && dispatch({ type: 'LOG_OUT' })
             window.location.hash = '/studentLogin'
             notification.error({
                 message: '登录已过期，请重新登录'
             });
+            dispatch && dispatch({ type: 'LOG_OUT' })
+
+            setTimeout(() => {
+                window.location.reload()
+            }, 1000)
             return Promise.reject({ message: "请重新登录" })
         }
         const data = await response.json()

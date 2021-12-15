@@ -24,8 +24,9 @@ import { LoginApp } from 'pages/login';
 import { Student } from 'pages/student';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { bootstrapUser } from 'auth-provider.js';
+import { bootstrapUser, logout } from 'auth-provider.js';
 import { loginSuccess } from 'store/redux/userRedux.jsx';
+import { submitLogout } from 'store/redux/userRedux.jsx';
 
 export const IRouter = () => {
     const user = useSelector(state => state.user)
@@ -33,7 +34,14 @@ export const IRouter = () => {
     useEffect(async () => {
         /* 页面刷新后状态保持 */
         const res = await bootstrapUser(dispatch)
-        res && res.token && dispatch(loginSuccess(res))
+        res && res.token ? dispatch(loginSuccess(res)) : logout().then(() => {
+            window.location.hash = '/studentLogin';
+            dispatch(submitLogout())
+            dispatch({
+                type: 'setPageFlag',
+                payload: 'loginall',
+            })
+        })
     }, [])
     return (
         <Wrapper>
