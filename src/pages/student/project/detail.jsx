@@ -77,7 +77,6 @@ export const Detail = (props)=>{
     }
 
     const judge = (name) => ['.zip', '.rar', '.tar', '.tar.gz', '.7z'].some(item => name.includes(item))
-    console.log(applyInfo && applyInfo.studentAgreement)
     return (
         !applyInfo || isFetching || applyInfoLoading || uploadzipLoading ? <Spin>loading</Spin> :
             <div id="stu_step_detail">
@@ -238,7 +237,7 @@ export const Detail = (props)=>{
                         <>
                             <Des column={2}>
                                 {applyInfo.middleApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.mid.6')} ><a onClick={() => downloadApplication(applyInfo.id, 'mid', token, applyInfo.middleApplicationUrl.split('/').pop())}>{applyInfo.middleApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
-                                {applyInfo.teacherMiddleApproveExpiredTime && <Descriptions.Item label={t('tutor.midenddate')}>{applyInfo.teacherMiddleApproveExpiredTime}</Descriptions.Item>}
+                                {/* {applyInfo.teacherMiddleApproveExpiredTime && <Descriptions.Item label={t('tutor.midenddate')}>{applyInfo.teacherMiddleApproveExpiredTime}</Descriptions.Item>} */}
                                 {applyInfo.middleTeacherIsApproved && <Descriptions.Item label={''} ><div id={'mid.middleTeacherIsApproved'} style={{ color: applyInfo.middleTeacherIsApproved === 1 ? '#52c41a' : 'red' }}>
                                     {
                                         applyInfo.middleTeacherIsApproved === 1 ?
@@ -304,7 +303,7 @@ export const Detail = (props)=>{
                     <>
                         <Des column={2}>
                             {applyInfo.endApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.end.6')} ><a  onClick={()=>downloadApplication(applyInfo.id,'end',token,applyInfo.endApplicationUrl.split('/').pop())}>{applyInfo.endApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
-                            {applyInfo.teacherEndApproveExpiredTime && <Descriptions.Item label={t('tutor.finalenddate')}>{applyInfo.teacherEndApproveExpiredTime}</Descriptions.Item>}
+                            {/* {applyInfo.teacherEndApproveExpiredTime && <Descriptions.Item label={t('tutor.finalenddate')}>{applyInfo.teacherEndApproveExpiredTime}</Descriptions.Item>} */}
                             {applyInfo.endTeacherIsApproved &&<Descriptions.Item label={''} ><div id={'mid.endTeacherIsApproved'} style={{color:applyInfo.endTeacherIsApproved ===1?'#52c41a':'red'}}> 
                                 {
                                     applyInfo.endTeacherIsApproved ===1 ?
