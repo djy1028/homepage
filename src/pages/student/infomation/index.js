@@ -90,7 +90,7 @@ export const Info = () => {
                         <Form.Item name="phone_check" label={t('admin.student.detail_title.1')}>
                             {editingStudent.phone}
                         </Form.Item> :
-                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true, pattern: /^[1]([3-9])[0-9]{9}$/, message: t('admin.student.phone_validmessage') }]}>
+                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
                             <Input allowClear />
                         </Form.Item>
                 }
@@ -113,7 +113,7 @@ export const Info = () => {
                         <Form.Item name="cardNumber_check" label={t('admin.student.detail_title.6')}>
                             {editingStudent.cardNumber}
                         </Form.Item> :
-                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50, pattern: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/, message: t('admin.student.card_validmessage') }]}>
+                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
                             <Input allowClear maxLength={100} />
                         </Form.Item>
                 }
