@@ -18,7 +18,7 @@ export const LoginApp = () => {
     const [isRegister, setIsRegister] = useState(true)
     const [error, setError] = useState(null)
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
-    const [forgetPwd, setforgetPwd] = useState(window.location.hash.includes('studentLogin?forgetCode'))
+    const [forgetPwd, setforgetPwd] = useState('')
     const [resetPwd,setrePwd] = useState(false)
     useDocumentTitle(t('login.login_title'))
 
@@ -35,11 +35,12 @@ export const LoginApp = () => {
                 window.location.hash = '/studentLogin'
             })
         }
-        if (forgetPwd) {
+        if (window.location.hash.includes('studentLogin?forgetCode')) {
             const codeparam = window.location.hash.split('=')[1]
             forgetCodecheck({ forgetCode: codeparam }).then(res => {
                 openNotificationWithIcon(0, res.message)
                 setrePwd(true)
+                setforgetPwd(codeparam)
             }).catch(err => {
                 openNotificationWithIcon(1, t('login.noeffectlink'))
                 setrePwd(false)
@@ -71,8 +72,7 @@ export const LoginApp = () => {
                     </ShadowCard>
             }
             
-            <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />
-            
+            <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />
         </Container>
     )
 }
@@ -144,14 +144,13 @@ const A = styled.a`
 
 const NewPwd = (props) => {
     const { t } = useTranslation()
-    const { close, visible, setrePwd } = props
+    const { close, visible, setrePwd, forgetPwd } = props
     const layout = {
         labelCol: { flex: 'wrap', span: 5 },
         wrapperCol: { span: 18 },
     };
-    console.log(window.location.hash.split('=')[1])
     const onFinish = (fields) => {
-        const forgetCode = window.location.hash.split('=')[1]
+        const forgetCode = forgetPwd
         const params = { newPassword: fields.newPassword, forgetCode: forgetCode }
         console.log(forgetCode,params)
         setNewPwd(params).then(res => {
