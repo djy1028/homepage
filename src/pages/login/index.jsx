@@ -8,14 +8,16 @@ import { ErrorBox } from 'components/lib'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import { forgetCodecheck, regisactive, setNewPwd } from 'auth-provider'
+import { forgetCodecheck, logout, regisactive, setNewPwd } from 'auth-provider'
 import { openNotificationWithIcon } from 'components/com-notify'
 import { ComModal } from 'components/com-modal'
 import { FormItem } from 'components/form_item'
 import { newPwd } from 'utils/pattern'
+import { useDispatch } from 'react-redux'
 export const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
+    const dispatch = useDispatch()
     const [error, setError] = useState(null)
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
     const [forgetPwd, setforgetPwd] = useState('')
@@ -37,15 +39,25 @@ export const LoginApp = () => {
         }
         if (window.location.hash.includes('studentLogin?forgetCode')) {
             const codeparam = window.location.hash.split('=')[1]
-            forgetCodecheck({ forgetCode: codeparam }).then(res => {
-                openNotificationWithIcon(0, res.message)
-                setrePwd(true)
-                setforgetPwd(codeparam)
-            }).catch(err => {
-                openNotificationWithIcon(1, t('login.noeffectlink'))
-                setrePwd(false)
+            logout().then(rsp => { 
                 window.location.hash = '/studentLogin'
+                dispatch({ type: 'LOG_OUT' })
+                forgetCodecheck({ forgetCode: codeparam }).then(res => {
+                    if (res.isAvailable) {
+                        setrePwd(true)
+                        setforgetPwd(codeparam)
+                    }
+                    else {
+                        openNotificationWithIcon(0, res.message)
+                        setrePwd(false)
+                    }
+                }).catch(err => {
+                    openNotificationWithIcon(1, err.message)
+                    setrePwd(false)
+                    window.location.hash = '/studentLogin'
+                })
             })
+           
         }
     }, [])
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -72,7 +84,7 @@ export const LoginApp = () => {
                     </ShadowCard>
             }
             
-            <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />
+            {resetPwd && <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />}
         </Container>
     )
 }
@@ -152,7 +164,6 @@ const NewPwd = (props) => {
     const onFinish = (fields) => {
         const forgetCode = forgetPwd
         const params = { newPassword: fields.newPassword, forgetCode: forgetCode }
-        console.log(forgetCode,params)
         setNewPwd(params).then(res => {
             openNotificationWithIcon(0, res.message)
             setrePwd(false)

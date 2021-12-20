@@ -134,7 +134,7 @@ export const Detail = (props)=>{
                             {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{applyInfo.firstTeacherApprover}</Descriptions.Item>}
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
                             {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 0 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
-                            {(applyInfo && applyInfo.status === 5 ||applyInfo && applyInfo.status>=7) &&<Descriptions.Item label={''} ><a href={t('admin.firsttrial.giturl')} target="_blank"><span>{t('admin.firsttrial.gitword')}</span></a></Descriptions.Item>}
+                            {(applyInfo && applyInfo.status === 5 ||applyInfo && applyInfo.status>=7 || applyInfo && applyInfo.firstSummerIsApproved ===1) &&<Descriptions.Item label={''} ><a href={t('admin.firsttrial.giturl')} target="_blank"><span>{t('admin.firsttrial.gitword')}</span></a></Descriptions.Item>}
                         </Des>
                         {(applyInfo.status>4 || applyInfo.status === -2) && 
                             <>
