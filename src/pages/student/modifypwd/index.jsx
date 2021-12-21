@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { FormItem } from 'components/form_item';
-import { newPwd, pwdPattern } from 'utils/pattern';
+import { newPwd } from 'utils/pattern';
 import { openNotificationWithIcon } from 'components/com-notify';
 import { logout, resetpwd } from 'auth-provider'
 import styled from '@emotion/styled'

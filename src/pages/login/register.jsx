@@ -4,7 +4,7 @@ import {LongButton} from './index'
 import { useAsync } from 'utils/use-async'
 import {FormItem} from 'components/form_item'
 import { openNotificationWithIcon } from 'components/com-notify'
-import { newPwd, pwdPattern } from 'utils/pattern'
+import { newPwd } from 'utils/pattern'
 import { useTranslation } from 'react-i18next';
 import { register } from 'auth-provider'
 

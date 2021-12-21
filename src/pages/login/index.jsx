@@ -48,7 +48,7 @@ export const LoginApp = () => {
                         setforgetPwd(codeparam)
                     }
                     else {
-                        openNotificationWithIcon(0, res.message)
+                        openNotificationWithIcon(1, res.message)
                         setrePwd(false)
                     }
                 }).catch(err => {

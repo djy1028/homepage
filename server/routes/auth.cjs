@@ -108,6 +108,7 @@ module.exports = {
       url: '/system/user/profile/checkForgetCode',
       method: 'post'
     })
+    console.log(response.data)
     if (response.data.code !== 200) {
       ctx.response.status = response.data.code
     }

@@ -71,7 +71,6 @@ export const Info = () => {
             </Descriptions>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
-
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item name="name_check" label={t('admin.student.detail_title.0')}>
@@ -234,6 +233,7 @@ export const Info = () => {
                         (editingStudent && !editprofile) && <SubmitBtn onClick={() => {
                             setEditprofile(true)
                             edit()
+                            form.setFieldsValue(editingStudent)
                         }} htmlType={''}>
                             {t('admin.student.editbtn')}
                         </SubmitBtn>
