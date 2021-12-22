@@ -81,9 +81,9 @@ export const Detail = (props)=>{
         !applyInfo || isFetching || applyInfoLoading || uploadzipLoading ? <Spin>loading</Spin> :
             <div id="stu_step_detail">
             <NewStep direction={'vertical'} 
-                current={applyInfo && applyInfo.status<=6 && applyInfo.status !== 5?0: 
-                    applyInfo && applyInfo.status<11?1:
-                    applyInfo && applyInfo.status<=15?2:3}>
+                current={applyInfo && applyInfo.status<=6 && applyInfo.status>=-1 && applyInfo.status !== 5?0: 
+                    applyInfo && ((applyInfo.status<11 && applyInfo>6)||(applyInfo.middleApplicationUrl && !applyInfo.endApplicationUrl))?1:
+                        applyInfo && ((applyInfo.status <= 15 && applyInfo.status>=11) || (applyInfo.endApplicationUrl && applyInfo.status<16))?2:3}>
                 <Steps.Step title={<strong>{t('admin.firsttrial.step_title.0')}</strong>} description={
                     <>
                         <Des column={2}>
@@ -113,14 +113,14 @@ export const Detail = (props)=>{
                                                 }} maxCount={1} action={`/uploadZIP/${'studentApplication'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                             </Upload>
-                                           
+                                        
                                         </Space>
                                     </Descriptions.Item>
                                     <Descriptions.Item label={''} >
                                         <Space direction={'vertical'}>
                                             <div style={{ display: 'flex', alignItems: 'center' }}><Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red', marginLeft: '2rem' }}>{t('project.upload_btn_mes')}</div></div>
                                             {applyInfo.firstApproveCommitTime && applyInfo.status === 0 && <p><ExclamationCircleOutlined /> <span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
-                                             
+        
                                             </Space>
                                     </Descriptions.Item>
                                 </>
@@ -133,10 +133,11 @@ export const Detail = (props)=>{
                             {applyInfo.status >= 3 && <Descriptions.Item label={''} ><div id={'mid.first_teacher_approve'} style={{ color: '#52c41a' }}> <CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.first_teacher_approve')}</div></Descriptions.Item>}
                             {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{applyInfo.firstTeacherApprover}</Descriptions.Item>}
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
-                            {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 0 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
+                                {applyInfo.status === 1 && <Descriptions.Item label={''} ><p><span style={{ color: 'red' }}>{t('project.waitsort')}</span></p></Descriptions.Item>}
+                            {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 1 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
                             {(applyInfo && applyInfo.status === 5 ||applyInfo && applyInfo.status>=7 || applyInfo && applyInfo.firstSummerIsApproved ===1) &&<Descriptions.Item label={''} ><a href={t('admin.firsttrial.giturl')} target="_blank"><span>{t('admin.firsttrial.gitword')}</span></a></Descriptions.Item>}
                         </Des>
-                        {(applyInfo.status>4 || applyInfo.status === -2) && 
+                        {(applyInfo.status>4 || applyInfo.status === -2 || applyInfo.status === -1) && 
                             <>
                                 <Divider dashed />
                                 <Des column={2}>
@@ -148,7 +149,9 @@ export const Detail = (props)=>{
                                         </div></Descriptions.Item>}
                                     {applyInfo.firstSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.3')}>{applyInfo.firstSummerApproverTime}</Descriptions.Item>}
                                     {applyInfo.firstSummerComment && <Descriptions.Item label={t('admin.firsttrial.first.4')}>{applyInfo.firstSummerComment}</Descriptions.Item>}
+                                    {applyInfo.status === -1 && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.outReject')}</span></p></Descriptions.Item>}
                                 </Des>
+                                {applyInfo.status === -2 && !applyInfo.endApplicationUrl && !applyInfo.middleApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
                             </>
                         }
                         {applyInfo && applyInfo.status >= 11 &&
@@ -196,14 +199,17 @@ export const Detail = (props)=>{
                         }
                     </>
                 } />
-                <Steps.Step title={<strong>{t('admin.firsttrial.step_title.1')}</strong>} description={
-                    <>{
-                        applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) &&
-                        <Des column={2}>
-                            <Descriptions.Item label={''} >
-                                <Space direction={'vertical'} size={10}>
-                                    <a onClick={() => downloadApplication(4,undefined,token, t('project.rarmoban'))}>
-                                        <DownloadOutlined /> {t('project.mid_model')}
+                    
+                {
+                        (applyInfo.status === -2 && !applyInfo.middleApplicationUrl) || applyInfo.status === -1 ? null :
+                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.1')}</strong>} description={
+                            <>{
+                                applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) &&
+                                <Des column={2}>
+                                    <Descriptions.Item label={''} >
+                                        <Space direction={'vertical'} size={10}>
+                                            <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                                <DownloadOutlined /> {t('project.mid_model')}
                                             </a>
                                             <Upload onRemove={() => deleteuploadzip('mid')} defaultFileList={applyInfo.middleApplicationUrl ? [
                                                 {
@@ -223,117 +229,128 @@ export const Detail = (props)=>{
                                             }} maxCount={1} action={`/uploadReport/${'studentReportMid'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                             </Upload>
-                                </Space>
-                            </Descriptions.Item>
-                            <Descriptions.Item label={''} >
-                                <Space direction={'vertical'}>
-                                    <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
-                                    {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>}
-                                </Space>
+                                        </Space>
+                                    </Descriptions.Item>
+                                    <Descriptions.Item label={''} >
+                                        <Space direction={'vertical'}>
+                                            <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                            {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>}
+                                        </Space>
 
-                            </Descriptions.Item>
-                        </Des>}
-                
-                            {applyInfo && (applyInfo.status >= 8 || applyInfo.status === -2) ?
-                        <>
-                            <Des column={2}>
-                                {applyInfo.middleApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.mid.6')} ><a onClick={() => downloadApplication(applyInfo.id, 'mid', token, applyInfo.middleApplicationUrl.split('/').pop())}>{applyInfo.middleApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
-                                {/* {applyInfo.teacherMiddleApproveExpiredTime && <Descriptions.Item label={t('tutor.midenddate')}>{applyInfo.teacherMiddleApproveExpiredTime}</Descriptions.Item>} */}
-                                {applyInfo.middleTeacherIsApproved && <Descriptions.Item label={''} ><div id={'mid.middleTeacherIsApproved'} style={{ color: applyInfo.middleTeacherIsApproved === 1 ? '#52c41a' : 'red' }}>
-                                    {
-                                        applyInfo.middleTeacherIsApproved === 1 ?
-                                            <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.mid_teacher_approve')}</> :
-                                            <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.mid_teacher_reject')}</>
-                                    }
-                                </div></Descriptions.Item>}
-                                {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{applyInfo.middleTeacherApprover}</Descriptions.Item>}
-                                {applyInfo.middleTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.1')}>{applyInfo.middleTeacherApproverTime}</Descriptions.Item>}
-                                {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
-                            </Des>
-                            <Divider dashed />
-                            <Des column={2}>
-                                {applyInfo.middleSummerApprover && <Descriptions.Item label={t('admin.firsttrial.mid.3')}>{applyInfo.middleSummerApprover}</Descriptions.Item>}
-                                {applyInfo.middleSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.middleSummerIsApproved'} style={{ color: applyInfo.middleSummerIsApproved === 1 ? '#52c41a' : 'red' }}>
-                                    {applyInfo.middleSummerIsApproved === 1 ? <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.mid.7')}</> :
-                                        <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.mid.8')}</>}
-                                </div></Descriptions.Item>}
-                                {applyInfo.middleSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.4')}>{applyInfo.middleSummerApproverTime}</Descriptions.Item>}
-                                {applyInfo.middleSummerComment && <Descriptions.Item label={t('admin.firsttrial.mid.5')}>{applyInfo.middleSummerComment}</Descriptions.Item>}
-                            </Des>
-                        </> : <Des />
-                    }</>
-                } />
-                <Steps.Step title={<strong>{t('admin.firsttrial.step_title.3')}</strong>} description={
-                    <>{
-                        applyInfo && (applyInfo.status === 11 || applyInfo.status ===12) &&
-                        <Des column={2}>
-                            <Descriptions.Item label={''} >
-                                <Space direction={'vertical'} size={10}>
-                                    <a onClick={() => downloadApplication(4,undefined,token, t('project.rarmoban'))}>
-                                        <DownloadOutlined /> {t('project.mid_model')}
-                                    </a>
-                                    <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
-                                    {applyInfo.studentEndCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></p>}
-                                </Space>
-                            </Descriptions.Item>
-                            <Descriptions.Item label={''} >
-                                <Space direction={'vertical'}>
-                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
-                                        {
-                                            uid: '1',
-                                            name: applyInfo?.endApplicationUrl ? applyInfo.endApplicationUrl.split("/").pop() : 'endreport.zip',
-                                            status: 'done',
-                                            url: applyInfo?.endApplicationUrl
-                                        }
-                                        ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())} beforeUpload={file => {
-                                        if (!judge(file.name)) {
-                                            message.error(t('project.zip_upload_mes'));
-                                        }
-                                        if (file.size > 104857600) {
-                                            message.error(t('project.zip_upload_messize'));
-                                        }
-                                        return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
+                                    </Descriptions.Item>
+                                </Des>}
+            
+                                {applyInfo && (applyInfo.status >= 8 || applyInfo.status === -2) ?
+                                    <>
+                                        <Des column={2}>
+                                            {applyInfo.middleApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.mid.6')} ><a onClick={() => downloadApplication(applyInfo.id, 'mid', token, applyInfo.middleApplicationUrl.split('/').pop())}>{applyInfo.middleApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
+                                            {/* {applyInfo.teacherMiddleApproveExpiredTime && <Descriptions.Item label={t('tutor.midenddate')}>{applyInfo.teacherMiddleApproveExpiredTime}</Descriptions.Item>} */}
+                                            {applyInfo.middleTeacherIsApproved && <Descriptions.Item label={''} ><div id={'mid.middleTeacherIsApproved'} style={{ color: applyInfo.middleTeacherIsApproved === 1 ? '#52c41a' : 'red' }}>
+                                                {
+                                                    applyInfo.middleTeacherIsApproved === 1 ?
+                                                        <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.mid_teacher_approve')}</> :
+                                                        <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.mid_teacher_reject')}</>
+                                                }
+                                            </div></Descriptions.Item>}
+                                            {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{applyInfo.middleTeacherApprover}</Descriptions.Item>}
+                                            {applyInfo.middleTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.1')}>{applyInfo.middleTeacherApproverTime}</Descriptions.Item>}
+                                            {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
+                                        </Des>
+                                        <Divider dashed />
+                                        <Des column={2}>
+                                            {applyInfo.middleSummerApprover && <Descriptions.Item label={t('admin.firsttrial.mid.3')}>{applyInfo.middleSummerApprover}</Descriptions.Item>}
+                                            {applyInfo.middleSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.middleSummerIsApproved'} style={{ color: applyInfo.middleSummerIsApproved === 1 ? '#52c41a' : 'red' }}>
+                                                {applyInfo.middleSummerIsApproved === 1 ? <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.mid.7')}</> :
+                                                    <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.mid.8')}</>}
+                                            </div></Descriptions.Item>}
+                                            {applyInfo.middleSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.4')}>{applyInfo.middleSummerApproverTime}</Descriptions.Item>}
+                                            {applyInfo.middleSummerComment && <Descriptions.Item label={t('admin.firsttrial.mid.5')}>{applyInfo.middleSummerComment}</Descriptions.Item>}
+                                          
+                                            </Des>
+                                            {applyInfo.status === -2 && !applyInfo.endApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
+                                    </> : <Des />
+                                }</>
+                        } />
+                }
+                {
+                        (applyInfo.status === -2 && !applyInfo.endApplicationUrl) || applyInfo.status === -1 ? null :
+                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.3')}</strong>} description={
+                            <>{
+                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) &&
+                                <Des column={2}>
+                                    <Descriptions.Item label={''} >
+                                        <Space direction={'vertical'} size={10}>
+                                            <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                                <DownloadOutlined /> {t('project.mid_model')}
+                                            </a>
+                                            <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                            {applyInfo.studentEndCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></p>}
+                                        </Space>
+                                    </Descriptions.Item>
+                                    <Descriptions.Item label={''} >
+                                        <Space direction={'vertical'}>
+                                            <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
+                                                {
+                                                    uid: '1',
+                                                    name: applyInfo?.endApplicationUrl ? applyInfo.endApplicationUrl.split("/").pop() : 'endreport.zip',
+                                                    status: 'done',
+                                                    url: applyInfo?.endApplicationUrl
+                                                }
+                                            ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())} beforeUpload={file => {
+                                                if (!judge(file.name)) {
+                                                    message.error(t('project.zip_upload_mes'));
+                                                }
+                                                if (file.size > 104857600) {
+                                                    message.error(t('project.zip_upload_messize'));
+                                                }
+                                                return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
                                             }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
-                                        <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                    </Upload>
-                                </Space>
+                                                <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
+                                            </Upload>
+                                        </Space>
 
-                            </Descriptions.Item>
-                        </Des>}
-                            {applyInfo && (applyInfo.status > 12 || applyInfo.status === -2) ?
-                    <>
-                        <Des column={2}>
-                            {applyInfo.endApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.end.6')} ><a  onClick={()=>downloadApplication(applyInfo.id,'end',token,applyInfo.endApplicationUrl.split('/').pop())}>{applyInfo.endApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
-                            {/* {applyInfo.teacherEndApproveExpiredTime && <Descriptions.Item label={t('tutor.finalenddate')}>{applyInfo.teacherEndApproveExpiredTime}</Descriptions.Item>} */}
-                            {applyInfo.endTeacherIsApproved &&<Descriptions.Item label={''} ><div id={'mid.endTeacherIsApproved'} style={{color:applyInfo.endTeacherIsApproved ===1?'#52c41a':'red'}}> 
-                                {
-                                    applyInfo.endTeacherIsApproved ===1 ?
-                                        <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.end_teacher_approve')}</>:
-                                        <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.end_teacher_reject')}</>
-                                }
-                                </div></Descriptions.Item>}
-                            {applyInfo.endTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.end.0')}>{applyInfo.endTeacherApprover}</Descriptions.Item>}
-                            {applyInfo.endTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.1')}>{applyInfo.endTeacherApproverTime}</Descriptions.Item>}
-                            {applyInfo.endTeacherComment && <Descriptions.Item label={t('admin.firsttrial.end.2')}>{applyInfo.endTeacherComment}</Descriptions.Item>}
-                        </Des>
-                        {applyInfo.endSummerApprover && <Divider dashed />}
-                        <Des column={2}>
-                            {applyInfo.endSummerApprover && <Descriptions.Item label={t('admin.firsttrial.end.3')}>{applyInfo.endSummerApprover}</Descriptions.Item>}
-                            {applyInfo.endSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.endSummerIsApproved'} style={{color:applyInfo.endSummerIsApproved ===1?'#52c41a':'red'}}>
-                                {applyInfo.endSummerIsApproved ===1? <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.end.7')}</>:
-                                <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.end.8')}</>}
-                                </div></Descriptions.Item>}
-                            {applyInfo.endSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.4')}>{applyInfo.endSummerApproverTime}</Descriptions.Item>}
-                            {applyInfo.endSummerComment && <Descriptions.Item label={t('admin.firsttrial.end.5')}>{applyInfo.endSummerComment}</Descriptions.Item>}
-                        </Des>
-                    </>:<Des />}
-                    </>
-                }/>
-                <Steps.Step title={<strong>{t('admin.firsttrial.step_title.4')}</strong>} description={
-                    <Des column={1}>
-                        {applyInfo && applyInfo.status ===16 && <Descriptions.Item label={''}>{t('admin.firsttrial.bonus')}</Descriptions.Item>}
-                    </Des>
-                }/>
+                                    </Descriptions.Item>
+                                </Des>}
+                                {applyInfo && (applyInfo.status > 12 || applyInfo.status === -2) ?
+                                    <>
+                                        <Des column={2}>
+                                            {applyInfo.endApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.end.6')} ><a onClick={() => downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())}>{applyInfo.endApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
+                                            {applyInfo.endTeacherIsApproved && <Descriptions.Item label={''} ><div id={'mid.endTeacherIsApproved'} style={{ color: applyInfo.endTeacherIsApproved === 1 ? '#52c41a' : 'red' }}>
+                                                {
+                                                    applyInfo.endTeacherIsApproved === 1 ?
+                                                        <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.end_teacher_approve')}</> :
+                                                        <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.end_teacher_reject')}</>
+                                                }
+                                            </div></Descriptions.Item>}
+                                            {applyInfo.endTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.end.0')}>{applyInfo.endTeacherApprover}</Descriptions.Item>}
+                                            {applyInfo.endTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.1')}>{applyInfo.endTeacherApproverTime}</Descriptions.Item>}
+                                            {applyInfo.endTeacherComment && <Descriptions.Item label={t('admin.firsttrial.end.2')}>{applyInfo.endTeacherComment}</Descriptions.Item>}
+                                           
+                                        </Des>
+                                        {applyInfo.endSummerApprover && <Divider dashed />}
+                                        <Des column={2}>
+                                            {applyInfo.endSummerApprover && <Descriptions.Item label={t('admin.firsttrial.end.3')}>{applyInfo.endSummerApprover}</Descriptions.Item>}
+                                            {applyInfo.endSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.endSummerIsApproved'} style={{ color: applyInfo.endSummerIsApproved === 1 ? '#52c41a' : 'red' }}>
+                                                {applyInfo.endSummerIsApproved === 1 ? <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.end.7')}</> :
+                                                    <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.end.8')}</>}
+                                            </div></Descriptions.Item>}
+                                            {applyInfo.endSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.4')}>{applyInfo.endSummerApproverTime}</Descriptions.Item>}
+                                            {applyInfo.endSummerComment && <Descriptions.Item label={t('admin.firsttrial.end.5')}>{applyInfo.endSummerComment}</Descriptions.Item>}
+                                           
+                                            </Des>
+                                            {applyInfo.status == -2 && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
+                                    </> : <Des />}
+                            </>
+                        } />
+                }
+                {
+                        applyInfo.status === -2 || applyInfo.status === -1 ? null :
+                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.4')}</strong>} description={
+                            <Des column={1}>
+                                {applyInfo && applyInfo.status === 16 && <Descriptions.Item label={''}>{t('admin.firsttrial.bonus')}</Descriptions.Item>}
+                            </Des>
+                        } />
+                }
             </NewStep>
             <ComModal destroyOnClose={true} visible={projectModal} close={closeBank} title={t('tutor.editbank_modal')} width={'100rem'} footer={null} children={<Bankinfo close={closeBank} studentId={applyInfo.studentId} />} />
         </div>        

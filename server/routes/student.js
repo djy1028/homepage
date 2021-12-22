@@ -11,6 +11,7 @@ module.exports = {
             url: `/system/notice/detail/student`,
             headers: { Authorization: ctx.request.header.authorization }
         })
+        console.log(response.data)
         ctx.body = JSON.stringify(response.data)
     },
     detail: async (ctx, next) => {
@@ -476,9 +477,7 @@ module.exports = {
         ctx.request.body.isAsc = isAsc ? isAsc : 'desc'
         ctx.request.body.orderByColumn = orderByColumn ? orderByColumn : 'createTime'
         const response = await request({
-            data: Qs.stringify({ ...ctx.request.body }),
-            url: '/system/activity/list',
-            method: 'post',
+            url: '/system/studentProgram/my-activity ',
             headers: { Authorization: ctx.request.header.authorization }
         })
         response.data.code === 200 ? response.data.rows = response.data.rows.map(item => ({ ...item, ...{ key: item.activityId } })) : ctx.response.status = response.data.code
