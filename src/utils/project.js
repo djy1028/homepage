@@ -8,7 +8,7 @@ export const useStuPrograms = (searchparam) => {
     const client = useHttp()
     const cachekey = useRouteType()
     const params = { ...searchparam }
-    return useQuery([cachekey, searchparam], () => client('/studentProgram/my-application', { data: params, method: 'post' }), { enabled: Boolean(searchparam.activityId) })
+    return useQuery([cachekey, searchparam], () => client('/studentProgram/my-application', { data: params, method: 'post' }))
 }
 
 export const useSetPriority = (searchparam) => {
@@ -164,12 +164,6 @@ export const useActivitys = (searchparam) => {
         [cachekey, searchparam],
         () => client(url, { data: params, method: 'post' })
     )
-}
-
-export const useCheckTime = (activeId) => {
-    const client = useHttp()
-    const cachekey = useRouteType()
-    return useQuery([cachekey, stuactiveId], () => client('/teacherProgram/canSetPriority', { data: { activityId: stuactiveId }, method: 'post' }), { enabled: Boolean(stuactiveId) })
 }
 
 

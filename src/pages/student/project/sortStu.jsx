@@ -52,10 +52,7 @@ export const SortStu = (props) => {
     useEffect(() => {
         setReset(false)
     }, [])
-
-    console.log(showBtn)
     return isLoading ? <Spin>loading...</Spin> :
-        
             (list.rows && list.rows.length > 0) ?
             <Contain>
                 <Title level={3}>{t('project.sortstutitle')}</Title>
