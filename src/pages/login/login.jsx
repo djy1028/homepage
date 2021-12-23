@@ -117,6 +117,7 @@ export const Pwdback = (props)=>{
     const onFinish = (fields)=>{
         backpwd(fields).then(res=>{
             openNotificationWithIcon(0,t('login.findback_mes'))
+            close()
         }).catch(err=>openNotificationWithIcon(1,err.message))
     }
     return  <Form onFinish={onFinish}>
@@ -125,7 +126,7 @@ export const Pwdback = (props)=>{
                 </FormItem>
                 <Form.Item  wrapperCol={{ offset: 9}}>
                     <Button type="primary" htmlType="submit">
-                        {t('admin.student.savebtn')}
+                        {t('project.upload_btn')}
                     </Button>
                     <Button  htmlType="button" onClick={close} style={{margin:'0 2rem'}}>
                         {t('admin.student.cancelbtn')}

@@ -657,7 +657,11 @@
         "noprogramapply_mes":"请申请所属该活动项目后，再进行项目排序并提交审核",
         "waitsort":"待排序",
         "expiredReject":"未通过，时间已截止",
-        "outReject":"已落选"
+        "outReject":"已落选",
+        "midtutor_pubmes": [
+            "中期成果已审核完成，等待组委会审核，预计",
+            "公布结果"
+        ]
     },
     "tutor": {
         "noapply": "待上传项目申请材料",

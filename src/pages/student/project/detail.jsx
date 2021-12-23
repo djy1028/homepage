@@ -244,6 +244,7 @@ export const Detail = (props)=>{
                                     <>
                                         <Des column={2}>
                                             {applyInfo.middleApplicationUrl && <Descriptions.Item label={t('admin.firsttrial.mid.6')} ><a onClick={() => downloadApplication(applyInfo.id, 'mid', token, applyInfo.middleApplicationUrl.split('/').pop())}>{applyInfo.middleApplicationUrl.split('/').pop()}</a></Descriptions.Item>}
+                                            
                                             {/* {applyInfo.teacherMiddleApproveExpiredTime && <Descriptions.Item label={t('tutor.midenddate')}>{applyInfo.teacherMiddleApproveExpiredTime}</Descriptions.Item>} */}
                                             {applyInfo.middleTeacherIsApproved && <Descriptions.Item label={''} ><div id={'mid.middleTeacherIsApproved'} style={{ color: applyInfo.middleTeacherIsApproved === 1 ? '#52c41a' : 'red' }}>
                                                 {
@@ -255,7 +256,8 @@ export const Detail = (props)=>{
                                             {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{applyInfo.middleTeacherApprover}</Descriptions.Item>}
                                             {applyInfo.middleTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.1')}>{applyInfo.middleTeacherApproverTime}</Descriptions.Item>}
                                             {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
-                                        </Des>
+                                            {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 9) && <Descriptions.Item label={''}><p style={{ color: '#a7a5a5' }}><InfoCircleOutlined /><span>{t('project.midtutor_pubmes.0') + applyInfo.summerMiddleApprovePublicTime + t('project.midtutor_pubmes.1')}</span></p></Descriptions.Item>}
+                                            </Des>
                                         <Divider dashed />
                                         <Des column={2}>
                                             {applyInfo.middleSummerApprover && <Descriptions.Item label={t('admin.firsttrial.mid.3')}>{applyInfo.middleSummerApprover}</Descriptions.Item>}
