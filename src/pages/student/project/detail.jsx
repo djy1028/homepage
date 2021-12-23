@@ -81,9 +81,9 @@ export const Detail = (props)=>{
         !applyInfo || isFetching || applyInfoLoading || uploadzipLoading ? <Spin>loading</Spin> :
             <div id="stu_step_detail">
             <NewStep direction={'vertical'} 
-                current={applyInfo && applyInfo.status<=6 && applyInfo.status>=-1 && applyInfo.status !== 5?0: 
-                    applyInfo && ((applyInfo.status<11 && applyInfo>6)||(applyInfo.middleApplicationUrl && !applyInfo.endApplicationUrl))?1:
-                        applyInfo && ((applyInfo.status <= 15 && applyInfo.status>=11) || (applyInfo.endApplicationUrl && applyInfo.status<16))?2:3}>
+                current={applyInfo && applyInfo.status<=6 && applyInfo.status>=-1?0: 
+                    applyInfo && ((applyInfo.status<11 && applyInfo.status>6)||(applyInfo.middleApplicationUrl && !applyInfo.endApplicationUrl && applyInfo.status === -2))?1:
+                        applyInfo && ((applyInfo.status <= 15 && applyInfo.status>=11) || (applyInfo.endApplicationUrl && applyInfo.status === -2))?2:3}>
                 <Steps.Step title={<strong>{t('admin.firsttrial.step_title.0')}</strong>} description={
                     <>
                         <Des column={2}>
