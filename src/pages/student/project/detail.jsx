@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react'
 import { Button, Descriptions, Divider, message, Modal, Space, Spin, Steps, Upload } from 'antd';
-import { CheckCircleTwoTone, CloseCircleTwoTone, CloudUploadOutlined, DownloadOutlined, ExclamationCircleOutlined}  from '@ant-design/icons'
+import { CheckCircleTwoTone, CloseCircleTwoTone, CloudUploadOutlined, DownloadOutlined, ExclamationCircleOutlined, InfoCircleOutlined }  from '@ant-design/icons'
 import { checkSetPriority, downloadApplication, downloadTemplate, getToken } from 'auth-provider';
 import { openNotificationWithIcon } from 'components/com-notify';
 import { useTranslation } from 'react-i18next';
