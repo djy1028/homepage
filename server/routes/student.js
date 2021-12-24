@@ -11,7 +11,6 @@ module.exports = {
             url: `/system/notice/detail/student`,
             headers: { Authorization: ctx.request.header.authorization }
         })
-        console.log(response.data)
         ctx.body = JSON.stringify(response.data)
     },
     detail: async (ctx, next) => {
@@ -123,6 +122,8 @@ module.exports = {
         const { pageNum, pageSize } = ctx.request.body
         ctx.request.body.pageNum = pageNum ? pageNum : '1'
         ctx.request.body.pageSize = pageSize ? pageSize : '10'
+        ctx.request.body.isAsc = 'desc'
+        ctx.request.body.orderByColumn = 'status'
         if (ctx.request.body.pageSize === '50001') {
             ctx.request.body.pageNum = ''
             ctx.request.body.pageSize = '',
@@ -326,7 +327,6 @@ module.exports = {
         }
         const dest = path.join(__dirname, '../upload', name) // 目标目录，没有没有这个文件夹会自动创建
         await fse.move(filePath, dest) // 移动文件
-        console.log(ctx.params.report)
         ctx.params.report === 'studentReportEnd' ? ctx.cookies.set('ENDNAME', encodeURI(name)) : ctx.cookies.set('MIDNAME', encodeURI(name))
         ctx.body = {
             name, // 文件名称

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Spin } from 'antd'
 import 'braft-editor/dist/index.css'
 
-export const Bulletin = () => {
+const Bulletin = () => {
     const { i18n } = useTranslation()
     const { data, isLoading } = useStudents()
     const [preview, setPreview] = useState(BraftEditor.createEditorState(''))
@@ -25,3 +25,5 @@ export const Bulletin = () => {
     </Main>
     )
 }
+
+export default Bulletin

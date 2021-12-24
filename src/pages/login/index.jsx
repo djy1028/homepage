@@ -14,7 +14,7 @@ import { ComModal } from 'components/com-modal'
 import { FormItem } from 'components/form_item'
 import { newPwd } from 'utils/pattern'
 import { useDispatch } from 'react-redux'
-export const LoginApp = () => {
+const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
     const dispatch = useDispatch()
@@ -206,3 +206,5 @@ const NewPwd = (props) => {
 
             </Form>
 }
+
+export default LoginApp

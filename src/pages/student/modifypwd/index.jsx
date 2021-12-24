@@ -15,7 +15,7 @@ import { submitLogout } from 'store/redux/userRedux'
 
 
 
-export const Modifypwd = () => {
+const Modifypwd = () => {
     const [form] = useForm()
     const { t} = useTranslation()
     const [resetloading, setloading] = useState(false)
@@ -110,3 +110,5 @@ const CancelBtn = styled(Button)`
         height: auto;
     }
 `
+
+export default Modifypwd

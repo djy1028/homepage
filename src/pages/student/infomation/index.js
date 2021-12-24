@@ -10,7 +10,7 @@ import styled from '@emotion/styled'
 import { useState } from 'react';
 import { ComModal } from 'components/com-modal';
 
-export const Info = () => {
+const Info = () => {
     const [form] = useForm()
     const { t, i18n } = useTranslation()
     const [editprofile, setEditprofile] = useState(false)
@@ -276,4 +276,6 @@ const CancelBtn = styled(Button)`
         height: auto;
     }
 `
+
+export default Info
 

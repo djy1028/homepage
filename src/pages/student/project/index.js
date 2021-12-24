@@ -21,7 +21,7 @@ import { checkSetPriority } from 'auth-provider'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-export const Project = () => {
+const Project = () => {
     const { t } = useTranslation()
     const token = useSelector(state => state.user)?.token
     const [searchparam, setParam] = useStuProSearchParms()
@@ -160,5 +160,7 @@ const Acheck = styled.span`
     }
 
 `
+
+export default Project
 
 

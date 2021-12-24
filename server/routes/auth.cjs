@@ -13,7 +13,6 @@ const getInfo = async (token) => {
 
 module.exports = {
   login: async (ctx, next) => {
-    console.log(ctx.request.header)
     const response = await request({
       data: Qs.stringify({ ...ctx.request.body, ...{ uuid: ctx.cookies.get('uid') } }),
       url: '/login',
@@ -45,7 +44,6 @@ module.exports = {
     }
   },
   verifyPic: async (ctx, next) => {
-    console.log(ctx.request.header)
     const response = await request({
       url: '/captcha/captchaImage'
     })
@@ -108,7 +106,6 @@ module.exports = {
       url: '/system/user/profile/checkForgetCode',
       method: 'post'
     })
-    console.log(response.data)
     if (response.data.code !== 200) {
       ctx.response.status = response.data.code
     }
