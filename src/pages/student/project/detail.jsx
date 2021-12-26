@@ -130,7 +130,7 @@ export const Detail = (props)=>{
                                     </a>
                                 </Descriptions.Item>}
                             
-                            {applyInfo.status >= 3 && <Descriptions.Item label={''} ><div id={'mid.first_teacher_approve'} style={{ color: '#52c41a' }}> <CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.first_teacher_approve')}</div></Descriptions.Item>}
+                            {(applyInfo.status >= 3 || applyInfo.isMatched === 1) && <Descriptions.Item label={''} ><div id={'mid.first_teacher_approve'} style={{ color: '#52c41a' }}> <CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.first_teacher_approve')}</div></Descriptions.Item>}
                             {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{applyInfo.firstTeacherApprover}</Descriptions.Item>}
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
                                 {applyInfo.status === 1 && <Descriptions.Item label={''} ><p><span style={{ color: 'red' }}>{t('project.waitsort')}</span></p></Descriptions.Item>}
