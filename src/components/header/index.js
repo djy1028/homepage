@@ -283,10 +283,11 @@ class Header extends React.Component {
                                 <div
                                     className="osscListLine"
                                     style={{
+                                        marginLeft: '12px',
                                         width:
                                             this.props.chiFlag === 'chi'
                                                 ? 'calc(100% + 4rem)'
-                                                : 'calc(100% + 8rem)',
+                                                : 'calc(100%)',
                                     }}
                                 >
                                     {showdata.logout.content.map((sitem, sindex) => {

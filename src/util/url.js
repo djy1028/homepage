@@ -34,12 +34,15 @@ var gohash = (hash) => {
 
 const linkDataMap = {
     homepage: '首页',
+    org: '项目公示',
     howitworks: '活动规划',
     organisations: '开源社区',
     summitmeeting: '2021峰会',
     help: '帮助',
+    data: '公示',
     liveshow: '大咖说开源',
-    apply: '如何加入'
+    apply: '如何加入',
+    studentLogin: '学生登录'
 }
 
 

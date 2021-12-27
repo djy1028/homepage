@@ -7,6 +7,7 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import 'moment/locale/zh-cn';
 import moment from 'moment'
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from 'utils';
 // import { Bulletin } from './bulletin';
 // import { Info } from './infomation';
 // import { Project } from './project';
@@ -18,9 +19,9 @@ const Project = lazy(() => import('./project'))
 const Modifypwd = lazy(() => import('./modifypwd/index'))
 
 const Student = () => {
-    const { i18n } = useTranslation()
+    const { t, i18n } = useTranslation()
     moment.locale(i18n.language === 'en' ? 'en-us' : 'zh-cn');
-
+    useDocumentTitle(t('student.side_head_title'))
     return <ConfigProvider locale={i18n.language === 'en' ? enUS : zhCN} >
         <LayOut >
             <Suspense fallback={<Spin />}>

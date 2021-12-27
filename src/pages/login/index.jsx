@@ -3,7 +3,6 @@ import { LoginScreen } from './login'
 import { RegisterScreen } from './register'
 import styled from '@emotion/styled'
 import { Button, Card, Result, Form, Input } from 'antd'
-import { useDocumentTitle } from 'utils'
 import { ErrorBox } from 'components/lib'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -22,8 +21,7 @@ const LoginApp = () => {
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
     const [forgetPwd, setforgetPwd] = useState('')
     const [resetPwd,setrePwd] = useState(false)
-    useDocumentTitle(t('login.login_title'))
-
+    console.log(checkRegis)
     useEffect(() => {
         if (checkRegis) {
             const linkparam = window.location.hash.split('=')[1]
