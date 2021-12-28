@@ -116,7 +116,7 @@ export const Checkpro = () =>{
                             
                                 <BraftEditor 
                                 language={Lang ===2?'en':'zh'}
-                                contentStyle={{width:'100%',height:'auto',maxHeight:'50rem'}}
+                                contentStyle={{ width: '100%', height: 'auto',overflow:'auto' }}
                                 controls={[]} value = {BraftEditor.createEditorState(Lang !== 0?proInfo.programDesc:typeof(proInfo.programDescmix) === 'string' && proInfo.programDesc.split('【')[1]? proInfo.programDesc.split('【')[1].substr(0,proInfo.programDesc.split('【')[1].length-1):'')}  
                                 readOnly/>
                         </Descriptions.Item>
@@ -126,7 +126,7 @@ export const Checkpro = () =>{
                             
                                 <BraftEditor
                                 language={'en'}
-                                contentStyle={{width:'100%',height:'auto',maxHeight:'50rem'}}
+                                contentStyle={{ width: '100%', height: 'auto' }}
                                 controls={[]} value = {BraftEditor.createEditorState(proInfo.programDesc && typeof(proInfo.programDescmix) === 'string'?proInfo.programDesc.split('【')[0]:'')}  readOnly/>
                             
                         </Descriptions.Item>

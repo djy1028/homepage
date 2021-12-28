@@ -48,14 +48,17 @@ export const IRouter = () => {
         /* 页面刷新后状态保持 */
         const res = await bootstrapUser(dispatch)
         if (res && res.token) {
+            if (window.location.hash.includes('studentLogin?link') || window.location.hash.includes('studentLogin?forgetCode')) {
+                window.location.hash = '/student/bulletin'
+            }
             dispatch(loginSuccess(res))
-            window.location.hash = '/student/bulletin'
+
         }
 
         else {
             logout().then(() => {
                 if (!window.location.hash.includes('studentLogin?link') && !window.location.hash.includes('studentLogin?forgetCode')) {
-                    window.location.hash = '/studentLogin';
+                    // window.location.hash = '/studentLogin';
                     dispatch(submitLogout())
                     dispatch({
                         type: 'setPageFlag',
