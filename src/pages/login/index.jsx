@@ -21,7 +21,6 @@ const LoginApp = () => {
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
     const [forgetPwd, setforgetPwd] = useState('')
     const [resetPwd,setrePwd] = useState(false)
-    console.log(checkRegis)
     useEffect(() => {
         if (checkRegis) {
             const linkparam = window.location.hash.split('=')[1]

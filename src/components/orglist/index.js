@@ -15,7 +15,7 @@ import './index.less';
 import data from '../../data/org.json';
 import { connect } from 'react-redux';
 import OrgTip from '../../components/OrgTip/index.js';
-import {getSplit} from "../../util/url.js";
+import { getSplit } from "../../util/url.js";
 import { Input } from 'antd';
 import orglist from "../../data/orglist2021.json";
 import store from 'store';
@@ -23,74 +23,73 @@ const { Search } = Input;
 
 
 
-class Orglist extends React.Component{
-    constructor(props){
-       super(props)
-       this.state ={
-           data,
-           orgflag:"",
-           showorglist:orglist,
-           
-       }
+class Orglist extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            data,
+            orgflag: "",
+            showorglist: orglist,
 
-       this.closeModall  = this.closeModall.bind(this);    
+        }
+
+        this.closeModall = this.closeModall.bind(this);
     }
 
 
 
-    openOrgModal(anchor){
+    openOrgModal(anchor) {
         let flag = anchor;
-        if(anchor === this.state.orgflag){
-            flag=""
+        if (anchor === this.state.orgflag) {
+            flag = ""
         }
         this.setState({
-            orgflag:flag
+            orgflag: flag
         })
     }
 
-    closeModall(){
-        
+    closeModall() {
+
         this.setState({
-            orgflag:""
+            orgflag: ""
         })
     }
 
-    filterItem(value){
-       
-        if(value){
+    filterItem(value) {
+
+        if (value) {
             var showdataTemp = []
             value = value.toLocaleLowerCase()
-            orglist.map((item)=>{
-                
-                if(item.title.toLocaleLowerCase().includes(value)||
-                item.description.toLocaleLowerCase().includes(value)){
+            orglist.map((item) => {
+
+                if (item.title.toLocaleLowerCase().includes(value) ||
+                    item.description.toLocaleLowerCase().includes(value)) {
                     showdataTemp.push(item)
                 }
                 return 0;
             })
-            
+
             this.setState({
-                showorglist:showdataTemp
-                
+                showorglist: showdataTemp
+
             })
-        }else{
-           
+        } else {
+
             this.setState({
-                showorglist:orglist          
+                showorglist: orglist
             })
 
-        }            
+        }
         return 0;
     }
     render() {
-        console.log(store.getState())
         let showdata = this.state.data[this.props.chiFlag]
         let showorglist = this.state.showorglist
         const lenorg = showorglist.length
-        return(         
-            <div className="Orglist  content1200">  
-                <div className="OrglistSearch">  
-                 <Search                      
+        return (
+            <div className="Orglist  content1200">
+                <div className="OrglistSearch">
+                    <Search
                         placeholder={showdata.searchPlaceholder}
                         allowClear
                         size="large"
@@ -99,30 +98,30 @@ class Orglist extends React.Component{
                 <div className="OrglistBanner">
                     <span className="OrglistBannerTotal">{showdata.total[0]}{lenorg}{showdata.total[1]}</span>
                     <span className="italic">{showdata.rank}</span>
-                    
+
                 </div>
                 <div className="OrgListWrapper">
-                    {                     
-                        showorglist.map((item,index)=>{
+                    {
+                        showorglist.map((item, index) => {
                             //const iconUrl = require('./../../img/organisation/'+item.img).default;
-                            return(
+                            return (
                                 <div className="OrgListItem" key={index} >
-                                    <div className="OrgListItemModal" onClick={()=>{this.openOrgModal(item.anchor)}}>
-                                        <div className="OrgListItemModalImage" 
-                                        style={{backgroundImage:`url(${process.env.PUBLIC_URL}/img/organisation/${item.img})`}}></div>
+                                    <div className="OrgListItemModal" onClick={() => { this.openOrgModal(item.anchor) }}>
+                                        <div className="OrgListItemModalImage"
+                                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/organisation/${item.img})` }}></div>
                                         <div className="OrgListItemModalTitle">
                                             {
-                                                getSplit(item.title,this.props.chiFlag)
+                                                getSplit(item.title, this.props.chiFlag)
                                             }
                                         </div>
                                         <div className="OrgListItemModalDesc">
-                                            {  getSplit(item.description,this.props.chiFlag)}
+                                            {getSplit(item.description, this.props.chiFlag)}
                                         </div>
                                     </div>
-                                    <OrgTip 
-                                        item={item} 
-                                        showdata={showdata} 
-                                        orgflag={this.state.orgflag} 
+                                    <OrgTip
+                                        item={item}
+                                        showdata={showdata}
+                                        orgflag={this.state.orgflag}
                                         closeModal={this.closeModall}
                                     />
 
@@ -135,18 +134,18 @@ class Orglist extends React.Component{
 
 
             </div>
-         )
-       
-        
-        
+        )
+
+
+
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {
-        chiFlag:state.homepage.chiFlag
+        chiFlag: state.homepage.chiFlag
     }
- }
+}
 
 
 

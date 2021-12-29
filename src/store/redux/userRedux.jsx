@@ -66,7 +66,6 @@ export function register({user,pwd,repeatpwd,type}){
     }
     return async dispatch=>{
         let res = await axios.post('/user/register',{user,pwd,type})
-        console.log(res);
         if(res.status == 200&&res.data.code == 0){
             //传递后端返回信息
             dispatch(authSuccess({user,pwd,type}))
