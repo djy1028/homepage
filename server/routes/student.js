@@ -226,8 +226,7 @@ module.exports = {
         if (response.data.code !== 200) {
             ctx.response.status = response.data.code
         }
-
-
+        response.data.suStudentProgram.gitUrl = response.data.gitUrl
         response.data.code === 200 ? ctx.body = JSON.stringify({ ...response.data.activity, ...response.data.suStudentProgram }) : ctx.body = JSON.stringify(response.data)
     },
     downloadApplication: async (ctx, next) => {
