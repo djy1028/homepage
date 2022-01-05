@@ -1,5 +1,4 @@
 import studatas from '../../data/stunum.json'
-import i18n from "i18next";
 const initState = {
     chiFlag:"chi", // chi|en
     orgdetail:{},  // 显示orgDetail数据

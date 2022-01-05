@@ -14,7 +14,7 @@ import React from 'react'
 import './index.less';
 import { connect } from 'react-redux';
 import data from "./../../data/howitworks.json"
-
+import Wrapper from 'wrapper';
 class Howitworks extends React.Component {
     constructor(props) {
         super(props)
@@ -27,88 +27,91 @@ class Howitworks extends React.Component {
         let showdata = this.state.data[this.props.chiFlag]
 
         return (
-            <div className="Howitworks">
-                <div className="HowitworksBanner">
-                    <div className="HowitworksBannerContent content1200">
-                        <div className="HowitworksBannerTitle">{showdata.title}</div>
-                        <div className="HowitworksList" >
-                            {
-                                showdata.banner.map((item, index) => {
-                                    return (
-                                        <div className="HowitworksListItem" key={index}>
-                                            <div className="HowitworksListItemTitle">{item.title}</div>
-                                            <div className="HowitworksListItemContent isPc">{item.text[0]}<br></br>{item.text[1]}</div>
-                                            <div className="HowitworksListItemContent isMobile">{item.text[0]}{item.text[1]}</div>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-
-                    </div>
-
-                </div>
-                <div className="HowitworksContent">
-                    <div className="HowitworksContentWrapper content1200">
-                        {
-                            showdata.ls.map((item, index) => {
-                                return (
-                                    <div className="HowitworksContentItem" key={index}>
-                                        <div className="HowitworksContentTitle">{item.title}</div>
-                                        <div className="HowitworksContentContent">{item.text}</div>
-                                    </div>
-                                )
-                            })
-                        }
-
-                    </div>
-
-
-                </div>
-                <div className="indexOne">
-                    <div className="contentFull">
-                        <div className="indexOneTitle">
-                            <span className="indexOneTitleText">{showdata.ttile}</span>
-                            <span className="indexOneTitletip">{showdata.tip}</span>
-                        </div>
-                        <div className="indexOneList">
-                            {
-                                showdata.time.map((item, index) => {
-                                    return (
-                                        <div className={["indexOneListLine", index % 2 === 0 ? 'left' : 'right'].join(" ")} key={index}>
-                                            <div className="indexOneListItem" >
-                                                <div className="indexOneListItemTitle">{item.title}</div>
-                                                <div className="indexOneListItemTime">{item.time}</div>
+            <Wrapper>
+                <div className="Howitworks">
+                    <div className="HowitworksBanner">
+                        <div className="HowitworksBannerContent content1200">
+                            <div className="HowitworksBannerTitle">{showdata.title}</div>
+                            <div className="HowitworksList" >
+                                {
+                                    showdata.banner.map((item, index) => {
+                                        return (
+                                            <div className="HowitworksListItem" key={index}>
+                                                <div className="HowitworksListItemTitle">{item.title}</div>
+                                                <div className="HowitworksListItemContent isPc">{item.text[0]}<br></br>{item.text[1]}</div>
+                                                <div className="HowitworksListItemContent isMobile">{item.text[0]}{item.text[1]}</div>
                                             </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                                        )
+                                    })
+                                }
+                            </div>
 
                         </div>
+
                     </div>
-
-                    <div className="content1200">
-                        <div className="indexCommittee">
-                            <div className="HowitworksTimeTitle opensource">指导委员会委员</div>
-                            <div className="HowitworksCommitteePinyin">*按委员姓名拼音排序</div>
-                        </div>
-                        <div className="HowitworksCommittee">
+                    <div className="HowitworksContent">
+                        <div className="HowitworksContentWrapper content1200">
                             {
-                                showdata.committee.map((item, index) => {
+                                showdata.ls.map((item, index) => {
                                     return (
-                                        <div className="HowitworksCommitteeItem" key={index}>
-                                            <div className="HowitworksCommitteeItemUniversity">{item.university}</div>
-                                            <div className="HowitworksCommitteeItemName">{item.name}</div>
+                                        <div className="HowitworksContentItem" key={index}>
+                                            <div className="HowitworksContentTitle">{item.title}</div>
+                                            <div className="HowitworksContentContent">{item.text}</div>
                                         </div>
                                     )
                                 })
                             }
+
                         </div>
 
+
+                    </div>
+                    <div className="indexOne">
+                        <div className="contentFull">
+                            <div className="indexOneTitle">
+                                <span className="indexOneTitleText">{showdata.ttile}</span>
+                                <span className="indexOneTitletip">{showdata.tip}</span>
+                            </div>
+                            <div className="indexOneList">
+                                {
+                                    showdata.time.map((item, index) => {
+                                        return (
+                                            <div className={["indexOneListLine", index % 2 === 0 ? 'left' : 'right'].join(" ")} key={index}>
+                                                <div className="indexOneListItem" >
+                                                    <div className="indexOneListItemTitle">{item.title}</div>
+                                                    <div className="indexOneListItemTime">{item.time}</div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+
+                            </div>
+                        </div>
+
+                        <div className="content1200">
+                            <div className="indexCommittee">
+                                <div className="HowitworksTimeTitle opensource">指导委员会委员</div>
+                                <div className="HowitworksCommitteePinyin">*按委员姓名拼音排序</div>
+                            </div>
+                            <div className="HowitworksCommittee">
+                                {
+                                    showdata.committee.map((item, index) => {
+                                        return (
+                                            <div className="HowitworksCommitteeItem" key={index}>
+                                                <div className="HowitworksCommitteeItemUniversity">{item.university}</div>
+                                                <div className="HowitworksCommitteeItemName">{item.name}</div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Wrapper>
+
         )
 
 

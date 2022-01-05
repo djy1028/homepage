@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LoginScreen } from './login'
 import { RegisterScreen } from './register'
 import styled from '@emotion/styled'
-import { Button, Card, Result, Form, Input } from 'antd'
-import { ErrorBox } from 'components/lib'
+import { Button, Card, Result, Form, Input,Radio } from 'antd'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
@@ -13,14 +12,21 @@ import { ComModal } from 'components/com-modal'
 import { FormItem } from 'components/form_item'
 import { newPwd } from 'utils/pattern'
 import { useDispatch } from 'react-redux'
+import i18n from 'i18next'
+import { NavLink } from 'react-router-dom'
 const LoginApp = () => {
     const { t } = useTranslation()
     const [isRegister, setIsRegister] = useState(true)
     const dispatch = useDispatch()
-    const [error, setError] = useState(null)
     const [checkRegis, setCheckRegis] = useState(window.location.hash.includes('studentLogin?link'))
     const [forgetPwd, setforgetPwd] = useState('')
-    const [resetPwd,setrePwd] = useState(false)
+    const [resetPwd, setrePwd] = useState(false)
+    const handleChange = (type) => {
+        i18n.changeLanguage(type)
+        dispatch({
+            type: type === 'zh' ? 'chiFlag_chi' : 'chiFlag_en',
+        })
+    }
     useEffect(() => {
         if (checkRegis) {
             const linkparam = window.location.hash.split('=')[1]
@@ -60,28 +66,37 @@ const LoginApp = () => {
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     return (
         <Container>
-            <Header>
-                <Imgtitle src={process.env.PUBLIC_URL + "/title1.png"} />
-                <Imgtitle src={process.env.PUBLIC_URL + "/title2.png"} />
-            </Header>
-            <Background src={process.env.PUBLIC_URL + "/home.png"} />
+            <Background src={process.env.PUBLIC_URL + "/img/login.png"} />
+            <ContanerRight>
+                <RightHeader>
+                    <img src={process.env.PUBLIC_URL + "/logoori.png"} />
+                    <h1>{t('login.title')}</h1>
+                </RightHeader>
             {
                 checkRegis ? <Result style={{ zIndex: 10 }} icon={<span style={{ fontSize: '3rem', color: '#fff' }}><Spin style={{ color: '#fff' }} indicator={antIcon} />  {t('login.checkingaccount')}</span>} /> :
                     <ShadowCard>
-                            <ErrorBox error={error} />
-                            {
-                                isRegister ? <LoginScreen onError={setError} /> : <RegisterScreen setRegister={setIsRegister} onError={setError} />
-                            }
-                            <More>
-                                <A type={"link"} onClick={() => setIsRegister(!isRegister)}>
-                                    {isRegister ? t('login.noaccount') : t('login.existaccount')}</A>
-                                <A href="https://summer.iscas.ac.cn/help/" target="_blank" rel="noreferrer"><span >&nbsp;<span>{t('homeheader.help')}</span>&nbsp;</span></A>
-
-                            </More>
+                        <Langselect id={'lang_select'} >
+                            <Radio.Group onChange={(e) => handleChange(e.target.value)} defaultValue={i18n.language} >
+                                <Radio value={'zh'}>{t('login.lang_zh')}</Radio>
+                                <Radio value={'en'}>{t('login.lang_en')}</Radio>
+                            </Radio.Group>
+                        </Langselect>
+                        {
+                            isRegister ? <LoginScreen /> : <RegisterScreen setRegister={setIsRegister} />
+                        }
+                        <More>
+                            <A type={"link"} onClick={() => setIsRegister(!isRegister)}>
+                            {isRegister ? t('login.noaccount') : t('login.existaccount')}</A>
+                            <NavLink to={ '/homepage'} >{t('homeheader.homepage')}</NavLink>
+                            <A href="https://summer.iscas.ac.cn/help/" target="_blank" rel="noreferrer"><span >&nbsp;<span>{t('homeheader.help')}</span>&nbsp;</span></A>
+                        </More>
                     </ShadowCard>
-            }
-            
-            {resetPwd && <ComModal footer={null} visible={resetPwd} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />}
+                }
+                <RightFooter>
+                    { t('login.copyright')}
+                </RightFooter>
+            </ContanerRight>
+            {resetPwd && <ComModal footer={null} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />}
         </Container>
     )
 }
@@ -95,52 +110,91 @@ export const LongButton = styled(Button)`
 
 const Container = styled.div`
     display:flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    
-
+`
+const ContanerRight = styled.div`
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 `
 
 const Background = styled.img`
-    position: absolute;
-    width:100%;
-    height:100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: left bottom, right bottom;
-    background-size: calc(((100vw-40rem)/2)-3.2rem),calc(((100vw-40rem)/2)-3.2rem),cover;
-
+    display: inline-block;
+    width:30%;
+    height:100vh;
+    @media (max-width: 768px){
+        display: none;
+    }
 `
 
 const ShadowCard = styled(Card)`
-    width:44rem;
-    height:40rem;
-    padding: 2rem;
+    width:42rem;
+    height:35rem;
+    padding: 0 2rem;
     box-sizing: border-box;
     box-shadow:rgba(0,0,0,0.1) 0 0 10px;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #e8eef1;;
     border-radius: .5rem;
-    opacity: 0.9;
+    opacity: 0.8;
 `
 
-const Header = styled.header`
+const RightHeader = styled.header`
     height:22vh;
     width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: absolute;
+    top: 4%;
+    justify-content: center;
+    @media (max-width: 1280px){
+         height:15vh;
+    }
+    img{
+        width:13rem;
+        @media (max-width: 1280px){
+            width:10rem
+        }    
+    }
+    h1{
+        font-weight: bolder;
+        letter-spacing: 2px;
+        @media (max-width: 1280px){
+            font-size:26px ;
+        }    
+    }
 `
-const Imgtitle = styled.img`
-    z-index: 10;
-    margin:.5rem 0
+
+const RightFooter = styled.footer`
+    height:5vh;
+    width:100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0%;
+    justify-content: center;
+    color:#333;
+    @media (max-width: 1024px){
+        font-size:14px
+    }
+    @media (max-width: 768px){
+        font-size:12px
+    }
+
+`
+
+const Langselect = styled.div`
+    display: flex;
 `
 
 const More = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-top:3rem
 
 `
 
@@ -150,10 +204,9 @@ const A = styled.a`
         cursor: pointer;
     }
 `
-
 const NewPwd = (props) => {
     const { t } = useTranslation()
-    const { close, visible, setrePwd, forgetPwd } = props
+    const { close, setrePwd, forgetPwd } = props
     const layout = {
         labelCol: { flex: 'wrap', span: 5 },
         wrapperCol: { span: 18 },

@@ -10,13 +10,13 @@ import { openNotificationWithIcon } from 'components/com-notify'
 import { Base64 } from 'js-base64';
 import { useForm } from 'antd/lib/form/Form'
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loginSuccess } from 'store/redux/userRedux'
 import { useNavigate } from 'react-router-dom'
 
 
 
-export const LoginScreen = ({ onError }) => {
+export const LoginScreen = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation()
     const [form] = useForm()
@@ -33,7 +33,6 @@ export const LoginScreen = ({ onError }) => {
             navigate("/student/bulletin")
         }
         catch(e){
-            // onError(new Error(e.message))
             openNotificationWithIcon(1, e.message)
         }
     }
@@ -76,7 +75,7 @@ export const LoginScreen = ({ onError }) => {
 
   
     return <>
-        <Form onFinish={handleSubmit} form={form} style={{height: '30rem',display: 'flex',flexDirection: 'column',justifyContent: 'center'}}>
+        <Form onFinish={handleSubmit} form={form} style={{height: '28rem',display: 'flex',flexDirection: 'column',justifyContent: 'center'}}>
                     <FormItem name={'username'} ruleMessage={t('login.username_message')}  >
                         <Input type={'text'} allowClear placeholder={t('login.username_placeholder')} />
                     </FormItem>
@@ -106,7 +105,7 @@ export const LoginScreen = ({ onError }) => {
            
 }
 const Img = styled.img`
-    height:77%;
+    height:74%;
     width:100%;
     border-radius: 4px;
 `

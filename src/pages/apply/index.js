@@ -14,7 +14,7 @@ import React from 'react'
 import './index.less';
 import { connect } from 'react-redux';
 import data from "./../../data/apply.json"
-
+import Wrapper from 'wrapper';
 class Apply extends React.Component {
     constructor(props) {
         super(props)
@@ -29,52 +29,52 @@ class Apply extends React.Component {
     render() {
         let showdata = this.state.data[this.props.chiFlag]
         return (
-            <div className="Apply">
-                <div className="ApplyBanner">
-                    <div className="HowitworksBannerContent content1200">
+            <Wrapper>
+                <div className="Apply">
+                    <div className="ApplyBanner">
+                        <div className="HowitworksBannerContent content1200">
 
+                            <div className="HowitworksList" >
+                                {
+                                    showdata.banner.map((item, index) => {
+                                        return (
+                                            <div className="HowitworksListItem" key={index}>
+                                                <div className="ApplyBannerListItemTitle">{item.title}</div>
+                                                <div className="HowitworksListItemContent" dangerouslySetInnerHTML={{ __html: item.text }}></div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className="ApplyRes content1200">
                         <div className="HowitworksList" >
                             {
-                                showdata.banner.map((item, index) => {
+                                showdata.re.map((item, index) => {
                                     return (
                                         <div className="HowitworksListItem" key={index}>
-                                            <div className="ApplyBannerListItemTitle">{item.title}</div>
-                                            <div className="HowitworksListItemContent" dangerouslySetInnerHTML={{ __html: item.text }}></div>
+                                            <div className="ApplyListItemTitle">{item.title}</div>
+                                            <div className="HowitworksListItemContent">
+                                                {
+                                                    item.text.map((sitem, sindex) => {
+                                                        return (
+                                                            <span key={sindex} dangerouslySetInnerHTML={{ __html: sitem }}></span>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
                                         </div>
                                     )
                                 })
                             }
                         </div>
-
                     </div>
-
                 </div>
-                <div className="ApplyRes content1200">
-                    <div className="HowitworksList" >
-                        {
-                            showdata.re.map((item, index) => {
-                                return (
-                                    <div className="HowitworksListItem" key={index}>
-                                        <div className="ApplyListItemTitle">{item.title}</div>
-                                        <div className="HowitworksListItemContent">
-                                            {
-                                                item.text.map((sitem, sindex) => {
-                                                    return (
-                                                        <span key={sindex} dangerouslySetInnerHTML={{ __html: sitem }}></span>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+            </Wrapper>
 
-
-                </div>
-
-            </div>
         )
 
 

@@ -17,6 +17,8 @@ import { gourl } from "./../../util/url.js";
 import logocoopdata from "./../../data/coorganizer.json"
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import Wrapper from 'wrapper';
+
 
 const HomePage = () => {
     const homepage = useSelector(state => state.homepage)
@@ -36,15 +38,15 @@ const HomePage = () => {
 
         var logo = [];
         data.map((item, index) => {
-            
+
             logo.push(
                 <div
                     key={index}
                     onClick={() => { goLogoLink(item.url) }}
                     className={[logoclassname, item.url ? '' : 'cursordefault'].join(" ")}
                     // style={{ backgroundImage: "url(" + iconUrl + ")" }} 
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${pathurl}${item.img})`}}                  
-                    >
+                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${pathurl}${item.img})` }}
+                >
 
                 </div>
             )
@@ -62,7 +64,7 @@ const HomePage = () => {
                     <div className="homepageIconItemImageWrapper">
                         <div
                             className="homepageIconItemImage"
-                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/icon${index}.jpg)`}}
+                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/icon${index}.jpg)` }}
                         ></div>
                     </div>
                     {
@@ -82,87 +84,89 @@ const HomePage = () => {
 
     let showdata = data[homepage.chiFlag]
     return (
-        <div className="homepage">
-            {/* <div className="GoApply"
+        <Wrapper>
+            <div className="homepage">
+                {/* <div className="GoApply"
             dangerouslySetInnerHTML={{ __html: showdata.goapply }}>
             
         </div> */}
-            <div className="homepageBanner One" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
-                <div className="homepageBannerTitle">{showdata.title}</div>
-                <div className="homepageTextOne">
-                    {
-                        showdata.bannerone.map((item, index) => {
-                            return (
-                                <div className="homepageBannerFline" key={index} >
-                                    <span className="homepageBannerFlineText">
-                                        <span dangerouslySetInnerHTML={{ __html: index + 1 + '. ' + item }}></span>
-                                    </span>
-                                </div>
-                            )
-
-                        })
-                    }
-                </div>
-            </div>
-            <div className="homepageWrapper">
-                <div className="content1200">
-                    <div
-                        className="homepageDesc"
-                        dangerouslySetInnerHTML={{ __html: showdata.bannertext }}
-                    ></div>
-
-
-                    <div className="homepageIcon">
+                <div className="homepageBanner One" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
+                    <div className="homepageBannerTitle">{showdata.title}</div>
+                    <div className="homepageTextOne">
                         {
-                            createIconBanner(showdata.icontext)
+                            showdata.bannerone.map((item, index) => {
+                                return (
+                                    <div className="homepageBannerFline" key={index} >
+                                        <span className="homepageBannerFlineText">
+                                            <span dangerouslySetInnerHTML={{ __html: index + 1 + '. ' + item }}></span>
+                                        </span>
+                                    </div>
+                                )
+
+                            })
                         }
                     </div>
-                    <div className="homepageLogo">
-                        <div className="homepageLogoTitle">
-                            <span className="title-wrapper">
-                                <span className="title-left-icon"></span>
-                                <span className="title-text">{showdata.logotitle[0]}</span>
-                                <span className="title-right-icon"></span>
-                            </span>
-                        </div>
+                </div>
+                <div className="homepageWrapper">
+                    <div className="content1200">
+                        <div
+                            className="homepageDesc"
+                            dangerouslySetInnerHTML={{ __html: showdata.bannertext }}
+                        ></div>
 
-                        <div className="homepageLogoItemTitle">
-                            {showdata.logotitle[1]}
+
+                        <div className="homepageIcon">
+                            {
+                                createIconBanner(showdata.icontext)
+                            }
                         </div>
-                        <div className="homepageLogoItemList ">
-                            {createLogo("homepageLogoImage", logocoopdata.host)}
-                        </div>
-                        <div className="homepageLogoItemTitle ">
-                            {showdata.logotitle[3]}
-                        </div>
-                        <div className="homepageLogoItemList ">
-                            {createLogo("homepageLogoImage", logocoopdata.organizer)}
-                        </div>
-                        <div className="homepageLogoItemTitle">
-                            {showdata.logotitle[2]}
-                        </div>
-                        <div className="homepageLogoItemList ">
-                            {createLogo("homepageLogoImage", logocoopdata.cohost)}
-                        </div>
-                        <div className="homepageLogoItemTitle ">
-                            {showdata.logotitle[4]}
-                        </div>
-                        <div className="homepageLogoItemList Media">
-                            {createLogo("homepagelogocoop", logocoopdata.media)}
-                        </div>
-                        <div className="homepageLogoItemTitle CoopTitle">
-                            <div>{showdata.logotitle[5]}</div>
-                            <div className="CoopTitleRank">{showdata.rank}</div>
-                        </div>
-                        <div className="homepageLogoItemList Coop">
-                            {createLogo("homepagelogocoop", logocoopdata.cooper)}
-                            <br />
-                            {createLogo("homepagelogocoop", logocoopdata.university, 'school/')}
+                        <div className="homepageLogo">
+                            <div className="homepageLogoTitle">
+                                <span className="title-wrapper">
+                                    <span className="title-left-icon"></span>
+                                    <span className="title-text">{showdata.logotitle[0]}</span>
+                                    <span className="title-right-icon"></span>
+                                </span>
+                            </div>
+
+                            <div className="homepageLogoItemTitle">
+                                {showdata.logotitle[1]}
+                            </div>
+                            <div className="homepageLogoItemList ">
+                                {createLogo("homepageLogoImage", logocoopdata.host)}
+                            </div>
+                            <div className="homepageLogoItemTitle ">
+                                {showdata.logotitle[3]}
+                            </div>
+                            <div className="homepageLogoItemList ">
+                                {createLogo("homepageLogoImage", logocoopdata.organizer)}
+                            </div>
+                            <div className="homepageLogoItemTitle">
+                                {showdata.logotitle[2]}
+                            </div>
+                            <div className="homepageLogoItemList ">
+                                {createLogo("homepageLogoImage", logocoopdata.cohost)}
+                            </div>
+                            <div className="homepageLogoItemTitle ">
+                                {showdata.logotitle[4]}
+                            </div>
+                            <div className="homepageLogoItemList Media">
+                                {createLogo("homepagelogocoop", logocoopdata.media)}
+                            </div>
+                            <div className="homepageLogoItemTitle CoopTitle">
+                                <div>{showdata.logotitle[5]}</div>
+                                <div className="CoopTitleRank">{showdata.rank}</div>
+                            </div>
+                            <div className="homepageLogoItemList Coop">
+                                {createLogo("homepagelogocoop", logocoopdata.cooper)}
+                                <br />
+                                {createLogo("homepagelogocoop", logocoopdata.university, 'school/')}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Wrapper>
     )
 }
 

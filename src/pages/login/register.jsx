@@ -8,7 +8,7 @@ import { newPwd } from 'utils/pattern'
 import { useTranslation } from 'react-i18next';
 import { register } from 'auth-provider'
 
-export const RegisterScreen = ({ onError, setRegister }) =>{
+export const RegisterScreen = ({ setRegister }) =>{
     const { t } = useTranslation()
     const {run,isLoading} = useAsync(undefined,{throwNewError:true})
     const handleSubmit = async ({cpassword,...values})=>{
@@ -19,11 +19,10 @@ export const RegisterScreen = ({ onError, setRegister }) =>{
         }
         catch (e) {
             openNotificationWithIcon(1,e.message)
-            // onError(new Error(e.message))
         }
     }
 
-    return <Form onFinish={handleSubmit} style={{ height: '30rem', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} >
+    return <Form onFinish={handleSubmit} style={{ height: '28rem', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} >
                 <FormItem name={'username'} ruleMessage={t('register.email_message')} emailRule={{type:'email',message: t('register.email_validmessage')}}>
                     <Input type={'text'} allowClear placeholder={t('register.email_placeholder')} />
                 </FormItem>

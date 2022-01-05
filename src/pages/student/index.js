@@ -8,6 +8,7 @@ import 'moment/locale/zh-cn';
 import moment from 'moment'
 import { useTranslation } from 'react-i18next';
 import { useDocumentTitle } from 'utils';
+import Wrapper from 'wrapper';
 // import { Bulletin } from './bulletin';
 // import { Info } from './infomation';
 // import { Project } from './project';
@@ -22,18 +23,20 @@ const Student = () => {
     const { t, i18n } = useTranslation()
     moment.locale(i18n.language === 'en' ? 'en-us' : 'zh-cn');
     useDocumentTitle(t('student.side_head_title'))
-    return <ConfigProvider locale={i18n.language === 'en' ? enUS : zhCN} >
-        <LayOut >
-            <Suspense fallback={<Spin />}>
-                <Routes>
-                    <Route path={`bulletin`} element={<Bulletin />} />
-                    <Route path={`myinfomation`} element={<Info />} />
-                    <Route path={`project`} element={<Project />} />
-                    <Route path={`modifypwd`} element={<Modifypwd />} />
-                </Routes>
-            </Suspense>
-        </LayOut>
-    </ConfigProvider>
+    return <Wrapper>
+        <ConfigProvider locale={i18n.language === 'en' ? enUS : zhCN} >
+            <LayOut >
+                <Suspense fallback={<Spin />}>
+                    <Routes>
+                        <Route path={`bulletin`} element={<Bulletin />} />
+                        <Route path={`myinfomation`} element={<Info />} />
+                        <Route path={`project`} element={<Project />} />
+                        <Route path={`modifypwd`} element={<Modifypwd />} />
+                    </Routes>
+                </Suspense>
+            </LayOut>
+        </ConfigProvider>
+    </Wrapper>
 }
 
 export default Student

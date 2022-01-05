@@ -22,9 +22,8 @@ class Header extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            chiFlag: 'chi',
+            chiFlag: i18n.language ? i18n.language === 'zh' ? 'chi' : 'en' : 'chi',
             data,
-            // pageflag:"index",
             moblieListFlag: false,
         }
     }
@@ -144,7 +143,6 @@ class Header extends React.Component {
     }
 
     render() {
-
         let showdata = this.state.data[this.state.chiFlag]
         let link = this.state.data.link
         let pageflagredux = this.props.pageflag

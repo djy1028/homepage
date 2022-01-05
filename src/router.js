@@ -58,7 +58,7 @@ export const IRouter = () => {
         else {
             logout().then(() => {
                 if (!window.location.hash.includes('studentLogin?link') && !window.location.hash.includes('studentLogin?forgetCode')) {
-                    // window.location.hash = '/studentLogin';
+
                     dispatch(submitLogout())
                     dispatch({
                         type: 'setPageFlag',
@@ -70,26 +70,27 @@ export const IRouter = () => {
         }
     }, [])
     return (
-        <Wrapper>
-            <Router >
-                <Suspense fallback={<Spin />}>
-                    <Routes>
-                        <Route path="/homepage" element={<HomePage />} ></Route>
-                        <Route path="/help" element={<Help />} ></Route>
-                        <Route path="/org/*" element={<Org />}></Route>
-                        <Route path="/howitworks" element={<Howitworks />} ></Route>
-                        <Route path="/data" element={<Data />} ></Route>
-                        <Route path="/midtermdata" element={<Midtermdata />} ></Route>
-                        <Route path="/apply" element={<Apply />} ></Route>
-                        <Route path="/liveshow" element={<Liveshow />} ></Route>
-                        {
-                            user.token ? <Route path="/student/*" element={<Student />}></Route> :
-                                <Route path="/studentLogin" element={<LoginApp />}></Route>
-                        }
-                        <Route path="/" element={<HomePage />} />
-                    </Routes>
-                </Suspense>
-            </Router>
-        </Wrapper>
+        <Router >
+            <Suspense fallback={<Spin />}>
+                {/* <Wrapper> */}
+                <Routes>
+                    <Route path="/homepage" element={<HomePage />} ></Route>
+                    <Route path="/help" element={<Help />} ></Route>
+                    <Route path="/org/*" element={<Org />}></Route>
+                    <Route path="/howitworks" element={<Howitworks />} ></Route>
+                    <Route path="/data" element={<Data />} ></Route>
+                    <Route path="/midtermdata" element={<Midtermdata />} ></Route>
+                    <Route path="/apply" element={<Apply />} ></Route>
+                    <Route path="/liveshow" element={<Liveshow />} ></Route>
+                    {
+                        user.token ? <Route path="/student/*" element={<Student />}></Route> :
+                            <Route path="/studentLogin" element={<LoginApp />}></Route>
+                    }
+                    <Route path="/" element={<HomePage />} />
+                </Routes>
+                {/* </Wrapper> */}
+            </Suspense>
+        </Router>
+
     )
 }

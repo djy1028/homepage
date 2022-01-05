@@ -35,7 +35,11 @@
         "newpws":"新密码",
         "confirmagain":"再次确认",
         "checkingaccount":"账户验证中...",
-        "noeffectlink":"链接已失效"
+        "noeffectlink":"链接已失效",
+        "lang_zh": "简体中文",
+        "lang_en": "English",
+        "title":"开源之夏",
+        "copyright":"京ICP备05046678号-1  版权所有 @开源软件供应链点亮计划-暑期2021 活动组委会"
     },
     "register":{
         "register_btn":"注册",

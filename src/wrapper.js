@@ -10,62 +10,64 @@
  * See the Mulan PSL v2 for more details.
  */
 import React from 'react';
-// 同级找不到，会从npm包里找react
 import Header from './components/header';
 import Footer from './components/footer';
 import stunum from './data/stunum.json'
 import { connect } from 'react-redux';
 
-class Wrapper extends React.Component{
-    constructor(props){
+class Wrapper extends React.Component {
+    constructor(props) {
         super(props)
         this.timer = null
-       
-     }
-    
-    componentDidMount(){
-        !this.timer && this.getStunum()
-        this.timer = setInterval(()=>{
-            this.getStunum()
-        },1000*60*60*6)
+
     }
 
-    getStunum(){
+    componentDidMount() {
+        !this.timer && this.getStunum()
+        this.timer = setInterval(() => {
+            this.getStunum()
+        }, 1000 * 60 * 60 * 6)
+    }
+
+    getStunum() {
         this.props.setStuData(stunum)
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.timer)
     }
-    
-    render(){
+
+    render() {
         return (
-           <div className={["container",this.props.chiFlag].join(" ")}>
-               <div className="wrapper">
-                   <Header />
-                   <div className="content">
-                        {this.props.children}    
-                   </div>
-                  <Footer/>
-               </div>
-           </div> 
+            <div className={["container", this.props.chiFlag].join(" ")}>
+                {
+                    <div className="wrapper">
+                        <Header />
+                        <div className="content">
+                            {this.props.children}
+                        </div>
+                        <Footer />
+                    </div>
+                }
+            </div>
         )
     }
 }
 
-const mapStateToProps = (state)=>{
-     return state
+const mapStateToProps = (state) => {
+    return state
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {
-        setStuData:(data)=>{
+        setStuData: (data) => {
             dispatch({
-                type:'setStuData',
-                payload:data
+                type: 'setStuData',
+                payload: data
             })
         }
     }
 }
- 
-export default connect(mapStateToProps,mapDispatchToProps)(Wrapper)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Wrapper)
