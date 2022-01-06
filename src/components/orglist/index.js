@@ -18,7 +18,6 @@ import OrgTip from '../../components/OrgTip/index.js';
 import { getSplit } from "../../util/url.js";
 import { Input } from 'antd';
 import orglist from "../../data/orglist2021.json";
-import store from 'store';
 const { Search } = Input;
 
 
@@ -49,14 +48,12 @@ class Orglist extends React.Component {
     }
 
     closeModall() {
-
         this.setState({
             orgflag: ""
         })
     }
 
     filterItem(value) {
-
         if (value) {
             var showdataTemp = []
             value = value.toLocaleLowerCase()

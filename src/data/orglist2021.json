@@ -20,7 +20,7 @@
             "Distributed System",
             "Workflow"
         ],
-        "mail_list": "dev@dolphinscheduler.apache.org",
+        "mail_list": "dev@dolphinscheduler.apache.org", 
         "email": "dev@dolphinscheduler.apache.org",
         "project_list": [
             {

@@ -63,9 +63,7 @@ class OrgTip extends React.Component {
                                         )
                                     })
                                 }
-
                             </div> : ""
-
                     }
 
                     <div className="OrgTipMail OrgTipArr">

@@ -11,9 +11,9 @@ export const useConfig = (queryKey, callback) => {
         */
         async onMutate(target) {
             const previousItems = queryClient.getQueryData(queryKey)
-            console.log(previousItems, queryKey)
+            // console.log(previousItems, queryKey)
             queryClient.setQueryData(queryKey, (old) => {
-                console.log(callback(target, old))
+                // console.log(callback(target, old))
                 return callback(target, old)
             })
             return { previousItems }

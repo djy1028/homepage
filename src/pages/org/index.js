@@ -60,7 +60,6 @@ const Org = (props) => {
                 <div className="OrgWrapper">
                     <Suspense maxDuration={500} fallback={<SpinLoading />}>
                         <Routes>
-
                             <Route path="orglist" element={<Orglist />}></Route>
                             <Route path="projectlist" element={<ProjectlistN />}></Route>
                             <Route path="orgdetail/:orgname" element={<OrgDetail />} ></Route>

@@ -73,7 +73,7 @@ const Info = () => {
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="name_check" label={t('admin.student.detail_title.0')}>
+                        <Form.Item label={t('admin.student.detail_title.0')}>
                             {editingStudent.name}
                         </Form.Item> :
                         <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
@@ -86,7 +86,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="phone_check" label={t('admin.student.detail_title.1')}>
+                        <Form.Item label={t('admin.student.detail_title.1')}>
                             {editingStudent.phone}
                         </Form.Item> :
                         <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
@@ -96,7 +96,7 @@ const Info = () => {
 
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="school_check" label={t('admin.student.detail_title.2')}>
+                        <Form.Item label={t('admin.student.detail_title.2')}>
                             {editingStudent.school}
                         </Form.Item> :
                         <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
@@ -109,7 +109,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="cardNumber_check" label={t('admin.student.detail_title.6')}>
+                        <Form.Item label={t('admin.student.detail_title.6')}>
                             {editingStudent.cardNumber}
                         </Form.Item> :
                         <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
@@ -119,7 +119,7 @@ const Info = () => {
 
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="cardFrontUrl_check" label={t('admin.student.detail_title.3')}>
+                        <Form.Item label={t('admin.student.detail_title.3')}>
                             {editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url ? <Image
                                 width={190}
                                 height={120}
@@ -141,7 +141,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="cardBackUrl_check" label={t('admin.student.detail_title.4')}>
+                        <Form.Item label={t('admin.student.detail_title.4')}>
                             {editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url ? <Image
                                 width={190}
                                 height={120}
@@ -163,7 +163,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="studentCardUrl_check" label={t('admin.student.detail_title.5')}>
+                        <Form.Item label={t('admin.student.detail_title.5')}>
                             <Image
                                 width={190}
                                 height={120}
@@ -185,7 +185,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="education_check" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
+                        <Form.Item label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
                             <Input.TextArea autoSize defaultValue={editingStudent.education} readOnly />
                         </Form.Item> :
                         <Form.Item name="education" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
@@ -194,7 +194,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="internship_check" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
+                        <Form.Item label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
                             <Input.TextArea autoSize defaultValue={editingStudent.internship} readOnly />
                         </Form.Item> :
                         <Form.Item name="internship" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
@@ -203,7 +203,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="program_check" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
+                        <Form.Item label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
                             <Input.TextArea autoSize defaultValue={editingStudent.program} readOnly />
                         </Form.Item> :
                         <Form.Item name="program" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
@@ -212,7 +212,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="openSoource_check" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
+                        <Form.Item label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
                             <Input.TextArea autoSize defaultValue={editingStudent.openSoource} readOnly />
                         </Form.Item> :
                         <Form.Item name="openSoource" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
@@ -221,7 +221,7 @@ const Info = () => {
                 }
                 {
                     (editingStudent && !editprofile) ?
-                        <Form.Item name="skill_check" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
+                        <Form.Item label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
                             <Input.TextArea autoSize defaultValue={editingStudent.skill} readOnly />
                         </Form.Item> :
                         <Form.Item name="skill" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
