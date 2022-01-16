@@ -259,7 +259,7 @@ export const Detail = (props)=>{
                                             {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 9) && <Descriptions.Item label={''}><p style={{ color: '#a7a5a5' }}><InfoCircleOutlined /><span>{t('project.midtutor_pubmes.0') + applyInfo.summerMiddleApprovePublicTime + t('project.midtutor_pubmes.1')}</span></p></Descriptions.Item>}
                                             </Des>
                                         <Divider dashed />
-                                        <Des column={2}>
+                                        {applyInfo.summerMiddleApprovePublicTime && <Des column={2}>
                                             {applyInfo.middleSummerApprover && <Descriptions.Item label={t('admin.firsttrial.mid.3')}>{applyInfo.middleSummerApprover}</Descriptions.Item>}
                                             {applyInfo.middleSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.middleSummerIsApproved'} style={{ color: applyInfo.middleSummerIsApproved === 1 ? '#52c41a' : 'red' }}>
                                                 {applyInfo.middleSummerIsApproved === 1 ? <><CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.mid.7')}</> :
@@ -267,9 +267,9 @@ export const Detail = (props)=>{
                                             </div></Descriptions.Item>}
                                             {applyInfo.middleSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.4')}>{applyInfo.middleSummerApproverTime}</Descriptions.Item>}
                                             {applyInfo.middleSummerComment && <Descriptions.Item label={t('admin.firsttrial.mid.5')}>{applyInfo.middleSummerComment}</Descriptions.Item>}
-                                          
-                                            </Des>
-                                            {applyInfo.status === -2 && !applyInfo.endApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
+                                        
+                                        </Des>}
+                                        {applyInfo.status === -2 && !applyInfo.endApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
                                     </> : <Des />
                                 }</>
                         } />
