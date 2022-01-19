@@ -153,57 +153,15 @@ export const Detail = (props)=>{
                                 </Des>
                                 {applyInfo.status === -2 && !applyInfo.endApplicationUrl && !applyInfo.middleApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
                             </>
-                        }
-                        {applyInfo && applyInfo.status >= 11 &&
-                            <>
-                                <Divider dashed />
-                                <Des column={2} style={{minHeight:'2.5rem'} }>
-                                    <Descriptions.Item label={''} >
-                                    <a onClick={ ()=>editBank() }><span>{t('admin.firsttrial.bankinfo')}</span></a>
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label={''} ><a onClick={() => downloadApplication(3, undefined, token, t('admin.firsttrial.pdfname'))}><span>{t('admin.firsttrial.bankpdf')}</span></a></Descriptions.Item>
-                                </Des>
-                            </>
-                        }
-                        {applyInfo && applyInfo.status >= 13 &&
-                            <>
-                                <Divider dashed />
-                                <Des column={2}>
-                                    <Descriptions.Item label={''} >
-                                        <Space direction={'vertical'} size={20}>
-                                        <span><a  onClick={()=>downloadApplication(1,undefined,token,t('admin.firsttrial.pdfname2'))}>
-                                            {t('tutor.downloadpdf')}
-                                            </a>{t('tutor.despdf')}</span>
-                                            <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
-                                                defaultFileList={applyInfo?.studentAgreement ? [
-                                                    {
-                                                        uid: '1',
-                                                        name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
-                                                        status: 'done'
-                                                    }
-                                                ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
-                                                    if (!file.type.includes('/pdf')) {
-                                                        message.error(t('tutor.pdf_upload_mes'));
-                                                    }
-                                                    return file.type.includes('/pdf') ? true : Upload.LIST_IGNORE
-                                                }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
-                                                <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                            </Upload>
-                                        </Space>
-                                    </Descriptions.Item>
-                                    <Descriptions.Item label={''} >
-                                        <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
-                                    </Descriptions.Item>
-                                </Des>
-                            </>
-                        }
+                            }
                     </>
                 } />
                     
                 {
                         (applyInfo.status === -2 && !applyInfo.middleApplicationUrl) || applyInfo.status === -1 ? null :
                         <Steps.Step title={<strong>{t('admin.firsttrial.step_title.1')}</strong>} description={
-                            <>{
+                                <>
+                                    {
                                 applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) &&
                                 <Des column={2}>
                                     <Descriptions.Item label={''} >
@@ -236,7 +194,6 @@ export const Detail = (props)=>{
                                             <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
                                             {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>}
                                         </Space>
-
                                     </Descriptions.Item>
                                 </Des>}
             
@@ -258,7 +215,7 @@ export const Detail = (props)=>{
                                             {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
                                             {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 9) && <Descriptions.Item label={''}><p style={{ color: '#a7a5a5' }}><InfoCircleOutlined /><span>{t('project.midtutor_pubmes.0') + applyInfo.summerMiddleApprovePublicTime + t('project.midtutor_pubmes.1')}</span></p></Descriptions.Item>}
                                             </Des>
-                                        <Divider dashed />
+                                        {applyInfo.summerMiddleApprovePublicTime && <Divider dashed />}
                                         {applyInfo.summerMiddleApprovePublicTime && <Des column={2}>
                                             {applyInfo.middleSummerApprover && <Descriptions.Item label={t('admin.firsttrial.mid.3')}>{applyInfo.middleSummerApprover}</Descriptions.Item>}
                                             {applyInfo.middleSummerIsApproved && <Descriptions.Item label={''}><div id={'mid.middleSummerIsApproved'} style={{ color: applyInfo.middleSummerIsApproved === 1 ? '#52c41a' : 'red' }}>
@@ -271,14 +228,65 @@ export const Detail = (props)=>{
                                         </Des>}
                                         {applyInfo.status === -2 && !applyInfo.endApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
                                     </> : <Des />
-                                }</>
+                                    }
+                                    {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 11) &&
+                                        <>
+                                            <Divider dashed />
+                                            <Des column={2}>
+                                                <Descriptions.Item label={''} >
+                                                    <Space direction={'vertical'} size={20}>
+                                                        <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
+                                                            {t('tutor.downloadpdf')}
+                                                        </a>{t('tutor.despdf')}</span>
+                                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
+                                                            defaultFileList={applyInfo?.studentAgreement ? [
+                                                                {
+                                                                    uid: '1',
+                                                                    name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
+                                                                    status: 'done'
+                                                                }
+                                                            ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
+                                                                if (!file.type.includes('/pdf')) {
+                                                                    message.error(t('tutor.pdf_upload_mes'));
+                                                                }
+                                                                return file.type.includes('/pdf') ? true : Upload.LIST_IGNORE
+                                                            }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
+                                                            <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
+                                                    </Upload>
+                                                   
+                                                    </Space>
+                                                </Descriptions.Item>
+                                            <Descriptions.Item label={''} >
+                                                <Space direction='vertical'>
+                                                    <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                                    <div>{'请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！'}</div>
+                                                </Space>
+                                              
+                                                </Descriptions.Item>
+                                            </Des>
+                                        </>
+                                    }
+                                    {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 11 && applyInfo.studentMidAgreement) &&
+                                        <>
+                                            <Divider dashed />
+                                            <Des column={2} style={{ minHeight: '2.5rem' }}>
+                                                <Descriptions.Item label={''} >
+                                                    <a onClick={() => editBank()}><span>{t('admin.firsttrial.bankinfo')}</span></a>
+                                                </Descriptions.Item>
+                                                <Descriptions.Item label={''} ><a onClick={() => downloadApplication(3, undefined, token, t('admin.firsttrial.pdfname'))}><span>{t('admin.firsttrial.bankpdf')}</span></a></Descriptions.Item>
+                                            </Des>
+                                        </>
+                                    }
+                            
+                                </>
+                                
                         } />
                 }
                 {
                         (applyInfo.status === -2 && !applyInfo.endApplicationUrl) || applyInfo.status === -1 ? null :
                         <Steps.Step title={<strong>{t('admin.firsttrial.step_title.3')}</strong>} description={
                             <>{
-                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) &&
+                                    applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement) ) &&
                                 <Des column={2}>
                                     <Descriptions.Item label={''} >
                                         <Space direction={'vertical'} size={10}>
@@ -308,9 +316,9 @@ export const Detail = (props)=>{
                                                 return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
                                             }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                            </Upload>
+                                                    </Upload>
+                                                    
                                         </Space>
-
                                     </Descriptions.Item>
                                 </Des>}
                                 {applyInfo && (applyInfo.status > 12 || applyInfo.status === -2) ?
@@ -341,7 +349,54 @@ export const Detail = (props)=>{
                                            
                                             </Des>
                                             {applyInfo.status == -2 && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
-                                    </> : <Des />}
+                                        </> : <Des />
+                                    }
+                                    {applyInfo.status === 16 &&
+                                        <>
+                                            <Divider dashed />
+                                            <Des column={2}>
+                                                <Descriptions.Item label={''} >
+                                                    <Space direction={'vertical'} size={20}>
+                                                        <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
+                                                            {t('tutor.downloadpdf')}
+                                                        </a>{t('tutor.despdf')}</span>
+                                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
+                                                            defaultFileList={applyInfo?.studentAgreement ? [
+                                                                {
+                                                                    uid: '1',
+                                                                    name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
+                                                                    status: 'done'
+                                                                }
+                                                            ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
+                                                                if (!file.type.includes('/pdf')) {
+                                                                    message.error(t('tutor.pdf_upload_mes'));
+                                                                }
+                                                                return file.type.includes('/pdf') ? true : Upload.LIST_IGNORE
+                                                            }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
+                                                            <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
+                                                        </Upload>
+                                                    </Space>
+                                                </Descriptions.Item>
+                                            <Descriptions.Item label={''} >
+                                                <Space direction='vertical'>
+                                                    <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                                    <div style={{color:'red'}}>{'请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！'}</div>
+                                                    </Space>
+                                            </Descriptions.Item>
+                                            </Des>
+                                        </>
+                                    }
+                                    {(applyInfo.status === 16 && applyInfo.studentAgreement)&&
+                                        <>
+                                            <Divider dashed />
+                                            <Des column={2} style={{ minHeight: '2.5rem' }}>
+                                                <Descriptions.Item label={''} >
+                                                    <a onClick={() => editBank()}><span>{t('admin.firsttrial.bankinfo')}</span></a>
+                                                </Descriptions.Item>
+                                                <Descriptions.Item label={''} ><a onClick={() => downloadApplication(3, undefined, token, t('admin.firsttrial.pdfname'))}><span>{t('admin.firsttrial.bankpdf')}</span></a></Descriptions.Item>
+                                            </Des>
+                                        </>
+                                    }
                             </>
                         } />
                 }

@@ -5,3 +5,4 @@ export const newPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[0-9A-Za-z]{8,20}$/
 
 export const emptyPattern = /^\s+$/
 export const clearSpace = (str) => str.replace(/(^\s*)|(\s*$)/g, '')
+export const numberplus = /^[1-9]{1,3}$/

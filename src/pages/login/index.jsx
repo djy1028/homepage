@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LoginScreen } from './login'
 import { RegisterScreen } from './register'
 import styled from '@emotion/styled'
-import { Button, Card, Result, Form, Input,Radio } from 'antd'
+import { Button, Card, Result, Form, Input,Radio,Modal } from 'antd'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
@@ -40,6 +40,7 @@ const LoginApp = () => {
                 window.location.hash = '/studentLogin'
             })
         }
+        console.log(window.location.hash)
         if (window.location.hash.includes('studentLogin?forgetCode')) {
             const codeparam = window.location.hash.split('=')[1]
             logout().then(rsp => { 
@@ -71,6 +72,7 @@ const LoginApp = () => {
                 <RightHeader>
                     <img src={process.env.PUBLIC_URL + "/logoori.png"} />
                     <h1>{t('login.title')}</h1>
+                    
                 </RightHeader>
             {
                 checkRegis ? <Result style={{ zIndex: 10 }} icon={<span style={{ fontSize: '3rem', color: '#fff' }}><Spin style={{ color: '#fff' }} indicator={antIcon} />  {t('login.checkingaccount')}</span>} /> :
@@ -92,11 +94,13 @@ const LoginApp = () => {
                         </More>
                     </ShadowCard>
                 }
+               
                 <RightFooter>
                     { t('login.copyright')}
                 </RightFooter>
+                <ComModal visible={ resetPwd} footer={null} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />
             </ContanerRight>
-            {resetPwd && <ComModal footer={null} title={t('login.setNewPwd')} children={<NewPwd forgetPwd={forgetPwd} setrePwd={setrePwd} visible={resetPwd} close={() => setrePwd(false)} />} close={() => setrePwd(false)} />}
+        
         </Container>
     )
 }

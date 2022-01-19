@@ -575,7 +575,37 @@
             "input_summerMiddleApprovePublicTime": "请输入组委会中期审核并公示日期",
             "input_studentEndCommitTime": "请输入学生末期提交日期",
             "input_teacherEndApproveExpiredTime": "请输入导师末期审核截止日期",
-            "input_summerEndApprovePublicTime": "请输入组委会末期审核截止日期"
+            "input_summerEndApprovePublicTime": "请输入组委会末期审核截止日期",
+            "summerMiddleApprove": "组委会中审",
+            "summerMiddleRadio": [
+                {
+                    "name": "不需要",
+                    "value": "0"
+                },
+                {
+                    "name": "需要",
+                    "value": "1"
+                }
+            ],
+            "orglimit": [
+                "每个",
+                "社区",
+                "可上线项目上限"
+            ],
+            "orgmes": "请输入社区可上线项目上限值",
+            "tutorlimit": [
+                "每个",
+                "导师",
+                "可指导项目上限"
+            ],
+            "tutormes": "请输入导师可指导项目上限值",
+            "numplus": "请输入有效正整数",
+            "whitelabel": "白名单组织",
+            "gradient": "梯度",
+            "gradientlimit": "梯度最多设置5个！",
+            "aqlimit": "活动报名问题最多设置10个！",
+            "qsmust": "请选择是否必填",
+            "question": "问题"
         },
         "pagination": [
             "显示第",
@@ -600,8 +630,8 @@
             "7": "中期成果待审核",
             "8": "未通过导师中期审核",
             "9": "已通过导师中期审核",
-            "10": "未通过组委会中期审核",
-            "11": "已通过组委会中期审核",
+            "10": "未通过中期审核",
+            "11": "已通过中期审核",
             "12": "结项成果待审核",
             "13": "未通过导师结项审核",
             "14": "已通过导师结项审核",

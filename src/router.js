@@ -58,7 +58,6 @@ export const IRouter = () => {
         else {
             logout().then(() => {
                 if (!window.location.hash.includes('studentLogin?link') && !window.location.hash.includes('studentLogin?forgetCode')) {
-
                     dispatch(submitLogout())
                     dispatch({
                         type: 'setPageFlag',

@@ -95,6 +95,11 @@ export const useDetialCfg = () => {
             err_message: t('admin.activity.input_teacherMiddleApproveExpiredTime')
         },
         {
+            name: 'needSummerMiddleApprove',
+            label: t('admin.activity.summerMiddleApprove'),
+            require: true
+        },
+        {
             name: 'summerMiddleApprovePublicTime',
             label: t('admin.activity.sumMidTime'),
             require: true,
@@ -125,29 +130,21 @@ export const useDetialCfg = () => {
             timeObj[it] = moment(new Date())
         }
     })
-    const formsetbonus =
-    {
-        title: t('admin.activity.setbonus'),
-        fielditems: [
-            {
-                name: 'bonusSetDifficulty',
-                label: t('admin.activity.bonusdiff'),
-                required: { required: false }
-            },
-            {
-                name: 'bonusSetStudent',
-                label: t('admin.activity.bonusstu'),
-                required: { required: false, type: 'number', min: 0, transform(value) { if (value) { return Number(value) } } },
-                message: t('admin.activity.bonusstu_unit')
-            },
-            {
-                name: 'bonusSetTeacher',
-                label: t('admin.activity.bonusteach'),
-                required: { required: false, type: 'number', min: 0, transform(value) { if (value) { return Number(value) } } },
-                message: t('admin.activity.bonusstu_unit')
-            }
-        ]
-    }
+
+    const formlimit = [
+        {
+            name: 'maxProgramNumOrg',
+            label: t('admin.activity.orglimit.0') + `<span style={{color:'red'}}>${t('admin.activity.orglimit.1')}</span>` + t('admin.activity.orglimit.2'),
+            require: true,
+            err_message: t('admin.activity.orgmes')
+        },
+        {
+            name: 'maxProgramNumTeacher',
+            label: t('admin.activity.tutorlimit.0') + `<span style={{color:'red'}}>${t('admin.activity.tutorlimit.1')}</span>` + t('admin.activity.tutorlimit.2'),
+            require: true,
+            err_message: t('admin.activity.tutormes')
+        },
+    ]
     const formbonuesrole1 =
     {
         title: t('admin.activity.stubonuesrule'),
@@ -187,43 +184,16 @@ export const useDetialCfg = () => {
         ]
     }
 
-    const formbonus = Array(3).fill(formsetbonus)
-
-    const formaqfield = {
-        title: t('admin.activity.questionset'),
-        fielditems: [1, 2, 3, 4, 5, 6, 7].map((item, index) => {
-            return {
-                inputlabel: t(`admin.activity.question${item}`),
-                inputname: `question${item}`,
-                radioname: `required${item}`,
-                require: false,
-                radiolabel: ''
-            }
-        })
-    }
     const aqvalue = {
         question1: t(`admin.activity.question1val`),
-        question2: t(`admin.activity.question2val`),
-        question3: t(`admin.activity.question3val`),
-        question4: t(`admin.activity.question4val`),
-        question5: t(`admin.activity.question5val`),
-        question6: t(`admin.activity.question6val`),
-        question7: t(`admin.activity.question7val`),
-        required1: 1,
-        required2: 1,
-        required3: 1,
-        required4: 1,
-        required5: 1,
-        required6: 1,
-        required7: 1
+        required1: 1
     }
     return {
         formarea,
-        formbonus,
-        formaqfield,
         timeObj,
         aqvalue,
         formbonuesrole1,
-        formbonuesrole2
+        formbonuesrole2,
+        formlimit
     }
 }

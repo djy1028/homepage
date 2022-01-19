@@ -179,14 +179,6 @@ module.exports = {
             response.data.suOrgProgram.areaTag = temparea && temparea.map(item => parseInt(item))
             response.data.suOrgProgram.techTag = temptech && temptech?.map(item => parseInt(item))
             response.data.suOrgProgram.teachers = response.data.teachers
-            const teacherres = await request({
-                url: `/system/org/teachers`,
-                headers: { Authorization: ctx.request.header.authorization },
-                data: Qs.stringify({ id: response.data.suOrgProgram.orgId }),
-                method: 'post'
-            })
-            teacherres.data.code === 200 ? teacherres.data.rows = teacherres.data.rows && teacherres.data.rows.map(item => ({ ...item, ...{ key: item.userId } })) : ctx.response.status = teacherres.data.code
-            response.data.suOrgProgram.teacherlist = teacherres.data.rows
             ctx.body = JSON.stringify(response.data.suOrgProgram)
         }
         else {
@@ -291,7 +283,7 @@ module.exports = {
                 formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', name)))
                 const response = await request({
                     data: formdata,
-                    url: '/system/studentProgram/uploadAgreement',
+                    url: '/system/studentProgram/agreement',
                     headers: {
                         Authorization: ctx.request.header.authorization,
                         ...formdata.getHeaders()
@@ -442,6 +434,7 @@ module.exports = {
             else {
                 id ? formdata.append('id', id) : formdata.append('id', '')
                 formdata.append('file1', fs.createReadStream(path.join(__dirname, '../upload', name)))
+                console.log(formdata)
                 const response = await request({
                     data: formdata,
                     url: `/system/studentProgram/edit/${phase}`,
