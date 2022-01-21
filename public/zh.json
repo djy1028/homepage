@@ -390,7 +390,8 @@
             "area_mes_en": "For non-labels above, please enter",
             "noempty": "不能为空",
             "noempty_en": "cannot be empty",
-            "noempty_mix": "不能为空/cannot be empty"
+            "noempty_mix": "不能为空/cannot be empty",
+            "agreement_mes":"请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！"
         },
         "firsttrial": {
             "step_title": [

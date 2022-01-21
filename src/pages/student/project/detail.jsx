@@ -256,12 +256,11 @@ export const Detail = (props)=>{
                                                    
                                                     </Space>
                                                 </Descriptions.Item>
-                                            <Descriptions.Item label={''} >
-                                                <Space direction='vertical'>
-                                                    <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
-                                                    <div>{'请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！'}</div>
-                                                </Space>
-                                              
+                                                <Descriptions.Item label={''} >
+                                                    <Space direction='vertical'>
+                                                        <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                                    <div>{t('admin.project.agreement_mes')}</div>
+                                                    </Space>
                                                 </Descriptions.Item>
                                             </Des>
                                         </>
@@ -380,7 +379,7 @@ export const Detail = (props)=>{
                                             <Descriptions.Item label={''} >
                                                 <Space direction='vertical'>
                                                     <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
-                                                    <div style={{color:'red'}}>{'请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！'}</div>
+                                                    <div style={{ color: 'red' }}>{t('admin.project.agreement_mes')}</div>
                                                     </Space>
                                             </Descriptions.Item>
                                             </Des>
@@ -401,12 +400,12 @@ export const Detail = (props)=>{
                         } />
                 }
                 {
-                        applyInfo.status === -2 || applyInfo.status === -1 ? null :
-                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.4')}</strong>} description={
-                            <Des column={1}>
-                                {applyInfo && applyInfo.status === 16 && <Descriptions.Item label={''}>{t('admin.firsttrial.bonus')}</Descriptions.Item>}
-                            </Des>
-                        } />
+                    applyInfo.status === -2 || applyInfo.status === -1 ? null :
+                    <Steps.Step title={<strong>{t('admin.firsttrial.step_title.4')}</strong>} description={
+                        <Des column={1}>
+                            {applyInfo && applyInfo.status === 16 && <Descriptions.Item label={''}>{t('admin.firsttrial.bonus')}</Descriptions.Item>}
+                        </Des>
+                    } />
                 }
             </NewStep>
             <ComModal destroyOnClose={true} visible={projectModal} close={closeBank} title={t('tutor.editbank_modal')} width={'100rem'} footer={null} children={<Bankinfo close={closeBank} studentId={applyInfo.studentId} />} />
