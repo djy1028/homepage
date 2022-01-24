@@ -9,6 +9,7 @@ import { emptyPattern } from 'utils/pattern';
 import styled from '@emotion/styled'
 import { useState } from 'react';
 import { ComModal } from 'components/com-modal';
+import { aesEncrypt, raesDecrypt } from 'utils';
 
 const Info = () => {
     const [form] = useForm()
@@ -33,6 +34,9 @@ const Info = () => {
     };
 
     const onFinish = (fieldsValue) => {
+        fieldsValue.name = aesEncrypt(fieldsValue.name)
+        fieldsValue.phone = aesEncrypt(fieldsValue.phone)
+        fieldsValue.cardNumber = aesEncrypt(fieldsValue.cardNumber)
         mutateAsync(studentEdit ? {
             ...fieldsValue, studentId: editingStudent['studentId'],
             cardFrontUrl: fieldsValue['cardFrontUrl'] && fieldsValue['cardFrontUrl'].length > 0 ? fieldsValue['cardFrontUrl'][0].name : '',
@@ -57,6 +61,9 @@ const Info = () => {
 
     useEffect(() => {
         if (editingStudent) {
+            editingStudent.name = raesDecrypt(editingStudent.name)
+            editingStudent.phone = raesDecrypt(editingStudent.phone)
+            editingStudent.cardNumber = raesDecrypt(editingStudent.cardNumber)
             editingStudent.cardFrontUrl = editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url ? editingStudent.cardFrontUrl : null
             editingStudent.cardBackUrl = editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url ? editingStudent.cardBackUrl : null
             editingStudent.studentCardUrl = editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url ? editingStudent.studentCardUrl : null
@@ -74,7 +81,7 @@ const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item label={t('admin.student.detail_title.0')}>
-                            {editingStudent.name}
+                            {raesDecrypt(editingStudent.name)}
                         </Form.Item> :
                         <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
                             required: true, validator(_, value) {
@@ -87,7 +94,7 @@ const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item label={t('admin.student.detail_title.1')}>
-                            {editingStudent.phone}
+                            {raesDecrypt(editingStudent.phone)}
                         </Form.Item> :
                         <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
                             <Input allowClear />
@@ -110,7 +117,7 @@ const Info = () => {
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item label={t('admin.student.detail_title.6')}>
-                            {editingStudent.cardNumber}
+                            {raesDecrypt(editingStudent.cardNumber)}
                         </Form.Item> :
                         <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
                             <Input allowClear maxLength={100} />

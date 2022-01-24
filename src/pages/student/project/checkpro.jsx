@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Descriptions, Space, Spin } from 'antd'
 import BraftEditor from 'braft-editor'
-import { useFormSel } from 'utils'
+import { raesDecrypt, useFormSel } from 'utils'
 import { useTranslation } from 'react-i18next'
 import { useStuProgramModal } from 'utils/project'
 import { Approve } from 'components/approve'
@@ -44,13 +44,13 @@ export const Checkpro = () =>{
                         {proInfo.programCode}
                     </Descriptions.Item>
                     <Descriptions.Item span={2} label={t(Lang === 1?'admin.project.columns_detail_title.12':Lang === 2?'admin.project.columns_detail_title_en.12':'admin.project.columns_detail_title_mix.12')}>{
-                        proInfo.teachers&& proInfo.teachers.mainTeachers && proInfo.teachers.mainTeachers.length>0  && proInfo.teachers.mainTeachers[0].userName + "<" + proInfo.teachers.mainTeachers[0].email + ">"
+                    proInfo.teachers && proInfo.teachers.mainTeachers && proInfo.teachers.mainTeachers.length > 0 && raesDecrypt(proInfo.teachers.mainTeachers[0].userName) + "<" + proInfo.teachers.mainTeachers[0].email + ">"
                     }</Descriptions.Item>
                      <Descriptions.Item label={t(Lang === 1?'admin.project.columns_detail_title.14':Lang === 2?'admin.project.columns_detail_title_en.14':'admin.project.columns_detail_title_mix.14')}>
                         {t(`${diffHeader}`,{returnObjects: true })[proInfo.difficulty]}
                     </Descriptions.Item>
                     <Descriptions.Item span={2} label={t(Lang === 1?'admin.project.columns_detail_title.13':Lang === 2?'admin.project.columns_detail_title_en.13':'admin.project.columns_detail_title_mix.13')}>
-                    {proInfo.teachers && proInfo.teachers.unionTeachers && proInfo.teachers.unionTeachers.length > 0 && proInfo.teachers.unionTeachers?.map((item) => <span key={item.email}>{item.userName + "<" + item.email + ">"+"  "}</span>)}
+                    {proInfo.teachers && proInfo.teachers.unionTeachers && proInfo.teachers.unionTeachers.length > 0 && proInfo.teachers.unionTeachers?.map((item) => <span key={item.loginName}>{raesDecrypt(item.userName) + "<" + item.loginName + ">"+"  "}</span>)}
                     </Descriptions.Item>
                     <Descriptions.Item span={3} label={t(Lang === 1?'admin.project.columns_detail_title.15':Lang === 2?'admin.project.columns_detail_title_en.15':'admin.project.columns_detail_title_mix.15')}>
                         {

@@ -259,7 +259,7 @@ export const Detail = (props)=>{
                                                 <Descriptions.Item label={''} >
                                                     <Space direction='vertical'>
                                                         <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
-                                                    <div>{t('admin.project.agreement_mes')}</div>
+                                                    <div style={{color:'red'}}>{t('admin.project.agreement_mes')}</div>
                                                     </Space>
                                                 </Descriptions.Item>
                                             </Des>

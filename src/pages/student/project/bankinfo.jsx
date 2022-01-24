@@ -5,6 +5,7 @@ import { openNotificationWithIcon } from 'components/com-notify';
 import { emptyPattern } from 'utils/pattern';
 import { useTranslation } from 'react-i18next';
 import { useStuAddbank, useStuBankInfo, useStuEditbank } from 'utils/student';
+import { aesEncrypt, raesDecrypt } from 'utils';
 
 export const Bankinfo = (props) => {
     const { studentId,close } = props
@@ -18,6 +19,11 @@ export const Bankinfo = (props) => {
     const { mutateAsync: edit, isLoading: editLoading } = useStuEditbank(studentId)
     const { mutateAsync: add, isLoading: addLoading } = useStuAddbank(studentId)
     const onFinish = (fieldsValue) => {
+        fieldsValue.field1 = aesEncrypt(fieldsValue.field1)
+        fieldsValue.field2 = aesEncrypt(fieldsValue.field2)
+        fieldsValue.field5 = aesEncrypt(fieldsValue.field5)
+        fieldsValue.field6 = aesEncrypt(fieldsValue.field6)
+        fieldsValue.field8 = aesEncrypt(fieldsValue.field8)
         const operate = data.rows && data.rows.length > 0 ? edit : add
         const params = data.rows && data.rows.length > 0 ? { ...fieldsValue, bankId: data.bank.bankId } : {...fieldsValue}
         operate(params).then(res => {
@@ -32,8 +38,14 @@ export const Bankinfo = (props) => {
         }).catch(err => openNotificationWithIcon(1, err.message))
     }
     useEffect(() => {
-        if (data && data.rows) {
-            data.rows.length > 0 && form.setFieldsValue(data.rows[0])
+        if (data && data.rows && data.rows.length > 0) {
+            let tempbank = data.rows[0]
+            tempbank.field1 = raesDecrypt(tempbank.field1)
+            tempbank.field2 = raesDecrypt(tempbank.field2)
+            tempbank.field5 = raesDecrypt(tempbank.field5)
+            tempbank.field6 = raesDecrypt(tempbank.field6)
+            tempbank.field8 = raesDecrypt(tempbank.field8)
+            form.setFieldsValue(tempbank)
         }
     }, [data, form])
 

@@ -44,7 +44,7 @@ export const Detail = () => {
                 editfields.bonusPayTeacherEnding = editfields.bonusPay && Number(editfields.bonusPay[1])
             }
             setNeedMidApprove(editfields.needSummerMiddleApprove)
-            const diff1 = editfields.bonusSet.shift()
+            const diff1 = editfields.bonusSet && editfields.bonusSet.shift()
             editfields.bonusdiff1 = diff1?.diff
             editfields.bonusstu1 = diff1?.stu
             editfields.bonusteach1 = diff1?.tutor
