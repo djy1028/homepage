@@ -385,7 +385,7 @@ export const Detail = (props)=>{
                                             </Des>
                                         </>
                                     }
-                                    {(applyInfo.status === 16 && applyInfo.studentAgreement)&&
+                                    {(applyInfo.status === 16 && applyInfo.studentAgreement && !applyInfo.summerMiddleApprovePublicTime)&&
                                         <>
                                             <Divider dashed />
                                             <Des column={2} style={{ minHeight: '2.5rem' }}>

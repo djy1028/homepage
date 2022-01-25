@@ -78,52 +78,30 @@ const Info = () => {
             </Descriptions>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
-                {
-                    (editingStudent && !editprofile) ?
-                        <Form.Item label={t('admin.student.detail_title.0')}>
-                            {raesDecrypt(editingStudent.name)}
-                        </Form.Item> :
-                        <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
-                            required: true, validator(_, value) {
-                                return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
-                            }, type: 'string', max: 100
-                        }]}>
-                            <Input allowClear disabled={editprofile} />
-                        </Form.Item>
-                }
-                {
-                    (editingStudent && !editprofile) ?
-                        <Form.Item label={t('admin.student.detail_title.1')}>
-                            {raesDecrypt(editingStudent.phone)}
-                        </Form.Item> :
-                        <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
-                            <Input allowClear />
-                        </Form.Item>
-                }
 
-                {
-                    (editingStudent && !editprofile) ?
-                        <Form.Item label={t('admin.student.detail_title.2')}>
-                            {editingStudent.school}
-                        </Form.Item> :
-                        <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
-                            required: true, validator(_, value) {
-                                return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
-                            }, type: 'string', max: 200
-                        }]}>
-                            <Input allowClear />
-                        </Form.Item>
-                }
-                {
-                    (editingStudent && !editprofile) ?
-                        <Form.Item label={t('admin.student.detail_title.6')}>
-                            {raesDecrypt(editingStudent.cardNumber)}
-                        </Form.Item> :
-                        <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
-                            <Input allowClear maxLength={100} />
-                        </Form.Item>
-                }
+                <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
+                    required: true, validator(_, value) {
+                        return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
+                    }, type: 'string', max: 100
+                }]}>
+                    <Input allowClear disabled={editprofile} bordered={editprofile} readOnly={!editprofile} />
+                </Form.Item>
 
+                <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
+                    <Input allowClear bordered={editprofile} readOnly={!editprofile} />
+                </Form.Item>
+
+                <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
+                    required: true, validator(_, value) {
+                        return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
+                    }, type: 'string', max: 200
+                }]}>
+                    <Input allowClear bordered={editprofile} readOnly={!editprofile} />
+                </Form.Item>
+
+                <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
+                    <Input allowClear bordered={editprofile} readOnly={!editprofile} maxLength={100} />
+                </Form.Item>
                 {
                     (editingStudent && !editprofile) ?
                         <Form.Item label={t('admin.student.detail_title.3')}>

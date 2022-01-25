@@ -9,10 +9,6 @@ import moment from 'moment'
 import { useTranslation } from 'react-i18next';
 import { useDocumentTitle } from 'utils';
 import Wrapper from 'wrapper';
-// import { Bulletin } from './bulletin';
-// import { Info } from './infomation';
-// import { Project } from './project';
-// import { Modifypwd } from './modifypwd/index';
 
 const Bulletin = lazy(() => import('./bulletin'))
 const Info = lazy(() => import('./infomation'))

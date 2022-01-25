@@ -13,9 +13,6 @@ export const Checkpro = () =>{
     const [Lang,setLang] = useState(1)
     const optionTech = useFormSel(t('admin.origanize.techarea',{returnObjects: true }),40)
     const optionArea = useFormSel(t('admin.origanize.areasel',{returnObjects: true }),68)
-    const diffHeader =  (proInfo && proInfo.supportLanguage === 1)||Lang === 1?'admin.project.diff':
-    (proInfo && proInfo.supportLanguage === 2)||Lang === 2?'admin.project.diff_en':'admin.project.diffmix'
-
     useEffect(()=>{
         if(proInfo){
             setLang(proInfo.supportLanguage)
@@ -44,13 +41,13 @@ export const Checkpro = () =>{
                         {proInfo.programCode}
                     </Descriptions.Item>
                     <Descriptions.Item span={2} label={t(Lang === 1?'admin.project.columns_detail_title.12':Lang === 2?'admin.project.columns_detail_title_en.12':'admin.project.columns_detail_title_mix.12')}>{
-                    proInfo.teachers && proInfo.teachers.mainTeachers && proInfo.teachers.mainTeachers.length > 0 && raesDecrypt(proInfo.teachers.mainTeachers[0].userName) + "<" + proInfo.teachers.mainTeachers[0].email + ">"
+                    (proInfo.teachers && proInfo.teachers.mainTeachers && proInfo.teachers.mainTeachers.length > 0) && (raesDecrypt(proInfo.teachers.mainTeachers[0].userName) + "<" + proInfo.teachers.mainTeachers[0].loginName + ">")
                     }</Descriptions.Item>
                      <Descriptions.Item label={t(Lang === 1?'admin.project.columns_detail_title.14':Lang === 2?'admin.project.columns_detail_title_en.14':'admin.project.columns_detail_title_mix.14')}>
-                        {t(`${diffHeader}`,{returnObjects: true })[proInfo.difficulty]}
+                        {proInfo.difficulty}
                     </Descriptions.Item>
                     <Descriptions.Item span={2} label={t(Lang === 1?'admin.project.columns_detail_title.13':Lang === 2?'admin.project.columns_detail_title_en.13':'admin.project.columns_detail_title_mix.13')}>
-                    {proInfo.teachers && proInfo.teachers.unionTeachers && proInfo.teachers.unionTeachers.length > 0 && proInfo.teachers.unionTeachers?.map((item) => <span key={item.loginName}>{raesDecrypt(item.userName) + "<" + item.loginName + ">"+"  "}</span>)}
+                    {(proInfo.teachers && proInfo.teachers.unionTeachers && proInfo.teachers.unionTeachers.length > 0) && proInfo.teachers.unionTeachers?.map((item) => <span key={item.loginName}>{raesDecrypt(item.userName) + "<" + item.loginName + ">"+"  "}</span>)}
                     </Descriptions.Item>
                     <Descriptions.Item span={3} label={t(Lang === 1?'admin.project.columns_detail_title.15':Lang === 2?'admin.project.columns_detail_title_en.15':'admin.project.columns_detail_title_mix.15')}>
                         {
