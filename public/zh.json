@@ -199,7 +199,8 @@
                 "Git",
                 "Docker",
                 "IoT"
-            ]
+            ],
+            "checkComment":"点击查看"
         },
         "project": {
             "columns_title": [

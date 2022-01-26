@@ -268,6 +268,7 @@ class Header extends React.Component {
                                 onClick={() => {
                                     this.goPage(menu ? `student/${menu}` : 'student/bulletin')
                                 }}
+                                style={{ paddingTop: '1.7rem' }}
                                 className={[
                                     this.state.chiFlag == 'chi'
                                         ? 'headerTabItem'
@@ -275,7 +276,8 @@ class Header extends React.Component {
                                     'headerNav',
                                 ].join(' ')}
                             >
-                                <span>{showdata.logout.name}{'  (' + name + ')'}</span>
+                                <div>{showdata.logout.name}</div>
+                                <div>{'  (' + name + ')'}</div>
                             </div>
                             {showdata.logout.content ? (
                                 <div

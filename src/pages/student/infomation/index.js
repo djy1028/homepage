@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Upload, Image, Spin, Descriptions, Divider, Space } from 'antd'
+import { Button, Form, Input, message, Upload, Image, Spin, Divider, Space } from 'antd'
 import React, { useEffect } from 'react'
 import { useForm } from 'antd/lib/form/Form'
 import { CloudUploadOutlined, InfoCircleOutlined } from '@ant-design/icons';
@@ -10,6 +10,7 @@ import styled from '@emotion/styled'
 import { useState } from 'react';
 import { ComModal } from 'components/com-modal';
 import { aesEncrypt, raesDecrypt } from 'utils';
+import Modal from 'antd/lib/modal/Modal';
 
 const Info = () => {
     const [form] = useForm()
@@ -72,10 +73,19 @@ const Info = () => {
     }, [editingStudent, form])
     return ((isLoading || mutateLoading) ? <Spin>loading...</Spin> :
         <div id={'studentinfo'} style={{ width: '100%', height: '100%' }}>
-            {editingStudent && <Descriptions column={2}>
-                <Descriptions.Item style={{ display: 'flex', justifyContent: 'center' }} label={t('admin.student.columns_title.9')}>{editingStudent.createTime}</Descriptions.Item>
-                <Descriptions.Item label={t('admin.student.columns_title.8')}>{<span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -1 ? 'student.noapproved' : 'student.waitapproved')}</span>}</Descriptions.Item>
-            </Descriptions>}
+            {editingStudent && <HeaderContain>
+                <div>{t('admin.student.columns_title.8') + '：'} <span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -1 ? 'student.noapproved' : 'student.waitapproved')}</span></div>
+                <div>{t('admin.origanize.approvedComment') + '：'}
+                    <Button onClick={() => Modal.info({
+                        title: t('admin.origanize.approvedComment'),
+                        content: (
+                            <div>
+                                {editingStudent.approvedComment}
+                            </div>
+                        )
+                    })} type={'link'}>{t('admin.origanize.checkComment')}</Button></div>
+                <div>{t('admin.student.columns_title.9') + '：' + editingStudent.createTime}</div>
+            </HeaderContain>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
 
@@ -260,6 +270,13 @@ const CancelBtn = styled(Button)`
         width: auto;
         height: auto;
     }
+`
+const HeaderContain = styled.div`
+    width: '100%'; 
+    height: '100%';
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0.6rem;
 `
 
 export default Info

@@ -239,10 +239,10 @@ export const Detail = (props)=>{
                                                             {t('tutor.downloadpdf')}
                                                         </a>{t('tutor.despdf')}</span>
                                                         <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
-                                                            defaultFileList={applyInfo?.studentAgreement ? [
+                                                            defaultFileList={applyInfo?.studentMidAgreement ? [
                                                                 {
                                                                     uid: '1',
-                                                                    name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
+                                                                    name: applyInfo.studentMidAgreement ? applyInfo.studentMidAgreement.split("/").pop() : 'studentMidAgreement.pdf',
                                                                     status: 'done'
                                                                 }
                                                             ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
@@ -253,7 +253,6 @@ export const Detail = (props)=>{
                                                             }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
                                                             <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                                     </Upload>
-                                                   
                                                     </Space>
                                                 </Descriptions.Item>
                                                 <Descriptions.Item label={''} >
