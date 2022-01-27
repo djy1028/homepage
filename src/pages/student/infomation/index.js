@@ -94,11 +94,11 @@ const Info = () => {
                         return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                     }, type: 'string', max: 100
                 }]}>
-                    <Input allowClear disabled={editprofile} bordered={editprofile} readOnly={!editprofile} />
+                    <Input allowClear disabled={editprofile} bordered={editprofile || !editingStudent} readOnly={!editprofile && editingStudent} />
                 </Form.Item>
 
                 <Form.Item name="phone" label={t('admin.student.detail_title.1')} rules={[{ required: true }]}>
-                    <Input allowClear bordered={editprofile} readOnly={!editprofile} />
+                    <Input allowClear bordered={editprofile || !editingStudent} readOnly={!editprofile && editingStudent} />
                 </Form.Item>
 
                 <Form.Item name="school" label={t('admin.student.detail_title.2')} rules={[{
@@ -106,11 +106,11 @@ const Info = () => {
                         return !value ? Promise.reject(t('admin.student.input_school')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                     }, type: 'string', max: 200
                 }]}>
-                    <Input allowClear bordered={editprofile} readOnly={!editprofile} />
+                    <Input allowClear bordered={editprofile || !editingStudent} readOnly={!editprofile && editingStudent} />
                 </Form.Item>
 
                 <Form.Item name="cardNumber" label={t('admin.student.detail_title.6')} rules={[{ required: true, type: 'string', max: 50 }]}>
-                    <Input allowClear bordered={editprofile} readOnly={!editprofile} maxLength={100} />
+                    <Input allowClear bordered={editprofile || !editingStudent} readOnly={!editprofile && editingStudent} maxLength={100} />
                 </Form.Item>
                 {
                     (editingStudent && !editprofile) ?
