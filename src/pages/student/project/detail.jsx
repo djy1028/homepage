@@ -10,6 +10,7 @@ import { useStuproupload, useStuprozipupload } from 'utils/student';
 import { Bankinfo } from './bankinfo';
 import { ComModal } from 'components/com-modal';
 import { useState } from 'react';
+import { raesDecrypt } from 'utils';
 
 export const Detail = (props)=>{
     const { t } = useTranslation()
@@ -131,7 +132,7 @@ export const Detail = (props)=>{
                                 </Descriptions.Item>}
                             
                             {(applyInfo.status >= 3 || applyInfo.isMatched === 1) && <Descriptions.Item label={''} ><div id={'mid.first_teacher_approve'} style={{ color: '#52c41a' }}> <CheckCircleTwoTone twoToneColor="#52c41a" /> {t('admin.firsttrial.first_teacher_approve')}</div></Descriptions.Item>}
-                            {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{applyInfo.firstTeacherApprover}</Descriptions.Item>}
+                                {applyInfo.firstTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.first.0')}>{raesDecrypt(applyInfo.firstTeacherApprover)}</Descriptions.Item>}
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
                                 {applyInfo.status === 1 && <Descriptions.Item label={''} ><p><span style={{ color: 'red' }}>{t('project.waitsort')}</span></p></Descriptions.Item>}
                             {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 1 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
@@ -210,7 +211,7 @@ export const Detail = (props)=>{
                                                         <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.mid_teacher_reject')}</>
                                                 }
                                             </div></Descriptions.Item>}
-                                            {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{applyInfo.middleTeacherApprover}</Descriptions.Item>}
+                                                {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{raesDecrypt(applyInfo.middleTeacherApprover)}</Descriptions.Item>}
                                             {applyInfo.middleTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.1')}>{applyInfo.middleTeacherApproverTime}</Descriptions.Item>}
                                             {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
                                             {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 9) && <Descriptions.Item label={''}><p style={{ color: '#a7a5a5' }}><InfoCircleOutlined /><span>{t('project.midtutor_pubmes.0') + applyInfo.summerMiddleApprovePublicTime + t('project.midtutor_pubmes.1')}</span></p></Descriptions.Item>}
@@ -330,7 +331,7 @@ export const Detail = (props)=>{
                                                         <><CloseCircleTwoTone twoToneColor="red" /> {t('admin.firsttrial.end_teacher_reject')}</>
                                                 }
                                             </div></Descriptions.Item>}
-                                            {applyInfo.endTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.end.0')}>{applyInfo.endTeacherApprover}</Descriptions.Item>}
+                                                {applyInfo.endTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.end.0')}>{raesDecrypt(applyInfo.endTeacherApprover)}</Descriptions.Item>}
                                             {applyInfo.endTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.1')}>{applyInfo.endTeacherApproverTime}</Descriptions.Item>}
                                             {applyInfo.endTeacherComment && <Descriptions.Item label={t('admin.firsttrial.end.2')}>{applyInfo.endTeacherComment}</Descriptions.Item>}
                                            
