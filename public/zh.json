@@ -200,7 +200,7 @@
                 "Docker",
                 "IoT"
             ],
-            "checkComment":"点击查看"
+            "checkComment":"查看"
         },
         "project": {
             "columns_title": [
@@ -392,7 +392,8 @@
             "noempty": "不能为空",
             "noempty_en": "cannot be empty",
             "noempty_mix": "不能为空/cannot be empty",
-            "agreement_mes":"请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！"
+            "agreement_mes":"请尽快填写上传协议书并完善银行卡信息，避免影响后续流程！",
+            "agreeend_mes":"请尽快填写上传协议书，避免影响后续流程！"
         },
         "firsttrial": {
             "step_title": [

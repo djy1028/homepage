@@ -75,7 +75,7 @@ const Info = () => {
         <div id={'studentinfo'} style={{ width: '100%', height: '100%' }}>
             {editingStudent && <HeaderContain>
                 <div>{t('admin.student.columns_title.8') + '：'} <span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -1 ? 'student.noapproved' : 'student.waitapproved')}</span></div>
-                <div>{t('admin.origanize.approvedComment') + '：'}
+                {editingStudent.isApproved !== 0 && <div>{t('admin.origanize.approvedComment') + '：'}
                     <Button onClick={() => Modal.info({
                         title: t('admin.origanize.approvedComment'),
                         content: (
@@ -83,7 +83,7 @@ const Info = () => {
                                 {editingStudent.approvedComment}
                             </div>
                         )
-                    })} type={'link'}>{t('admin.origanize.checkComment')}</Button></div>
+                    })} type={'link'}>{t('admin.origanize.checkComment')}</Button></div>}
                 <div>{t('admin.student.columns_title.9') + '：' + editingStudent.createTime}</div>
             </HeaderContain>}
             {editingStudent && <Divider />}
