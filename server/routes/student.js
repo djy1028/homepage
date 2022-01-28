@@ -174,10 +174,14 @@ module.exports = {
             headers: { Authorization: ctx.request.header.authorization }
         })
         if (response.data.code === 200) {
+            const tempareaname = response.data.suOrgProgram.areaTag
+            const temptechname = response.data.suOrgProgram.techTag
             const temparea = response.data.suOrgProgram.areaTag && response.data.suOrgProgram.areaTag.split(',')
             const temptech = response.data.suOrgProgram.techTag && response.data.suOrgProgram.techTag.split(',')
-            response.data.suOrgProgram.areaTag = temparea && temparea.map(item => parseInt(item))
-            response.data.suOrgProgram.techTag = temptech && temptech?.map(item => parseInt(item))
+            response.data.suOrgProgram.areaTag = temparea
+            response.data.suOrgProgram.techTag = temptech
+            response.data.suOrgProgram.areaTagName = tempareaname
+            response.data.suOrgProgram.techTagName = temptechname
             response.data.suOrgProgram.teachers = response.data.teachers
             ctx.body = JSON.stringify(response.data.suOrgProgram)
         }

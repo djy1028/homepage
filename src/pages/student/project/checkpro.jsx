@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Descriptions, Space, Spin } from 'antd'
 import BraftEditor from 'braft-editor'
-import { raesDecrypt, useFormSel } from 'utils'
+import { raesDecrypt, useTechSel } from 'utils'
 import { useTranslation } from 'react-i18next'
 import { useStuProgramModal } from 'utils/project'
 import { Approve } from 'components/approve'
@@ -11,8 +11,10 @@ export const Checkpro = () =>{
     const {t} = useTranslation()
     const { proInfo, proInfoLoading } = useStuProgramModal()
     const [Lang,setLang] = useState(1)
-    const optionTech = useFormSel(t('admin.origanize.techarea',{returnObjects: true }),40)
-    const optionArea = useFormSel(t('admin.origanize.areasel',{returnObjects: true }),68)
+    // const optionTech = useFormSel(t('admin.origanize.techarea',{returnObjects: true }),40)
+    // const optionArea = useFormSel(t('admin.origanize.areasel',{returnObjects: true }),68)
+    const optionArea = useTechSel(t('admin.origanize.areasel', { returnObjects: true }))
+    const optionTech = useTechSel(t('admin.origanize.techarea',{ returnObjects: true }))
     useEffect(()=>{
         if(proInfo){
             setLang(proInfo.supportLanguage)

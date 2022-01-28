@@ -64,6 +64,9 @@ export const useMountedRef = () => {
 /* 格式化select框数据 */
 export const useFormSel = (data, basecount) => data.map((item, index) => ({ id: basecount ? basecount + index + 1 : index + 1, name: item }))
 
+/* 处理专注技术领域标签的下拉框 */
+export const useTechSel = (data) => data && data.map((item, index) => ({ id: item, name: item }))
+
 /* 加密 */
 export const aesEncrypt = (content) => {
     let secretKey = 'qBD7kLe6G5vH0H8a'
