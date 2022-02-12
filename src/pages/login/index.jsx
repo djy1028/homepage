@@ -158,10 +158,19 @@ const RightHeader = styled.header`
     @media (max-width: 1280px){
          height:15vh;
     }
+    @media(max-height:670px){
+        flex-direction: row;
+    }
+    @media(max-height:550px){
+       display:none
+    }
     img{
         width:13rem;
         @media (max-width: 1280px){
             width:10rem
+        }
+        @media(max-height:756px){
+             width:10rem
         }    
     }
     h1{
@@ -169,6 +178,9 @@ const RightHeader = styled.header`
         letter-spacing: 2px;
         @media (max-width: 1280px){
             font-size:26px ;
+        }
+        @media(max-height:756px){
+            font-size:26px
         }    
     }
 `

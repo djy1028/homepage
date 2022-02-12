@@ -15,7 +15,7 @@ const app = new Koa();
 // });
 
 // app.use(accessLogger()); /* 日志 */
-app.use(scheduleLogs)    /* 日志清除 */
+//app.use(scheduleLogs)    /* 日志清除 */
 app.use(errorHandler);   /* 错误处理 */
 app.use(views(path.resolve(__dirname, "..", "build"), { extension: 'html' })) /* 动态模板 */
 app.use(compress(options));
