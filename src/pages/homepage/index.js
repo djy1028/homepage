@@ -18,6 +18,7 @@ import logocoopdata from "./../../data/coorganizer.json"
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Wrapper from 'wrapper';
+import { useEffect } from 'react';
 
 
 const HomePage = () => {
@@ -38,13 +39,11 @@ const HomePage = () => {
 
         var logo = [];
         data.map((item, index) => {
-
             logo.push(
                 <div
                     key={index}
                     onClick={() => { goLogoLink(item.url) }}
                     className={[logoclassname, item.url ? '' : 'cursordefault'].join(" ")}
-                    // style={{ backgroundImage: "url(" + iconUrl + ")" }} 
                     style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${pathurl}${item.img})` }}
                 >
 
@@ -57,14 +56,13 @@ const HomePage = () => {
     const createIconBanner = (text) => {
         var iconcontainer = []
         text.map((item, index) => {
-            // const iconUrl = require(`${process.env.PUBLIC_URL}/img/index/icon${index}.jpg`).default
             iconcontainer.push(
                 <div className="homepageIconItem" key={index}>
 
                     <div className="homepageIconItemImageWrapper">
                         <div
                             className="homepageIconItemImage"
-                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/icon${index}.jpg)` }}
+                            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/icon${index}.png)` }}
                         ></div>
                     </div>
                     {
@@ -83,37 +81,67 @@ const HomePage = () => {
     }
 
     let showdata = data[homepage.chiFlag]
+
+    useEffect(() => {
+        const speed = 25;
+        const tab = document.getElementById('demoin');
+        const tab2 = document.getElementById('demo2');
+
+        function Marquee() {
+            if (tab2.offsetWidth - tab.scrollLeft <= 0) {
+                tab.scrollLeft = 0;
+            } else {
+                tab.scrollLeft++;
+            }
+        }
+        var timer = setInterval(Marquee, speed);
+        tab.onmouseover = function () {
+            clearInterval(timer);
+        };
+        tab.onmouseout = function () {
+            timer = setInterval(Marquee, speed);
+        }
+        return () => clearInterval(timer)
+    }, [])
+
     return (
         <Wrapper>
             <div className="homepage">
-                {/* <div className="GoApply"
-            dangerouslySetInnerHTML={{ __html: showdata.goapply }}>
-            
-        </div> */}
                 <div className="homepageBanner One" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
                     <div className="homepageBannerTitle">{showdata.title}</div>
-                    <div className="homepageTextOne">
-                        {
-                            showdata.bannerone.map((item, index) => {
-                                return (
-                                    <div className="homepageBannerFline" key={index} >
-                                        <span className="homepageBannerFlineText">
-                                            <span dangerouslySetInnerHTML={{ __html: index + 1 + '. ' + item }}></span>
-                                        </span>
-                                    </div>
-                                )
+                    <div className="homepageTextOne" dangerouslySetInnerHTML={{ __html: showdata.titlebannertext }}></div>
+                </div>
+                <div id="demo">
+                    <div id="demoin">
+                        <div id="demo1">
+                            {
+                                showdata.bannerone.map((item, index) => {
+                                    return (
+                                        <span className="homepageBannerFlineText" style={{ width: 800 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
+                                    )
 
-                            })
-                        }
+                                })
+                            }
+                        </div>
+                        <div id="demo2">
+                            {
+                                showdata.bannerone.map((item, index) => {
+                                    return (
+                                        <span className="homepageBannerFlineText" style={{ width: 800 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
+                                    )
+
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
+
                 <div className="homepageWrapper">
                     <div className="content1200">
                         <div
                             className="homepageDesc"
                             dangerouslySetInnerHTML={{ __html: showdata.bannertext }}
                         ></div>
-
 
                         <div className="homepageIcon">
                             {
@@ -122,11 +150,11 @@ const HomePage = () => {
                         </div>
                         <div className="homepageLogo">
                             <div className="homepageLogoTitle">
-                                <span className="title-wrapper">
-                                    <span className="title-left-icon"></span>
-                                    <span className="title-text">{showdata.logotitle[0]}</span>
-                                    <span className="title-right-icon"></span>
-                                </span>
+                                {/* <span className="title-wrapper"> */}
+                                {/* <span className="title-left-icon"></span> */}
+                                <span className="title-text">{showdata.logotitle[0]}</span>
+                                {/* <span className="title-right-icon"></span> */}
+                                {/* </span> */}
                             </div>
 
                             <div className="homepageLogoItemTitle">
@@ -159,8 +187,8 @@ const HomePage = () => {
                             </div>
                             <div className="homepageLogoItemList Coop">
                                 {createLogo("homepagelogocoop", logocoopdata.cooper)}
-                                <br />
-                                {createLogo("homepagelogocoop", logocoopdata.university, 'school/')}
+                                {/* <br />
+                                {createLogo("homepagelogocoop", logocoopdata.university, 'school/')} */}
                             </div>
                         </div>
                     </div>

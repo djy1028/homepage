@@ -57,8 +57,11 @@ const Org = (props) => {
                         })
                     }
                 </div>
-                <div className="OrgWrapper">
-                    <Suspense maxDuration={500} fallback={<SpinLoading />}>
+                <div className="OrgWrapper" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>
+
+                    <span>敬请期待.../comming soon...</span>
+
+                    {/* <Suspense maxDuration={500} fallback={<SpinLoading />}>
                         <Routes>
                             <Route path="orglist" element={<Orglist />}></Route>
                             <Route path="projectlist" element={<ProjectlistN />}></Route>
@@ -67,7 +70,7 @@ const Org = (props) => {
                             <Route path="prodetail/:projectid" element={<ProjectDetail />} ></Route>
                             <Route path="" element={<Orglist />}></Route>
                         </Routes>
-                    </Suspense>
+                    </Suspense> */}
                 </div>
 
             </div>

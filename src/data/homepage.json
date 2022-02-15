@@ -1,61 +1,78 @@
-{ 
-    "communitylink":"https://summer.iscas.ac.cn/help/community/",
-    "applyurl":"https://portal.summer-ospp.ac.cn/summer/",
-    "chi":{
-        "detail":"查看详情",
-        "goapply":"<a target=\"_blank\" href=\"https://portal.summer-ospp.ac.cn/summer/login?lang=zh_CN\">报名系统</a>",
-        "title":"开源软件供应链点亮计划 - 暑期2021",
-        "bannertext":[
-            "开源软件供应链点亮计划鼓励大家关注开源软件和开源社区，致力于培养和发掘更多优秀的开发者。<br class=\"displaynone\"/>活动将在暑期进行，我们将与开源社区紧密合作，提供一对一的导师指导，邀请技术大牛开展线上免费讲座。<br  class=\"displaynone\"/>我们鼓励研究人员、开源爱好者、在校师生参与开源软件的开发与维护，促进开源软件的发展和优秀开源软件社区建设，<br  class=\"displaynone\"/>增加开源项目的活跃度，推进开源生态的发展。"
-        ],
-        "bannerone":[
-            "暑期2021 活动中选结果已公示，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/org/projectlist\"> 查看详情 <span  class=\"fire\"></span></a> ",
-            "部分暑期2021 活动数据已出炉， <a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/data\"> 查看详情 <span  class=\"fire\"></span></a>",
-            "报名系统已对学生开放注册，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"https://portal.summer-ospp.ac.cn/summer/\"> 前往注册 </a>",
-            "大咖说开源第二季已启动，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/liveshow\">查看详情</a> "
-        ],
-        "bannerTwo":[
-            "社区报名正在进行中...",
-            "社区报名时间：2021.01.29 - 2021.04.30",
-            "社区加入",
-            "详情"
-        ],
-        "icontext":[
-            ["参与暑期2021活动","提高编程实战能力"],
-            ["结识更多的小伙伴和技术大牛","一起热爱开源"],
-            ["组委会与开源社区","将为您匹配资深的社区导师"],
-            ["根据活动中的“战绩”","您将获得活动奖金及证书奖励"]
-        ],
-        "rank":"※按照通过审核顺序排序",    
-        "logotitle":["组织方及合作伙伴","主办方","协办方","承办方","媒体合作方","合作单位"]
-    },
-    "en":{
-        "detail":"[More Details]",
-        "goapply":"<a target=\"_blank\" href=\"https://portal.summer-ospp.ac.cn/summer/login?lang=en_US\">APPLY</a>",
-        "title":"Summer 2021 of Open Source Promotion Plan",
-        "bannertext":[
-            "Open Source Promotion Plan encourages everyone to pay close attention to open source software and open source community, aiming to cultivate and explore more outstanding developers. ‘Summer 2021’ will be held in this summer. We will collaborate closely with the open source community to provide one-to-one mentor guidance and invite some specialists to conduct free online lectures. In order to promote the development of open source software and facilitate the construction of excellent open source software community, we encourage researchers, open source enthusiasts, professors as well as students to participate in the development and maintenance of open source software. Furthermore, ‘Summer 2021’ is supposed to increase the activity of open source projects, and promote the development of open source ecology."
-        ],
-        "bannerone":[
-            "The results of the summer 2021 event have been announced，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/org/projectlist\"> [More Details] <span  class=\"fire\"></span></a> ",
-            "Part of the summer 2021 activity data has been released， <a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/data\"> [More Details] <span  class=\"fire\"></span></a>",
-            "Open Source Promotion Plan Management System open for student to register. Click <a target=\"_blank\" class=\"homepageLinkguide\" href=\"https://portal.summer-ospp.ac.cn/summer/\">here</a> to register.",
-            "The sharing activity Celebrities with Open Source is in progress. Click <a target=\"_blank\" class=\"homepageLinkguide\" href=\"/#/liveshow\">here</a> to view. "
-        ],
-        "bannerTwo":[
-            "Community Registration is in progress",
-            "Community registration time: 2021.01.29 - 2021.04.30",
-            "community Participation "," guide"
-        ],
-        "icontext":[
-            ["Join ‘Summer 2021’! Enhance Practical Programming Capabilities!"],
-            ["Make the acquaintance with experts and friends!"],
-            ["Matched you with senior community mentors!"],
-            ["Obtain the award with your achievements!"]
-        ],
-        "rank":"※Sort In approval order",  
-        "logotitle":["Organizers and Partners","Host","Co-Host","Co-Organizer","Media Partners","Partners"]
-
-
-    }
+{
+  "communitylink": "https://summer.iscas.ac.cn/help/community/",
+  "applyurl": "https://portal.summer-ospp.ac.cn/summer/",
+  "chi": {
+    "detail": "查看详情",
+    "goapply": "<a target=\"_blank\" href=\"https://portal.summer-ospp.ac.cn/summer/login?lang=zh_CN\">报名系统</a>",
+    "title": "开源软件供应链点亮计划--暑期2022",
+    "titlebannertext": [
+      "开源软件供应链点亮计划鼓励大家关注开源软件和开源社区，致力于培养和发掘更多优秀的开发者。<br class=\"displaynone\"/><br class=\"displaynone\"/>活动将在暑期进行，我们将与开源社区紧密合作，<br class=\"displaynone\"/>提供一对一的导师指导，邀请技术大牛开展线上免费讲座。"
+    ],
+    "bannertext": [
+      "我们鼓励研究人员、开源爱好者、在校师生参与开源软件的开发与维护，促进开源软件的发展和优秀开源软件社区建设，<br  class=\"displaynone\"/>增加开源项目的活跃度，推进开源生态的发展。"
+    ],
+    "bannerone": [
+      "暑期2022 活动于3月15日启动，社区报名窗口已开启，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"\"> 查看详情</span></a> ",
+      "学生注册窗口于3月底开启， <a class=\"homepageLinkguide\" href=\"/#/studentLogin\"> 查看详情</span></a>",
+      "4月9日社区开始上线项目，<a target=\"_blank\" class=\"homepageLinkguide\" href=\"\"> 查看详情 </a>"
+    ],
+    "bannerTwo": [
+      "社区报名正在进行中...",
+      "社区报名时间：2021.01.29 - 2021.04.30",
+      "社区加入",
+      "详情"
+    ],
+    "icontext": [
+      ["参与暑期2022活动", "给你的编程能力加个 buff"],
+      ["结识更多的小伙伴和技术大牛", "一起热爱开源"],
+      ["软件所与开源社区", "将为您匹配资深的社区导师"],
+      ["根据活动中的“战绩”", "您将获得活动荣誉奖杯和奖金奖励"]
+    ],
+    "rank": "※按照通过审核顺序排序",
+    "logotitle": [
+      "组织方及合作伙伴",
+      "主办方",
+      "赞助商",
+      "承办方",
+      "媒体合作方",
+      "合作单位"
+    ]
+  },
+  "en": {
+    "detail": "[More Details]",
+    "goapply": "<a target=\"_blank\" href=\"https://portal.summer-ospp.ac.cn/summer/login?lang=en_US\">APPLY</a>",
+    "title": "Summer 2022 of Open Source Promotion Plan",
+    "titlebannertext": [
+      "Open Source Promotion Plan encourages everyone to pay close attention to open source software and open source community, aiming to cultivate and explore more outstanding developers."
+    ],
+    "bannertext": [
+      "‘Summer 2022’ will be held in the summer. We will collaborate closely with the open source community to provide one-to-one mentor guidance and invite some specialists to deliever free online lectures. <br  class=\"displaynone\"/>We encourage researchers , open source enthusiasts, teachers as well as students to participate in the development and maintenance of open source software in order to promote the development of open source software in China and facilitate the construction of excellent open source software community.Furthermore,‘Summer 2021’could promote the activity of open source projects in China, even integrate the system into the wolrd."
+    ],
+    "bannerone": [
+      "Summer 2022 starts on March 15, Oragnization Application is open. <a target=\"_blank\" class=\"homepageLinkguide\" href=\"\"> APPLY </span></a> ",
+      "Student Registration will open at the end of March. <a class=\"homepageLinkguide\" href=\"/#/studentLogin\"> Register </span></a>",
+      "Organization can release projects on April 9. <a target=\"_blank\" class=\"homepageLinkguide\" href=\"\"> See Details</a> "
+    ],
+    "bannerTwo": [
+      "Community Registration is in progress",
+      "Community registration time: 2021.01.29 - 2021.04.30",
+      "community Participation ",
+      " guide"
+    ],
+    "icontext": [
+      ["Join ‘Summer 2022’! Enhance Programming Capabilities!"],
+      ["Make the acquaintance with big gun and friends!"],
+      ["Matched you with senior community mentors!"],
+      ["Obtain the award and trophy with your achievements!"]
+    ],
+    "rank": "※Sort In approval order",
+    "logotitle": [
+      "Organizers and Partners",
+      "Host",
+      "Sponsor ( Diamond, Platinum, Gold, Silver)",
+      "Organizer",
+      "Media Partners",
+      "Partners"
+    ]
+  }
 }

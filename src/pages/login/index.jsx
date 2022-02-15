@@ -40,7 +40,6 @@ const LoginApp = () => {
                 window.location.hash = '/studentLogin'
             })
         }
-        console.log(window.location.hash)
         if (window.location.hash.includes('studentLogin?forgetCode')) {
             const codeparam = window.location.hash.split('=')[1]
             logout().then(rsp => { 
@@ -134,15 +133,16 @@ const Background = styled.img`
 `
 
 const ShadowCard = styled(Card)`
-    width:42rem;
+    width:44rem;
     height:35rem;
     padding: 0 2rem;
     box-sizing: border-box;
-    box-shadow:rgba(0,0,0,0.1) 0 0 10px;
+    /* box-shadow:rgba(0,0,0,0.1) 0 0 10px; */
     text-align: center;
-    background-color: #e8eef1;;
     border-radius: .5rem;
-    opacity: 0.8;
+    background-color: #f7f8fa;
+	border: solid 1px #bcbcbc;
+	opacity: 0.7;
 `
 
 const RightHeader = styled.header`
