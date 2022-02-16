@@ -6,11 +6,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Routes, Route } from 'react-router-dom';
-import ProjectDetail from 'components/projectDetail/index.js';
-import OrgDetail from 'components/orgdetail/index.js';
-import SpinLoading from 'components/spin/index.js';
-import Orglist from 'components/orglist/index.js';
-import ProjectlistN from 'components/projectlistN/index.js';
+// import ProjectDetail from 'components/projectDetail/index.js';
+// import OrgDetail from 'components/orgdetail/index.js';
+// import SpinLoading from 'components/spin/index.js';
+// import Orglist from 'components/orglist/index.js';
+// import ProjectlistN from 'components/projectlistN/index.js';
 import Wrapper from 'wrapper';
 
 const Org = (props) => {
