@@ -54,7 +54,7 @@ class Header extends React.Component {
     }
 
     goPage(linkurl) {
-        if (linkurl !== 'dataall' && linkurl !== 'loginall') {
+        if (linkurl !== 'dataall' && linkurl !== 'loginall' && linkurl !== 'review') {
             this.props.setPageFlag(
                 linkurl == 'data' || linkurl === 'midtermdata'
                     ? 'dataall'
@@ -67,8 +67,8 @@ class Header extends React.Component {
                 this.props.setOrgTabFlag('orglist')
             }
         } else {
-            this.props.setPageFlag(linkurl === 'dataall' ? 'dataall' : 'loginall')
-            gohash(linkurl === 'dataall' ? '/data' : '/studentLogin')
+            // this.props.setPageFlag(linkurl === 'dataall' ? 'dataall' : 'loginall')
+            // gohash(linkurl === 'dataall' ? '/data' : '/studentLogin')
         }
     }
 
@@ -123,10 +123,6 @@ class Header extends React.Component {
                 window.history.replaceState('', '', window.location.pathname)
             }
         }, 5)
-    }
-
-    gosummer2020() {
-        window.open('https://isrc.iscas.ac.cn/summer2020/')
     }
     gosummerbackend() {
         window.open('https://test-portal.summer-ospp.ac.cn/')
@@ -190,8 +186,8 @@ class Header extends React.Component {
                                                 style={{
                                                     width:
                                                         this.props.chiFlag === 'chi'
-                                                            ? 'calc(100% + 4rem)'
-                                                            : 'calc(100% + 8rem)',
+                                                            ? 'calc(100% + 2rem)'
+                                                            : 'calc(100% + 2rem)',
                                                 }}
                                             >
                                                 {ele.content.map((sitem, sindex) => {
@@ -206,7 +202,8 @@ class Header extends React.Component {
                                                             }}
                                                             key={sindex}
                                                             onClick={() => {
-                                                                this.goPage(sitem.title)
+                                                                // this.goPage(sitem.title)
+                                                                sindex === 0 ? window.open('https://summer.iscas.ac.cn/') : window.open('https://isrc.iscas.ac.cn/summer2020/')
                                                             }}
                                                         >
                                                             {sitem.name}
@@ -220,20 +217,7 @@ class Header extends React.Component {
                                     </div>
                                 )
                             })}
-                            <div
-                                onClick={() => {
-                                    this.gosummer2020()
-                                }}
-                                className={[
-                                    this.state.chiFlag == 'chi'
-                                        ? 'headerTabItem'
-                                        : 'headerTabItemEn',
-                                    'headerNav',
-                                ].join(' ')}
-                                key="summer2020"
-                            >
-                                <span>{showdata.summer2020}</span>
-                            </div>
+
                         </div>
                         <div className="headerChiEn headerTabItem">
                             <div
@@ -364,6 +348,7 @@ class Header extends React.Component {
                             )}
                         </div>
                     )}
+
                     <div
                         className={[
                             'headerMobileList',
@@ -381,7 +366,7 @@ class Header extends React.Component {
                                 <div
                                     key={index}
                                     onClick={() => this.getLink(linkurl)}
-                                    className={['osscListItem', linkurl].join(' ')}
+                                    className={['osscListItem', !item.content && linkurl].join(' ')}
                                 >
                                     <span> {item.content ? null : item.name}</span>
                                     {item.content &&
@@ -392,7 +377,8 @@ class Header extends React.Component {
                                                     key={sindex}
                                                     onClick={(e) => {
                                                         e.stopPropagation()
-                                                        this.getLink(sitem.title)
+                                                        sindex === 0 ? window.open('https://summer.iscas.ac.cn/') : window.open('https://isrc.iscas.ac.cn/summer2020/')
+                                                        // this.getLink(sitem.title)
                                                     }}
                                                 >
                                                     {sitem.name}
@@ -402,12 +388,12 @@ class Header extends React.Component {
                                 </div>
                             )
                         })}
-                        <div
+                        {/* <div
                             onClick={() => this.gosummer2020()}
                             className={['osscListItem'].join(' ')}
                         >
                             <span>{showdata.summer2020}</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

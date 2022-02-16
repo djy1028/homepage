@@ -1,52 +1,57 @@
 {
-    "chi":{
-        "tab":[
-            {
-                "name":"社区列表",
-                "hash":"orglist"
-            },
-            {
-                "name":"项目列表",
-                "hash":"projectlist"
-            }
-        ],
-        "searchPlaceholder":"请输入关键字",
-        "rank":"※按照通过审核顺序排序",
-        "total":["共 "," 个社区"],
-        "websiteurl":"官网：",
-        "summer2021pro":"“暑期2021”项目：",
-        "maillist":"社区邮件列表：",
-        "video":"社区及项目简介视频：",
-        "email":"社区官方公共联系邮箱：",
-        "domain":"专注领域",
-        "tech":"技术标签",
-        "button":"查看详情",
-        "orgDetailNav":["社区列表","社区详情"]
-    },
-    "en":{
-        "tab":[
-            {
-                "name":"Community List",
-                "hash":"orglist"
-            },
-            {
-                "name":"Project List",
-                "hash":"projectlist"
-            }
-        ],
-        
-        "searchPlaceholder":"Please enter key words",
-        "rank":"※Sort In approval order",
-        "total":["Total: "," Items"],
-        "websiteurl":"Official Website:",
-        "summer2021pro":"Projects in “Summer 2021”:",
-        "maillist":"Community Mail List:",
-        "video":"Community and project introduction video:",
-        "email":"Public E-mail Address:",
-        "domain":"Labels of Focus Field",
-        "tech":"Labels of Technical Field",
-        "button":"Detailed Info",
-        "orgDetailNav":["Community List","Detailed Information"]
+  "chi": {
+    "title": "社区及项目列表",
+    "titlebannertext": "社区报名时间：3月15日-3月31日 <br class=\"displaynone\"/>社区上线项目时间：4月9日-4月25日",
+    "titleBtntext": "查看社区详情",
+    "tab": [
+      {
+        "name": "社区列表",
+        "hash": "orglist"
+      },
+      {
+        "name": "项目列表",
+        "hash": "projectlist"
+      }
+    ],
+    "searchPlaceholder": "请输入关键字",
+    "rank": "※按照通过审核顺序排序",
+    "total": ["共 ", " 个社区"],
+    "websiteurl": "官网：",
+    "summer2021pro": "“暑期2022”项目：",
+    "maillist": "社区邮件列表：",
+    "video": "社区及项目简介视频：",
+    "email": "社区官方公共联系邮箱：",
+    "domain": "专注领域",
+    "tech": "技术标签",
+    "button": "查看详情",
+    "orgDetailNav": ["社区列表", "社区详情"]
+  },
+  "en": {
+    "title": "Organization and Project List",
+    "titlebannertext": "Organizations can submit applications: 15/3/2022-31/3/2022 UTC+8 <br class=\"displaynone\"/>Organization can release projects: 9/4/2022-25/4/2022 UTC+8",
+    "titleBtntext": "Organization Guidelines",
+    "tab": [
+      {
+        "name": "Community List",
+        "hash": "orglist"
+      },
+      {
+        "name": "Project List",
+        "hash": "projectlist"
+      }
+    ],
 
-    }
+    "searchPlaceholder": "Please enter key words",
+    "rank": "※Sort In approval order",
+    "total": ["Total: ", " Items"],
+    "websiteurl": "Official Website:",
+    "summer2021pro": "Projects in “Summer 2022”:",
+    "maillist": "Community Mail List:",
+    "video": "Community and project introduction video:",
+    "email": "Public E-mail Address:",
+    "domain": "Labels of Focus Field",
+    "tech": "Labels of Technical Field",
+    "button": "Detailed Info",
+    "orgDetailNav": ["Community List", "Detailed Information"]
+  }
 }

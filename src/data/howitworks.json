@@ -1,264 +1,295 @@
 {
-    "chi":{
-        "title":"开源软件供应链点亮计划-暑期2021 活动规划",
-        "banner":[
-            {
-                
-                "title":"申请",
-                "text":["学生自由选择项目,","撰写项目申请书提出申请"]
-            },
-            {
-               
-                "title":"项目",
-                "text":["学生在社区导师的指导下开展项目,","贡献代码至社区"]
-            },
-            {
-               
-                "title":"奖励",
-                "text":["根据学生参与度、","代码贡献等提供奖金，证书"]
-            }
-        ],
-        "ls":[
-            {
-                "title":"学生",
-                "text":"学生自由选择项目，与社区导师沟通实现方案并撰写项目计划书。被选中的学生将在社区导师指导下，按计划完成开发工作，并将成果贡献给社区。社区评估学生的完成度，主办方根据评估结果给学生发放奖金。"
-            },
-            {
-                "title":"社区",
-                "text":"社区提供项目列表和描述，并安排项目对应的导师，导师与申请者沟通方案、并从申请者中选中一位承接项目。在为期三个月的开发周期中，导师指导学生进行对应项目的开发工作。"
-            },
-            {
-                "title":"导师",
-                "text":"社区针对每一个项目指定一个社区导师，与学生一起制定合适的开发计划和方案，指导学生按计划完成开发。"
-            }
-        ],
-        "ttile":"暑期2021 活动里程碑",
-        "tip":"*默认时区为北京时间（GMT+8）",
-        "time":[
-            {
-                "title":"社区报名启动",
-                "time":"01 月 29 日"
-            },
-            {
-                "title":"第一批社区名单公示，学生开始与社区沟通项目意向",
-                "time":"04 月 02 日"
-            },
-            {
-                "title":"社区报名、项目提交截止",
-                "time":"05 月 20 日"
-            },
-            {
-                "title":"第二批社区名单公示",
-                "time":"05 月 21 日"
-            },
-            {
-                "title":"学生提交项目申请阶段",
-                "time":"05 月 24 日 - 06 月 13 日"
-            },
-            {
-                "title":"导师审核学生申请材料阶段",
-                "time": "06 月 14 日 - 06 月 21 日" 
-            },
-            {
-                "title":"项目申请审核结果公示",
-                "time":"06 月 30 日"
-            },
-            {
-                "title":"项目研发第一阶段（08月15日24点为中期研发成果提交截止日期）",
-                "time":"07 月 01 日 - 08 月 15 日"
-            },
-            {
-                "title":"导师中期审核阶段",
-                "time":"08 月 16 日 - 08 月 22 日"
-            },
-            {
-                "title":"项目中期考核结果公示",
-                "time":"08 月 30 日"
-            },
-            {
-                "title":"项目研发第二阶段（09月30日24点为结项研发成果提交截止日期）",
-                "time":"08 月 16 日 - 09 月 30 日"
-            },
-            {
-                "title":"导师结项审核阶段",
-                "time":"10 月 01 日 - 10 月 14 日"
-            },
-            {
-                "title":"项目结项考核结果公示",
-                "time":"10 月 22 日"
-            },
-            {
-                "title":"年度优秀项目公示",
-                "time":"11 月上旬"
-            }
-        ],
-        "committee":[
-            {"university":"中国科学院软件研究所","name":"武延军"},
-            {"university":"openEuler 社区","name":"江大勇"},
-            {"university":"中国科学院计算技术研究所","name":"包云岗"},
-            {"university":"西安邮电大学","name":"陈莉君"},
-            {"university":"清华大学","name":"陈渝"},
-            {"university":"清华大学","name":"崔勇"},
-            {"university":"北京航空航天大学","name":"胡春明"},
-            {"university":"华中科技大学","name":"华宇"},
-            {"university":"厦门大学","name":"纪荣嵘"},
-            {"university":"浙江大学","name":"纪守领"},
-            {"university":"北京信息科技大学","name":"李春强"},
-            {"university":"北京工业大学","name":"李洪义"},
-            {"university":"广州大学","name":"李进"},
-            {"university":"西安电子科技大学","name":"李青山"},
-            {"university":"南开大学","name":"李涛"},
-            {"university":"中国人民大学","name":"梁彬"},
-            {"university":"北京师范大学","name":"刘坚"},
-            {"university":"中国科学院大学","name":"罗铁坚"},
-            {"university":"同济大学","name":"裴喜龙"},
-            {"university":"北京大学","name":"沈晴霓"},
-            {"university":"西安交通大学","name":"唐亚哲"},
-            {"university":"哈尔滨工业大学","name":"王宏志"},
-            {"university":"华东师范大学","name":"王伟"},
-            {"university":"中央财经大学","name":"王秀利"},
-            {"university":"大连理工","name":"吴国伟"},
-            {"university":"上海交通大学","name":"夏虞斌"},
-            {"university":"武汉理工","name":"向剑文"},
-            {"university":"北京邮电大学","name":"徐国爱"},
-            {"university":"天津大学","name":"徐江涛"},
-            {"university":"北京林业大学","name":"许福"},
-            {"university":"复旦大学","name":"杨珉"},
-            {"university":"中国科学技术大学","name":"杨盘隆"},
-            {"university":"中国科学技术大学","name":"张兰"},
-            {"university":"海南大学","name":"张永辉"},
-            {"university":"中科软科技股份有限公司","name":"张正"}
+  "chi": {
+    "title": "开源软件供应链点亮计划-暑期2022 活动规划",
+    "banner": [
+      {
+        "title": "申请",
+        "text": ["学生自由选择项目,", "撰写项目申请书提出申请"]
+      },
+      {
+        "title": "项目",
+        "text": ["学生在社区导师的指导下开展项目,", "贡献代码至社区"]
+      },
+      {
+        "title": "奖励",
+        "text": ["根据学生参与度、", "代码贡献等提供奖金，证书"]
+      }
+    ],
+    "ls": [
+      {
+        "title": "学生",
+        "text": "学生自由选择项目，与社区导师沟通实现方案并撰写项目计划书。被选中的学生将在社区导师指导下，按计划完成开发工作，并将成果贡献给社区。社区评估学生的完成度，主办方根据评估结果给学生发放奖金。"
+      },
+      {
+        "title": "社区",
+        "text": "社区提供项目列表和描述，并安排项目对应的导师，导师与申请者沟通方案、并从申请者中选中一位承接项目。在为期三个月的开发周期中，导师指导学生进行对应项目的开发工作。"
+      },
+      {
+        "title": "导师",
+        "text": "社区针对每一个项目指定一个社区导师，与学生一起制定合适的开发计划和方案，指导学生按计划完成开发。"
+      }
+    ],
+    "ttile": "暑期2022 活动里程碑",
+    "tip": "*默认时区为北京时间（GMT+8）",
+    "time": [
+      {
+        "title": "社区报名启动",
+        "time": "01 月 29 日"
+      },
+      {
+        "title": "第一批社区名单公示，学生开始与社区沟通项目意向",
+        "time": "04 月 02 日"
+      },
+      {
+        "title": "社区报名、项目提交截止",
+        "time": "05 月 20 日"
+      },
+      {
+        "title": "第二批社区名单公示",
+        "time": "05 月 21 日"
+      },
+      {
+        "title": "学生提交项目申请阶段",
+        "time": "05 月 24 日 - 06 月 13 日"
+      },
+      {
+        "title": "导师审核学生申请材料阶段",
+        "time": "06 月 14 日 - 06 月 21 日"
+      },
+      {
+        "title": "项目申请审核结果公示",
+        "time": "06 月 30 日"
+      },
+      {
+        "title": "项目研发第一阶段（08月15日24点为中期研发成果提交截止日期）",
+        "time": "07 月 01 日 - 08 月 15 日"
+      },
+      {
+        "title": "导师中期审核阶段",
+        "time": "08 月 16 日 - 08 月 22 日"
+      },
+      {
+        "title": "项目中期考核结果公示",
+        "time": "08 月 30 日"
+      },
+      {
+        "title": "项目研发第二阶段（09月30日24点为结项研发成果提交截止日期）",
+        "time": "08 月 16 日 - 09 月 30 日"
+      },
+      {
+        "title": "导师结项审核阶段",
+        "time": "10 月 01 日 - 10 月 14 日"
+      },
+      {
+        "title": "项目结项考核结果公示",
+        "time": "10 月 22 日"
+      },
+      {
+        "title": "年度优秀项目公示",
+        "time": "11 月上旬"
+      }
+    ],
+    "committee": [
+      { "university": "中国科学院软件研究所", "name": "武延军" },
+      { "university": "openEuler 社区", "name": "江大勇" },
+      { "university": "中国科学院计算技术研究所", "name": "包云岗" },
+      { "university": "西安邮电大学", "name": "陈莉君" },
+      { "university": "清华大学", "name": "陈渝" },
+      { "university": "清华大学", "name": "崔勇" },
+      { "university": "北京航空航天大学", "name": "胡春明" },
+      { "university": "华中科技大学", "name": "华宇" },
+      { "university": "厦门大学", "name": "纪荣嵘" },
+      { "university": "浙江大学", "name": "纪守领" },
+      { "university": "北京信息科技大学", "name": "李春强" },
+      { "university": "北京工业大学", "name": "李洪义" },
+      { "university": "广州大学", "name": "李进" },
+      { "university": "西安电子科技大学", "name": "李青山" },
+      { "university": "南开大学", "name": "李涛" },
+      { "university": "中国人民大学", "name": "梁彬" },
+      { "university": "北京师范大学", "name": "刘坚" },
+      { "university": "中国科学院大学", "name": "罗铁坚" },
+      { "university": "同济大学", "name": "裴喜龙" },
+      { "university": "北京大学", "name": "沈晴霓" },
+      { "university": "西安交通大学", "name": "唐亚哲" },
+      { "university": "哈尔滨工业大学", "name": "王宏志" },
+      { "university": "华东师范大学", "name": "王伟" },
+      { "university": "中央财经大学", "name": "王秀利" },
+      { "university": "大连理工", "name": "吴国伟" },
+      { "university": "上海交通大学", "name": "夏虞斌" },
+      { "university": "武汉理工", "name": "向剑文" },
+      { "university": "北京邮电大学", "name": "徐国爱" },
+      { "university": "天津大学", "name": "徐江涛" },
+      { "university": "北京林业大学", "name": "许福" },
+      { "university": "复旦大学", "name": "杨珉" },
+      { "university": "中国科学技术大学", "name": "杨盘隆" },
+      { "university": "中国科学技术大学", "name": "张兰" },
+      { "university": "海南大学", "name": "张永辉" },
+      { "university": "中科软科技股份有限公司", "name": "张正" }
+    ]
+  },
+  "en": {
+    "title": "Summer 2022 of Open Source Promotion Plan",
+    "banner": [
+      {
+        "title": "Application",
+        "text": [
+          "students are free to choose projects",
+          " and write project application."
         ]
-    },
-    "en":{
-        "title":"Summer 2021 of Open Source Promotion Plan",
-        "banner":[
-            {
-               
-                "title":"Application",
-                "text":["students are free to choose projects"," and write project application."]
-            },
-            {
-               
-                "title":"Project",
-                "text":["students conduct the project under the guidance of the community mentor and contribute the code to the community."]
-            },
-            {
-                
-                "title":"Reward",
-                "text":["Certificate and award is provided according to students' contribution."]
-            }
-        ],
-        "ls":[
-            {
-                "title":"Students",
-                "text":"Students are free to choose projects and communicate with mentors on implementation plans in order to write project plans. The selected students will complete the development task as planned and contribute the results to the community under the guidance of the community mentor. The community evaluates student completion and the organizer committee grants the money award to students based on the evaluation results."
-            },
-            {
-                "title":"Community",
-                "text":"The community provides a list and description of the project, and arranges for a mentor to communicate the program with the applicant and select one of the applicants to undertake the project. During the three-month development period, the mentor guides the students in developing the corresponding projects."
-            },
-            {
-                "title":"Mentor",
-                "text":"For each project, the community assigns a mentor to work with the students to develop appropriate plan and guide the students to complete the task as planned."
-            }
-        ],
-        "ttile":"Calendar of Events",
-        "tip":" *The default timezone is ‘GMT+8’",
-        "time":[
-            {
-                "title":"Open of application for open source community",
-                "time":"Jan 29th"
-            },
-            {
-                "title":"Announcement of the first list of accepted open source community",
-                "time":"Apr 2nd"
-            },
-            {
-                "title":"Deadline of application and project release for open source community",
-                "time":"May 20th"
-            },
-            {
-                "title":"Announcement of the second list of accepted open source community",
-                "time":"May 21th"
-            },
-            {
-                "title":"Students submit application",
-                "time":"May 24th - Jun 13th"
-            },
-            {
-                "title":"Mentors review the applications",
-                "time":"Jun 14th - Jun 21th"
-            },
-            {
-                "title":"Accepted student projects announced",
-                "time":"Jun 30th"
-            },
-            {
-                "title":"The 1st phase of developing project",
-                "time":"Jul 1st - Aug 15th"
-            },
-            {
-                "title":"Mentors review mid-term report",
-                "time":"Aug 16th - Aug 22th"
-            },
-            {
-                "title":"Announcement of the mid-term results",
-                "time":"Aug 30th"
-            },
-            {
-                "title":"The 2nd phase of developing project",
-                "time":"Aug 16th - Sep 30th"
-            },
-            {
-                "title":"Mentors review final-term report",
-                "time":"Oct 1st - Oct 14th"
-            },
-            {
-                "title":"Announcement of the final results ",
-                "time":"Oct 22th"
-            },
-            {
-                "title":"Announcement of excellent projects",
-                "time":"Early November"
-            }
-        ],
-        "committee":[
-            {"university":"Institute of Software Chinese Academy of Sciences","name":"武延军"},
-            {"university":"openEuler Community","name":"江大勇"},
-            {"university":"Institute of Computing Technology, Chinese Academy of Sciences","name":"包云岗"},
-            {"university":"Xi'an University of Posts&Telecommunications","name":"陈莉君"},
-            {"university":"Tsinghua University","name":"陈渝"},
-            {"university":"Tsinghua University","name":"崔勇"},
-            {"university":"Beihang University","name":"胡春明"},
-            {"university":"Huazhong University of Science and Technology","name":"华宇"},
-            {"university":"Xiamen University","name":"纪荣嵘"},
-            {"university":"Zhejiang University","name":"纪守领"},
-            {"university":"Beijing Information Science and Technology University","name":"李春强"},
-            {"university":"Beijing University of Technology","name":"李洪义"},
-            {"university":"Guangzhou University","name":"李进"},
-            {"university":"Xidian University","name":"李青山"},
-            {"university":"Nankai University","name":"李涛"},
-            {"university":"Renmin University Of China","name":"梁彬"},
-            {"university":"Beijing Normal University","name":"刘坚"},
-            {"university":"University of Chinese Academy of Sciences","name":"罗铁坚"},
-            {"university":"Tongji University","name":"裴喜龙"},
-            {"university":"Peking University","name":"沈晴霓"},
-            {"university":"Xi'an Jiaotong University","name":"唐亚哲"},
-            {"university":"Harbin Institute Of Technology","name":"王宏志"},
-            {"university":"East China Normal University ","name":"王伟"},
-            {"university":"Central University Of Finance And Economics","name":"王秀利"},
-            {"university":"Dalian University Of Technology","name":"吴国伟"},
-            {"university":"Shanghai Jiao Tong University","name":"夏虞斌"},
-            {"university":"Wuhan University Of Technology","name":"向剑文"},
-            {"university":"Beijing University of Posts and Telecommunications","name":"徐国爱"},
-            {"university":"Tianjin University","name":"徐江涛"},
-            {"university":"Beijing Forestry University","name":"许福"},
-            {"university":"Fudan University","name":"杨珉"},
-            {"university":"University Of Science And Technology Of China","name":"杨盘隆"},
-            {"university":"University Of Science And Technology Of China","name":"张兰"},
-            {"university":"Hainan University","name":"张永辉"},
-            {"university":"Sinosoft Company Limited","name":"张正"}
+      },
+      {
+        "title": "Project",
+        "text": [
+          "students conduct the project under the guidance of the community mentor and contribute the code to the community."
         ]
-    }
+      },
+      {
+        "title": "Reward",
+        "text": [
+          "Certificate and award is provided according to students' contribution."
+        ]
+      }
+    ],
+    "ls": [
+      {
+        "title": "Students",
+        "text": "Students are free to choose projects and communicate with mentors on implementation plans in order to write project plans. The selected students will complete the development task as planned and contribute the results to the community under the guidance of the community mentor. The community evaluates student completion and the organizer committee grants the money award to students based on the evaluation results."
+      },
+      {
+        "title": "Community",
+        "text": "The community provides a list and description of the project, and arranges for a mentor to communicate the program with the applicant and select one of the applicants to undertake the project. During the three-month development period, the mentor guides the students in developing the corresponding projects."
+      },
+      {
+        "title": "Mentor",
+        "text": "For each project, the community assigns a mentor to work with the students to develop appropriate plan and guide the students to complete the task as planned."
+      }
+    ],
+    "ttile": "Calendar of Events",
+    "tip": " *The default timezone is ‘GMT+8’",
+    "time": [
+      {
+        "title": "Open of application for open source community",
+        "time": "Jan 29th"
+      },
+      {
+        "title": "Announcement of the first list of accepted open source community",
+        "time": "Apr 2nd"
+      },
+      {
+        "title": "Deadline of application and project release for open source community",
+        "time": "May 20th"
+      },
+      {
+        "title": "Announcement of the second list of accepted open source community",
+        "time": "May 21th"
+      },
+      {
+        "title": "Students submit application",
+        "time": "May 24th - Jun 13th"
+      },
+      {
+        "title": "Mentors review the applications",
+        "time": "Jun 14th - Jun 21th"
+      },
+      {
+        "title": "Accepted student projects announced",
+        "time": "Jun 30th"
+      },
+      {
+        "title": "The 1st phase of developing project",
+        "time": "Jul 1st - Aug 15th"
+      },
+      {
+        "title": "Mentors review mid-term report",
+        "time": "Aug 16th - Aug 22th"
+      },
+      {
+        "title": "Announcement of the mid-term results",
+        "time": "Aug 30th"
+      },
+      {
+        "title": "The 2nd phase of developing project",
+        "time": "Aug 16th - Sep 30th"
+      },
+      {
+        "title": "Mentors review final-term report",
+        "time": "Oct 1st - Oct 14th"
+      },
+      {
+        "title": "Announcement of the final results ",
+        "time": "Oct 22th"
+      },
+      {
+        "title": "Announcement of excellent projects",
+        "time": "Early November"
+      }
+    ],
+    "committee": [
+      {
+        "university": "Institute of Software Chinese Academy of Sciences",
+        "name": "武延军"
+      },
+      { "university": "openEuler Community", "name": "江大勇" },
+      {
+        "university": "Institute of Computing Technology, Chinese Academy of Sciences",
+        "name": "包云岗"
+      },
+      {
+        "university": "Xi'an University of Posts&Telecommunications",
+        "name": "陈莉君"
+      },
+      { "university": "Tsinghua University", "name": "陈渝" },
+      { "university": "Tsinghua University", "name": "崔勇" },
+      { "university": "Beihang University", "name": "胡春明" },
+      {
+        "university": "Huazhong University of Science and Technology",
+        "name": "华宇"
+      },
+      { "university": "Xiamen University", "name": "纪荣嵘" },
+      { "university": "Zhejiang University", "name": "纪守领" },
+      {
+        "university": "Beijing Information Science and Technology University",
+        "name": "李春强"
+      },
+      { "university": "Beijing University of Technology", "name": "李洪义" },
+      { "university": "Guangzhou University", "name": "李进" },
+      { "university": "Xidian University", "name": "李青山" },
+      { "university": "Nankai University", "name": "李涛" },
+      { "university": "Renmin University Of China", "name": "梁彬" },
+      { "university": "Beijing Normal University", "name": "刘坚" },
+      {
+        "university": "University of Chinese Academy of Sciences",
+        "name": "罗铁坚"
+      },
+      { "university": "Tongji University", "name": "裴喜龙" },
+      { "university": "Peking University", "name": "沈晴霓" },
+      { "university": "Xi'an Jiaotong University", "name": "唐亚哲" },
+      { "university": "Harbin Institute Of Technology", "name": "王宏志" },
+      { "university": "East China Normal University ", "name": "王伟" },
+      {
+        "university": "Central University Of Finance And Economics",
+        "name": "王秀利"
+      },
+      { "university": "Dalian University Of Technology", "name": "吴国伟" },
+      { "university": "Shanghai Jiao Tong University", "name": "夏虞斌" },
+      { "university": "Wuhan University Of Technology", "name": "向剑文" },
+      {
+        "university": "Beijing University of Posts and Telecommunications",
+        "name": "徐国爱"
+      },
+      { "university": "Tianjin University", "name": "徐江涛" },
+      { "university": "Beijing Forestry University", "name": "许福" },
+      { "university": "Fudan University", "name": "杨珉" },
+      {
+        "university": "University Of Science And Technology Of China",
+        "name": "杨盘隆"
+      },
+      {
+        "university": "University Of Science And Technology Of China",
+        "name": "张兰"
+      },
+      { "university": "Hainan University", "name": "张永辉" },
+      { "university": "Sinosoft Company Limited", "name": "张正" }
+    ]
+  }
 }

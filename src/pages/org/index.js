@@ -44,7 +44,11 @@ const Org = (props) => {
     return (
         <Wrapper>
             <div className="Org">
-                <div className="OrgBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/organisation/banner1.png` }}></div>
+                <div className="OrgBanner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/organisation/banner1.png` }}>
+                    <div className="OrgBannerTitle">{showdata.title}</div>
+                    <div className="OrgTextOne" style={{ fontSize: homepage.chiFlag === 'chi' ? '2.4rem' : '2.2rem' }} dangerouslySetInnerHTML={{ __html: showdata.titlebannertext }}></div>
+                    <div className="OrgTextBtn" style={{ width: homepage.chiFlag === 'chi' ? '20rem' : '30rem' }}><span>{showdata.titleBtntext}</span></div>
+                </div>
                 <div className="OrgTab">
                     {
                         showdata.tab.map((item, index) => {

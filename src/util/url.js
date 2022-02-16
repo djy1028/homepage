@@ -47,7 +47,7 @@ const linkDataMap = {
 
 
 var gettitle = function () {
-    var titleContent = ` - 开源软件供应链点亮计划 - 暑期2021 | 中国科学院软件研究所 | openEuler 社区`;
+    var titleContent = ` - 开源软件供应链点亮计划 - 暑期2022 | 中国科学院软件研究所 | openEuler 社区`;
     var location = window.location.hash.split("?")[0].split("/");
     if (location.length === 2) {
         document.title = `${linkDataMap[location[1]] || '首页'}${titleContent}`;

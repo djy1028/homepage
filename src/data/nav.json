@@ -1,136 +1,206 @@
 {
-    "link":[
-        "homepage","org" ,"liveshow","howitworks" ,"dataall","apply","help","data","midtermdata","loginall"
+  "link2021": [
+    "homepage",
+    "org",
+    "liveshow",
+    "howitworks",
+    "dataall",
+    "apply",
+    "help",
+    "data",
+    "midtermdata",
+    "loginall"
+  ],
+  "link": [
+    "homepage",
+    "org",
+    "howitworks",
+    "apply",
+    "dataall",
+    "help",
+    "loginall"
+  ],
+  "chi": {
+    "linkdata2021": [
+      {
+        "name": "首页"
+      },
+      {
+        "name": "项目公示"
+      },
+      {
+        "name": "大咖说开源"
+      },
+      {
+        "name": "活动规划"
+      },
+      {
+        "name": "公示",
+        "content": [
+          {
+            "name": "活动数据",
+            "title": "data"
+          },
+          {
+            "name": "中期考核公示",
+            "title": "midtermdata"
+          }
+        ]
+      },
+      {
+        "name": "如何加入"
+      },
+      {
+        "name": "帮助"
+      }
     ],
-    "chi":{
-        "linkdata":[
-            {
-                "name":"首页"
-                  
-            },
-            {
-                "name":"项目公示"
-                  
-            },
-            {
-                "name":"大咖说开源"
-                  
-            },
-            {
-                "name":"活动规划"
-               
-            },
-            {
-                "name":"公示",
-                "content":[
-                    {
-                        "name":"活动数据",
-                        "title":"data"
-                    },
-                    {
-                        "name":"中期考核公示",
-                        "title":"midtermdata"
-                    }
-                ]
-            },
-            {
-                "name":"如何加入"    
-                   
-            },
-            {
-                "name":"帮助"        
-            }
-        ],
-        "summer2020":"2020活动回顾",
-        "login":{
-            "name": "登录",
-            "content": [
-                {
-                    "name": "学生登录",
-                    "title": "studentLogin"
-                },
-                {
-                    "name": "导师登录",
-                    "title": "tutorLogin"
-                },
-                {
-                    "name": "组织登录",
-                    "title": "orgLogin"
-                }
-            ]
+    "linkdata": [
+      {
+        "name": "首页"
+      },
+      {
+        "name": "查看项目"
+      },
+      {
+        "name": "活动规划"
+      },
+      {
+        "name": "如何加入"
+      },
+      {
+        "name": "往届活动回顾",
+        "content": [
+          {
+            "name": "2021活动回顾",
+            "title": "data"
+          },
+          {
+            "name": "2020活动回顾",
+            "title": "midtermdata"
+          }
+        ]
+      },
+      {
+        "name": "帮助"
+      }
+    ],
+    "login": {
+      "name": "登录",
+      "content": [
+        {
+          "name": "学生登录",
+          "title": "studentLogin"
         },
-        "logout":{
-            "name":"用户中心",
-            "content":[
-                {
-                    "name": "退出",
-                    "title": "studentLoginout"
-                }
-            ]
+        {
+          "name": "导师登录",
+          "title": "tutorLogin"
+        },
+        {
+          "name": "组织登录",
+          "title": "orgLogin"
         }
+      ]
     },
-    "en":{
-        "linkdata":[
-            {
-                "name":"ABOUT"    
-            },
-            {
-                "name":"PROJECT LIST"    
-            },
-            {
-                "name":"MASTER CLASS"
-                  
-            },
-            {
-                "name":"HOW IT WORKS" 
-            },
-            {
-                "name":"RESULT DATA",
-                "content":[
-                    {
-                        "name":"Program Data",
-                        "title":"data"
-                    },
-                    {
-                        "name":"Midterm Results Announced",
-                        "title":"midtermdata"
-                    }
-                ]
-            },
-            {
-                "name":"GET STARTED"      
-            },
-            {
-                "name":"HELP"  
-            }
-    
-        ],
-        "summer2020":"Summer 2020",
-        "login": {
-            "name": "LOGIN",
-            "content": [
-                {
-                    "name": "Student Login",
-                    "title": "studentLogin"
-                },
-                {
-                    "name": "Mentor Login",
-                    "title": "tutorLogin"
-                },
-                {
-                    "name": "Organization Login",
-                    "title": "orgLogin"
-                }
-            ]
-        },
-        "logout": {
-            "name": "User Center",
-            "content": [
-                {
-                    "name": "Log Out",
-                    "title": "studentLoginout"
-                }
-            ]
+    "logout": {
+      "name": "用户中心",
+      "content": [
+        {
+          "name": "退出",
+          "title": "studentLoginout"
         }
+      ]
     }
+  },
+  "en": {
+    "linkdata2021": [
+      {
+        "name": "ABOUT"
+      },
+      {
+        "name": "PROJECT LIST"
+      },
+      {
+        "name": "MASTER CLASS"
+      },
+      {
+        "name": "HOW IT WORKS"
+      },
+      {
+        "name": "RESULT DATA",
+        "content": [
+          {
+            "name": "Program Data",
+            "title": "data"
+          },
+          {
+            "name": "Midterm Results Announced",
+            "title": "midtermdata"
+          }
+        ]
+      },
+      {
+        "name": "GET STARTED"
+      },
+      {
+        "name": "HELP"
+      }
+    ],
+    "linkdata": [
+      {
+        "name": "ABOUT"
+      },
+      {
+        "name": "PROJECT LIST"
+      },
+      {
+        "name": "HOW IT WORKS"
+      },
+      {
+        "name": "GET STARTED"
+      },
+      {
+        "name": "REVIEW EVENTS",
+        "content": [
+          {
+            "name": "Summer 2021",
+            "title": "data"
+          },
+          {
+            "name": "Summer 2020",
+            "title": "midtermdata"
+          }
+        ]
+      },
+      {
+        "name": "HELP"
+      }
+    ],
+    "summer2020": "Summer 2020",
+    "login": {
+      "name": "LOGIN",
+      "content": [
+        {
+          "name": "For Student",
+          "title": "studentLogin"
+        },
+        {
+          "name": "For Monter",
+          "title": "tutorLogin"
+        },
+        {
+          "name": "For Organization",
+          "title": "orgLogin"
+        }
+      ]
+    },
+    "logout": {
+      "name": "User Center",
+      "content": [
+        {
+          "name": "Log Out",
+          "title": "studentLoginout"
+        }
+      ]
+    }
+  }
 }
