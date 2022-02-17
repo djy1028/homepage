@@ -152,7 +152,7 @@ const HomePage = () => {
                             <div className="homepageLogoTitle">
                                 {/* <span className="title-wrapper"> */}
                                 {/* <span className="title-left-icon"></span> */}
-                                <span className="title-text">{showdata.logotitle[0]}</span>
+                                <span className="title-text" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/wraptitle.png)` }}>{showdata.logotitle[0]}</span>
                                 {/* <span className="title-right-icon"></span> */}
                                 {/* </span> */}
                             </div>

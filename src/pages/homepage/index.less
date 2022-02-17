@@ -213,13 +213,14 @@
   font-stretch: normal;
   letter-spacing: 2px;
   color: #333;
-  margin-bottom: 35px;
-  // text-align: center;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .homepageLogoItemTitle {
   font-family: PingFang-SC-Medium;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   font-stretch: normal;
   letter-spacing: 1px;
@@ -398,6 +399,11 @@
 .title-text {
   z-index: 2;
   position: relative;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 10rem;
+  line-height: 9.5rem;
+  background-size: 100% 100%;
 }
 
 // .homepageLogoItemTitle {
@@ -407,7 +413,7 @@
 //   font-weight: normal;
 // }
 
-@media screen and (min-width: 100px) and (max-width: 750px) {
+@media screen and (min-width: 100px) and (max-width: 800px) {
   .homepageBanner.One {
     height: 350px;
     background-image: url(./../../img/index/banner-mobile1.png);
@@ -422,6 +428,10 @@
     padding: 45px 0 38px;
     // color: #fff;
     line-height: 40px;
+  }
+
+  .title-text {
+    width: 24rem;
   }
   .en {
     .homepageBannerTitle {
