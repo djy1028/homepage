@@ -27,6 +27,7 @@ export const Detail = (props)=>{
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 fetchapply()
+                setCommit(false)
 
             } else {
                 openNotificationWithIcon(1, res.message)

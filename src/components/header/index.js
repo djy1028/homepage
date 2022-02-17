@@ -388,12 +388,6 @@ class Header extends React.Component {
                                 </div>
                             )
                         })}
-                        {/* <div
-                            onClick={() => this.gosummer2020()}
-                            className={['osscListItem'].join(' ')}
-                        >
-                            <span>{showdata.summer2020}</span>
-                        </div> */}
                     </div>
                 </div>
             </div>

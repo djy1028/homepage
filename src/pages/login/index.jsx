@@ -137,12 +137,11 @@ const ShadowCard = styled(Card)`
     height:35rem;
     padding: 0 2rem;
     box-sizing: border-box;
-    /* box-shadow:rgba(0,0,0,0.1) 0 0 10px; */
     text-align: center;
     border-radius: .5rem;
     background-color: #f7f8fa;
 	border: solid 1px #bcbcbc;
-	opacity: 0.7;
+	opacity: 0.9;
 `
 
 const RightHeader = styled.header`

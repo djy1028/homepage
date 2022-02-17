@@ -9,12 +9,12 @@ const initState = {
 }
 
 export const homepage = (state = initState, action) => {
-    if(action.type === "chiFlag_chi"){
-        window.location.hash = window.location.hash.split("?")[0] + "?lang=chi"
-    }
-    if(action.type === "chiFlag_en"){
-        window.location.hash = window.location.hash.split("?")[0] + "?lang=en"
-    }
+    // if(action.type === "chiFlag_chi"){
+    //     window.location.hash = window.location.hash.split("?")[0] + "?lang=chi"
+    // }
+    // if(action.type === "chiFlag_en"){
+    //     window.location.hash = window.location.hash.split("?")[0] + "?lang=en"
+    // }
     switch (action.type){
         case "chiFlag_chi":
             // i18n.changeLanguage('zh')
