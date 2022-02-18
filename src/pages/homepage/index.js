@@ -117,7 +117,7 @@ const HomePage = () => {
                             {
                                 showdata.bannerone.map((item, index) => {
                                     return (
-                                        <span className="homepageBannerFlineText" style={{ width: 800 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
+                                        <span className="homepageBannerFlineText" style={{ width: homepage.chiFlag === 'chi' ? index == 0 ? 850 : 650 : index == 0 ? 850 : index == 1 ? 690 : 670 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
                                     )
 
                                 })
@@ -127,7 +127,7 @@ const HomePage = () => {
                             {
                                 showdata.bannerone.map((item, index) => {
                                     return (
-                                        <span className="homepageBannerFlineText" style={{ width: 800 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
+                                        <span className="homepageBannerFlineText" style={{ width: index == 0 ? 850 : 650 }} key={index} dangerouslySetInnerHTML={{ __html: item }}></span>
                                     )
 
                                 })
