@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { useSetPriority, useStuProQueryKey, useUpdateStuPriority } from 'utils/project'
 
 export const SortStu = (props) => {
-    const { searchparam,showBtn } = props;
+    const { searchparam,showBtn,getCheck } = props;
     const [reset, setReset] = useState(false)
     const { Text, Title } = Typography
     const [form] = useForm()
@@ -52,6 +52,7 @@ export const SortStu = (props) => {
     useEffect(() => {
         setReset(false)
     }, [])
+    console.log(showBtn)
     return isLoading ? <Spin>loading...</Spin> :
             (list.rows && list.rows.length > 0) ?
             <Contain>
@@ -60,11 +61,11 @@ export const SortStu = (props) => {
                 <Form style={{ width: '65%', padding: '2rem 0' }} form={form} scrollToFirstError={true} name="teacherpriority" onFinish={onFinish}  >
                     {
                         (list.rows && list.rows?.length > 0) && list.rows.map((item) =>
-                            <Form.Item key={item.id} label={item.programName} name={item.id} labelCol={{ offset: reset ? 0 : 10 }}  >
+                            <Form.Item key={item.id} label={<div title={item.programName} style={{maxWidth:'22rem',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden'}}>{item.programName}</div>} name={item.id} labelCol={{ offset: reset ? 0 : 8 }}  >
                                 {
                                     reset ?
                                         <CommonSelect width={'100%'} options={list.rows.map((item, index) => ({ id: index + 1, name: index + 1 }))} />
-                                        : <div id={'program.studentPriority'}>
+                                        : <div id={'program.studentPriority'} >
                                             {item.studentPriority ? item.studentPriority : <span style={{ color: 'red' }}>{t('tutor.nosort')}</span>}
                                         </div>
                                 }
@@ -72,7 +73,7 @@ export const SortStu = (props) => {
                     }
                     {
 
-                        (list.rows && list.rows?.length > 0 && showBtn) && <Form.Item wrapperCol={{ offset: 8 }} >
+                        (list.rows && list.rows?.length > 0 && showBtn && getCheck) && <Form.Item wrapperCol={{ offset: 8 }} >
                             {!reset ? <Button type="link" onClick={() => setReset(true)}>
                                 {t('tutor.reset_btn')}
                             </Button> :

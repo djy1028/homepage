@@ -62,15 +62,17 @@ const Info = () => {
 
     useEffect(() => {
         if (editingStudent) {
-            editingStudent.name = raesDecrypt(editingStudent.name)
-            editingStudent.phone = raesDecrypt(editingStudent.phone)
-            editingStudent.cardNumber = raesDecrypt(editingStudent.cardNumber)
-            editingStudent.cardFrontUrl = editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url ? editingStudent.cardFrontUrl : null
-            editingStudent.cardBackUrl = editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url ? editingStudent.cardBackUrl : null
-            editingStudent.studentCardUrl = editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url ? editingStudent.studentCardUrl : null
-            form.setFieldsValue(editingStudent)
+            const newEditingStu = { ...editingStudent }
+            newEditingStu.name = raesDecrypt(editingStudent.name)
+            newEditingStu.phone = raesDecrypt(editingStudent.phone)
+            newEditingStu.cardNumber = raesDecrypt(editingStudent.cardNumber)
+            newEditingStu.cardFrontUrl = editingStudent.cardFrontUrl && editingStudent.cardFrontUrl[0].url ? editingStudent.cardFrontUrl : null
+            newEditingStu.cardBackUrl = editingStudent.cardBackUrl && editingStudent.cardBackUrl[0].url ? editingStudent.cardBackUrl : null
+            newEditingStu.studentCardUrl = editingStudent.studentCardUrl && editingStudent.studentCardUrl[0].url ? editingStudent.studentCardUrl : null
+            console.log(newEditingStu, editingStudent)
+            form.setFieldsValue(newEditingStu)
         }
-    }, [editingStudent, form])
+    }, [{ ...editingStudent }])
     return ((isLoading || mutateLoading) ? <Spin>loading...</Spin> :
         <div id={'studentinfo'} style={{ width: '100%', height: '100%' }}>
             {editingStudent && <HeaderContain>

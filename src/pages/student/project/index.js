@@ -26,6 +26,7 @@ const Project = () => {
     const token = useSelector(state => state.user)?.token
     const [searchparam, setParam] = useStuProSearchParms()
     const [showBtn, setShowBtn] = useState(true)
+    const [getCheck, setGetCheck] = useState(false)
     const { isLoading, data: list, refetch } = useStuPrograms(useDebounce(searchparam, 500))
     const { inquiryOrg, projectModalOpen, close, inquiryOrgId, inquiryPro, inquiryApply, DrawerOpen, inquiryActivity, inquiryActivityId,
         updateSort, stuPriority } = useStuProgramModal()
@@ -91,6 +92,7 @@ const Project = () => {
         if (searchparam.activityId) {
             (list.rows && list.rows.length > 0) ? checkSetPriority(token, { activityId: searchparam.activityId, status: 'first' }).then(rsp => {
                 setShowBtn(rsp.res)
+                setGetCheck(rsp ? true : false)
                 if (!rsp.res) {
                     const checklist = list.rows.map(item => item.studentPriority).some(item => item)
                     !checklist ? Modal.info({
@@ -136,7 +138,7 @@ const Project = () => {
             <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
-                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu showBtn={showBtn} searchparam={searchparam} /> : <Checkpro />} />
+                children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu getCheck={getCheck} showBtn={showBtn} searchparam={searchparam} /> : <Checkpro />} />
             {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} />} title={t('project.studentApply')} />}
         </Main>
     )
