@@ -244,7 +244,7 @@ export const Detail = (props)=>{
                                                             defaultFileList={applyInfo?.studentMidAgreement ? [
                                                                 {
                                                                     uid: '1',
-                                                                    name: applyInfo.studentMidAgreement ? applyInfo.studentMidAgreement.split("/").pop() : 'studentMidAgreement.pdf',
+                                                                    name: applyInfo.studentMidAgreement ? applyInfo.studentMidAgreement.split("_")[0] : 'studentMidAgreement.pdf',
                                                                     status: 'done'
                                                                 }
                                                             ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
@@ -364,7 +364,7 @@ export const Detail = (props)=>{
                                                             defaultFileList={applyInfo?.studentAgreement ? [
                                                                 {
                                                                     uid: '1',
-                                                                    name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("/").pop() : 'studentAgreement.pdf',
+                                                                    name: applyInfo.studentAgreement ? applyInfo.studentAgreement.split("_")[0] : 'studentAgreement.pdf',
                                                                     status: 'done'
                                                                 }
                                                             ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
