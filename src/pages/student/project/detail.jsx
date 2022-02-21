@@ -18,7 +18,9 @@ export const Detail = (props)=>{
     const token = getToken()
     const { applyInfo, applyInfoLoading, isFetching, inquiryApplyId, fetchapply } = useStuProgramModal()
     const { close } = useStuProgramModal()
-    const [commit,setCommit] = useState(false)
+    const [commit, setCommit] = useState(false)
+    const [midagcommit, setMidagCommit] = useState(false)
+    const [endagcommit, setEndagCommit] = useState(false)
     const { projectModal, editBank,closeBank } = useBankModal()
     const { mutateAsync, isLoading: uploadLoading } = useStuproupload(useStuProQueryKey())
     const { mutateAsync: mutateAsynczip, isLoading: uploadzipLoading } = useStuprozipupload(inquiryApplyId)
@@ -27,7 +29,9 @@ export const Detail = (props)=>{
             if (res.code === 200) {
                 openNotificationWithIcon(0, res.message)
                 fetchapply()
-                setCommit(false)
+                commit && setCommit(false)
+                midagcommit && setMidagCommit(false)
+                endagcommit && setEndagCommit(false)
 
             } else {
                 openNotificationWithIcon(1, res.message)
@@ -240,7 +244,7 @@ export const Detail = (props)=>{
                                                         <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
                                                             {t('tutor.downloadpdf')}
                                                         </a>{t('tutor.despdf')}</span>
-                                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
+                                                        <Upload onChange={({ file }) => file.status === 'done' && setMidagCommit(true)} onRemove={() => deleteuploadfile()}
                                                             defaultFileList={applyInfo?.studentMidAgreement ? [
                                                                 {
                                                                     uid: '1',
@@ -259,7 +263,7 @@ export const Detail = (props)=>{
                                                 </Descriptions.Item>
                                                 <Descriptions.Item label={''} >
                                                     <Space direction='vertical'>
-                                                        <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                                        <Button disabled={!midagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     <div style={{color:'red'}}>{t('admin.project.agreement_mes')}</div>
                                                     </Space>
                                                 </Descriptions.Item>
@@ -360,7 +364,7 @@ export const Detail = (props)=>{
                                                         <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
                                                             {t('tutor.downloadpdf')}
                                                         </a>{t('tutor.despdf')}</span>
-                                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadfile()}
+                                                    <Upload onChange={({ file }) => file.status === 'done' && setEndagCommit(true)} onRemove={() => deleteuploadfile()}
                                                             defaultFileList={applyInfo?.studentAgreement ? [
                                                                 {
                                                                     uid: '1',
@@ -379,7 +383,7 @@ export const Detail = (props)=>{
                                                 </Descriptions.Item>
                                             <Descriptions.Item label={''} >
                                                 <Space direction='vertical'>
-                                                    <Button disabled={!commit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
+                                                    <Button disabled={!endagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     <div style={{ color: 'red' }}>{t(!applyInfo.summerMiddleApprovePublicTime ?'admin.project.agreement_mes':'admin.project.agreeend_mes')}</div>
                                                     </Space>
                                             </Descriptions.Item>
