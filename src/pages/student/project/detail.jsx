@@ -248,7 +248,7 @@ export const Detail = (props)=>{
                                                             defaultFileList={applyInfo?.studentMidAgreement ? [
                                                                 {
                                                                     uid: '1',
-                                                                    name: applyInfo.studentMidAgreement ? (applyInfo.studentMidAgreement.split("_")[0]+'.pdf') : 'studentMidAgreement.pdf',
+                                                                    name: applyInfo.studentMidAgreement ? (applyInfo.studentMidAgreement.match(/.+(?=_.+_.+)/)[0]+'.pdf') : 'studentMidAgreement.pdf',
                                                                     status: 'done'
                                                                 }
                                                             ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
@@ -368,7 +368,8 @@ export const Detail = (props)=>{
                                                             defaultFileList={applyInfo?.studentAgreement ? [
                                                                 {
                                                                     uid: '1',
-                                                                    name: applyInfo.studentAgreement ? (applyInfo.studentAgreement.split("_")[0]+'.pdf') : 'studentAgreement.pdf',
+                                                                    /* 先行断言判断xxxx_programId_timestamp */
+                                                                    name: applyInfo.studentAgreement ? (applyInfo.studentAgreement.match(/.+(?=_.+_.+)/)[0]+'.pdf') : 'studentAgreement.pdf',
                                                                     status: 'done'
                                                                 }
                                                             ] : []} accept={'.pdf'} onPreview={() => null} beforeUpload={file => {
