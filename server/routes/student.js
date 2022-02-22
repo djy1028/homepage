@@ -219,11 +219,15 @@ module.exports = {
             url: `/system/studentProgram/detail/${id}`,
             headers: { Authorization: ctx.request.header.authorization }
         })
-        if (response.data.code !== 200) {
-            ctx.response.status = response.data.code
+        if (response.data.code == 200) {
+            response.data.suStudentProgram.gitUrl = response.data.gitUrl
+            ctx.body = JSON.stringify({ ...response.data.activity, ...response.data.suStudentProgram })
         }
-        response.data.suStudentProgram.gitUrl = response.data.gitUrl
-        response.data.code === 200 ? ctx.body = JSON.stringify({ ...response.data.activity, ...response.data.suStudentProgram }) : ctx.body = JSON.stringify(response.data)
+        else {
+            ctx.response.status = response.data.code
+            ctx.body = JSON.stringify(response.data)
+        }
+
     },
     downloadApplication: async (ctx, next) => {
         const { id, phase } = ctx.request.body

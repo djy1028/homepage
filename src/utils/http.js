@@ -52,7 +52,7 @@ export const http = (endpoint, { data, token, headers, ...customConfig }, dispat
             notification.error({
                 message: data.message
             });
-            return Promise.reject(data)
+            return data
         }
     })
 }
