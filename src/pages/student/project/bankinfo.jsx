@@ -39,7 +39,7 @@ export const Bankinfo = (props) => {
     }
     useEffect(() => {
         if (data && data.rows && data.rows.length > 0) {
-            let tempbank = data.rows[0]
+            let tempbank = { ...(data.rows[0]) }
             tempbank.field1 = raesDecrypt(tempbank.field1)
             tempbank.field2 = raesDecrypt(tempbank.field2)
             tempbank.field5 = raesDecrypt(tempbank.field5)
