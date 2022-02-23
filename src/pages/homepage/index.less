@@ -4,8 +4,7 @@
 
 .homepageBanner {
   width: 100%;
-  height: 400px;
-  background-size: 100% 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
   position: relative;
   box-sizing: border-box;
@@ -68,8 +67,6 @@
   font-weight: normal;
   font-stretch: normal;
   color: #000;
-  padding: 64px 0 40px;
-  // text-align: center;
 }
 
 .ant-carousel .slick-slide {
@@ -92,11 +89,11 @@
 }
 .homepageTextOne {
   width: 630px;
-  position: relative;
-  // margin: 0 auto;
-  font-size: 2.4rem;
-  line-height: 4rem;
-  left: 13%;
+  position: absolute;
+  position: absolute;
+  left: calc(270 / 1920 * 100vw);
+  font-size: calc(24 / 1920 * 100vw);
+  top: calc(155 / 1920 * 100vw);
 }
 
 .homepageDesc {
@@ -241,18 +238,6 @@
   cursor: pointer;
 }
 
-// .homepageLogoImage.Host {
-//   background-image: url(./../../img/logo/iscas.jpg);
-// }
-
-// .homepageLogoImage.openeuler {
-//   background-image: url(./../../img/logo/openeuler.jpg);
-// }
-
-// .homepageLogoImage.nanjing {
-//   background-image: url(./../../img/logo/nanjing.png);
-// }
-
 .CoopTitle {
   display: flex;
   align-items: normal;
@@ -329,10 +314,6 @@
     width: 700px;
   }
 
-  .homepageBannerTitle {
-    font-size: 2.8rem;
-  }
-
   .homepageBannerFline {
     font-size: 18px;
     line-height: 30px;
@@ -343,10 +324,10 @@
 }
 
 .homepageBannerTitle {
-  font-size: 50px;
-  line-height: 50px;
-  position: relative;
-  left: 13%;
+  font-size: calc(50 / 1920 * 100vw);
+  position: absolute;
+  left: calc(270 / 1920 * 100vw);
+  top: calc(44 / 1920 * 100vw);
 }
 
 .homepageDesc {
@@ -406,37 +387,13 @@
   background-size: 100% 100%;
 }
 
-// .homepageLogoItemTitle {
-//   font-size: 24px;
-//   line-height: 34px;
-//   color: #000;
-//   font-weight: normal;
-// }
-
 @media screen and (min-width: 100px) and (max-width: 800px) {
-  .homepageBanner.One {
-    height: 350px;
-    background-image: url(./../../img/index/banner-mobile1.png);
-  }
-
   .GoApply {
     top: 342px;
   }
 
-  .homepageBannerTitle {
-    font-size: 18px;
-    padding: 45px 0 38px;
-    // color: #fff;
-    line-height: 40px;
-  }
-
   .title-text {
     width: 24rem;
-  }
-  .en {
-    .homepageBannerTitle {
-      padding: 45px 0 18px !important;
-    }
   }
   .homepage .homepageBannerFlineText {
     padding: 0;
@@ -459,7 +416,7 @@
   .homepage .homepageDesc {
     margin-top: 38px;
     line-height: 30px;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .homepage .homepageIcon {
@@ -470,6 +427,11 @@
 
   .homepage .homepageLogoTitle {
     font-size: 18px;
+  }
+
+  #demo {
+    height: 30px;
+    line-height: 30px;
   }
 
   .title-left-icon {

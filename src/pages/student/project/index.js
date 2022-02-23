@@ -74,7 +74,10 @@ const Project = () => {
             title: t('project.columns_title.6'),
             width: '18rem',
             render: (value, record) => <Space size={4}>
-                <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
+                <Acheck onClick={() => {
+                    console.log(33)
+                    inquiryApply(record.id)
+                }} >{t('project.check')}</Acheck>
                 {
                     record.status === 0 &&
                     <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ ids: record.id }).then(() => close())}
@@ -134,7 +137,7 @@ const Project = () => {
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu token={token} searchparam={searchparam} /> : <Checkpro />} />
-            {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} />} title={t('project.studentApply')} />}
+            {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} setPriority={setPriority} />} title={t('project.studentApply')} />}
         </Main>
     )
 }

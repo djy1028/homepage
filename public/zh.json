@@ -116,7 +116,8 @@
       "editbtn": "编辑",
       "cancelbtn": "取消",
       "phone_validmessage": "请填写有效手机号码",
-      "card_validmessage": "请填写有效身份证"
+      "card_validmessage": "请填写有效身份证",
+      "nameinput_mes": "填写时请与身份证姓名保持一致"
     },
     "origanize": {
       "namesel": ["开源社区", "基金会", "公司", "学校", "其他"],

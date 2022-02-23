@@ -51,8 +51,14 @@ export const Bankinfo = (props) => {
 
     return (
         <Form scrollToFirstError={true} form={form} {...layout} onFinish={onFinish} name="bankinfo_detail" >
-            <h3 style={{position:'relative',left:'38%'}}><strong>{t('tutor.bank_title')}</strong></h3>
-            <p style={{ position: 'relative', left: '20%' }}>{t('tutor.bank_subtl1')}{t('tutor.bank_sbutl2')}</p>
+            {/* <h3 style={{position:'relative',left:'38%'}}><strong>{t('tutor.bank_title')}</strong></h3>
+            <p style={{ position: 'relative', left: '20%' }}>{t('tutor.bank_subtl1')}{t('tutor.bank_sbutl2')}</p> */}
+            <Form.Item label={''} wrapperCol={{ offset: i18n.language === 'zh' ? 10 : 1 }}>
+                <h3><strong>{t('tutor.bank_title')}</strong></h3>
+            </Form.Item>
+            <Form.Item label={''} wrapperCol={{ offset: i18n.language === 'zh' ? 6 : 1 }}>
+                <p>{t('tutor.bank_subtl1')}{t('tutor.bank_sbutl2')}</p>
+            </Form.Item>
             <Form.Item name="field1" label={t('admin.firsttrial.bankinfodes.0')} rules={[{
                 required: true, validator(_, value) {
                     return !value ? Promise.reject(t('tutor.input_receiver')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
@@ -82,17 +88,17 @@ export const Bankinfo = (props) => {
 
             <Form.Item name="field7" label={t('tutor.addressee')} rules={[{
                 required: true, validator(_, value) {
-                    return !value ? Promise.reject(t('tutor.input_certrecer')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
+                    return !value ? Promise.reject(t('tutor.input_certrecer')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 1000 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
                 }
             }]}>
-                <Input.TextArea placeholder={t('tutor.addressmes')} autoSize allowClear />
+                <Input.TextArea placeholder={t('tutor.addressmes')} autoSize allowClear maxLength={1000} />
             </Form.Item>
             <Form.Item name="field8" label={t('tutor.address')} rules={[{
                 required: true, validator(_, value) {
-                    return !value ? Promise.reject(t('tutor.input_certaddr')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 200 ? Promise.reject(t('tutor.length_limit2')) : Promise.resolve()
-                }, type: 'string', max: 100
+                    return !value ? Promise.reject(t('tutor.input_certaddr')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 1000 ? Promise.reject(t('tutor.length_limit2')) : Promise.resolve()
+                }, type: 'string', max: 1000
             }]}>
-                <Input.TextArea placeholder={t('tutor.addressmes')} autoSize allowClear />
+                <Input.TextArea placeholder={t('tutor.addressmes')} autoSize allowClear maxLength={1000}/>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 10 }}>
                 <Button loading={editLoading||addLoading} type="primary" htmlType="submit">

@@ -115,7 +115,9 @@ export const useStuProgramModal = () => {
         updateSort,
         stuPriority,
         inquiryApplyId,
-        fetchapply
+        fetchapply,
+        setStuPriority,
+        setInquiryApply
     }
 }
 

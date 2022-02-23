@@ -107,10 +107,10 @@ const HomePage = () => {
     return (
         <Wrapper>
             <div className="homepage">
-                <div className="homepageBanner One" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/index/banner3.png)` }}>
-                    <div className="homepageBannerTitle">{showdata.title}</div>
-                    <div className="homepageTextOne" dangerouslySetInnerHTML={{ __html: showdata.titlebannertext }}></div>
-                </div>
+                <img className="homepageBanner One" src={`${process.env.PUBLIC_URL}/img/index/banner3.png`} />
+                <span className="homepageBannerTitle">{showdata.title}</span>
+                <span className="homepageTextOne" dangerouslySetInnerHTML={{ __html: showdata.titlebannertext }}></span>
+
                 <div id="demo">
                     <div id="demoin">
                         <div id="demo1">

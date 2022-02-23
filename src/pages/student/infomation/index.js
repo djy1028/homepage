@@ -90,7 +90,7 @@ const Info = () => {
             </HeaderContain>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
-                <Form.Item name="name" label={t('admin.student.detail_title.0')} rules={[{
+                <Form.Item name="name" label={t('admin.student.detail_title.0')} extra={editprofile ? t('admin.student.nameinput_mes') : ''} rules={[{
                     required: true, validator(_, value) {
                         return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                     }, type: 'string', max: 100
@@ -185,7 +185,7 @@ const Info = () => {
                             <Input.TextArea autoSize defaultValue={editingStudent.education} readOnly />
                         </Form.Item> :
                         <Form.Item name="education" label={t('admin.student.detail_title.8')} rules={[{ required: false }]}>
-                            <Input.TextArea autoSize allowClear showCount maxLength={500} />
+                            <Input.TextArea autoSize allowClear showCount maxLength={1000} />
                         </Form.Item>
                 }
                 {
@@ -194,7 +194,7 @@ const Info = () => {
                             <Input.TextArea autoSize defaultValue={editingStudent.internship} readOnly />
                         </Form.Item> :
                         <Form.Item name="internship" label={t('admin.student.detail_title.9')} rules={[{ required: false }]}>
-                            <Input.TextArea autoSize allowClear showCount maxLength={500} />
+                            <Input.TextArea autoSize allowClear showCount maxLength={1000} />
                         </Form.Item>
                 }
                 {
@@ -203,7 +203,7 @@ const Info = () => {
                             <Input.TextArea autoSize defaultValue={editingStudent.program} readOnly />
                         </Form.Item> :
                         <Form.Item name="program" label={t('admin.student.detail_title.10')} rules={[{ required: false }]}>
-                            <Input.TextArea autoSize allowClear showCount maxLength={500} />
+                            <Input.TextArea autoSize allowClear showCount maxLength={1000} />
                         </Form.Item>
                 }
                 {
@@ -212,7 +212,7 @@ const Info = () => {
                             <Input.TextArea autoSize defaultValue={editingStudent.openSoource} readOnly />
                         </Form.Item> :
                         <Form.Item name="openSoource" label={t('admin.student.detail_title.11')} rules={[{ required: false }]}>
-                            <Input.TextArea autoSize allowClear showCount maxLength={500} />
+                            <Input.TextArea autoSize allowClear showCount maxLength={1000} />
                         </Form.Item>
                 }
                 {
@@ -221,7 +221,7 @@ const Info = () => {
                             <Input.TextArea autoSize defaultValue={editingStudent.skill} readOnly />
                         </Form.Item> :
                         <Form.Item name="skill" label={t('admin.student.detail_title.12')} rules={[{ required: false }]}>
-                            <Input.TextArea autoSize allowClear showCount maxLength={500} />
+                            <Input.TextArea autoSize allowClear showCount maxLength={1000} />
                         </Form.Item>
                 }
                 <Form.Item wrapperCol={{ span: 24 }} style={{ textAlign: 'center' }}>

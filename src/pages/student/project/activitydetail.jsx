@@ -80,7 +80,7 @@ export const Detail = () => {
 
                             }
                         }]}>
-                            {index <= 6 ? <Input.TextArea disabled autoSize={{ minRows: 2 }} allowClear showCount maxLength={500} /> :
+                            {index <= 6 ? <Input.TextArea disabled autoSize={{ minRows: 2 }} allowClear showCount maxLength={1000} /> :
                                 item.name === 'needSummerMiddleApprove' ? <Radio.Group onChange={(e) => setNeedMidApprove(e.target.value)}>
                                     {t('admin.activity.summerMiddleRadio', { returnObjects: true }).map((item, index) =>
                                         <Radio disabled key={item.value} value={item.value}>
@@ -219,7 +219,7 @@ export const Detail = () => {
                                     }}>
                                
                                         <Form.Item {...field} label={t(`admin.activity.question`) + (index + 1)} name={[field.name, 'qst']} rules={[{ required: true }]}>
-                                            <Input.TextArea maxLength={200} disabled />
+                                            <Input.TextArea maxLength={1000} disabled />
                                         </Form.Item>
 
                                         <Form.Item name={[field.name, 'ans']} label={''} wrapperCol={{ offset: 6 }} rules={[{ required: true, message: t('admin.activity.qsmust') }]} >
