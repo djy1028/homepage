@@ -17,7 +17,7 @@ export const Detail = (props)=>{
     const { refetch } = props
     const token = getToken()
     const { applyInfo, applyInfoLoading, isFetching, inquiryApplyId, fetchapply } = useStuProgramModal()
-    const { close } = useStuProgramModal()
+    const { close, setStuPriority } = useStuProgramModal()
     const [commit, setCommit] = useState(false)
     const [midagcommit, setMidagCommit] = useState(false)
     const [endagcommit, setEndagCommit] = useState(false)
@@ -56,9 +56,13 @@ export const Detail = (props)=>{
                 mutateAsynczip({ id: applyInfo.id, phase: phase }).then(res => {
                     if (res.code === 200) {
                         openNotificationWithIcon(0, res.message)
-                        close()
-                        refetch()
-
+                        if (phase === 'apply') {
+                            setStuPriority({ stuPriority: true })
+                        }
+                        else { 
+                            close()
+                            refetch()
+                        }
                     }
                     else {
                         openNotificationWithIcon(1, res.message)
@@ -84,21 +88,21 @@ export const Detail = (props)=>{
 
     const judge = (name) => ['.zip', '.rar', '.tar', '.tar.gz', '.7z'].some(item => name.includes(item))
     return (
-        !applyInfo || isFetching || applyInfoLoading || uploadzipLoading ? <Spin>loading</Spin> :
+        !applyInfo  || applyInfoLoading || uploadzipLoading ? <Spin>loading</Spin> :
             <div id="stu_step_detail">
             <NewStep direction={'vertical'} 
                 current={applyInfo && applyInfo.status<=6 && applyInfo.status>=-1?0: 
                     applyInfo && ((applyInfo.status<11 && applyInfo.status>6)||(applyInfo.middleApplicationUrl && !applyInfo.endApplicationUrl && applyInfo.status === -2))?1:
                         applyInfo && ((applyInfo.status <= 15 && applyInfo.status>=11) || (applyInfo.endApplicationUrl && applyInfo.status === -2))?2:3}>
-                <Steps.Step title={<strong>{t('admin.firsttrial.step_title.0')}</strong>} description={
+                    <Steps.Step title={<Space size={'large'}><strong>{t('admin.firsttrial.step_title.0')}</strong>  {applyInfo && (applyInfo.status === 0 || applyInfo.status === 1 || applyInfo.status === 2) &&<a style={{ fontSize: '1.6rem' }} onClick={() => downloadTemplate(token, t('project.moban'))}><DownloadOutlined /> {t('project.application_model')}</a>}</Space>} description={
                     <>
                         <Des column={2}>
                             {applyInfo && (applyInfo.status === 0||applyInfo.status ===1 || applyInfo.status ===2) &&
                                 <>
                                     <Descriptions.Item label={''} >
-                                        <Space direction={'vertical'} size={10}>
-                                            <a onClick={() => downloadTemplate(token,t('project.moban'))}><DownloadOutlined /> {t('project.application_model')}</a>
-                                            <p><ExclamationCircleOutlined />  <span style={{ color: '#a7a5a5' }}>{t('project.upload_mes')}</span></p>
+                                        <Space direction={'vertical'} size={'large'}>
+                                            {/* <a onClick={() => downloadTemplate(token,t('project.moban'))}><DownloadOutlined /> {t('project.application_model')}</a> */}
+                                            <div style={{ color: 'red' }}><ExclamationCircleOutlined />  <span>{t('project.upload_mes')}</span></div>
                                             <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('apply')} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'application', token, applyInfo.applicationUrl.split('/').pop())}
                                                 defaultFileList={applyInfo?.applicationUrl ? [
                                                     {
@@ -119,15 +123,19 @@ export const Detail = (props)=>{
                                                 }} maxCount={1} action={`/uploadZIP/${'studentApplication'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                             </Upload>
-                                        
+                                            <div style={{ display: 'flex', alignItems: 'center' }}><Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                                {/* <div style={{ color: 'red', marginLeft: '2rem' }}>{t('project.upload_btn_mes')}</div> */}
+                                            </div>
+                                            {applyInfo.firstApproveCommitTime && applyInfo.status === 0 && <p><ExclamationCircleOutlined /> <span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
+
                                         </Space>
                                     </Descriptions.Item>
                                     <Descriptions.Item label={''} >
-                                        <Space direction={'vertical'}>
+                                        {/* <Space direction={'vertical'}>
                                             <div style={{ display: 'flex', alignItems: 'center' }}><Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('apply')} type={'primary'}>{t('project.upload_btn')}</Button><div style={{ color: 'red', marginLeft: '2rem' }}>{t('project.upload_btn_mes')}</div></div>
                                             {applyInfo.firstApproveCommitTime && applyInfo.status === 0 && <p><ExclamationCircleOutlined /> <span style={{ color: '#a7a5a5' }}>{t('project.firstapply_mes.0') + applyInfo.firstApproveCommitTime + t('project.firstapply_mes.1')}</span></p>}
         
-                                            </Space>
+                                            </Space> */}
                                     </Descriptions.Item>
                                 </>
                             }
@@ -141,7 +149,7 @@ export const Detail = (props)=>{
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
                                 {applyInfo.status === 1 && <Descriptions.Item label={''} ><p><span style={{ color: 'red' }}>{t('project.waitsort')}</span></p></Descriptions.Item>}
                             {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 1 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
-                                {(applyInfo && applyInfo.status === 5 || applyInfo && applyInfo.status >= 7 || applyInfo && applyInfo.firstSummerIsApproved === 1) && applyInfo.gitUrl && <Descriptions.Item label={''} ><a href={applyInfo.gitUrl} target="_blank"><span>{t('admin.firsttrial.gitword')}</span></a></Descriptions.Item>}
+                                {(applyInfo && applyInfo.status === 5 || applyInfo && applyInfo.status >= 7 || applyInfo && applyInfo.firstSummerIsApproved === 1) && applyInfo.gitUrl && <Descriptions.Item label={''} ><span>{t('admin.firsttrial.gitword.0')}<a href={applyInfo.gitUrl} target="_blank">{t('admin.firsttrial.gitword.1')}</a></span></Descriptions.Item>}
                         </Des>
                         {(applyInfo.status>4 || applyInfo.status === -2 || applyInfo.status === -1) && 
                             <>
@@ -165,16 +173,19 @@ export const Detail = (props)=>{
                     
                 {
                         (applyInfo.status === -2 && !applyInfo.middleApplicationUrl) || applyInfo.status === -1 ? null :
-                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.1')}</strong>} description={
+                            <Steps.Step title={<Space size={'large'}><strong>{t('admin.firsttrial.step_title.1')}</strong> {applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) && <a style={{fontSize:'1.6rem'}} onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                <DownloadOutlined /> {t('project.mid_model')}
+                            </a>}</Space>} description={
                                 <>
                                     {
                                 applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) &&
                                 <Des column={2}>
                                     <Descriptions.Item label={''} >
-                                        <Space direction={'vertical'} size={10}>
-                                            <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                        <Space direction={'vertical'} size={'large'}>
+                                            {/* <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
                                                 <DownloadOutlined /> {t('project.mid_model')}
-                                            </a>
+                                            </a> */}
+                                            {applyInfo.studentMiddleCommitTime && <div><span style={{ color: 'red' }}> <ExclamationCircleOutlined style={{ marginRight: '.5rem' }} />{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></div>}
                                             <Upload onRemove={() => deleteuploadzip('mid')} defaultFileList={applyInfo.middleApplicationUrl ? [
                                                 {
                                                     uid: '1',
@@ -192,13 +203,15 @@ export const Detail = (props)=>{
                                                 return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
                                             }} maxCount={1} action={`/uploadReport/${'studentReportMid'}`}>
                                                 <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                            </Upload>
+                                                        </Upload>
+                                                <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                               
                                         </Space>
                                     </Descriptions.Item>
                                     <Descriptions.Item label={''} >
                                         <Space direction={'vertical'}>
-                                            <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
-                                            {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>}
+                                            {/* <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('mid')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                            {applyInfo.studentMiddleCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentMiddleCommitTime + t('project.midresport_mes.1')}</span></p>} */}
                                         </Space>
                                     </Descriptions.Item>
                                 </Des>}
@@ -243,7 +256,8 @@ export const Detail = (props)=>{
                                                     <Space direction={'vertical'} size={20}>
                                                         <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
                                                             {t('tutor.downloadpdf')}
-                                                        </a>{t('tutor.despdf')}</span>
+                                                    </a>{t('tutor.despdf')}</span>
+                                                    <div style={{ color: 'red' }}><InfoCircleOutlined style={{marginRight:'.5rem'}}/>{t('admin.project.agreement_mes')}</div>
                                                         <Upload onChange={({ file }) => file.status === 'done' && setMidagCommit(true)} onRemove={() => deleteuploadfile()}
                                                             defaultFileList={applyInfo?.studentMidAgreement ? [
                                                                 {
@@ -259,14 +273,15 @@ export const Detail = (props)=>{
                                                             }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
                                                             <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
                                                     </Upload>
+                                                    <Button disabled={!midagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     </Space>
                                                 </Descriptions.Item>
-                                                <Descriptions.Item label={''} >
+                                                {/* <Descriptions.Item label={''} >
                                                     <Space direction='vertical'>
                                                         <Button disabled={!midagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     <div style={{color:'red'}}>{t('admin.project.agreement_mes')}</div>
                                                     </Space>
-                                                </Descriptions.Item>
+                                                </Descriptions.Item> */}
                                             </Des>
                                         </>
                                     }
@@ -288,42 +303,48 @@ export const Detail = (props)=>{
                 }
                 {
                         (applyInfo.status === -2 && !applyInfo.endApplicationUrl) || applyInfo.status === -1 ? null :
-                        <Steps.Step title={<strong>{t('admin.firsttrial.step_title.3')}</strong>} description={
+                            <Steps.Step title={<Space size={'large'}><strong>{t('admin.firsttrial.step_title.3')}</strong> {
+                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement)) && <a style={{fontSize:'1.6rem'}} onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                    <DownloadOutlined /> {t('project.mid_model')}
+                                </a>}</Space>} description={
                             <>{
-                                    applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement) ) &&
-                                <Des column={2}>
+                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement) ) &&
+                                        <Des column={2}>
+                                                <Descriptions.Item label={''} >
+                                                    <Space size={'large'} direction={'vertical'}>
+                                                        {applyInfo.studentEndCommitTime && <div style={{ color: 'red' }}><ExclamationCircleOutlined style={{ marginRight: '.5rem' }} /><span>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></div>}
+                                                        <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
+                                                            {
+                                                                uid: '1',
+                                                                name: applyInfo?.endApplicationUrl ? applyInfo.endApplicationUrl.split("/").pop() : 'endreport.zip',
+                                                                status: 'done',
+                                                                url: applyInfo?.endApplicationUrl
+                                                            }
+                                                        ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())} beforeUpload={file => {
+                                                            if (!judge(file.name)) {
+                                                                message.error(t('project.zip_upload_mes'));
+                                                            }
+                                                            if (file.size > 104857600) {
+                                                                message.error(t('project.zip_upload_messize'));
+                                                            }
+                                                            return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
+                                                        }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
+                                                            <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
+                                                        </Upload>
+                                                        <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
+                                                    </Space>
+                                                </Descriptions.Item>
                                     <Descriptions.Item label={''} >
                                         <Space direction={'vertical'} size={10}>
-                                            <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                            {/* <a onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
                                                 <DownloadOutlined /> {t('project.mid_model')}
-                                            </a>
+                                            </a> */}
+                                            {/* {applyInfo.studentEndCommitTime && <p><span style={{ color: 'red' }}>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></p>}
                                             <Button disabled={!commit} loading={uploadzipLoading} onClick={() => uploadzip('end')} type={'primary'}>{t('project.upload_btn')}</Button>
-                                            {applyInfo.studentEndCommitTime && <p><span style={{ color: '#a7a5a5' }}>{t('project.midresport_mes.0') + applyInfo.studentEndCommitTime + t('project.midresport_mes.1')}</span></p>}
+                                            */}
                                         </Space>
                                     </Descriptions.Item>
-                                    <Descriptions.Item label={''} >
-                                        <Space direction={'vertical'}>
-                                            <Upload onChange={({ file }) => file.status === 'done' && setCommit(true)} onRemove={() => deleteuploadzip('end')} defaultFileList={applyInfo.endApplicationUrl ? [
-                                                {
-                                                    uid: '1',
-                                                    name: applyInfo?.endApplicationUrl ? applyInfo.endApplicationUrl.split("/").pop() : 'endreport.zip',
-                                                    status: 'done',
-                                                    url: applyInfo?.endApplicationUrl
-                                                }
-                                            ] : []} accept={'.zip,.rar,.tar,.tar.gz,.7z'} onPreview={(file) => !file.response && downloadApplication(applyInfo.id, 'end', token, applyInfo.endApplicationUrl.split('/').pop())} beforeUpload={file => {
-                                                if (!judge(file.name)) {
-                                                    message.error(t('project.zip_upload_mes'));
-                                                }
-                                                if (file.size > 104857600) {
-                                                    message.error(t('project.zip_upload_messize'));
-                                                }
-                                                return (judge(file.name) && file.size < 104857600) ? true : Upload.LIST_IGNORE
-                                            }} maxCount={1} action={`/uploadReport/${'studentReportEnd'}`}>
-                                                <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                                    </Upload>
-                                                    
-                                        </Space>
-                                    </Descriptions.Item>
+                                
                                 </Des>}
                                 {applyInfo && (applyInfo.status > 12 || applyInfo.status === -2) ?
                                     <>
@@ -363,7 +384,8 @@ export const Detail = (props)=>{
                                                     <Space direction={'vertical'} size={20}>
                                                         <span><a onClick={() => downloadApplication(1, undefined, token, t('admin.firsttrial.pdfname2'))}>
                                                             {t('tutor.downloadpdf')}
-                                                        </a>{t('tutor.despdf')}</span>
+                                                    </a>{t('tutor.despdf')}</span>
+                                                    <div style={{ color: 'red' }}><InfoCircleOutlined style={{ marginRight: '.5rem' }} />{t(!applyInfo.summerMiddleApprovePublicTime ? 'admin.project.agreement_mes' : 'admin.project.agreeend_mes')}</div>
                                                     <Upload onChange={({ file }) => file.status === 'done' && setEndagCommit(true)} onRemove={() => deleteuploadfile()}
                                                             defaultFileList={applyInfo?.studentAgreement ? [
                                                                 {
@@ -379,15 +401,16 @@ export const Detail = (props)=>{
                                                                 return file.type.includes('/pdf') ? true : Upload.LIST_IGNORE
                                                             }} maxCount={1} action={`/uploadPdf/${'studentAgreement'}`}>
                                                             <Button icon={<CloudUploadOutlined />}>{t('tutor.upload')}</Button>
-                                                        </Upload>
+                                                    </Upload>
+                                                    <Button disabled={!endagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     </Space>
                                                 </Descriptions.Item>
-                                            <Descriptions.Item label={''} >
+                                            {/* <Descriptions.Item label={''} >
                                                 <Space direction='vertical'>
                                                     <Button disabled={!endagcommit} loading={uploadLoading} onClick={() => uploadfile(applyInfo.id)} type={'primary'}>{t('tutor.uploadpdf')}</Button>
                                                     <div style={{ color: 'red' }}>{t(!applyInfo.summerMiddleApprovePublicTime ?'admin.project.agreement_mes':'admin.project.agreeend_mes')}</div>
                                                     </Space>
-                                            </Descriptions.Item>
+                                            </Descriptions.Item> */}
                                             </Des>
                                         </>
                                     }

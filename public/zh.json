@@ -815,7 +815,10 @@
         "组委会末审未通过"
       ],
       "giturl": "https://gitlab.summer-ospp.ac.cn",
-      "gitword": "已为您开通git账号，请点击查看",
+      "gitword": [
+        "Git账号登陆信息于【中选公示日期】发送到邮箱，",
+        "登陆Git账号"
+      ],
       "bankinfo": "点击查看收款银行信息",
       "bankpdf": "点击查看《银行卡信息填写说明》",
       "statusname": "状态",

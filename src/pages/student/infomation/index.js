@@ -90,7 +90,7 @@ const Info = () => {
             </HeaderContain>}
             {editingStudent && <Divider />}
             <Form style={{ height: 'calc(100vh - 320px)', overflow: 'auto' }} form={form} {...layout} scrollToFirstError={true} name="organize_detail" onFinish={onFinish} >
-                <Form.Item name="name" label={t('admin.student.detail_title.0')} extra={editprofile ? t('admin.student.nameinput_mes') : ''} rules={[{
+                <Form.Item name="name" label={t('admin.student.detail_title.0')} extra={!editingStudent ? t('admin.student.nameinput_mes') : ''} rules={[{
                     required: true, validator(_, value) {
                         return !value ? Promise.reject(t('admin.student.input_studentname')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : Promise.resolve()
                     }, type: 'string', max: 100

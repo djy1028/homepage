@@ -74,10 +74,7 @@ const Project = () => {
             title: t('project.columns_title.6'),
             width: '18rem',
             render: (value, record) => <Space size={4}>
-                <Acheck onClick={() => {
-                    console.log(33)
-                    inquiryApply(record.id)
-                }} >{t('project.check')}</Acheck>
+                <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
                 {
                     record.status === 0 &&
                     <Popconfirm placement={'topLeft'} title={t('project.delcomfirm')} onConfirm={() => deleteProgram({ ids: record.id }).then(() => close())}

@@ -87,7 +87,7 @@ export const useStuProgramModal = () => {
         inquiryProId && setInquiryProId({ inquiryProId: undefined })
         inquiryActivityId && setInquiryActivityId({ inquiryActivityId: undefined })
         inquiryApplyId && setInquiryApply({ inquiryApplyId: undefined })
-        stuPriority && setStuPriority({ stuPriority: undefined })
+        stuPriority && setStuPriority({ stuPriority: undefined, inquiryApplyId: undefined })
     }, [inquiryOrgId, setInquiryOrgId])
     const inquiryOrg = useCallback((id) => setInquiryOrgId({ inquiryOrgId: id }), [setInquiryOrgId])
     const inquiryPro = useCallback((id) => setInquiryProId({ inquiryProId: id }), [setInquiryProId])
@@ -116,8 +116,7 @@ export const useStuProgramModal = () => {
         stuPriority,
         inquiryApplyId,
         fetchapply,
-        setStuPriority,
-        setInquiryApply
+        setStuPriority
     }
 }
 
