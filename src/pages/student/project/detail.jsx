@@ -149,7 +149,7 @@ export const Detail = (props)=>{
                             {applyInfo.firstTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.1')}>{applyInfo.firstTeacherApproverTime}</Descriptions.Item>}
                                 {applyInfo.status === 1 && <Descriptions.Item label={''} ><p><span style={{ color: 'red' }}>{t('project.waitsort')}</span></p></Descriptions.Item>}
                             {applyInfo.summerFirstApprovePublicTime && applyInfo.status <= 4 && applyInfo.status > 1 && <Descriptions.Item label={''} ><p><span style={{ color: '#a7a5a5' }}>{t('project.firstpublic_mes.0') + applyInfo.summerFirstApprovePublicTime + t('project.firstpublic_mes.1')}</span></p></Descriptions.Item>}
-                                {(applyInfo && applyInfo.status === 5 || applyInfo && applyInfo.status >= 7 || applyInfo && applyInfo.firstSummerIsApproved === 1) && applyInfo.gitUrl && <Descriptions.Item label={''} ><span>{t('admin.firsttrial.gitword.0')}<a href={applyInfo.gitUrl} target="_blank">{t('admin.firsttrial.gitword.1')}</a></span></Descriptions.Item>}
+                                {(applyInfo && applyInfo.status === 5 || applyInfo && applyInfo.status >= 7 || applyInfo && applyInfo.firstSummerIsApproved === 1) && applyInfo.gitUrl && <Descriptions.Item label={''} ><span>{t('admin.firsttrial.gitword.0') + applyInfo.summerFirstApprovePublicTime+t('admin.firsttrial.gitword.1')}<a href={applyInfo.gitUrl} target="_blank">{t('admin.firsttrial.gitword.2')}</a></span></Descriptions.Item>}
                         </Des>
                         {(applyInfo.status>4 || applyInfo.status === -2 || applyInfo.status === -1) && 
                             <>
@@ -162,7 +162,7 @@ export const Detail = (props)=>{
                                         <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.first.7')}</>}
                                         </div></Descriptions.Item>}
                                     {applyInfo.firstSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.first.3')}>{applyInfo.firstSummerApproverTime}</Descriptions.Item>}
-                                    {applyInfo.firstSummerComment && <Descriptions.Item label={t('admin.firsttrial.first.4')}>{applyInfo.firstSummerComment}</Descriptions.Item>}
+                                    {applyInfo.firstSummerComment && <Descriptions.Item contentStyle={{ whiteSpace: 'pre-wrap', maxHeight: '20rem', overflow: 'auto' }} label={t('admin.firsttrial.first.4')}>{applyInfo.firstSummerComment}</Descriptions.Item>}
                                     {applyInfo.status === -1 && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.outReject')}</span></p></Descriptions.Item>}
                                 </Des>
                                 {applyInfo.status === -2 && !applyInfo.endApplicationUrl && !applyInfo.middleApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
@@ -231,7 +231,7 @@ export const Detail = (props)=>{
                                             </div></Descriptions.Item>}
                                                 {applyInfo.middleTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.mid.0')}>{raesDecrypt(applyInfo.middleTeacherApprover)}</Descriptions.Item>}
                                             {applyInfo.middleTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.1')}>{applyInfo.middleTeacherApproverTime}</Descriptions.Item>}
-                                            {applyInfo.middleTeacherComment && <Descriptions.Item label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
+                                                {applyInfo.middleTeacherComment && <Descriptions.Item contentStyle={{ whiteSpace: 'pre-wrap', maxHeight: '20rem', overflow: 'auto' }} label={t('admin.firsttrial.mid.2')}>{applyInfo.middleTeacherComment}</Descriptions.Item>}
                                             {(applyInfo.summerMiddleApprovePublicTime && applyInfo.status === 9) && <Descriptions.Item label={''}><p style={{ color: '#a7a5a5' }}><InfoCircleOutlined /><span>{t('project.midtutor_pubmes.0') + applyInfo.summerMiddleApprovePublicTime + t('project.midtutor_pubmes.1')}</span></p></Descriptions.Item>}
                                             </Des>
                                         {applyInfo.summerMiddleApprovePublicTime && <Divider dashed />}
@@ -242,7 +242,7 @@ export const Detail = (props)=>{
                                                     <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.mid.8')}</>}
                                             </div></Descriptions.Item>}
                                             {applyInfo.middleSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.mid.4')}>{applyInfo.middleSummerApproverTime}</Descriptions.Item>}
-                                            {applyInfo.middleSummerComment && <Descriptions.Item label={t('admin.firsttrial.mid.5')}>{applyInfo.middleSummerComment}</Descriptions.Item>}
+                                                {applyInfo.middleSummerComment && <Descriptions.Item contentStyle={{ whiteSpace: 'pre-wrap', maxHeight: '20rem', overflow: 'auto' }} label={t('admin.firsttrial.mid.5')}>{applyInfo.middleSummerComment}</Descriptions.Item>}
                                         
                                         </Des>}
                                         {applyInfo.status === -2 && !applyInfo.endApplicationUrl && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}
@@ -359,7 +359,7 @@ export const Detail = (props)=>{
                                             </div></Descriptions.Item>}
                                                 {applyInfo.endTeacherApprover && <Descriptions.Item label={t('admin.firsttrial.end.0')}>{raesDecrypt(applyInfo.endTeacherApprover)}</Descriptions.Item>}
                                             {applyInfo.endTeacherApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.1')}>{applyInfo.endTeacherApproverTime}</Descriptions.Item>}
-                                            {applyInfo.endTeacherComment && <Descriptions.Item label={t('admin.firsttrial.end.2')}>{applyInfo.endTeacherComment}</Descriptions.Item>}
+                                                    {applyInfo.endTeacherComment && <Descriptions.Item contentStyle={{ whiteSpace: 'pre-wrap', maxHeight: '20rem', overflow: 'auto' }} label={t('admin.firsttrial.end.2')}>{applyInfo.endTeacherComment}</Descriptions.Item>}
                                            
                                         </Des>
                                         {applyInfo.endSummerApprover && <Divider dashed />}
@@ -370,7 +370,7 @@ export const Detail = (props)=>{
                                                     <><CloseCircleTwoTone twoToneColor="red" />{t('admin.firsttrial.end.8')}</>}
                                             </div></Descriptions.Item>}
                                             {applyInfo.endSummerApproverTime && <Descriptions.Item label={t('admin.firsttrial.end.4')}>{applyInfo.endSummerApproverTime}</Descriptions.Item>}
-                                            {applyInfo.endSummerComment && <Descriptions.Item label={t('admin.firsttrial.end.5')}>{applyInfo.endSummerComment}</Descriptions.Item>}
+                                                    {applyInfo.endSummerComment && <Descriptions.Item contentStyle={{ whiteSpace: 'pre-wrap', maxHeight: '20rem', overflow: 'auto' }} label={t('admin.firsttrial.end.5')}>{applyInfo.endSummerComment}</Descriptions.Item>}
                                            
                                             </Des>
                                             {applyInfo.status == -2 && <Descriptions.Item label={''}><p><span style={{ color: 'red' }}>{t('project.expiredReject')}</span></p></Descriptions.Item>}

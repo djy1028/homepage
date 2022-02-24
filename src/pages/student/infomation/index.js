@@ -81,9 +81,7 @@ const Info = () => {
                     <Button onClick={() => Modal.info({
                         title: t('admin.origanize.approvedComment'),
                         content: (
-                            <div>
-                                {editingStudent.approvedComment}
-                            </div>
+                            <Input.TextArea readOnly value={editingStudent.approvedComment} />
                         )
                     })} type={'link'}>{t('admin.origanize.checkComment')}</Button></div>}
                 <div>{t('admin.student.columns_title.9') + '：' + editingStudent.createTime}</div>

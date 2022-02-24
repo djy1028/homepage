@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Descriptions, Space, Spin } from 'antd'
+import { Descriptions, Space, Spin,Input } from 'antd'
 import BraftEditor from 'braft-editor'
 import { raesDecrypt, useTechSel } from 'utils'
 import { useTranslation } from 'react-i18next'
@@ -10,8 +10,6 @@ export const Checkpro = () =>{
     const {t} = useTranslation()
     const { proInfo, proInfoLoading } = useStuProgramModal()
     const [Lang,setLang] = useState(1)
-    const optionArea = useTechSel(t('admin.origanize.areasel', { returnObjects: true }))
-    const optionTech = useTechSel(t('admin.origanize.techarea',{ returnObjects: true }))
     useEffect(()=>{
         if(proInfo){
             setLang(proInfo.supportLanguage)
@@ -50,7 +48,7 @@ export const Checkpro = () =>{
                     </Descriptions.Item> */}
                     <Descriptions.Item span={3} label={t(Lang === 1?'admin.project.columns_detail_title.15':Lang === 2?'admin.project.columns_detail_title_en.15':'admin.project.columns_detail_title_mix.15')}>
                         {
-                            optionTech.filter((item)=>proInfo.techTag?.includes(item.id)).map(ele=><span key={ele.id}>{ele.name} </span>)
+                            proInfo.techTagName?proInfo.techTagName:''
                         }
                         {
                             proInfo.techText?proInfo.techText:''
@@ -58,7 +56,7 @@ export const Checkpro = () =>{
                     </Descriptions.Item>
                     <Descriptions.Item span={3} label={t(Lang === 1?'admin.project.columns_detail_title.16':Lang === 2?'admin.project.columns_detail_title_en.16':'admin.project.columns_detail_title_mix.16')}>
                         {
-                            optionArea.filter((item)=>proInfo.areaTag?.includes(item.id)).map(ele=><span key={ele.id}>{ele.name} </span>)
+                        proInfo.areaTagName ? proInfo.areaTagName:''
                         }
                         {
                             proInfo.areaText?proInfo.areaText:''
@@ -129,15 +127,15 @@ export const Checkpro = () =>{
                     }
 
                     <Descriptions.Item span={3} label={t(Lang === 1 || Lang === 0?'admin.project.columns_detail_title.10':'admin.project.columns_detail_title_en.10')} >
-                       {
-                           Lang !==0?proInfo.programRemark:proInfo.programRemark && proInfo.programRemark.split('【')[1] ? proInfo.programRemark.split('【')[1].substr(0,proInfo.programRemark.split('【')[1].length-1):''
-                       }
+                    <Input.TextArea readOnly autoSize bordered={ false} value={
+                        Lang !== 0 ? proInfo.programRemark : proInfo.programRemark && proInfo.programRemark.split('【')[1] ? proInfo.programRemark.split('【')[1].substr(0, proInfo.programRemark.split('【')[1].length - 1) : ''
+                    }/>
                     </Descriptions.Item>
 
                     {Lang ===0 &&<Descriptions.Item span={3} label={t('admin.project.columns_detail_title_en.10')}>
-                      {
+                    <Input.TextArea readOnly autoSize bordered={false} value={
                           proInfo.programRemark?proInfo.programRemark.split('【')[0]:''
-                      }
+                      }/>
                     </Descriptions.Item>}
             </Descriptions>
                 <Approve fromProject={true} lang={ Lang } editingObj={proInfo} />

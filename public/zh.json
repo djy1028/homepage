@@ -815,10 +815,7 @@
         "组委会末审未通过"
       ],
       "giturl": "https://gitlab.summer-ospp.ac.cn",
-      "gitword": [
-        "Git账号登陆信息于【中选公示日期】发送到邮箱，",
-        "登陆Git账号"
-      ],
+      "gitword": ["Git账号登陆信息于", "发送到邮箱，", "登陆Git账号"],
       "bankinfo": "点击查看收款银行信息",
       "bankpdf": "点击查看《银行卡信息填写说明》",
       "statusname": "状态",
@@ -1040,7 +1037,7 @@
     "alert_msgs": ["审核报告提交截止日期为", "，无法继续排序该项目"],
     "program_sort": "设置项目排序",
     "no_program": "暂无可排序项目",
-    "activity_default": "请选择所属活动",
+    "activity_default": "全部",
     "mid_model": "项目报告模板",
     "rarmoban": "项目报告模板.rar",
     "noactivity": "请选择所属活动，再对项目进行排序！",
