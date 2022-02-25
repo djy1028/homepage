@@ -14,7 +14,7 @@ import { raesDecrypt } from 'utils';
 
 export const Detail = (props)=>{
     const { t } = useTranslation()
-    const { refetch } = props
+    const { refetch, setParam, searchparam } = props
     const token = getToken()
     const { applyInfo, applyInfoLoading, isFetching, inquiryApplyId, fetchapply } = useStuProgramModal()
     const { close, setStuPriority } = useStuProgramModal()
@@ -57,7 +57,8 @@ export const Detail = (props)=>{
                     if (res.code === 200) {
                         openNotificationWithIcon(0, res.message)
                         if (phase === 'apply') {
-                            setStuPriority({ stuPriority: true })
+                            // !searchparam.activityId && setParam({ ...searchparam, activityId: applyInfo.activityId })
+                            setStuPriority(searchparam.activityId ? { stuPriority: true}:{ stuPriority: true, activityId: applyInfo.activityId,fromdetail:true })
                         }
                         else { 
                             close()

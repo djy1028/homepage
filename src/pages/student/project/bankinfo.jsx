@@ -66,7 +66,10 @@ export const Bankinfo = (props) => {
             }]}>
                 <Input placeholder={t('tutor.concat')} allowClear />
             </Form.Item>
-            <Form.Item name="field2" label={t('admin.firsttrial.bankinfodes.1')} rules={[{ required: true, max: 20, message: t('admin.account.phone_validmessage') }]}>
+            <Form.Item name="field2" label={t('admin.firsttrial.bankinfodes.1')} rules={[{
+                required: true, validator(_, value) {
+                    return !value ? Promise.reject(t('admin.account.phone_validmessage')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
+                } }]}>
                 <Input allowClear />
             </Form.Item>
             <Form.Item name="field3" label={t('admin.firsttrial.bankinfodes.2')} rules={[{
@@ -76,13 +79,22 @@ export const Bankinfo = (props) => {
             }]}>
                 <Input allowClear placeholder={t('tutor.bank')} />
             </Form.Item>
-            <Form.Item name="field4" label={t('admin.firsttrial.bankinfodes.3')} rules={[{ required: true, type: 'string' }]}>
-                <Input allowClear placeholder={t('tutor.bankNumber')} />
+            <Form.Item name="field4" label={t('admin.firsttrial.bankinfodes.3')} rules={[{
+                required: true, type: 'string', validator(_, value) {
+                    return !value ? Promise.reject(t('tutor.bankid_valid')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
+                } }]}>
+                <Input allowClear placeholder={t('tutor.banknum_valid')} />
             </Form.Item>
-            <Form.Item name="field5" label={t('admin.firsttrial.bankinfodes.4')} rules={[{ required: true, type: 'string', max: 100, message: t('tutor.banknum_valid') }]}>
+            <Form.Item name="field5" label={t('admin.firsttrial.bankinfodes.4')} rules={[{ required: true, type: 'string', max: 100,
+                validator(_, value) {
+                    return !value ? Promise.reject(t('tutor.banknum_valid')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
+                } }]}>
                 <Input allowClear placeholder={t('tutor.cardNumber')} />
             </Form.Item>
-            <Form.Item name="field6" label={t('admin.firsttrial.bankinfodes.5')} rules={[{ required: true, type: 'string', max: 50, message: t('admin.firsttrial.card_validmessage') }]}>
+            <Form.Item name="field6" label={t('admin.firsttrial.bankinfodes.5')} rules={[{ required: true, type: 'string', max: 50, 
+                validator(_, value) {
+                    return !value ? Promise.reject(t('admin.firsttrial.card_validmessage')) : emptyPattern.test(value) ? Promise.reject(t('admin.emptycheck')) : value.length > 100 ? Promise.reject(t('tutor.length_limit')) : Promise.resolve()
+                }}]}>
                 <Input allowClear />
             </Form.Item>
 

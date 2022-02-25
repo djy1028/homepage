@@ -26,7 +26,7 @@ export const Check = () =>{
                                     item === 'techTagName' && !orgInfo['techText']?orgInfo['techTagName']:
                                     item==='orgLogo'?
                                     <Image  width={'6rem'} height={'3rem'} src={orgInfo['orgLogo'][0].url} alt={''}/>:
-                                    (item==='orgProfile'||item ==='orgIntroduction')?<Input.TextArea readOnly bordered={false} value={orgInfo[item]}/>:
+                                    (item==='orgProfile'||item ==='orgIntroduction')?<Input.TextArea readOnly bordered={false} autoSize value={orgInfo[item]}/>:
                                     orgInfo[item]
                                 }
                             </Descriptions.Item>)

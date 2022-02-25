@@ -127,14 +127,18 @@ const Project = () => {
                 </FormItem>
             </SearchContainer>
             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem', alignItems: 'center' }}>
-                <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}><span>{t('project.restNum.0')}</span><span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span> {searchparam.activityId && <span>{t('project.restNum.1')}</span>}</div>
+                <div style={{ marginBottom: '1rem' }} id={'pro_apply_num'}>
+                    {searchparam.activityId && <span>{t('project.restNum.0')}</span>}
+                    {searchparam.activityId && <span style={{ color: '#ff0000' }}>{list && list.rows ? list.rows.length >= 3 ? 0 : (3 - list.rows.length) : ''}</span>}
+                    {searchparam.activityId && <span>{t('project.restNum.1')}</span>}
+                </div>
                 <Button onClick={setPriority} style={{ marginBottom: '1rem', color: '#fff', background: '#0052cc', border: 'none' }}><FormOutlined />{t('project.apply_title')}</Button>
             </div>
             <ComTable loading={isLoading || deleteLoading} dataSource={list?.rows} columns={colums} rowSelection={undefined} scroll={{ y: 'calc(100vh - 34rem)', x: '120rem' }}
                 list={list} setParam={setParam} searchparam={searchparam} />
             <ComModal visible={projectModalOpen} destroyOnClose={stuPriority ? true : false} close={close} title={t(inquiryOrgId ? 'project.orgdetail' : stuPriority ? 'project.program_sort' : inquiryActivityId ? 'project.activitydetail' : 'project.prodetail')} width={'70vw'} footer={null}
                 children={inquiryOrgId ? <Check /> : inquiryActivityId ? <ActivityDetail /> : stuPriority ? <SortStu token={token} searchparam={searchparam} /> : <Checkpro />} />
-            {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} setPriority={setPriority} />} title={t('project.studentApply')} />}
+            {DrawerOpen && <ComDrawer close={close} destroyOnClose={true} visible={DrawerOpen} child={<Detail refetch={refetch} setParam={setParam} searchparam={searchparam} setPriority={setPriority} />} title={t('project.studentApply')} />}
         </Main>
     )
 }

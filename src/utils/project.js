@@ -77,7 +77,7 @@ export const useStuProgramModal = () => {
     const [{ inquiryProId }, setInquiryProId] = useUrlQueryParam(['inquiryProId'])
     const [{ inquiryApplyId }, setInquiryApply] = useUrlQueryParam(['inquiryApplyId'])
     const [{ inquiryActivityId }, setInquiryActivityId] = useUrlQueryParam(['inquiryActivityId'])
-    const [{ stuPriority }, setStuPriority] = useUrlQueryParam(['stuPriority'])
+    const [{ stuPriority, fromdetail }, setStuPriority] = useUrlQueryParam(['stuPriority', 'activityId', 'fromdetail'])
     const { data: orgInfo, isLoading: orgInfoLoading } = useOrginfo(inquiryOrgId)
     const { data: proInfo, isLoading: proInfoLoading } = useProinfo(inquiryProId)
     const { data: activityInfo, isLoading: activityLoading } = useActivityinfo(inquiryActivityId)
@@ -87,13 +87,13 @@ export const useStuProgramModal = () => {
         inquiryProId && setInquiryProId({ inquiryProId: undefined })
         inquiryActivityId && setInquiryActivityId({ inquiryActivityId: undefined })
         inquiryApplyId && setInquiryApply({ inquiryApplyId: undefined })
-        stuPriority && setStuPriority({ stuPriority: undefined, inquiryApplyId: undefined })
+        stuPriority && setStuPriority(fromdetail ? { stuPriority: undefined, inquiryApplyId: undefined, activityId: undefined, fromdetail: undefined } : { stuPriority: undefined, inquiryApplyId: undefined })
     }, [inquiryOrgId, setInquiryOrgId])
     const inquiryOrg = useCallback((id) => setInquiryOrgId({ inquiryOrgId: id }), [setInquiryOrgId])
     const inquiryPro = useCallback((id) => setInquiryProId({ inquiryProId: id }), [setInquiryProId])
     const inquiryApply = useCallback((id) => setInquiryApply({ inquiryApplyId: id }), [setInquiryApply])
     const inquiryActivity = useCallback((id) => setInquiryActivityId({ inquiryActivityId: id }), [setInquiryActivityId])
-    const updateSort = useCallback(() => setStuPriority({ stuPriority: true }), [setStuPriority])
+    const updateSort = useCallback((activityId) => setStuPriority(activityId ? { stuPriority: true, activityId: activityId, fromdetail: true } : { stuPriority: true }), [setStuPriority])
     return {
         projectModalOpen: Boolean(inquiryOrgId) || Boolean(inquiryProId) || Boolean(inquiryActivityId) || Boolean(stuPriority),
         inquiryPro,

@@ -1091,6 +1091,7 @@
     "length_limit": "内容长度不能超过100",
     "length_limit2": "内容长度不能超过200",
     "banknum_valid": "请填写有效银行卡号",
-    "reset_btn": "点击并重新设置中选优先级"
+    "reset_btn": "点击并重新设置中选优先级",
+    "bankid_valid":"请填写有效开户行号"
   }
 }

@@ -9,7 +9,7 @@ const request = (paramInfo) => {
             method: obj.method || 'get',
             maxContentLength: Infinity,
             maxBodyLength: Infinity,
-            //baseURL: 'http://192.168.2.19/summer',
+            //baseURL: 'http://192.168.2.212/summer',
             // 使用前需要在系统上设置环境变量 SUMMER_OSPP_JAVA_IP 的值和 SUMMER_OSPP_JAVA_PORT 的值，用来设置summer_ospp_java后台的请求ip和端口
             baseURL: process.env.OS === 'Windows_NT' ? 'http://localhost:9899/summer' : 'http://' + process.env.SUMMER_OSPP_JAVA_IP + ':' + process.env.SUMMER_OSPP_JAVA_PORT + '/summer',
             headers: obj.url === '/login' ? { ...obj.headers, From: 'homepage' } : obj.headers
@@ -35,6 +35,7 @@ const request = (paramInfo) => {
                     // 多个请求现在都执行完成
                     resolve(arg)
                 })).catch(err => {
+                    console.log(err)
                     logger.error(err)
                 })
         })
