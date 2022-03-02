@@ -14,7 +14,7 @@ export const SortStu = (props) => {
     const [showBtn, setShowBtn] = useState(false)
     const { Text, Title } = Typography
     const [form] = useForm()
-    const { t } = useTranslation()
+    const { t,i18n } = useTranslation()
     const { data: list, isLoading,refetch } = useSetPriority({ ...searchparam})
     const { mutateAsync, isLoading: mutateLoading } = useUpdateStuPriority(useStuProQueryKey())
 
@@ -61,7 +61,11 @@ export const SortStu = (props) => {
                 <Form style={{ width: '65%', padding: '2rem 0' }} form={form} scrollToFirstError={true} name="teacherpriority" onFinish={onFinish}  >
                     {
                         (list.rows && list.rows?.length > 0) && list.rows.map((item) =>
-                            <Form.Item key={item.id} initialValue={item.studentPriority} preserve={false} label={<div title={item.programName} style={{maxWidth:'22rem',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden'}}>{item.programName}</div>} name={item.id} labelCol={{ offset: reset ? 0 : 8 }}  >
+                            <Form.Item key={item.id} initialValue={item.studentPriority} preserve={false} label={
+                                <div title={(i18n.language !== 'zh' && item.programNameEN) ? item.programNameEN : item.programName}
+                                    style={{ maxWidth: '22rem', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                                    {(i18n.language !== 'zh' && item.programNameEN) ? item.programNameEN : item.programName}
+                                </div>} name={item.id} labelCol={{ offset: reset ? 0 : 8 }}  >
                                 {
                                     reset ?
                                         <CommonSelect width={'100%'} options={list.rows.map((item, index) => ({ id: index + 1, name: index + 1 }))} />

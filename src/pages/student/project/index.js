@@ -21,7 +21,7 @@ import { checkSetPriority } from 'auth-provider'
 import { useSelector } from 'react-redux'
 
 const Project = () => {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const token = useSelector(state => state.user)?.token
     const [searchparam, setParam] = useStuProSearchParms()
     const { isLoading, data: list, refetch } = useStuPrograms(useDebounce(searchparam, 500))
@@ -36,7 +36,9 @@ const Project = () => {
             ellipsis: {
                 showTitle: false,
             },
-            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{value}</a></Tooltip>
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={i18n.language === 'zh' ? value : record.programNameEN}>
+                <a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{i18n.language === 'zh' ? value : record.programNameEN}</a>
+            </Tooltip>
         },
         {
             title: t('project.columns_title.1'),

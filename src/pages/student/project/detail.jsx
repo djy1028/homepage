@@ -173,7 +173,7 @@ export const Detail = (props)=>{
                 } />
                     
                 {
-                        (applyInfo.status === -2 && !applyInfo.middleApplicationUrl) || applyInfo.status === -1 ? null :
+                        (applyInfo.status === -2 && !applyInfo.middleApplicationUrl) || (applyInfo.status === -1) || (!applyInfo.studentMiddleCommitTime) ? null :
                             <Steps.Step title={<Space size={'large'}><strong>{t('admin.firsttrial.step_title.1')}</strong> {applyInfo && (applyInfo.status === 5 || applyInfo.status === 7) && <a style={{fontSize:'1.6rem'}} onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
                                 <DownloadOutlined /> {t('project.mid_model')}
                             </a>}</Space>} description={
