@@ -36,8 +36,8 @@ const Project = () => {
             ellipsis: {
                 showTitle: false,
             },
-            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={i18n.language === 'zh' ? value : record.programNameEN}>
-                <a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{i18n.language === 'zh' ? value : record.programNameEN}</a>
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={i18n.language === 'en' && record.programNameEN ? record.programNameEN : value}>
+                <a style={{ color: '#0d86ff' }} onClick={() => inquiryPro(record.orgProgramId)}>{i18n.language === 'en' && record.programNameEN ? record.programNameEN : value}</a>
             </Tooltip>
         },
         {
@@ -46,7 +46,7 @@ const Project = () => {
             ellipsis: {
                 showTitle: false,
             },
-            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryActivity(record.activityId)}>{value}</a></Tooltip>
+            render: (value, record) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={i18n.language === 'en' && record.activityNameEN ? record.activityNameEN : value}><a style={{ color: '#0d86ff' }} onClick={() => inquiryActivity(record.activityId)}>{i18n.language === 'en' && record.activityNameEN ? record.activityNameEN : value}</a></Tooltip>
         },
         {
             title: t('project.columns_title.2'),

@@ -305,11 +305,14 @@ export const Detail = (props)=>{
                 {
                         (applyInfo.status === -2 && !applyInfo.endApplicationUrl) || applyInfo.status === -1 ? null :
                             <Steps.Step title={<Space size={'large'}><strong>{t('admin.firsttrial.step_title.3')}</strong> {
-                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement)) && <a style={{fontSize:'1.6rem'}} onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
+                                ((applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement)))
+                                || (applyInfo && !applyInfo.studentMiddleCommitTime && (applyInfo.status === 5 || applyInfo.status ===12)))
+                                &&<a style={{ fontSize: '1.6rem' }} onClick={() => downloadApplication(4, undefined, token, t('project.rarmoban'))}>
                                     <DownloadOutlined /> {t('project.mid_model')}
                                 </a>}</Space>} description={
                             <>{
-                                applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement) ) &&
+                                        ((applyInfo && (applyInfo.status === 11 || applyInfo.status === 12) && (!applyInfo.summerMiddleApprovePublicTime || (applyInfo.summerMiddleApprovePublicTime && applyInfo.studentMidAgreement)))
+                                        || (applyInfo && !applyInfo.studentMiddleCommitTime && (applyInfo.status === 5 || applyInfo.status === 12))) &&
                                         <Des column={2}>
                                                 <Descriptions.Item label={''} >
                                                     <Space size={'large'} direction={'vertical'}>

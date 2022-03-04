@@ -13,9 +13,6 @@ export const getToken = () => {
 }
 
 export const handleUserResponse = (user) => {
-    // window.localStorage.setItem(
-    //     localStorageKey,user.token || ''
-    // )
     return user
 }
 

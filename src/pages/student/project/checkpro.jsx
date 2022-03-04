@@ -59,13 +59,13 @@ export const Checkpro = () =>{
                         {
 
                             Lang === 1 || Lang === 2 || (Lang === 0 && i18n.language === 'zh') ?
-                                proInfo.outputRequirement && proInfo.outputRequirement.length > 1 && proInfo.outputRequirement.map((item: any, index: number) => <ul key={index} style={{ width: '100%' }}>
+                                proInfo.outputRequirement && proInfo.outputRequirement.length > 1 && proInfo.outputRequirement.map((item, index) => <ul key={index} style={{ width: '100%' }}>
                                     {
                                         item &&
                                         <>
                                             {item.title && <h4>{item.title}</h4>}
                                             {
-                                                item.children && item.children.length > 0 && item.children?.map((ele: any, ind: number) => <li key={index + item.title}>
+                                                item.children && item.children.length > 0 && item.children?.map((ele, ind) => <li key={index + item.title}>
                                                     {ele}
                                                 </li>)
                                             }
@@ -74,13 +74,13 @@ export const Checkpro = () =>{
                                 </ul>
                                 )
                                 :
-                                proInfo.outputRequirementEN && proInfo.outputRequirementEN.length > 1 && proInfo.outputRequirementEN.map((item: any, index: number) => <ul key={index} style={{ width: '100%' }}>
+                                proInfo.outputRequirementEN && proInfo.outputRequirementEN.length > 1 && proInfo.outputRequirementEN.map((item, index) => <ul key={index} style={{ width: '100%' }}>
                                     {
                                         item &&
                                         <>
                                             {item.title && <h4>{item.title}</h4>}
                                             {
-                                                item.children && item.children.length > 0 && item.children?.map((ele: any, ind: number) => <li key={index + item.title}>
+                                                item.children && item.children.length > 0 && item.children?.map((ele, ind) => <li key={index + item.title}>
                                                     {ele}
                                                 </li>)
                                             }
@@ -94,13 +94,13 @@ export const Checkpro = () =>{
 
                         {
                             Lang === 1 || Lang === 2 || (Lang === 0 && i18n.language === 'zh') ?
-                                proInfo.techRequirement && proInfo.techRequirement.length > 1 && proInfo.techRequirement.map((item: any, index: number) => <ul key={index} style={{ width: '100%' }}>
+                                proInfo.techRequirement && proInfo.techRequirement.length > 1 && proInfo.techRequirement.map((item, index) => <ul key={index} style={{ width: '100%' }}>
                                     {
                                         item &&
                                         <>
                                             {item.title && <h4>{item.title}</h4>}
                                             {
-                                                item.children && item.children.length > 0 && item.children?.map((ele: any, ind: number) => <li key={index + item.title}>
+                                                item.children && item.children.length > 0 && item.children?.map((ele, ind) => <li key={index + item.title}>
                                                     {ele}
                                                 </li>)
                                             }
@@ -109,13 +109,13 @@ export const Checkpro = () =>{
                                 </ul>
                                 )
                                 :
-                                proInfo.techRequirementEN && proInfo.techRequirementEN.length > 1 && proInfo.techRequirementEN.map((item: any, index: number) => <ul key={index} style={{ width: '100%' }}>
+                                proInfo.techRequirementEN && proInfo.techRequirementEN.length > 1 && proInfo.techRequirementEN.map((item, index) => <ul key={index} style={{ width: '100%' }}>
                                     {
                                         item &&
                                         <>
                                             {item.title && <h4>{item.title}</h4>}
                                             {
-                                                item.children && item.children.length > 0 && item.children?.map((ele: any, ind: number) => <li key={index + item.title}>
+                                                item.children && item.children.length > 0 && item.children?.map((ele, ind) => <li key={index + item.title}>
                                                     {ele}
                                                 </li>)
                                             }

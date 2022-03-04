@@ -79,7 +79,8 @@ const Info = () => {
                 <div>{t('admin.student.columns_title.8') + '：'} <span style={{ color: editingStudent.isApproved === 1 ? "#4bc701" : editingStudent.isApproved === -1 ? "#f52929" : "#2483f9" }}>{t(editingStudent.isApproved === 1 ? 'student.approved' : editingStudent.isApproved === -1 ? 'student.noapproved' : 'student.waitapproved')}</span></div>
                 {editingStudent.isApproved !== 0 && <div>{t('admin.origanize.approvedComment') + '：'}
                     <Button onClick={() => Modal.info({
-                        title: t('admin.origanize.approvedComment'),
+                        icon: null,
+                        title: t('admin.origanize.approvedComment') + "：",
                         content: (
                             <Input.TextArea readOnly value={editingStudent.approvedComment} />
                         )

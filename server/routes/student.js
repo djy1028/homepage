@@ -452,6 +452,7 @@ module.exports = {
                     },
                     method: 'post'
                 })
+                console.log(response.data)
                 ctx.cookies.set('MIDNAME', undefined)
                 ctx.cookies.set('ENDNAME', undefined)
                 ctx.cookies.set('APPLYNAME', undefined)
