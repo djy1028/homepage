@@ -124,7 +124,7 @@ const Project = () => {
             <SearchContainer name={'btn_tutor_program'}>
                 <FormItem label={t('project.columns_title.1')} style={{ marginBottom: "1rem" }}>
                     <CommonSelect defaultOptionName={t('project.activity_default')} value={Number(searchparam.activityId)}
-                        options={options1?.rows.map((item) => ({ name: item.activityName, id: item.activityId }))} width={'25rem'}
+                        options={options1?.rows.map((item) => ({ name: i18n.language === 'en' && item.activityNameEN ? item.activityNameEN : item.activityName, id: item.activityId }))} width={'25rem'}
                         onChange={e => setParam({ ...searchparam, activityId: Boolean(e) ? e : '', pageNum: undefined, pageSize: undefined })} />
                 </FormItem>
             </SearchContainer>
