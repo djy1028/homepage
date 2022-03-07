@@ -478,7 +478,7 @@ module.exports = {
         ctx.request.body.isAsc = isAsc ? isAsc : 'desc'
         ctx.request.body.orderByColumn = orderByColumn ? orderByColumn : 'createTime'
         const response = await request({
-            url: '/system/studentProgram/my-activity ',
+            url: '/system/studentProgram/my-activity',
             headers: { Authorization: ctx.request.header.authorization }
         })
         response.data.code === 200 ? response.data.rows = response.data.rows.map(item => ({ ...item, ...{ key: item.activityId } })) : ctx.response.status = response.data.code

@@ -36,7 +36,6 @@ class Header extends React.Component {
             this.props.chiFlag_en()
             i18n.changeLanguage('en')
         }
-        // msg === 'chi'?this.props.chiFlag_chi():this.props.chiFlag_en();
         this.setState({
             chiFlag: msg,
         })

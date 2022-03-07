@@ -48,10 +48,7 @@
         ]
       },
       {
-        "name": "如何加入"
-      },
-      {
-        "name": "帮助"
+        "name": "参与指南"
       }
     ],
     "linkdata": [
@@ -65,7 +62,7 @@
         "name": "活动规划"
       },
       {
-        "name": "如何加入"
+        "name": "参与指南"
       },
       {
         "name": "往届活动回顾",
@@ -79,9 +76,6 @@
             "title": "midtermdata"
           }
         ]
-      },
-      {
-        "name": "帮助"
       }
     ],
     "login": {
@@ -139,10 +133,7 @@
         ]
       },
       {
-        "name": "GET STARTED"
-      },
-      {
-        "name": "HELP"
+        "name": "GUIDELINES"
       }
     ],
     "linkdata": [
@@ -156,7 +147,7 @@
         "name": "HOW IT WORKS"
       },
       {
-        "name": "GET STARTED"
+        "name": "GUIDELINES"
       },
       {
         "name": "REVIEW EVENTS",
@@ -170,9 +161,6 @@
             "title": "midtermdata"
           }
         ]
-      },
-      {
-        "name": "HELP"
       }
     ],
     "summer2020": "Summer 2020",

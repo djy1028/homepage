@@ -1,162 +1,180 @@
-.ApplyBanner{
-    width: 100%;
-    height: 400px;
-    background-image: url(./../../img/start/pc-start-banner.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-top: 6%;
-    box-sizing: border-box;
-    .HowitworksBannerContent .HowitworksListItemContent>div {
-        margin-bottom: 8px;
-    }
+.ApplyBanner {
+  width: 100%;
+  background-color: #eef7ff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.en {
+  .ApplyBannerTitle {
+    font-size: calc(62 / 1920 * 100vw);
+    position: absolute;
+    left: calc(820 / 1920 * 100vw);
+    top: calc(160 / 1920 * 100vw);
+  }
+}
+.ApplyBannerTitle {
+  font-size: calc(62 / 1920 * 100vw);
+  position: absolute;
+  left: calc(820 / 1920 * 100vw);
+  top: calc(160 / 1920 * 100vw);
+  color: #fff;
 }
 
 .chi .ApplyBanner .HowitworksList .HowitworksListItem {
-    max-width: 215px;
+  max-width: 215px;
 }
 
-.Apply{
-    .HowitworksListItem{
-        text-align: left;
-        width: auto;
+.Apply {
+  position: relative;
+  .HowitworksListItem {
+    text-align: left;
+    width: auto;
+  }
+  .ApplyBannerListItemTitle {
+    font-size: 31px;
+    line-height: 37px;
+    width: auto;
+    color: #000000;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    font-weight: bold;
+    margin-bottom: 13px;
+  }
+  .HowitworksListItemContent {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+    width: auto;
+  }
+  .HowitworksList {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    & > div:nth-of-type(2) {
+      margin: 70px 98px 0 112px;
     }
-    .ApplyBannerListItemTitle {
-        font-size: 31px;
-        line-height: 37px;
-        width: auto;
-        color: #000000;
-        height: auto;
-        border-radius: 0;
-        background: none;
-        font-weight: bold;
-        margin-bottom: 13px;
+  }
+  .ApplyRes .HowitworksList {
+    flex-direction: column;
+    & > div:nth-of-type(2) {
+      margin: 30px 0;
     }
-    .HowitworksListItemContent {
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 25px;
-        width: auto;
-    }
-    .HowitworksList {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        &>div:nth-of-type(2) {
-            margin: 70px 98px 0 112px;
-        }
-    }
-    .ApplyRes .HowitworksList {
-        flex-direction: column;
-        &>div:nth-of-type(2) {
-            margin: 20px 0;
-        }
-    }
-    .linkguide{
-        background: #006CC5;
-        border-bottom: 0;
-        color: #FFFFFF;
-        padding: 4px 6px;
-    }
+  }
+  .linkguide {
+    background: #006cc5;
+    border-bottom: 0;
+    color: #ffffff;
+    padding: 4px 6px;
+  }
 }
 .en {
-    .Apply .HowitworksBannerContent .HowitworksListItem {
-        width: 27%;
-    }
+  .Apply .HowitworksBannerContent .HowitworksListItem {
+    width: 27%;
+  }
 }
 
-.ApplyRes{
-    padding-bottom: 100px;
-    padding-top:50px;
-    .HowitworksListItemContent{
-        color: #333333;
-        font-size: 18px;
-        a{
-            color:#4B9DFE
-        }
+.ApplyRes {
+  padding-bottom: 100px;
+  padding-top: 50px;
+  .HowitworksListItemContent {
+    color: #333333;
+    font-size: 18px;
+    a {
+      color: #4268fd;
     }
-    .ApplyListItemTitle{
-        font-size: 20px;
-        font-weight: bold;
-        color: #000000;
-        line-height: 40px;
-    }
-    .HowitworksListItemContent {
-        font-weight: normal;
-        color: rgba(0, 0, 0, 0.5);
-        line-height: 40px;
-    }
+  }
+  .ApplyListItemTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    line-height: 40px;
+  }
+  .HowitworksListItemContent {
+    font-weight: normal;
+    // color: rgba(0, 0, 0, 0.5);
+    line-height: 60px;
+  }
 }
 
-@media screen and (min-width: 100px)and (max-width: 750px){
-    .en {
-        .ApplyBanner{
-            .HowitworksList {
-                .HowitworksListItemContent>span {
-                    margin-top: -30px;
-                }
-                &>div:nth-of-type(2) {
-                    .HowitworksListItemContent>span {
-                        margin-top: -72px;
-                    }
-                }
-            }
+@media screen and (min-width: 100px) and (max-width: 800px) {
+  .en {
+    .ApplyBanner {
+      .HowitworksList {
+        .HowitworksListItemContent > span {
+          margin-top: -30px;
         }
+        & > div:nth-of-type(2) {
+          .HowitworksListItemContent > span {
+            margin-top: -72px;
+          }
+        }
+      }
     }
-    .chi .ApplyBanner .HowitworksList .HowitworksListItem {
-        max-width: inherit;
+  }
+  .chi .ApplyBanner .HowitworksList .HowitworksListItem {
+    max-width: inherit;
+  }
+  .ApplyBanner {
+    .HowitworksList {
+      padding: 0 20px;
+      margin-top: 37px;
+      .HowitworksListItemContent > span {
+        float: right;
+      }
+      .HowitworksListItemContent > div {
+        float: left;
+      }
     }
-    .ApplyBanner{
-        height: 350px;
-        background-image: url(./../../img/start/mobile-start-banner.png);
-        .HowitworksList {
-            padding: 0 20px;
-            margin-top: 37px;
-            .HowitworksListItemContent>span {
-                float: right;
-            }
-            .HowitworksListItemContent>div {
-                float: left;
-            }
-        }
+  }
+  .Apply {
+    .HowitworksList {
+      flex-direction: column;
     }
-    .Apply{
-        .HowitworksList {
-            flex-direction: column;
-        }
-        .ApplyBannerListItemTitle {
-            font-size: 16px;
-            line-height: 19px;
-        }
-        .HowitworksList .HowitworksListItemContent {
-            font-size: 12px;
-            line-height: 17px;
-            margin: 0;
-        }
-        .HowitworksBannerContent .HowitworksList > div,
-        .HowitworksBannerContent .HowitworksList > div:nth-of-type(2) {
-            margin: 0 auto 15px auto;
-        }
-        .linkguide{
-            padding: 3px 4px;
-        }
-        .ApplyRes .ApplyListItemTitle::before {
-            width: 0;
-        }
+    .ApplyBannerListItemTitle {
+      font-size: 16px;
+      line-height: 19px;
     }
+    .HowitworksList .HowitworksListItemContent {
+      font-size: 12px;
+      line-height: 17px;
+      margin: 0;
+    }
+    .HowitworksBannerContent .HowitworksList > div,
+    .HowitworksBannerContent .HowitworksList > div:nth-of-type(2) {
+      margin: 0 auto 15px auto;
+    }
+    .linkguide {
+      padding: 3px 4px;
+    }
+    .ApplyRes .ApplyListItemTitle::before {
+      width: 0;
+    }
+  }
+  .ApplyRes {
+    .ApplyListItemTitle {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    .HowitworksList .HowitworksListItem {
+      margin-bottom: 20px;
+    }
+  }
+  .Apply .ApplyRes .HowitworksListItem .HowitworksListItemContent {
+    font-size: 14px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.5);
+    text-indent: 0;
+  }
+}
+
+@media screen and(min-width:800px) and(max-width:1200px) {
+  .Apply {
     .ApplyRes {
-        .ApplyListItemTitle {
-            font-size: 16px;
-            line-height: 30px;
-        }
-        .HowitworksList .HowitworksListItem {
-            margin-bottom: 20px;
-        }
+      .ApplyListItemTitle {
+        font-size: 20px;
+      }
     }
-    .Apply .ApplyRes .HowitworksListItem .HowitworksListItemContent {
-        font-size: 14px;
-        line-height: 30px;
-        color: rgba(0, 0, 0, 0.5);
-        text-indent: 0;
-    }
+  }
 }

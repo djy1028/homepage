@@ -22,8 +22,51 @@
       "email": "官方邮箱",
       "maillist": "公开邮件列表"
     },
+    "emailhelp": [
+      [
+        "<span>通用邮件列表：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp@googlegroups.com</a></span>",
+        "<span>用于一般性讨论和问题反馈，任何人都可发、可订阅、可查看。</span>",
+        "<span>订阅邮件列表：发送邮件至</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<span>进入讨论组：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp+subscribe@googlegroups.com\">https://groups.google.com/g/summer-ospp</a></span>"
+      ],
+      [
+        "<span>通知邮件列表：：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-announce@googlegroups.com\">summer-ospp-announce@googlegroups.com</a></span>",
+        "<span>用于暑期活动的公告，任何人可查看、可订阅，仅组委会可发帖。</span>",
+        "<span>订阅邮件列表：发送邮件至</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp-announce+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<span>进入讨论组：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-announce\">https://groups.google.com/g/summer-ospp-announce</a></span>"
+      ],
+      [
+        "<span>社区沟通邮件列表：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-community@googlegroups.com\">summer-ospp-community@googlegroups.com</a></span>",
+        "<span>用于社区事务沟通和反馈，任何人都可发、可查看、可订阅。</span>",
+        "<span>订阅邮件列表：发送邮件至</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-community+subscribe@googlegroups.com\">summer-ospp+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<span>进入讨论组：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-community\">https://groups.google.com/g/summer-ospp-community</a></span>"
+      ],
+      [
+        "<span>组委会邮件列表：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-committee@googlegroups.com\">summer-ospp-committee@googlegroups.com</a></span>",
+        "<span>用于组委会反馈渠道，以及组委会工作讨论活动规则及活动组织等事宜的沟通讨论，任何人都可发。</span>",
+        "<span>订阅邮件列表：仅限被邀请人员</span>",
+        "<span>进入讨论组（仅限成员）：</span><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-committee\">https://groups.google.com/g/summer-ospp-committee</a></span>"
+      ]
+    ],
     "kilink": "https://summer.iscas.ac.cn/help",
-    "link": "https://summer.iscas.ac.cn/help/community/"
+    "link": "https://summer.iscas.ac.cn/help/community/",
+    "cooperate": {
+      "title": "合作推广",
+      "content": [
+        {
+          "title": "如何成为合作单位",
+          "description": "只要是支持本次开源活动，会帮助推广宣传此次活动，无论是公司、科研院所、高校或其他组织，我们都欢迎成为我们的合作伙伴，一起推进此次活动。同时也希望能建立长期的合作关系来促进开源生态的发展。"
+        },
+        {
+          "title": "合作单位如何报名",
+          "description": "请将以下信息发送到邮箱 <a target=\"_blank\" class=\"linkguide\" href=\"\">summer@iscas.ac.cn</a>，活动组委会会安排人专门与合作单位对接，讨论后续具体合作事宜。<ul><li>合作单位名称：</li><li>联系人姓名：</li><li>联系电话：</li></ul>"
+        },
+        {
+          "title": "合作单位需要做什么",
+          "description": "<div>1.在合作单位的网站、公众号、朋友圈、微信群 基于活动官网信息宣传活动，活动官网：<a target=\"_blank\" class=\"linkguide\" href=\"\">https://summer.iscas.ac.cn</a>。</div><div>2. 其他推广本次活动的事项。</div>"
+        }
+      ]
+    }
   },
   "en": {
     "ressourcelink": {
@@ -55,7 +98,50 @@
         "Visit mail archive: <span class=\"blue\">https://groups.google.com/g/summer-ospp</span>"
       ]
     },
+    "emailhelp": [
+      [
+        "<div>通用邮件列表：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp@googlegroups.com</a></span>",
+        "<div>用于一般性讨论和问题反馈，任何人都可发、可订阅、可查看。</div>",
+        "<div>订阅邮件列表：发送邮件至</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<div>进入讨论组：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp+subscribe@googlegroups.com\">https://groups.google.com/g/summer-ospp</a></span>"
+      ],
+      [
+        "<div>通知邮件列表：：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-announce@googlegroups.com\">summer-ospp-announce@googlegroups.com</a></span>",
+        "<div>用于暑期活动的公告，任何人可查看、可订阅，仅组委会可发帖。</div>",
+        "<div>订阅邮件列表：发送邮件至</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp@googlegroups.com\">summer-ospp-announce+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<div>进入讨论组：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-announce\">https://groups.google.com/g/summer-ospp-announce</a></span>"
+      ],
+      [
+        "<div>社区沟通邮件列表：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-community@googlegroups.com\">summer-ospp-community@googlegroups.com</a></span>",
+        "<div>用于社区事务沟通和反馈，任何人都可发、可查看、可订阅。</div>",
+        "<div>订阅邮件列表：发送邮件至</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-community+subscribe@googlegroups.com\">summer-ospp+subscribe@googlegroups.com</a>，收到反馈邮件后回复确认订阅即可。</span>",
+        "<div>进入讨论组：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-community\">https://groups.google.com/g/summer-ospp-community</a></span>"
+      ],
+      [
+        "<div>组委会邮件列表：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"mailto:summer-ospp-committee@googlegroups.com\">summer-ospp-committee@googlegroups.com</a></span>",
+        "<div>用于组委会反馈渠道，以及组委会工作讨论活动规则及活动组织等事宜的沟通讨论，任何人都可发。</div>",
+        "<div>订阅邮件列表：仅限被邀请人员</div>",
+        "<div>进入讨论组（仅限成员）：</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://groups.google.com/g/summer-ospp-committee\">https://groups.google.com/g/summer-ospp-committee</a></span>"
+      ]
+    ],
     "kilink": "https://summer.iscas.ac.cn/help/en/",
-    "link": "https://summer.iscas.ac.cn/help/en/community/"
+    "link": "https://summer.iscas.ac.cn/help/en/community/",
+    "cooperate": {
+      "title": "Cooperative Extension",
+      "content": [
+        {
+          "title": "How to become a cooperative partner",
+          "description": "As long as you support to promote this activity, whether you are companies, scientific research institutes, universities or other organizations, welcome to be our partners. In the meantime, we hope to establish a long-term cooperative relationship to promote the development of open source ecology."
+        },
+        {
+          "title": "How to apply for cooperation partner",
+          "description": "Please send the following information to email <a target=\"_blank\" class=\"linkguide\" href=\"\">summer@iscas.ac.cn</a>. The organizing committee of the event will arrange people to connect with the partners and discuss the follow-up cooperation.<ul><li>Name of the partner:</li><li>Contact name:</li><li>Tel:</li></ul>"
+        },
+        {
+          "title": "What do cooperation partners need to do",
+          "description": "<div>1.You need to promote 'Summer 2021' via the website of your organisation, the official account, the circle of friends, and the WeChat group, which based on the official website information.<a target=\"_blank\" class=\"linkguide\" href=\"\">https://summer.iscas.ac.cn</a></div><div>2. Other matters to promote this activity.</div>"
+        }
+      ]
+    }
   }
 }

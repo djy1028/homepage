@@ -1,66 +1,74 @@
 {
-    "chi":{
-        "banner":[
-            {
-                "title":"合作单位",
-                "text":"<div>和我们一起贡献开源</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/cooperation/\">合作单位加入</a>详情</span>"
-            },
-            {
-                "title":"社区",
-                "text":"<div>让更多的学生和开发者们加入你的社区!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/community/\">社区加入</a>详情</span>"
-            },
-            {
-                "title":"学生",
-                "text":"<div>利用暑期的时间，贡献你的代码吧！</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/student/\">学生加入</a>详情</span>"
-            }
-
-        ],
-        "re":[
-            {
-                "title":"合作单位要求",
-                "text":["支持开源的公司、高校、科研院所及其他机构。"]
-            },
-            {
-                "title":"社区要求",
-                "text":["有活跃的开源软件仓库的社区或个人；","开源项目采用的协议需要是 <a href=\"https://opendefinition.org/licenses/\">OSI 组织认证的</a> 或者 <a href=\"https://summer.iscas.ac.cn/help/community/#_10\"> 推荐的开放知识协议</a> 等开放共享的协议"]
-            },
-            {
-                "title":"学生要求",
-                "text":["年满 18 周岁的在校学生；","具有有效的学生证和身份证。"]
-            }
-
+  "chi": {
+    "title": "参与指南",
+    "banner": [
+      {
+        "title": "合作单位",
+        "text": "<div>和我们一起贡献开源</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/cooperation/\">合作单位加入</a>详情</span>"
+      },
+      {
+        "title": "社区",
+        "text": "<div>让更多的学生和开发者们加入你的社区!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/community/\">社区加入</a>详情</span>"
+      },
+      {
+        "title": "学生",
+        "text": "<div>利用暑期的时间，贡献你的代码吧！</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/student/\">学生加入</a>详情</span>"
+      }
+    ],
+    "re": [
+      {
+        "title": "合作单位要求",
+        "text": ["支持开源的公司、高校、科研院所及其他机构。"]
+      },
+      {
+        "title": "社区要求",
+        "text": [
+          "有活跃的开源软件仓库的社区或个人；",
+          "开源项目采用的协议需要是 <a href=\"https://opendefinition.org/licenses/\">OSI 组织认证的</a> 或者 <a href=\"https://summer.iscas.ac.cn/help/community/#_10\"> 推荐的开放知识协议</a> 等开放共享的协议"
         ]
-    },
-    "en":{
-        "banner":[
-            {
-                "title":"Cooperation Partner",
-                "text":"<div>Contribute to open source with us!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/cooperation/\">cooperation</a></span>"
-            },
-            {
-                "title":"Community",
-                "text":"<div>Encourage more students and developers to join your community!</div><span><a class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/community/\">community participation guide</a></span>"
-            },
-            {
-                "title":"Students",
-                "text":"<div>Contribute your code in this summer!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/student/\">student guide</a></span>"
-            }
-
-        ],
-        "re":[
-            {
-                "title":"Requirements for cooperations partners",
-                "text":["Welcome the companies, universities, research institutes and other institutions that support open source. "]
-            },
-            {
-                "title":"Requirements for community",
-                "text":["Community or individual with active open source software repository;","The open source project should be relesaed with the license that has been approved by <a href=\"https://opendefinition.org/licenses/\">OSI</a> or <a href=\"https://summer.iscas.ac.cn/help/community/#_10\">Recommended Open Knowledge License</a>."]
-            },
-            {
-                "title":"Requirements for students",
-                "text":["Students over 18 years old with valid student card and ID card"]
-            }
-
+      },
+      {
+        "title": "学生要求",
+        "text": ["年满 18 周岁的在校学生；", "具有有效的学生证和身份证。"]
+      }
+    ]
+  },
+  "en": {
+    "title": "Guidelines",
+    "banner": [
+      {
+        "title": "Cooperation Partner",
+        "text": "<div>Contribute to open source with us!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/cooperation/\">cooperation</a></span>"
+      },
+      {
+        "title": "Community",
+        "text": "<div>Encourage more students and developers to join your community!</div><span><a class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/community/\">community participation guide</a></span>"
+      },
+      {
+        "title": "Students",
+        "text": "<div>Contribute your code in this summer!</div><span><a target=\"_blank\" class=\"linkguide\" href=\"https://summer.iscas.ac.cn/help/student/\">student guide</a></span>"
+      }
+    ],
+    "re": [
+      {
+        "title": "Requirements for cooperations partners",
+        "text": [
+          "Welcome the companies, universities, research institutes and other institutions that support open source. "
         ]
-    }
+      },
+      {
+        "title": "Requirements for community",
+        "text": [
+          "Community or individual with active open source software repository;",
+          "The open source project should be relesaed with the license that has been approved by <a href=\"https://opendefinition.org/licenses/\">OSI</a> or <a href=\"https://summer.iscas.ac.cn/help/community/#_10\">Recommended Open Knowledge License</a>."
+        ]
+      },
+      {
+        "title": "Requirements for students",
+        "text": [
+          "Students over 18 years old with valid student card and ID card"
+        ]
+      }
+    ]
+  }
 }
