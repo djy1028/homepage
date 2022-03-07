@@ -29,26 +29,21 @@ class Howitworks extends React.Component {
         return (
             <Wrapper>
                 <div className="Howitworks">
-                    <div className="HowitworksBanner">
-                        <div className="HowitworksBannerContent content1200">
-                            <div className="HowitworksBannerTitle">{showdata.title}</div>
-                            <div className="HowitworksList" >
-                                {
-                                    showdata.banner.map((item, index) => {
-                                        return (
-                                            <div className="HowitworksListItem" key={index}>
-                                                <div className="HowitworksListItemTitle">{item.title}</div>
-                                                <div className="HowitworksListItemContent isPc">{item.text[0]}<br></br>{item.text[1]}</div>
-                                                <div className="HowitworksListItemContent isMobile">{item.text[0]}{item.text[1]}</div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-
-                        </div>
-
+                    <img className="HowitworksBanner" style={{ minHeight: this.props.chiFlag === 'en' ? '150px' : 0 }} src={`${process.env.PUBLIC_URL}/img/howitworks/banner.png`} />
+                    <span className="HowitworksBannerTitle">{showdata.title}</span>
+                    <div className='HowitworksBannerList'>
+                        {
+                            showdata.banner.map((item, index) => {
+                                return (
+                                    <div className="HowitworksListItem" key={index}>
+                                        <span>{item.title + '：'}</span><span>{item.text[0] + (item.text[1] ? item.text[1] : '')}</span>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
+
+
                     <div className="HowitworksContent">
                         <div className="HowitworksContentWrapper content1200">
                             {
