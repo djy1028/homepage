@@ -58,8 +58,13 @@ const Project = () => {
         },
         {
             title: t('project.columns_title.3'),
+            ellipsis: {
+                showTitle: false,
+            },
             dataIndex: 'status',
-            render: (value) => value === 0 ? <span style={{ color: '#fe0000' }}>{t('tutor.noapply')}</span> : value ? <span style={{ color: '#fe0000' }}> {t(`project.status.${value}`)}</span> : ''
+            render: (value) => <Tooltip overlayStyle={{ maxWidth: '50rem' }} placement="topLeft" title={value === 0 ? t('tutor.noapply') : value ? t(`project.status.${value}`) : ''}>{
+                value === 0 ? <span style={{ color: '#fe0000' }}>{t('tutor.noapply')}</span> : value ? <span style={{ color: '#fe0000' }}> {t(`project.status.${value}`)}</span> : ''
+            }</Tooltip>
         },
         {
             title: t('project.columns_title.4'),
@@ -74,7 +79,7 @@ const Project = () => {
         },
         {
             title: t('project.columns_title.6'),
-            width: '18rem',
+            width: i18n.language === 'zh' ? '18rem' : '23rem',
             render: (value, record) => <Space size={4}>
                 <Acheck onClick={() => inquiryApply(record.id)} >{t('project.check')}</Acheck>
                 {
