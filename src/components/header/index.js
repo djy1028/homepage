@@ -145,7 +145,7 @@ class Header extends React.Component {
         const token = getToken()
         return (
             <div className={['header', this.state.chiFlag].join(' ')}>
-                <div className="content1200 headerContent" style={{ width: '145rem' }}>
+                <div className="content1200 headerContent">
                     <div
                         className="osscHeaderLogo"
                         style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/logo_n.svg)` }}
